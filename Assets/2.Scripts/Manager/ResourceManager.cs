@@ -1,18 +1,20 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class ResourceManager : MonoBehaviour
+public static class LableKey
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    const string test = "test";
+}
 
-    // Update is called once per frame
-    void Update()
+
+public class ResourceManager : Singleton<ResourceManager>
+{
+    public AsyncOperationHandle<IList<T>> LoadResource<T>(string label, Action<T> callback) where T : UnityEngine.Object
     {
-        
+        return Addressables.LoadAssetsAsync<T>(label, callback);
     }
 }
