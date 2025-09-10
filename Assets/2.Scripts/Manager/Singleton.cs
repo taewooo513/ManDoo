@@ -30,4 +30,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public virtual void Release()
+    {
+
+    }
 }
