@@ -47,7 +47,6 @@ public class AudioManager : Singleton<AudioManager>
             Debug.LogError("Load Sounds Failed");
         }
     }
-
     public override void Release()
     {
         sounds.Clear();
