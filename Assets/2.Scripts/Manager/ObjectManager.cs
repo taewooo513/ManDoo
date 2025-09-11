@@ -17,7 +17,7 @@ public class ObjectManager : Singleton<ObjectManager>
 
     public AsyncOperationHandle LoadGameObject(string label)
     {
-        var handle = ResourceManager.Instance.LoadResource<GameObject>(label, obj =>
+        var handle = Resource.Instance.LoadResource<GameObject>(label, obj =>
         {
             InsertObject(obj.name, obj);
         });

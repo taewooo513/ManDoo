@@ -11,7 +11,7 @@ public static class LableKey
 }
 
 
-public class ResourceManager : Singleton<ResourceManager>
+public class Resource : Singleton<Resource>
 {
     public AsyncOperationHandle<IList<T>> LoadResource<T>(string label, Action<T> callback) where T : UnityEngine.Object
     {

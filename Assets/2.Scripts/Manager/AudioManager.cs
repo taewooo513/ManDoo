@@ -28,7 +28,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public AsyncOperationHandle LoadSound(string label)
     {
-        var handle = ResourceManager.Instance.LoadResource<AudioClip>(label, clip =>
+        var handle = Resource.Instance.LoadResource<AudioClip>(label, clip =>
         {
             sounds.Add(clip.name, clip);
         });
