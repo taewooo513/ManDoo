@@ -12,5 +12,5 @@ public abstract class MonoScene
     //public abstract void OnPadeOut();
     public abstract void Init(); //초깃값 설정용
     
-    public abstract void Release(); //필요 없는거 삭제하는 용
+    public abstract void Release(); //주소 해제용
 }

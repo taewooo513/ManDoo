@@ -14,7 +14,7 @@ public static class SceneKey
 }
 
 public class SceneLoadManager : Singleton<SceneLoadManager>
-{
+{ //씬 흐름 관리 클래스
     Dictionary<string, MonoScene> scenes;
     MonoScene nowScene;
     Coroutine asyncLoadScene;
