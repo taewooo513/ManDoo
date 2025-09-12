@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="33b5c80f-f907-4c0c-b5a5-7de2ebb17685" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mandoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mandoo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/0.Resources/Fonts/Silver SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/0.Resources/Fonts/Silver SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/1.Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/DefaultTable.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/DefaultTable.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/meta.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UGS.Generated/Resources/meta.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/DefaultTable.Data.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UGS.Generated/Scripts/DefaultTable.Data.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +24,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Manager/DataManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Test/ItemDatas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Test/Test.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.shlifedev.ugs@35d97f3719/Editor/Modules/Core/GoogleDriveExplorerGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.shlifedev.ugs@35d97f3719/Runtime/UGS/Modules/Core/UGSettingObjectWrapper.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -106,7 +117,7 @@
       <option name="presentableId" value="Default" />
       <updated>1757501739590</updated>
       <workItem from="1757501740821" duration="2571000" />
-      <workItem from="1757554128766" duration="568000" />
+      <workItem from="1757554128766" duration="6745000" />
     </task>
     <servers />
   </component>
