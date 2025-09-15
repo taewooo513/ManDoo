@@ -124,8 +124,8 @@ public class UIManager : Singleton<UIManager>
         string uiName = typeof(T).Name;
         string path = Constants.UIElementsPath + uiName;
 
-        //CheckCanvas();
-        //CheckEventSystem();
+        CheckCanvas();
+        CheckEventSystem();
 
         GameObject go = Resource.Instance.Create<GameObject>(path, _canvas);
         if (go == null)
