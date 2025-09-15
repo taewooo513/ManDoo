@@ -11,4 +11,5 @@ public class InGamePlayerUI : MonoBehaviour
     public TextMeshProUGUI hpUI;
     public TextMeshProUGUI currentHpUI;
     
+    
 }
