@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class StartScene : MonoScene
+public class StartScene : BaseScene
 {
     public override AsyncOperationHandle? LoadPrefabs()
     {

@@ -23,6 +23,8 @@ public class ObjectManager : Singleton<ObjectManager>
         });
         handle.Completed += OnLoadCompleteObject;
         objectsHandle = handle;
+        handle.WaitForCompletion();
+        
         return objectsHandle;
     }
 

@@ -34,6 +34,8 @@ public class AudioManager : Singleton<AudioManager>
         });
         handle.Completed += OnLoadCompleteObject;
         soundHandle = handle;
+        handle.WaitForCompletion();
+        
         return soundHandle;
     }
     private void OnLoadCompleteObject<T>(AsyncOperationHandle<IList<T>> handle) where T : UnityEngine.Object
