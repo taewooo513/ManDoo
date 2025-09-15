@@ -16,7 +16,6 @@ public class Enemy : BaseEntity
     {
         SetData(id);
         SetSkill();
-
     }
 
     private void SetData(int id)
@@ -70,7 +69,7 @@ public class Enemy : BaseEntity
         //battlemanager.instance.
     }
 
-    private void Buff()
+    private void Buff() 
     {
 
     }
@@ -80,7 +79,7 @@ public class Enemy : BaseEntity
 
     }
 
-    private void PlayerReact()
+    private void PlayerReact() // 플레이어가 행동에 대한 가중치 계산
     {
 
     }

@@ -44,6 +44,11 @@ public class BattleManager : Singleton<BattleManager>
     
     public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
     {
+
+    }
+
+    public void SwapEnemyPosition() // 적 위치 스왑
+    {
     
     }
 
