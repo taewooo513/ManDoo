@@ -10,7 +10,6 @@ public class UIManager : Singleton<UIManager>
 {
     private Transform _canvas;
     private EventSystem _eventSystem;
-    public static UIManager Instance { get; private set; }
 
     private Dictionary<string, UIBase> _uiDictionary = new();
 
