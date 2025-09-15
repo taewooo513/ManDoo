@@ -18,7 +18,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public void Init()
     {
-       
+
     }
 
     public void AttackEnemy(int damageValue, int index)
@@ -30,4 +30,14 @@ public class BattleManager : Singleton<BattleManager>
     {
         playableCharacters[index].Damaged(damageValue);
     }
+
+    // Enemy 에서 필요한 메서드들:
+    /*
+    
+    public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
+    {
+    
+    }
+
+    */
 }
