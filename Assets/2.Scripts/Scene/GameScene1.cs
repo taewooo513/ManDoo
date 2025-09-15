@@ -5,14 +5,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class GameScene1 : BaseScene
 {
-    public override AsyncOperationHandle? LoadPrefabs()
+    public override void LoadResources()
     {
-        return null;
-    }
-
-    public override AsyncOperationHandle? LoadSounds()
-    {
-        return null;
+        
     }
 
     public override void Init()

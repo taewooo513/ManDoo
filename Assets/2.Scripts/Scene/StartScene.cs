@@ -6,14 +6,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class StartScene : BaseScene
 {
-    public override AsyncOperationHandle? LoadPrefabs()
+    public override void LoadResources()
     {
-        return null;
-    }
-
-    public override AsyncOperationHandle? LoadSounds()
-    {
-        return null;
+        
     }
 
     public override void Init()
