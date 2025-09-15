@@ -9,4 +9,9 @@ public class MercenaryDatas : MercenaryData
     {
         Debug.Log(MercenaryDataList.Count);
     }
+    
+    public MercenaryData GetMercenaryData(int idx)
+    {
+        return MercenaryDataMap[idx];
+    }
 }

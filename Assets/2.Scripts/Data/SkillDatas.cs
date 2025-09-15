@@ -9,7 +9,8 @@ public class SkillDatas : SkillData
     {
         Debug.Log(SkillDataList.Count);
     }
-    // public SkillData GetData(int id){
-    // return SkillDataMap[id];
-    //}
+    public SkillData GetSkillData(int idx)
+    {
+        return SkillDataMap[idx];
+    }
 }

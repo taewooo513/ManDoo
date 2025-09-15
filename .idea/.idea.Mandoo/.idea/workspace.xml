@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33b5c80f-f907-4c0c-b5a5-7de2ebb17685" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/1.Scenes.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Mandoo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Mandoo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Manager/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Manager/AudioManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Manager/MonoScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Manager/BaseScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Manager/MonoScene.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Manager/BaseScene.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Manager/ObjectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Manager/ObjectManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Manager/ResourceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Manager/ResourceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Manager/SceneLoadManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Manager/SceneLoadManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Scene/EndingScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Scene/EndingScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Scene/GameScene1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Scene/GameScene1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Scene/StartScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Scene/StartScene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Scene/TestScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Scene/TestScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Data/EnemyDatas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Data/EnemyDatas.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Data/MercenaryDatas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Data/MercenaryDatas.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2.Scripts/Data/SkillDatas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2.Scripts/Data/SkillDatas.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,15 +19,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/1.Scenes.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Manager/BaseScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Data/EnemyDatas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Data/MercenaryDatas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Data/SkillDatas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Manager/DataManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Manager/ObjectManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Test/Test.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Others/Enums.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/2.Scripts/Others/Test.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.shlifedev.ugs@35d97f3719/Editor/Modules/Core/GoogleDriveExplorerGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.shlifedev.ugs@35d97f3719/Runtime/UGS/Modules/Core/UGSettingObjectWrapper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.shlifedev.ugs@35d97f3719/Runtime/UGS/Modules/Core/UnityEditorWebRequest.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -49,19 +42,18 @@
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat/taewoong&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Develop&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager" selected="독립실행형 플레이어.Unity 시작">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="F:\2022.3.17f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;F:\Unity Projects\ManDoo&quot; -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="F:\Unity Projects\ManDoo" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -73,7 +65,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unity 시작" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.17f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="F:\2022.3.17f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;F:\Unity Projects\ManDoo&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="F:\Unity Projects\ManDoo" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -125,14 +117,14 @@
       <updated>1757501739590</updated>
       <workItem from="1757501740821" duration="2571000" />
       <workItem from="1757554128766" duration="6745000" />
-      <workItem from="1757895444661" duration="37000" />
+      <workItem from="1757640674409" duration="2636000" />
+      <workItem from="1757900414999" duration="5381000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />

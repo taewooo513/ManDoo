@@ -9,5 +9,9 @@ public class EnemyDatas : EnemyData
     {
         Debug.Log(EnemyDataList.Count);
     }
-    
+
+    public EnemyData GetEnemyData(int idx)
+    {
+        return EnemyDataMap[idx];
+    }
 }
