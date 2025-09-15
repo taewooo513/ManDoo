@@ -170,25 +170,25 @@ public class UIManager : Singleton<UIManager>
         }
         return uiComponent;
     }
-    //private void CheckCanvas()
-    //{
-    //    //캔버스 있는지 확인, 있으면 return
-    //    if (_canvas != null) return;
-    //    //없으면 경로 만들고 생성 후 _canvas 초기화
-    //    var path = Constants.UICommonPath + Constants.Canvas;
-    //    _canvas = ResourceManager.Instance.Create<Transform>(path, null);
-    //    DontDestroyOnLoad(_canvas.gameObject);
-    //}
+    private void CheckCanvas()
+    {
+        //캔버스 있는지 확인, 있으면 return
+        if (_canvas != null) return;
+        //없으면 경로 만들고 생성 후 _canvas 초기화
+        var path = Constants.UICommonPath + Constants.Canvas;
+        _canvas = Resource.Instance.Create<Transform>(path, null);
+        DontDestroyOnLoad(_canvas.gameObject);
+    }
 
-    //private void CheckEventSystem()
-    //{
-    //    //이벤트 시스템 있는지 확인, 있으면 return
-    //    if (_eventSystem != null) return;
-    //    //없으면 경로 만들고 생성 후 _eventSystem 초기화
-    //    var path = Constants.UICommonPath + Constants.EventSystem;
-    //    _eventSystem = ResourceManager.Instance.Create<EventSystem>(path, null);
-    //    DontDestroyOnLoad(_eventSystem.gameObject);
-    //}
+    private void CheckEventSystem()
+    {
+        //이벤트 시스템 있는지 확인, 있으면 return
+        if (_eventSystem != null) return;
+        //없으면 경로 만들고 생성 후 _eventSystem 초기화
+        var path = Constants.UICommonPath + Constants.EventSystem;
+        _eventSystem = Resource.Instance.Create<EventSystem>(path, null);
+        DontDestroyOnLoad(_eventSystem.gameObject);
+    }
 
     private void ClearUI()
     {
