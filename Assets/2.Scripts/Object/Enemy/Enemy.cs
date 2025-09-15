@@ -39,8 +39,8 @@ public class Enemy : BaseEntity
             i++;
         }
     }
-
-    public Skill GetRandomSkill()
+     
+    private Skill GetRandomSkill()
     {
         List<Skill> possibleSkills = new List<Skill>();
 
@@ -58,33 +58,29 @@ public class Enemy : BaseEntity
         base.Attack(index);
     }
 
-    public void OnClickSelectEnemy()
+    private void AttackPercentage()
+    {
+        //float total = battlemanager.instance.GetTotalNumOfPlayerCharacters();
+        float temp = 10;
+        float rand = UnityEngine.Random.value * temp;
+    }
+
+    private void Mark()
+    {
+        //battlemanager.instance.
+    }
+
+    private void Buff()
     {
 
     }
 
-    public void AttackPercentage()
-    {
-        //float total = battlemanager.instance
-        float rand = UnityEngine.Random.value;
-    }
-
-    public void Mark()
+    private void Guard()
     {
 
     }
 
-    public void Buff()
-    {
-
-    }
-
-    public void Guard()
-    {
-
-    }
-
-    public void PlayerReact()
+    private void PlayerReact()
     {
 
     }

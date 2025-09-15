@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class BattleManager : Singleton<BattleManager>
 {
@@ -8,6 +9,8 @@ public class BattleManager : Singleton<BattleManager>
     private BaseEntity[] enemyCharacters;
     private BaseEntity nowTurnEntity;
     private Queue<BaseEntity> turnEnetitys;
+
+    private PlayableCharacter nowPlayableCharacter;
 
     protected override void Awake()
     {
@@ -18,7 +21,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public void Init()
     {
-       
+
     }
 
     public void AttackEnemy(int damageValue, int index)
@@ -30,4 +33,19 @@ public class BattleManager : Singleton<BattleManager>
     {
         playableCharacters[index].Damaged(damageValue);
     }
+
+    public void SelectPlayer(int index)
+    {
+        nowPlayableCharacter = (PlayableCharacter)playableCharacters[index];
+    }
+
+    // Enemy 에서 필요한 메서드들:
+    /*
+    
+    public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
+    {
+    
+    }
+
+    */
 }
