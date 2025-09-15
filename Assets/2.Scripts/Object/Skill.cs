@@ -12,7 +12,7 @@ public class Skill : MonoBehaviour
         sd = DataManager.Instance.Skill.GetSkillData(id);
     }
 
-    public void UseSkill(int stat)
+    public void UseSkill(ArrayList attacker)
     {
         
     }

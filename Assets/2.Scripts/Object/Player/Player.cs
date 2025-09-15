@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using DataTable;
+using DefaultTable;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayableCharacter : BaseEntity
 {
-    // Start is called before the first frame update
-    void Start()
+    private int id;
+    private MercenaryData data;
+
+    private void SetData()
     {
-        
+        data = DataManager.Instance.Mercenary.GetMercenaryData(id);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void init(int idx)
     {
-        
+        id = idx;
+        SetData();
+    }
+    public override void Attack(int index)
+    {
+        base.Attack(index);
     }
 }
