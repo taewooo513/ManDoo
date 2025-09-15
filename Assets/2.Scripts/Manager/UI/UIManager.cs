@@ -70,8 +70,8 @@ public class UIManager : Singleton<UIManager>
             _uiDictionary.Remove(uiName);
         }
         //        //2. 캔버스, 이벤트 시스템 확인
-        //CheckCanvas();
-        //CheckEventSystem();
+        CheckCanvas();
+        CheckEventSystem();
 
         // 3. 프리팹 로드 & 생성, 이후 프리팹이 생성되었는지 확인.
         var path = Constants.UIElementsPath + uiName;
@@ -151,8 +151,8 @@ public class UIManager : Singleton<UIManager>
         string uiName = typeof(T).Name;
         string path = Constants.UIElementsPath + uiName;
 
-        //CheckCanvas();
-        //CheckEventSystem();
+        CheckCanvas();
+        CheckEventSystem();
 
         GameObject go = Resource.Instance.Create<GameObject>(path, _canvas);
         if (go == null)
