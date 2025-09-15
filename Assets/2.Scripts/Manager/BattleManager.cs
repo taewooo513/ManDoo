@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    private BaseEntity[] playerableCharacters;
+    private BaseEntity[] playableCharacters;
     private BaseEntity[] enemyCharacters;
     private BaseEntity nowTurnEntity;
     private Queue<BaseEntity> turnEnetitys;
@@ -12,7 +12,7 @@ public class BattleManager : Singleton<BattleManager>
     protected override void Awake()
     {
         base.Awake();
-        playerableCharacters = new BaseEntity[4];
+        playableCharacters = new BaseEntity[4];
         enemyCharacters = new BaseEntity[4];
     }
 
@@ -28,6 +28,6 @@ public class BattleManager : Singleton<BattleManager>
 
     public void AttackPlayer(int damageValue, int index)
     {
-        playerableCharacters[index].Damaged(damageValue);
+        playableCharacters[index].Damaged(damageValue);
     }
 }
