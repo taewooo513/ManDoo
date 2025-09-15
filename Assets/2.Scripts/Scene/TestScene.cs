@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class TestScene : MonoScene
+public class TestScene : BaseScene
 {
-    public override AsyncOperationHandle? LoadPrefabs()
+    public override void LoadResources()
     {
-        return null;
-    }
-
-    public override AsyncOperationHandle? LoadSounds()
-    {
-        return null;
+        
     }
 
     public override void Init()

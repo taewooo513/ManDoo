@@ -14,42 +14,45 @@ public static class SceneKey
 }
 
 public class SceneLoadManager : Singleton<SceneLoadManager>
-{ //씬 흐름 관리 클래스
-    Dictionary<string, MonoScene> scenes;
-    MonoScene nowScene;
+{
+    //씬 흐름 관리 클래스
+    Dictionary<string, BaseScene> scenes;
+    BaseScene nowScene;
     Coroutine asyncLoadScene;
-    
+
     //private GameObject fadeObject; //씬 화면 페이드용(검은색 이미지)
-    
+
     protected override void Awake()
     {
         base.Awake();
-        scenes = new Dictionary<string, MonoScene>();
+        scenes = new Dictionary<string, BaseScene>();
         AddScene(SceneKey.startScene, new StartScene());
         AddScene(SceneKey.gameScene1, new GameScene1());
         AddScene(SceneKey.endingScene, new EndingScene());
         AddScene(SceneKey.testScene, new TestScene());
     }
 
-    public void AddScene(string key, MonoScene monoScene)
+    public void AddScene(string key, BaseScene baseScene)
     {
-        if (scenes.TryGetValue(key, out MonoScene scene))
+        if (scenes.TryGetValue(key, out BaseScene scene))
         {
             Debug.Log($"{key} is duplicate in scene");
             return;
         }
-        scenes.Add(key, monoScene);
+
+        scenes.Add(key, baseScene);
     }
 
     public void LoadScene(string key)
     {
         if (asyncLoadScene != null) StopCoroutine(asyncLoadScene);
 
-        if (scenes.TryGetValue(key, out MonoScene scene))
+        if (scenes.TryGetValue(key, out BaseScene scene))
         {
             asyncLoadScene = StartCoroutine(AsyncLoadScene(key));
             return;
         }
+
         Debug.Log($"Not Find {key} in Objects");
     }
 
@@ -59,26 +62,16 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             nowScene.Release();
         }
+
         nowScene = scenes[key];
         AsyncOperation operation = SceneManager.LoadSceneAsync(key);
-        
-        operation.allowSceneActivation = false;
-
-        var loadHandlePrefab = nowScene.LoadPrefabs();
-        var loadHandleSound = nowScene.LoadSounds();
-
-        while (loadHandlePrefab != null && loadHandleSound != null && (!loadHandlePrefab.Value.IsDone || !loadHandleSound.Value.IsDone))
-        {
-            yield return null;
-        }
-
-        operation.allowSceneActivation = true;
 
         while (!operation.isDone)
         {
             yield return null;
         }
 
+        nowScene.LoadResources();
         nowScene.Init();
     }
 }

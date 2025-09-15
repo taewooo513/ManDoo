@@ -11,10 +11,11 @@ public static class LableKey
 }
 
 
-public class Resource : Singleton<Resource>
+public class ResourceManager : Singleton<ResourceManager>
 {
     public AsyncOperationHandle<IList<T>> LoadResource<T>(string label, Action<T> callback) where T : UnityEngine.Object
     {
-        return Addressables.LoadAssetsAsync<T>(label, callback);
+        var handle = Addressables.LoadAssetsAsync<T>(label, callback);
+        return handle;
     }
 }
