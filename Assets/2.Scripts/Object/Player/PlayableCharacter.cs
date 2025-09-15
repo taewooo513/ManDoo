@@ -6,19 +6,22 @@ using UnityEngine;
 
 public class PlayableCharacter : BaseEntity
 {
-    private int id;
     private MercenaryData data;
+    private Skill[] skills;
 
-    private void SetData()
+    private void SetData(int id)
     {
+        this.id = id;
         data = DataManager.Instance.Mercenary.GetMercenaryData(id);
+        entityInfo = new EntityInfo(
+            data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
+        );
     }
 
-    public void init(int idx)
+    public void Init()
     {
-        id = idx;
-        SetData();
     }
+
     public override void Attack(int index)
     {
         base.Attack(index);
