@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class EndingScene : MonoScene
+public class EndingScene : BaseScene
 {
     public override AsyncOperationHandle? LoadPrefabs()
     {
