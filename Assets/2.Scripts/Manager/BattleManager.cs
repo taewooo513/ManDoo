@@ -38,4 +38,14 @@ public class BattleManager : Singleton<BattleManager>
     {
         nowPlayableCharacter = (PlayableCharacter)playableCharacters[index];
     }
+
+    // Enemy 에서 필요한 메서드들:
+    /*
+    
+    public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
+    {
+    
+    }
+
+    */
 }
