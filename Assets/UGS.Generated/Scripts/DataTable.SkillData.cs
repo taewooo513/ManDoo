@@ -17,39 +17,39 @@ using UnityEngine;
 namespace DataTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class TestData : ITable
+    public partial class SkillData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<TestData> loadedList, Dictionary<int, TestData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<SkillData> loadedList, Dictionary<int, SkillData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1iwjiLK5PVjfgPniQ51iY7rrnAmWC4gSnHuZH9kyLkOo"; // it is file id
-        static string sheetID = "0"; // it is sheet id
+        static string sheetID = "2085806606"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, TestData> TestDataMap = new Dictionary<int, TestData>();  
-        public static List<TestData> TestDataList = new List<TestData>();   
+        public static Dictionary<int, SkillData> SkillDataMap = new Dictionary<int, SkillData>();  
+        public static List<SkillData> SkillDataList = new List<SkillData>();   
 
         /// <summary>
-        /// Get TestData List 
+        /// Get SkillData List 
         /// Auto Load
         /// </summary>
-        public static List<TestData> GetList()
+        public static List<SkillData> GetList()
         {{
            if (isLoaded == false) Load();
-           return TestDataList;
+           return SkillDataList;
         }}
 
         /// <summary>
-        /// Get TestData Dictionary, keyType is your sheet A1 field type.
+        /// Get SkillData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, TestData>  GetDictionary()
+        public static Dictionary<int, SkillData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return TestDataMap;
+           return SkillDataMap;
         }}
 
     
@@ -57,8 +57,15 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 id;
-		public System.Int32 intValue;
-		public System.String strValue;
+		public System.String skillName;
+		public EffectType effectType;
+		public System.Single adRatio;
+		public System.Int32 constantValue;
+		public System.Int32 duration;
+		public TargetType targetType;
+		public System.Collections.Generic.List<Int32> enablePos;
+		public System.Collections.Generic.List<Int32> targetPos;
+		public System.String iconPathString;
   
 
 #region fuctions
@@ -69,7 +76,7 @@ namespace DataTable
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("TestData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("SkillData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -85,7 +92,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<TestData>, Dictionary<int, TestData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<SkillData>, Dictionary<int, SkillData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -113,14 +120,14 @@ namespace DataTable
                
 
 
-    public static (List<TestData> list, Dictionary<int, TestData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, TestData> Map = new Dictionary<int, TestData>();
-            List<TestData> List = new List<TestData>();     
+    public static (List<SkillData> list, Dictionary<int, SkillData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, SkillData> Map = new Dictionary<int, SkillData>();
+            List<SkillData> List = new List<SkillData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(TestData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(SkillData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["TestData"];
+            var sheet = jsonObject["SkillData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -139,7 +146,7 @@ namespace DataTable
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            TestData instance = new TestData();
+                            SkillData instance = new SkillData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -180,8 +187,8 @@ namespace DataTable
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            TestDataList = List;
-                            TestDataMap = Map;
+                            SkillDataList = List;
+                            SkillDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -191,10 +198,10 @@ namespace DataTable
 
  
 
-        public static void Write(TestData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(SkillData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(TestData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(SkillData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {
