@@ -14,13 +14,14 @@ public static class SceneKey
 }
 
 public class SceneLoadManager : Singleton<SceneLoadManager>
-{ //씬 흐름 관리 클래스
+{
+    //씬 흐름 관리 클래스
     Dictionary<string, BaseScene> scenes;
     BaseScene nowScene;
     Coroutine asyncLoadScene;
-    
+
     //private GameObject fadeObject; //씬 화면 페이드용(검은색 이미지)
-    
+
     protected override void Awake()
     {
         base.Awake();
@@ -38,6 +39,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
             Debug.Log($"{key} is duplicate in scene");
             return;
         }
+
         scenes.Add(key, baseScene);
     }
 
@@ -50,6 +52,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
             asyncLoadScene = StartCoroutine(AsyncLoadScene(key));
             return;
         }
+
         Debug.Log($"Not Find {key} in Objects");
     }
 
@@ -59,21 +62,16 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             nowScene.Release();
         }
+
         nowScene = scenes[key];
         AsyncOperation operation = SceneManager.LoadSceneAsync(key);
-        
-        operation.allowSceneActivation = false;
-
-        var loadHandlePrefab = nowScene.LoadPrefabs();
-        var loadHandleSound = nowScene.LoadSounds();
-
-        operation.allowSceneActivation = true;
 
         while (!operation.isDone)
         {
             yield return null;
         }
 
+        nowScene.LoadResources();
         nowScene.Init();
     }
 }
