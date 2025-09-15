@@ -1,61 +1,43 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 using DataTable;
-using System;
 
 public class Enemy : BaseEntity
 {
-    private EnemyData data;
-    private Skill[] skills;
-    private float[] percentage;
+    List<Skill> skillList = new List<Skill>();
+    private float percentage;
     private float standardPercentage = 0.25f;
     private int mark = -1;
     private int _id;
+    private EnemyData ed;
 
     public void Init(int id)
     {
-        SetData(id);
+        _id = id;
+        ed = DataManager.Instance.Enemy.GetEnemyData(_id);
         SetSkill();
-
-    }
-
-    private void SetData(int id)
-    {
-        this.id = id;
-        data = DataManager.Instance.Enemy.GetEnemyData(id);
-        entityInfo = new EntityInfo(
-            data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
-        );
     }
 
     private void SetSkill()
     {
-        int i = 0;
-        foreach (var id in data.skillId)
+        foreach (var id in ed.skillId)
         {
             Skill skill = new Skill();
             skill.Init(id);
-            skills[i] = skill;
-            i++;
+            skillList.Add(skill);
         }
     }
 
     public Skill GetRandomSkill()
     {
-        List<Skill> possibleSkills = new List<Skill>();
-
-        foreach (var skill in skills)
-        {
-            if (true)
-                possibleSkills.Add(skill);
-        }
-
-        return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
+        int rand = UnityEngine.Random.Range(1, 4);
+        return skillList[rand];
     }
 
     public override void Attack(int index)
     {
-        base.Attack(index);
+        
     }
 
     public void OnClickSelectEnemy()
@@ -65,8 +47,7 @@ public class Enemy : BaseEntity
 
     public void AttackPercentage()
     {
-        //float total = battlemanager.instance
-        float rand = UnityEngine.Random.value;
+
     }
 
     public void Mark()
@@ -76,7 +57,7 @@ public class Enemy : BaseEntity
 
     public void Buff()
     {
-
+        
     }
 
     public void Guard()
@@ -85,11 +66,6 @@ public class Enemy : BaseEntity
     }
 
     public void PlayerReact()
-    {
-
-    }
-
-    private void SwapPosition()
     {
 
     }
