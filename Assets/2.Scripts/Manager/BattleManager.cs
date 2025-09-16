@@ -21,16 +21,10 @@ public class BattleManager : Singleton<BattleManager>
         enemyCharacters = new List<BaseEntity>();
     }
 
-    public void AttackEnemy(int damageValue, BaseEntity baseEntity)
+    public void AttackEntity(BaseEntity baseEntity)
     {
-        baseEntity.Damaged(damageValue);
+        baseEntity.Damaged(nowTurnEntity.entityInfo.attackDamage);
     }
-
-    public void AttackPlayer(int damageValue, BaseEntity baseEntity)
-    {
-        baseEntity.Damaged(damageValue);
-    }
-
     public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
     {
         return playableCharacters.Count;
