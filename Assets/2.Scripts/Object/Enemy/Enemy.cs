@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using DataTable;
 using System;
@@ -52,9 +52,9 @@ public class Enemy : BaseEntity
         return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
     }
 
-    public override void Attack(int index)
+    public override void Attack(BaseEntity baseEntity)
     {
-        base.Attack(index);
+        base.Attack(baseEntity);
     }
 
     private void AttackPercentage()

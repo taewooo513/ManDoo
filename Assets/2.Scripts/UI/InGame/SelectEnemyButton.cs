@@ -14,16 +14,12 @@ public class SelectEnemyButton : MonoBehaviour
         inGamePlayerUI = GetComponentInParent<InGamePlayerUI>(); // 테스트용
         button = GetComponent<Button>();
         enemy = transform.GetComponentInParent<Enemy>();
-    }
-
-    public void Setting()
-    {
         button.onClick.AddListener(OnClickEnemyButton);
     }
 
     public void OnClickEnemyButton()
     {
-
+        
     }
 
     public void OnDisable()
