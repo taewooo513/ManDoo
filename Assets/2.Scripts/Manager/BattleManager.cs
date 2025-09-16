@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,23 +6,19 @@ using UnityEngine.Playables;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    private BaseEntity[] playableCharacters;
-    private BaseEntity[] enemyCharacters;
-    private BaseEntity nowTurnEntity;
-    private Queue<BaseEntity> turnEnetitys;
+    private List<BaseEntity> playableCharacters;
+    private List<BaseEntity> enemyCharacters;
 
-    private PlayableCharacter nowPlayableCharacter;
+    private BaseEntity nowTurnEntity;
+    private PlayableCharacter nowSeletePlayableCharacter;
+
+    private Skill nowSkill;
 
     protected override void Awake()
     {
         base.Awake();
-        playableCharacters = new BaseEntity[4];
-        enemyCharacters = new BaseEntity[4];
-    }
-
-    public void Init()
-    {
-
+        playableCharacters = new List<BaseEntity>();
+        enemyCharacters = new List<BaseEntity>();
     }
 
     public void AttackEnemy(int damageValue, int index)
@@ -34,18 +31,32 @@ public class BattleManager : Singleton<BattleManager>
         playableCharacters[index].Damaged(damageValue);
     }
 
-    public void SelectPlayer(int index)
-    {
-        nowPlayableCharacter = (PlayableCharacter)playableCharacters[index];
-    }
-
-    // Enemy 에서 필요한 메서드들:
-    /*
-    
     public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
     {
-    
+        return playableCharacters.Count;
     }
 
-    */
+    public void SwitchPlayerPosition(PlayableCharacter playableCharacterA, PlayableCharacter playableCharacterB)
+    {
+        int indexA = 0;
+        int indexB = 0;
+
+        for (int i = 0; i < playableCharacters.Count; i++)
+        {
+            if (playableCharacters[i] == playableCharacterA)
+            {
+                indexA = i;
+            }
+            else if (playableCharacters[i] == playableCharacterB)
+            {
+                indexB = i;
+            }
+        }
+        playableCharacters[indexA] = playableCharacterB;
+        playableCharacters[indexB] = playableCharacterA;
+
+        var swapPos = playableCharacterB.transform.position;
+        playableCharacterB.transform.position = playableCharacterA.transform.position;
+        playableCharacterA.transform.position = swapPos;
+    }
 }

@@ -4,23 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectCharacterButton : MonoBehaviour
+public class SelectEnemyButton : MonoBehaviour
 {
-    private PlayableCharacter player;
     private Button button;
     private InGamePlayerUI inGamePlayerUI;
-    public int index;
+    private Enemy enemy;
     private void Awake()
     {
         inGamePlayerUI = GetComponentInParent<InGamePlayerUI>(); // 테스트용
-        player = GetComponentInParent<PlayableCharacter>();
-        
         button = GetComponent<Button>();
-        button.onClick.AddListener(OnClickPlayerButton);
+        enemy = transform.GetComponentInParent<Enemy>();
     }
 
-    public void OnClickPlayerButton()
+    public void Setting()
     {
+        button.onClick.AddListener(OnClickEnemyButton);
+    }
+
+    public void OnClickEnemyButton()
+    {
+
     }
 
     public void OnDisable()
