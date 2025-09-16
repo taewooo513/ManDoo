@@ -75,6 +75,7 @@ public class Enemy : BaseEntity
             return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
     }
 
+    
     public override void Attack(BaseEntity baseEntity)
     {
         base.Attack(baseEntity);
