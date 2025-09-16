@@ -21,6 +21,7 @@ public class Enemy : BaseEntity
     {
         SetData(id);
         SetSkill();
+        _id = id;
     }
 
     private void SetData(int id)
@@ -73,37 +74,17 @@ public class Enemy : BaseEntity
         float total = 10;
         float rand = UnityEngine.Random.value * total;
 
+        foreach (BaseEntity playableCharacters in _playableCharacters)
+        {
+            if(playableCharacters.StatusType == StatusType.Mark){}
+        }
+
         //상태이상 효과에 따라 다른 가중치 부여
         // if (StatusType.Mark)
         // {
         // }
         
         //리스트 초기화
-    }
-
-    private void Mark()
-    {
-        //battlemanager.instance.
-    }
-
-    private void Buff() 
-    {
-
-    }
-
-    private void Guard()
-    {
-
-    }
-
-    private void PlayerReact() // 플레이어가 행동에 대한 가중치 계산
-    {
-
-    }
-
-    private void SwapPosition()
-    {
-
     }
 }
 
