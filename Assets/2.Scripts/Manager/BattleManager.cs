@@ -7,13 +7,13 @@ using UnityEngine.Playables;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    private List<BaseEntity> playableCharacters;
-    public List<BaseEntity> PlayableCharacters => playableCharacters;
+    private List<BaseEntity> _playableCharacters;
+    public List<BaseEntity> PlayableCharacters => _playableCharacters;
     
     
-    private List<BaseEntity> enemyCharacters;
+    private List<BaseEntity> _enemyCharacters;
 
-    public List<BaseEntity> EnemyCharacters => enemyCharacters;
+    public List<BaseEntity> EnemyCharacters => _enemyCharacters;
 
     private BaseEntity nowTurnEntity;
     private PlayableCharacter nowSeletePlayableCharacter;
