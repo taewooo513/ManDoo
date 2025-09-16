@@ -15,6 +15,8 @@ public class EntityInfo
     public bool isDie;
     public float evasion;
     public float critical;
+    public StatEffect statEffect;
+    public float standardPercentage = 0.25f;
 
     public EntityInfo(string name, int maxHp, int attackDamage, int defense, int speed, float evasion, float critical)
     {
@@ -26,6 +28,7 @@ public class EntityInfo
         this.speed = speed;
         this.evasion = evasion;
         this.critical = critical;
+        statEffect = new StatEffect();
     }
 
     public void Damaged(int value)
