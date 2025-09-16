@@ -12,9 +12,15 @@ public class Enemy : BaseEntity
     private float standardPercentage = 0.25f;
     private int mark = -1;
     private int _id;
-    private List<int> playerPosition = BattleManager.Instance.GetPlayerPosition();
-    private List<int> enemyPosition = BattleManager.Instance.GetEnemyPosition();
+    private List<(int,int)> playerPosition;
+    private List<(int,int)> enemyPosition;  
     
+    private void Awake()
+    {
+        playerPosition = BattleManager.Instance.GetPlayerPosition();
+        enemyPosition = BattleManager.Instance.GetEnemyPosition();
+    }
+
     public void Init(int id)
     {
         SetData(id);
@@ -49,8 +55,8 @@ public class Enemy : BaseEntity
         // 그 후, 그 인덱스의 item1 을 리턴해서 현재 스킬을 사용하는 enemy 의 위치값을 넘겨준다.
         foreach (var position in enemyPosition)
         {
-            //if (position.Item2 == _id)
-            //    return position.Item1;
+            if (position.Item2 == _id)
+                return position.Item1;
         }
         return -1;
     }
@@ -58,8 +64,6 @@ public class Enemy : BaseEntity
     private Skill GetRandomSkill()
     {
         List<Skill> possibleSkills = new List<Skill>();
-
-        
 
         foreach (var skill in skills)
         {
