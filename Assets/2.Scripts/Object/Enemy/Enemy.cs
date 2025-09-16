@@ -39,6 +39,7 @@ public class Enemy : BaseEntity
 
     private void SetSkill()
     {
+        skills = new Skill[data.skillId.Count];
         int i = 0;
         foreach (var id in data.skillId)
         {
@@ -64,26 +65,51 @@ public class Enemy : BaseEntity
     private Skill GetRandomSkill()
     {
         List<Skill> possibleSkills = new List<Skill>();
+        int currentPosition = GetCurrentPosition();
+        if (currentPosition == -1) return null;
 
         foreach (var skill in skills)
         {
-            bool atEnablePosition = skill.skillInfo.enablePos.Contains(GetCurrentPosition());
-            bool atTargetPosition = playerPosition.Any(x => skill.skillInfo.targetPos.Contains(x.Item1));
+            if (IsSingleTargetSkill(skill))
+            {
+                if (CanUseSkill(skill))
+                    possibleSkills.Add(skill);
+            }
+            else
+            {
+                var info = skill.skillInfo;
+                bool atEnablePosition = info.enablePos.Contains(currentPosition);
+                var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos);
 
-            if (atEnablePosition && atTargetPosition)
-                possibleSkills.Add(skill);
+                if (possibleSkillRange.Count > 0)
+                    possibleSkills.Add(skill);
+            }
         }
 
         if (possibleSkills.Count == 0) return null;
-
         else
             return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
     }
 
-    public void AvailableSkill()
+    private bool CanUseSkill(Skill skill)
     {
-        //현재 적이 사용 가능한 위치에 있고
-        //플레이어가 공격이 닿는 위치에 있음
+        int currentPosition = GetCurrentPosition();
+        var info = skill.skillInfo;
+
+        bool atEnablePosition = info.enablePos.Contains(currentPosition);
+        bool atTargetPosition = playerPosition.Any(x => info.targetPos.Contains(x.Item1));
+        
+        if (atEnablePosition && atTargetPosition)
+            return true;
+        else
+            return false;
+    }
+
+    private bool IsSingleTargetSkill(Skill skill)
+    {
+        if (skill.skillInfo.targetType == TargetType.Single)
+            return true;
+        else return false;
     }
 
     public override void Attack(BaseEntity baseEntity)
