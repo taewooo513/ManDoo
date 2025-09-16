@@ -12,20 +12,19 @@ public class Enemy : BaseEntity
     private float standardPercentage = 0.25f;
     private int mark = -1;
     private int _id;
-    private List<BaseEntity> _playableCharacters = BattleManager.Instance.PlayableCharacters; //배틀 매니저의 플레이어 주소 참조
-    private List<BaseEntity> _enemyCharacters = BattleManager.Instance.EnemyCharacters;
-    private List<(int,int)> playerPosition = BattleManager.Instance.GetPlayerPosition();
-    private List<(int,int)> enemyPosition = BattleManager.Instance.GetEnemyPosition();
+    private List<int> playerPosition = BattleManager.Instance.GetPlayerPosition();
+    private List<int> enemyPosition = BattleManager.Instance.GetEnemyPosition();
     
     public void Init(int id)
     {
         SetData(id);
         SetSkill();
+        _id = id; //현재 Enemy id
     }
 
     private void SetData(int id)
     {
-        this._id = id;
+        this.id = id;
         data = DataManager.Instance.Enemy.GetEnemyData(id);
         entityInfo = new EntityInfo(
             data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
@@ -50,8 +49,8 @@ public class Enemy : BaseEntity
         // 그 후, 그 인덱스의 item1 을 리턴해서 현재 스킬을 사용하는 enemy 의 위치값을 넘겨준다.
         foreach (var position in enemyPosition)
         {
-            if (position.Item2 == _id)
-                return position.Item1;
+            //if (position.Item2 == _id)
+            //    return position.Item1;
         }
         return -1;
     }
@@ -59,6 +58,8 @@ public class Enemy : BaseEntity
     private Skill GetRandomSkill()
     {
         List<Skill> possibleSkills = new List<Skill>();
+
+        
 
         foreach (var skill in skills)
         {
@@ -75,28 +76,15 @@ public class Enemy : BaseEntity
             return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
     }
 
-    
+    public void AvailableSkill()
+    {
+        //현재 적이 사용 가능한 위치에 있고
+        //플레이어가 공격이 닿는 위치에 있음
+    }
+
     public override void Attack(BaseEntity baseEntity)
     {
         base.Attack(baseEntity);
-    }
-
-    private void AttackPercentage()
-    {
-        float total = 10;
-        float rand = UnityEngine.Random.value * total;
-
-        foreach (BaseEntity playableCharacters in _playableCharacters)
-        {
-            //if(playableCharacters.StatusType == StatusType.Mark){}
-        }
-
-        //상태이상 효과에 따라 다른 가중치 부여
-        // if (StatusType.Mark)
-        // {
-        // }
-        
-        //리스트 초기화
     }
 }
 
