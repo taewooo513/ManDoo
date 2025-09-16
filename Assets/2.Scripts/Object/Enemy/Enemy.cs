@@ -45,26 +45,6 @@ public class Enemy : BaseEntity
         int enemyPosition = -1; // temp 값 => 나중에 BattleManager 에서 받아오기
         int playerPosition = -1; // temp 값 => 나중에 BattleManager 에서 받아오기
 
-        // for (int i = 0; i < skills.Length; i++)
-        // {
-        //     int enablePosLength = skills[i].skillInfo.enablePos.Count;
-        //     int targetPosLength = skills[i].skillInfo.targetPos.Count;
-        //     for (int j = 0; j < enablePosLength; j++)
-        //     {
-        //         if (skills[i].skillInfo.enablePos[j] == enemyPosition)
-        //         {
-        //             for (int k = 0; k < targetPosLength; k++)
-        //             {
-        //                 if (skills[i].skillInfo.targetPos[j] == playerPosition)
-        //                 {
-        //                     possibleSkills.Add(skills[i]);
-        //                     break;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-
         foreach (var skill in skills)
         {
             bool atEnablePosition = skill.skillInfo.enablePos.Contains(enemyPosition);
