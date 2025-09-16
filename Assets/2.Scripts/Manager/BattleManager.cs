@@ -7,9 +7,10 @@ using UnityEngine.Playables;
 public class BattleManager : Singleton<BattleManager>
 {
     private List<BaseEntity> playableCharacters;
-    public List<BaseEntity> PlayableCharacters { get => playableCharacters; }
+    public List<BaseEntity> PlayableCharacters => playableCharacters;
     private List<BaseEntity> enemyCharacters;
-    public List<BaseEntity> EnemyCharacters { get => enemyCharacters; }
+
+    public List<BaseEntity> EnemyCharacters => enemyCharacters;
 
     private BaseEntity nowTurnEntity;
     private PlayableCharacter nowSeletePlayableCharacter;
@@ -22,11 +23,29 @@ public class BattleManager : Singleton<BattleManager>
         playableCharacters = new List<BaseEntity>();
         enemyCharacters = new List<BaseEntity>();
     }
-
     public void AttackEntity(BaseEntity baseEntity)
     {
         baseEntity.Damaged(nowTurnEntity.entityInfo.attackDamage);
     }
+    public void AddPlayableCharacter(PlayableCharacter playableCharacter)
+    {
+        playableCharacters.Add(playableCharacter);
+    }
+
+    public void AddEnemyCharacter(Enemy enemy)
+    {
+        enemyCharacters.Add(enemy);
+    }
+    public void AttackEnemy(int damageValue, int index)
+    {
+        enemyCharacters[index].Damaged(damageValue);
+    }
+
+    public void AttackPlayer(int damageValue, int index)
+    {
+        playableCharacters[index].Damaged(damageValue);
+    }
+
     public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
     {
         return playableCharacters.Count;
@@ -42,6 +61,32 @@ public class BattleManager : Singleton<BattleManager>
     public List<(int,int)> GetEnemyPosition()
     {
         return new List<(int,int)>(); //임시: Item1 = 위치값; Item2 = id 값
+    }
+
+    public List<int> GetPossibleSkillRange(List<int> skillRange)
+    {
+        List<int> possibleSkillRange = new List<int>();
+        if (nowTurnEntity is PlayableCharacter)
+        {
+            foreach (var pos in skillRange)
+            {
+                if (enemyCharacters.Count >= pos && enemyCharacters[pos - 1] != null)
+                {
+                    possibleSkillRange.Add(pos);
+                }
+            }
+        }
+        else
+        {
+            foreach (var pos in skillRange)
+            {
+                if (playableCharacters.Count >= pos && playableCharacters[pos - 1] != null)
+                {
+                    possibleSkillRange.Add(pos);
+                }
+            }
+        }
+        return possibleSkillRange;
     }
 
     public void SwitchPlayerPosition(PlayableCharacter playableCharacterA, PlayableCharacter playableCharacterB)
@@ -67,6 +112,4 @@ public class BattleManager : Singleton<BattleManager>
         playableCharacterB.transform.position = playableCharacterA.transform.position;
         playableCharacterA.transform.position = swapPos;
     }
-
-    // public void SwitchEnemyPosition() {} 
 }
