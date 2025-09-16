@@ -49,12 +49,13 @@ public class BaseEntity : MonoBehaviour
     {
         get { return entityInfo; }
     }
-
+    //private HpbarUI hpbarUI;
     public int id { get; protected set; }
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         SetData();
+        //hpbarUI = GetComponentInParent<HpbarUI>();
     }
 
     public virtual void SetData()
@@ -64,6 +65,7 @@ public class BaseEntity : MonoBehaviour
     public virtual void Damaged(int value)
     {
         entityInfo.Damaged(value);
+        //hpbarUI.UpdateUI();
     }
 
     public virtual void Attack(BaseEntity baseEntity)

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -8,7 +8,6 @@ public class StartScene : BaseScene
 {
     public override void LoadResources()
     {
-        
     }
 
     public override void Init()
