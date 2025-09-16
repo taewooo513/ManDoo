@@ -15,6 +15,8 @@ public class EntityInfo
     public bool isDie;
     public float evasion;
     public float critical;
+    public StatEffect statEffect;
+    public float standardPercentage = 0.25f;
 
     public EntityInfo(string name, int maxHp, int attackDamage, int defense, int speed, float evasion, float critical)
     {
@@ -26,6 +28,7 @@ public class EntityInfo
         this.speed = speed;
         this.evasion = evasion;
         this.critical = critical;
+        statEffect = new StatEffect();
     }
 
     public void Damaged(int value)
@@ -46,12 +49,13 @@ public class BaseEntity : MonoBehaviour
     {
         get { return entityInfo; }
     }
-
+    //private HpbarUI hpbarUI;
     public int id { get; protected set; }
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         SetData();
+        //hpbarUI = GetComponentInParent<HpbarUI>();
     }
 
     public virtual void SetData()
@@ -61,6 +65,7 @@ public class BaseEntity : MonoBehaviour
     public virtual void Damaged(int value)
     {
         entityInfo.Damaged(value);
+        //hpbarUI.UpdateUI();
     }
 
     public virtual void Attack(BaseEntity baseEntity)
