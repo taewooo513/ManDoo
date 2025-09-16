@@ -31,7 +31,7 @@ public class Enemy : BaseEntity
         );
     }
 
-    private void SetSkill()
+    private void SetSkill() // monobehaviour 는 new 를 사용할 수 없어서 Skill.cs 변경 요청.
     {
         skills = new Skill[data.skillId.Count];
         int i = 0;
@@ -62,25 +62,51 @@ public class Enemy : BaseEntity
     {
         var possibleSkills = new List<Skill>();
         int currentPosition = GetCurrentPosition();
+        
         if (currentPosition == -1) return null;
 
         foreach (var skill in skills)
         {
+            var desiredPosition = GetDesiredPosition(skill);
+
             if (IsSingleTargetSkill(skill))
             {
                 if (CanUseSkill(skill))
                     possibleSkills.Add(skill);
-                //else swapPosition 요청
-                    
+                else
+                {
+                    if (desiredPosition != -1)
+                    {
+                        BattleManager.Instance.SwitchPosition(this, desiredPosition);
+                        // 아래 코드는 만약 적이 스킬 사용 가능 구역으로 이동 후 바로 스킬을 사용 할 수 있는지 판단 후 작성.
+                        // if (CanUseSkill(skill))
+                        //     possibleSkills.Add(skill);
+                    }
+                }
+
             }
             else
             {
                 var info = skill.skillInfo;
                 bool atEnablePosition = info.enablePos.Contains(currentPosition);
-                var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos);
 
-                if (possibleSkillRange.Count > 0)
-                    possibleSkills.Add(skill);
+                if (!atEnablePosition)
+                {
+                    if (desiredPosition != -1)
+                    {
+                        BattleManager.Instance.SwitchPosition(this, desiredPosition);
+                        currentPosition = GetCurrentPosition();
+                        atEnablePosition = info.enablePos.Contains(currentPosition);
+                    }
+                }
+                
+                else
+                {
+                    var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos);
+                    if (possibleSkillRange.Count > 0)
+                        possibleSkills.Add(skill);
+                }
+
             }
         }
 
@@ -114,5 +140,30 @@ public class Enemy : BaseEntity
     public override void Attack(BaseEntity baseEntity)
     {
         base.Attack(baseEntity);
+    }
+
+    private int GetDesiredPosition(Skill skill)
+    {
+        var info = skill.skillInfo;
+        if (info.enablePos.Count == 0) return -1;
+        var currentIndex = BattleManager.Instance.FindEntityPosition(this) ?? -1;
+        if (currentIndex < 0) return -1;
+
+        var entities = BattleManager.Instance.EnemyCharacters;
+        int entityCount = entities?.Count ?? 0;
+        if (entityCount == 0) return -1;
+
+        foreach (var position in info.enablePos)
+        {
+            int targetIndex = position;
+
+            if (targetIndex >= 0 && targetIndex < entityCount)
+            {
+                if (targetIndex != currentIndex)
+                    return targetIndex;
+            }
+            return targetIndex;
+        }
+        return -1;
     }
 }
