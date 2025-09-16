@@ -34,7 +34,7 @@ public class PlayableCharacter : BaseEntity
     public override void Attack(BaseEntity baseEntity)
     {
         base.Attack(baseEntity);
-        BattleManager.Instance.AttackEnemy(entityInfo.attackDamage, baseEntity);
+        // BattleManager.Instance.AttackEnemy(baseEntity);
     }
 
     public override void UseSkill(BaseEntity baseEntity)
