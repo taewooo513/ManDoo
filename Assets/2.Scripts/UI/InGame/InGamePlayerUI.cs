@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class InGamePlayerUI : MonoBehaviour
+public class InGamePlayerUI : UIBase
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI jobText;
