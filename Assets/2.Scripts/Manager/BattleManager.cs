@@ -26,7 +26,17 @@ public class BattleManager : Singleton<BattleManager>
         baseEntity.Damaged(damageValue);
     }
 
-    public void AttackPlayer(int damageValue, BaseEntity baseEntity)
+    public void AddPlayableCharacter(PlayableCharacter playableCharacter)
+    {
+        playableCharacters.Add(playableCharacter);
+    }
+
+    public void AddEnemyCharacter(Enemy enemy)
+    {
+        enemyCharacters.Add(enemy);
+    }
+
+    public void AttackPlayer(int damageValue, int index)
     {
         baseEntity.Damaged(damageValue);
     }
