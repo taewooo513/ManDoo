@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,17 +13,15 @@ public class InGamePlayerUI : MonoBehaviour
     public TextMeshProUGUI hpUI;
     public TextMeshProUGUI currentHpUI;
 
-    public List<Button> playerButtons; //플레이어 버튼
-
-    public Image[] skillIcon;
-    public Button[] selectedSkillButtons; // 스킬선택 버튼
-
-    public void SettingUI(string name, string job, int hp, int currentHp, Skill[] skills)
+    public void SettingUI(string name, int hp, int currentHp, Skill[] skills)
     {
         nameText.text = name;
-        jobText.text = job;
         hpUI.text = hp.ToString();
         currentHpUI.text = currentHp.ToString();
+    }
+
+    public void UpdateHpUI(int hp)
+    {
         
     }
 }

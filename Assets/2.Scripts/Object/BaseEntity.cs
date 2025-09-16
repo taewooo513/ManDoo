@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class EntityInfo
 {
     public string name;
@@ -19,6 +20,7 @@ public class EntityInfo
     {
         this.name = name;
         this.maxHp = maxHp;
+        this.currentHp = maxHp;
         this.attackDamage = attackDamage;
         this.defense = defense;
         this.speed = speed;
@@ -38,8 +40,14 @@ public class EntityInfo
 
 public class BaseEntity : MonoBehaviour
 {
-    protected EntityInfo entityInfo;
-    protected int id;
+    [SerializeField] public EntityInfo entityInfo;
+
+    public EntityInfo GetEntityInfo
+    {
+        get { return entityInfo; }
+    }
+
+    public int id { get; protected set; }
 
     protected void Awake()
     {
@@ -57,5 +65,10 @@ public class BaseEntity : MonoBehaviour
 
     public virtual void Attack(int index)
     {
+    }
+
+    public virtual void UseSkill(int index)
+    {
+
     }
 }
