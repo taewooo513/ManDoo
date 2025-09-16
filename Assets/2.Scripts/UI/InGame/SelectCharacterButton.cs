@@ -21,6 +21,7 @@ public class SelectCharacterButton : MonoBehaviour
 
     public void OnClickPlayerButton()
     {
+        player.Attack(player.entityInfo.attackDamage);
     }
 
     public void OnDisable()

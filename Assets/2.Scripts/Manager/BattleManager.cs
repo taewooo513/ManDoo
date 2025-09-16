@@ -21,14 +21,14 @@ public class BattleManager : Singleton<BattleManager>
         enemyCharacters = new List<BaseEntity>();
     }
 
-    public void AttackEnemy(int damageValue, int index)
+    public void AttackEnemy(int damageValue, BaseEntity baseEntity)
     {
-        enemyCharacters[index].Damaged(damageValue);
+        baseEntity.Damaged(damageValue);
     }
 
-    public void AttackPlayer(int damageValue, int index)
+    public void AttackPlayer(int damageValue, BaseEntity baseEntity)
     {
-        playableCharacters[index].Damaged(damageValue);
+        baseEntity.Damaged(damageValue);
     }
 
     public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
@@ -59,4 +59,6 @@ public class BattleManager : Singleton<BattleManager>
         playableCharacterB.transform.position = playableCharacterA.transform.position;
         playableCharacterA.transform.position = swapPos;
     }
+
+    // public void SwitchEnemyPosition() {} 
 }
