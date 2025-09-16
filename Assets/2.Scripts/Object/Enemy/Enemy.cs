@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DataTable;
 using System;
+using System.Linq;
 
 public class Enemy : BaseEntity
 {
@@ -13,6 +14,8 @@ public class Enemy : BaseEntity
     private int _id;
     private List<BaseEntity> _playableCharacters = BattleManager.Instance.PlayableCharacters; //배틀 매니저의 플레이어 주소 참조
     private List<BaseEntity> _enemyCharacters = BattleManager.Instance.EnemyCharacters;
+    private List<int> playerPosition = BattleManager.Instance.GetPlayerPosition();
+    private List<int> enemyPosition = BattleManager.Instance.GetEnemyPosition();
     
     public void Init(int id)
     {
@@ -44,13 +47,11 @@ public class Enemy : BaseEntity
     private Skill GetRandomSkill()
     {
         List<Skill> possibleSkills = new List<Skill>();
-        int enemyPosition = -1; // temp 값 => 나중에 BattleManager 에서 받아오기
-        int playerPosition = -1; // temp 값 => 나중에 BattleManager 에서 받아오기
 
         foreach (var skill in skills)
         {
-            bool atEnablePosition = skill.skillInfo.enablePos.Contains(enemyPosition);
-            bool atTargetPosition = skill.skillInfo.targetPos.Contains(playerPosition);
+            bool atEnablePosition = enemyPosition.Any(x => skill.skillInfo.enablePos.Contains(x));
+            bool atTargetPosition = playerPosition.Any(x => skill.skillInfo.targetPos.Contains(x));
 
             if (atEnablePosition && atTargetPosition)
                 possibleSkills.Add(skill);
