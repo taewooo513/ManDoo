@@ -33,15 +33,15 @@ public class BattleManager : Singleton<BattleManager>
     }
     
     //플레이어 위치 받아오는 함수
-    public List<int> GetPlayerPosition()
+    public List<(int,int)> GetPlayerPosition()
     {
-        return new List<int>(); //임시
+        return new List<(int,int)>(); //임시: Item1 = 위치값; Item2 = id 값
     }
 
     //적 위치 받아오는 함수
-    public List<int> GetEnemyPosition()
+    public List<(int,int)> GetEnemyPosition()
     {
-        return new List<int>(); //임시
+        return new List<(int,int)>(); //임시: Item1 = 위치값; Item2 = id 값
     }
 
     public void SwitchPlayerPosition(PlayableCharacter playableCharacterA, PlayableCharacter playableCharacterB)
@@ -69,5 +69,4 @@ public class BattleManager : Singleton<BattleManager>
     }
 
     // public void SwitchEnemyPosition() {} 
-    // public List<int> GetPlayerPosition() {}
 }
