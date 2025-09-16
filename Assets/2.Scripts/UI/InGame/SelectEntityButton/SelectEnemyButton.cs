@@ -13,5 +13,8 @@ public class SelectEnemyButton : SelectEntityButton
         enemy = GetComponentInParent<Enemy>();
     }
 
-
+    public override void OnClickButton()
+    {
+        UIManager.Instance.OpenUI<InGameEnemyUI>().UpdateUI(enemy.entityInfo);
+    }
 }
