@@ -7,17 +7,30 @@ public enum StatusType
     Mark, Buff, Debuff, Guard, Guardian, PlayerReactAtk, PlayerReactSupport
 }
 
-public class StatEffect : Enemy
+public class StatEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Mark()
     {
-        
+        //battlemanager.instance.
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Buff() 
     {
-        
+
+    }
+
+    private void Guard()
+    {
+
+    }
+
+    private void PlayerReact() // 플레이어가 행동에 대한 가중치 계산
+    {
+
+    }
+
+    private void SwapPosition()
+    {
+
     }
 }
