@@ -13,15 +13,20 @@ public class InGamePlayerUI : UIBase
     public TextMeshProUGUI hpUI;
     public TextMeshProUGUI currentHpUI;
 
-    public void SettingUI(string name, int hp, int currentHp, Skill[] skills)
-    {
-        nameText.text = name;
-        hpUI.text = hp.ToString();
-        currentHpUI.text = currentHp.ToString();
-    }
+    public GameObject[] skillUIObjects;
 
-    public void UpdateHpUI(int hp)
+    
+
+
+    public void UpdateHpUI(EntityInfo entityInfo)
     {
-        
+        nameText.text = entityInfo.name;
+        hpUI.text = entityInfo.maxHp.ToString();
+        currentHpUI.text = entityInfo.currentHp.ToString();
+
+        for(int i = 0; i < skillUIObjects.Length; i++)
+        {
+            //skillUIObjects[i]
+        }
     }
 }
