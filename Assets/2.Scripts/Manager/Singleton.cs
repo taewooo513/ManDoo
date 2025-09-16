@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
     static T instance;
     public static T Instance
@@ -11,7 +11,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (instance == null)
             {
-                GameObject obj = new GameObject();
+                GameObject obj = new GameObject(typeof(T).Name);
                 instance = obj.AddComponent<T>();
             }
             return instance;
