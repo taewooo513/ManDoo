@@ -7,6 +7,7 @@ using UnityEngine.Playables;
 public class BattleManager : Singleton<BattleManager>
 {
     private List<BaseEntity> playableCharacters;
+    public List<BaseEntity> PlayableCharacters { get => playableCharacters; }
     private List<BaseEntity> enemyCharacters;
 
     private BaseEntity nowTurnEntity;
@@ -21,16 +22,10 @@ public class BattleManager : Singleton<BattleManager>
         enemyCharacters = new List<BaseEntity>();
     }
 
-    public void AttackEnemy(int damageValue, int index)
+    public void AttackEntity(BaseEntity baseEntity)
     {
-        enemyCharacters[index].Damaged(damageValue);
+        baseEntity.Damaged(nowTurnEntity.entityInfo.attackDamage);
     }
-
-    public void AttackPlayer(int damageValue, int index)
-    {
-        playableCharacters[index].Damaged(damageValue);
-    }
-
     public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
     {
         return playableCharacters.Count;
@@ -59,4 +54,7 @@ public class BattleManager : Singleton<BattleManager>
         playableCharacterB.transform.position = playableCharacterA.transform.position;
         playableCharacterA.transform.position = swapPos;
     }
+
+    // public void SwitchEnemyPosition() {} 
+    // public List<int> GetPlayerPosition() {}
 }

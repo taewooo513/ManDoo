@@ -31,14 +31,14 @@ public class PlayableCharacter : BaseEntity
         }
     }
 
-    public override void Attack(int index)
+    public override void Attack(BaseEntity baseEntity)
     {
-        base.Attack(index);
-        BattleManager.Instance.AttackEnemy(index, entityInfo.attackDamage);
+        base.Attack(baseEntity);
+        // BattleManager.Instance.AttackEnemy(baseEntity);
     }
 
-    public override void UseSkill(int index)
+    public override void UseSkill(BaseEntity baseEntity)
     {
-        base.UseSkill(index);
+        base.UseSkill(baseEntity);
     }
 }

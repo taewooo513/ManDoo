@@ -63,11 +63,11 @@ public class BaseEntity : MonoBehaviour
         entityInfo.Damaged(value);
     }
 
-    public virtual void Attack(int index)
+    public virtual void Attack(BaseEntity baseEntity)
     {
     }
 
-    public virtual void UseSkill(int index)
+    public virtual void UseSkill(BaseEntity baseEntity)
     {
 
     }
