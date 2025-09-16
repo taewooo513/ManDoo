@@ -15,7 +15,8 @@ public class EntityInfo
     public bool isDie;
     public float evasion;
     public float critical;
-    public List<StatusType> currentStatus; //상태이상 (여러개 중첩 가능)
+    public StatEffect statEffect;
+    public float standardPercentage = 0.25f;
 
     public EntityInfo(string name, int maxHp, int attackDamage, int defense, int speed, float evasion, float critical)
     {
@@ -27,7 +28,7 @@ public class EntityInfo
         this.speed = speed;
         this.evasion = evasion;
         this.critical = critical;
-        this.currentStatus = new List<StatusType>();
+        statEffect = new StatEffect();
     }
 
     public void Damaged(int value)
