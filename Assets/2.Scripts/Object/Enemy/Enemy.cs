@@ -12,8 +12,6 @@ public class Enemy : BaseEntity
     private float standardPercentage = 0.25f;
     private int mark = -1;
     private int _id;
-    private List<BaseEntity> _playableCharacters = BattleManager.Instance.PlayableCharacters; //배틀 매니저의 플레이어 주소 참조
-    private List<BaseEntity> _enemyCharacters = BattleManager.Instance.EnemyCharacters;
     private List<int> playerPosition = BattleManager.Instance.GetPlayerPosition();
     private List<int> enemyPosition = BattleManager.Instance.GetEnemyPosition();
     
@@ -21,7 +19,7 @@ public class Enemy : BaseEntity
     {
         SetData(id);
         SetSkill();
-        _id = id;
+        _id = id; //현재 Enemy id
     }
 
     private void SetData(int id)
@@ -49,6 +47,8 @@ public class Enemy : BaseEntity
     {
         List<Skill> possibleSkills = new List<Skill>();
 
+        
+
         foreach (var skill in skills)
         {
             bool atEnablePosition = enemyPosition.Any(x => skill.skillInfo.enablePos.Contains(x));
@@ -64,27 +64,15 @@ public class Enemy : BaseEntity
             return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
     }
 
+    public void AvailableSkill()
+    {
+        //현재 적이 사용 가능한 위치에 있고
+        //플레이어가 공격이 닿는 위치에 있음
+    }
+
     public override void Attack(BaseEntity baseEntity)
     {
         base.Attack(baseEntity);
-    }
-
-    private void AttackPercentage()
-    {
-        float total = 10;
-        float rand = UnityEngine.Random.value * total;
-
-        foreach (BaseEntity playableCharacters in _playableCharacters)
-        {
-            if(playableCharacters.StatusType == StatusType.Mark){}
-        }
-
-        //상태이상 효과에 따라 다른 가중치 부여
-        // if (StatusType.Mark)
-        // {
-        // }
-        
-        //리스트 초기화
     }
 }
 
