@@ -5,6 +5,7 @@ using System.Resources;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -21,10 +22,11 @@ public class UIManager : Singleton<UIManager>
         return _uiDictionary.TryGetValue(uiName, out var ui) && ui != null;
     }
 
-    public void OpenUI<T>() where T : UIBase
+    public T OpenUI<T>() where T : UIBase
     {
         var ui = GetUI<T>();
         ui?.OpenUI();
+        return ui;
     }
 
     public void CloseUI<T>() where T : UIBase
