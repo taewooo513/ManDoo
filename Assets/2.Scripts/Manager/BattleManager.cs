@@ -59,4 +59,6 @@ public class BattleManager : Singleton<BattleManager>
         playableCharacterB.transform.position = playableCharacterA.transform.position;
         playableCharacterA.transform.position = swapPos;
     }
+
+    // public void SwitchEnemyPosition() {} 
 }
