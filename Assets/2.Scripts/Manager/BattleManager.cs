@@ -31,6 +31,18 @@ public class BattleManager : Singleton<BattleManager>
     {
         return playableCharacters.Count;
     }
+    
+    //플레이어 위치 받아오는 함수
+    public List<int> GetPlayerPosition()
+    {
+        return new List<int>(); //임시
+    }
+
+    //적 위치 받아오는 함수
+    public List<int> GetEnemyPosition()
+    {
+        return new List<int>(); //임시
+    }
 
     public void SwitchPlayerPosition(PlayableCharacter playableCharacterA, PlayableCharacter playableCharacterB)
     {
