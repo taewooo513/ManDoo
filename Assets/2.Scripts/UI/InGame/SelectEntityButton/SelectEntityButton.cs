@@ -15,6 +15,7 @@ public class SelectEntityButton : MonoBehaviour
         button.onClick.AddListener(OnClickButton);
         inGameUIManager = UIManager.Instance.OpenUI<InGameUIManager>();
         inGameUIManager.AddSkillButtonAction(SwapButtonAction);
+        
     }
 
     public virtual void OnClickButton()
