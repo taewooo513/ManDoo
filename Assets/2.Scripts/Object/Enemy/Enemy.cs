@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using DataTable;
 using System;
@@ -16,7 +16,6 @@ public class Enemy : BaseEntity
     {
         SetData(id);
         SetSkill();
-
     }
 
     private void SetData(int id)
@@ -43,19 +42,27 @@ public class Enemy : BaseEntity
     private Skill GetRandomSkill()
     {
         List<Skill> possibleSkills = new List<Skill>();
+        int enemyPosition = -1; // temp 값 => 나중에 BattleManager 에서 받아오기
+        int playerPosition = -1; // temp 값 => 나중에 BattleManager 에서 받아오기
 
         foreach (var skill in skills)
         {
-            if (true)
+            bool atEnablePosition = skill.skillInfo.enablePos.Contains(enemyPosition);
+            bool atTargetPosition = skill.skillInfo.targetPos.Contains(playerPosition);
+
+            if (atEnablePosition && atTargetPosition)
                 possibleSkills.Add(skill);
         }
 
-        return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
+        if (possibleSkills.Count == 0) return null;
+
+        else
+            return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
     }
 
-    public override void Attack(int index)
+    public override void Attack(BaseEntity baseEntity)
     {
-        base.Attack(index);
+        base.Attack(baseEntity);
     }
 
     private void AttackPercentage()
@@ -70,7 +77,7 @@ public class Enemy : BaseEntity
         //battlemanager.instance.
     }
 
-    private void Buff()
+    private void Buff() 
     {
 
     }
@@ -80,7 +87,7 @@ public class Enemy : BaseEntity
 
     }
 
-    private void PlayerReact()
+    private void PlayerReact() // 플레이어가 행동에 대한 가중치 계산
     {
 
     }
