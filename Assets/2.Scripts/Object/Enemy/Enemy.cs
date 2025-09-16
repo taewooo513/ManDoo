@@ -12,6 +12,7 @@ public class Enemy : BaseEntity
     private int mark = -1;
     private int _id;
     private List<BaseEntity> _playableCharacters = BattleManager.Instance.PlayableCharacters; //배틀 매니저의 플레이어 주소 참조
+    private List<BaseEntity> _enemyCharacters = BattleManager.Instance.EnemyCharacters;
     
     public void Init(int id)
     {
@@ -88,7 +89,6 @@ public class Enemy : BaseEntity
 
     private void AttackPercentage()
     {
-        //float total = battlemanager.instance.GetTotalNumOfPlayerCharacters();
         float total = 10;
         float rand = UnityEngine.Random.value * total;
 

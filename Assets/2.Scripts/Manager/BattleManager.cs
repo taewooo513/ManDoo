@@ -9,6 +9,7 @@ public class BattleManager : Singleton<BattleManager>
     private List<BaseEntity> playableCharacters;
     public List<BaseEntity> PlayableCharacters { get => playableCharacters; }
     private List<BaseEntity> enemyCharacters;
+    public List<BaseEntity> EnemyCharacters { get => enemyCharacters; }
 
     private BaseEntity nowTurnEntity;
     private PlayableCharacter nowSeletePlayableCharacter;
