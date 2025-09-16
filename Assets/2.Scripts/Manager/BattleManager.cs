@@ -7,13 +7,13 @@ using UnityEngine.Playables;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    private List<BaseEntity> playableCharacters;
-    public List<BaseEntity> PlayableCharacters => playableCharacters;
+    private List<BaseEntity> _playableCharacters;
+    public List<BaseEntity> PlayableCharacters => _playableCharacters;
     
     
-    private List<BaseEntity> enemyCharacters;
+    private List<BaseEntity> _enemyCharacters;
 
-    public List<BaseEntity> EnemyCharacters => enemyCharacters;
+    public List<BaseEntity> EnemyCharacters => _enemyCharacters;
 
     private BaseEntity nowTurnEntity;
     private PlayableCharacter nowSeletePlayableCharacter;
@@ -218,6 +218,32 @@ public class BattleManager : Singleton<BattleManager>
         return _playableCharacters.Count;
     }
 
+    //자기 자신->this, enablePos List 보내주세요 -> 쓸 수 있는지 안되는지 알려줍니다.
+    public bool IsEnablePos(BaseEntity entity, List<int> posList)
+    {
+        if (nowTurnEntity is PlayableCharacter)
+        {
+            foreach (var item in posList)
+            {
+                if (_playableCharacters[item] == entity)
+                {
+                    return true;
+                }
+            }
+        }
+        else
+        {
+            foreach (var item in posList)
+            {
+                if (_enemyCharacters[item] == entity)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
     //플레이어 위치 받아오는 함수
     public List<(int, int)> GetPlayerPosition()
     {
