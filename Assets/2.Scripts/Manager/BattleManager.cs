@@ -19,62 +19,218 @@ public class BattleManager : Singleton<BattleManager>
     private PlayableCharacter nowSeletePlayableCharacter;
 
     private Skill nowSkill;
+    private System.Random _random = new System.Random();
+    private Queue<BaseEntity> _turnQueue;
 
     protected override void Awake()
     {
         base.Awake();
-        playableCharacters = new List<BaseEntity>();
-        enemyCharacters = new List<BaseEntity>();
+        _playableCharacters = new List<BaseEntity>();
+        _enemyCharacters = new List<BaseEntity>();
+        _turnQueue = new Queue<BaseEntity>();
     }
 
-    public int? FindEntityPosition(BaseEntity baseEntity)
+    private float GetAverageSpeed()
+    {
+        float sum = 0;
+        foreach (var item in _playableCharacters)
+        {
+            sum += item.entityInfo.speed;
+        }
+
+        foreach (var item in _enemyCharacters)
+        {
+            sum += item.entityInfo.speed;
+        }
+
+        return sum / (_playableCharacters.Count + _enemyCharacters.Count);
+    }
+
+    private void Start()//준비되면 주석 풀기.
+    {
+        // while (true)
+        // {
+        //     if (_turnQueue.Count == 0) SetTurnQueue();
+        //     Turn();
+        //     if (_playableCharacters.Count == 0)
+        //     {
+        //         Lose();
+        //         break;
+        //     }
+        //     else if (_enemyCharacters.Count == 0)
+        //     {
+        //         Win();
+        //         break;
+        //     }
+        // }
+    }
+
+    private void Turn() //한 턴
+    {
+        //nowTurnEntity = _turnQueue.Peek();
+        //nowTurnEntity.StartTurn();
+        //nowTurnEntity.EndTurn();
+        //if(GetAverageSpeed()/10 >= UnityEngine.Random.Value)
+        // {
+        //     nowTurnEntity.StartTurn();
+        //     nowTurnEntity.EndTurn();
+        // }
+        //_turnQueue.Dequeue();
+    }
+
+    private void SetTurnQueue() //한번 섞은 후, 순서별 정렬, 플레이어 우선 정렬
+    {
+        int n = _playableCharacters.Count;
+        int m = _enemyCharacters.Count;
+        List<BaseEntity> tempPlayerList = _playableCharacters;
+        List<BaseEntity> tempEnemyList = _enemyCharacters;
+        while (n > 1 && m > 1)
+        {
+            n--;
+            if (n > 0)
+            {
+                int k = _random.Next(n + 1);
+                (tempPlayerList[k], tempPlayerList[n]) = (tempPlayerList[n], tempPlayerList[k]);
+            }
+
+            m--;
+            if (m > 0)
+            {
+                int k = _random.Next(m + 1);
+                (tempEnemyList[k], tempEnemyList[m]) = (tempEnemyList[m], tempEnemyList[k]);
+            }
+        }
+        
+        tempPlayerList.Sort((a, b) => b.entityInfo.speed.CompareTo(a.entityInfo.speed));
+        tempEnemyList.Sort((a, b) => b.entityInfo.speed.CompareTo(a.entityInfo.speed));
+        while (tempPlayerList.Count != 0 || tempEnemyList.Count != 0)
+        {
+            if (tempPlayerList.Count == 0)
+            {
+                foreach (var item in tempEnemyList)
+                {
+                    _turnQueue.Enqueue(item);
+                }
+
+                tempEnemyList.Clear();
+                break;
+            }
+            else if (tempEnemyList.Count == 0)
+            {
+                foreach (var item in tempPlayerList)
+                {
+                    _turnQueue.Enqueue(item);
+                }
+
+                tempPlayerList.Clear();
+                break;
+            }
+            else
+            {
+                if (tempPlayerList[0].entityInfo.speed >= tempEnemyList[0].entityInfo.speed)
+                {
+                    _turnQueue.Enqueue(tempPlayerList[0]);
+                    tempPlayerList.RemoveAt(0);
+                }
+                else
+                {
+                    _turnQueue.Enqueue(tempEnemyList[0]);
+                    tempEnemyList.RemoveAt(0);
+                }
+            }
+        }
+    }
+
+    //특정 Entity를 보내면 Position을 return합니다.
+    public int? FindEntityPosition(BaseEntity baseEntity) 
     {
         if (baseEntity is PlayableCharacter)
         {
-            return playableCharacters.IndexOf(baseEntity);
+            return _playableCharacters.IndexOf(baseEntity);
         }
-        return enemyCharacters.IndexOf(baseEntity);
+
+        return _enemyCharacters.IndexOf(baseEntity);
     }
+
     public void AttackEntity(BaseEntity baseEntity)
     {
         baseEntity.Damaged(nowTurnEntity.entityInfo.attackDamage);
     }
+
+    //index와 대미지를 넣으면 공격합니다.
+    public void AttackEntity(int index, int attackDamage)
+    {
+        if (nowTurnEntity is PlayableCharacter)
+        {
+            _enemyCharacters[index].Damaged(attackDamage);
+        }
+        else
+        {
+            _playableCharacters[index].Damaged(attackDamage);
+        }
+    }
+
+    //범위 공격에 적합한 타입입니다.
+    public void AttackEntity(List<int> indexList, int attackDamage)
+    {
+        if (nowTurnEntity is PlayableCharacter)
+        {
+            foreach (var index in indexList)
+            {
+                _enemyCharacters[index].Damaged(attackDamage);
+            }
+        }
+        else
+        {
+            foreach (var index in indexList)
+            {
+                _enemyCharacters[index].Damaged(attackDamage);
+            }
+        }
+    }
+
+    //플레이어블 캐릭터 리스트에 캐릭터를 추가합니다.
     public void AddPlayableCharacter(PlayableCharacter playableCharacter)
     {
-        playableCharacters.Add(playableCharacter);
+        _playableCharacters.Add(playableCharacter);
     }
 
+    //적 캐릭터 리스트에 캐릭터를 추가합니다.
     public void AddEnemyCharacter(Enemy enemy)
     {
-        enemyCharacters.Add(enemy);
-    }
-    public void AttackEnemy(int damageValue, int index)
-    {
-        enemyCharacters[index].Damaged(damageValue);
+        _enemyCharacters.Add(enemy);
     }
 
+    //안쓰지 않을까요?
+    public void AttackEnemy(int damageValue, int index)
+    {
+        _enemyCharacters[index].Damaged(damageValue);
+    }
+    
+    //안쓰지 않을까요?
     public void AttackPlayer(int damageValue, int index)
     {
-        playableCharacters[index].Damaged(damageValue);
+        _playableCharacters[index].Damaged(damageValue);
     }
 
     public int GetTotalNumOfPlayerCharacters() // 적과 조우한 플레이어 캐릭터 수 반환
     {
-        return playableCharacters.Count;
+        return _playableCharacters.Count;
     }
-    
+
     //플레이어 위치 받아오는 함수
-    public List<(int,int)> GetPlayerPosition()
+    public List<(int, int)> GetPlayerPosition()
     {
-        return new List<(int,int)>(); //임시: Item1 = 위치값; Item2 = id 값
+        return new List<(int, int)>(); //임시: Item1 = 위치값; Item2 = id 값
     }
 
     //적 위치 받아오는 함수
-    public List<(int,int)> GetEnemyPosition()
+    public List<(int, int)> GetEnemyPosition()
     {
-        return new List<(int,int)>(); //임시: Item1 = 위치값; Item2 = id 값
+        return new List<(int, int)>(); //임시: Item1 = 위치값; Item2 = id 값
     }
 
+    //날 것의 스킬 범위를 던져주면 "때릴 수 있는" 적의 위치 리스트를 반환합니다. 범위 공격에 적합합니다.
     public List<int> GetPossibleSkillRange(List<int> skillRange)
     {
         List<int> possibleSkillRange = new List<int>();
@@ -82,7 +238,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var pos in skillRange)
             {
-                if (enemyCharacters.Count >= pos && enemyCharacters[pos] != null)
+                if (_enemyCharacters.Count >= pos && _enemyCharacters[pos] != null)
                 {
                     possibleSkillRange.Add(pos);
                 }
@@ -92,12 +248,13 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var pos in skillRange)
             {
-                if (playableCharacters.Count >= pos && playableCharacters[pos] != null)
+                if (_playableCharacters.Count >= pos && _playableCharacters[pos] != null)
                 {
                     possibleSkillRange.Add(pos);
                 }
             }
         }
+
         return possibleSkillRange;
     }
 
@@ -106,39 +263,43 @@ public class BattleManager : Singleton<BattleManager>
         int indexA = -1;
         int indexB = -1;
 
-        for (int i = 0; i < playableCharacters.Count; i++)
+        for (int i = 0; i < _playableCharacters.Count; i++)
         {
-            if (playableCharacters[i] == playableCharacterA)
+            if (_playableCharacters[i] == playableCharacterA)
             {
                 indexA = i;
             }
-            else if (playableCharacters[i] == playableCharacterB)
+            else if (_playableCharacters[i] == playableCharacterB)
             {
                 indexB = i;
             }
         }
-        if(indexA == -1 || indexB == -1) return;
-        playableCharacters[indexA] = playableCharacterB;
-        playableCharacters[indexB] = playableCharacterA;
+
+        if (indexA == -1 || indexB == -1) return;
+        _playableCharacters[indexA] = playableCharacterB;
+        _playableCharacters[indexB] = playableCharacterA;
 
         SwapEntityTransform(playableCharacterA, playableCharacterB);
     }
 
+    //게임 오브젝트의 위치를 바꿔줍니다.
     private void SwapEntityTransform(BaseEntity entityA, BaseEntity entityB)
     {
-        (entityB.transform.position, entityA.transform.position) = (entityA.transform.position, entityB.transform.position);
+        (entityB.transform.position, entityA.transform.position) =
+            (entityA.transform.position, entityB.transform.position);
     }
-    //SwitchPosition(entity, desiredPosition-1);
+
+    //entity의 위치를 desiredPosition index와 변경합니다.
     public void SwitchPosition(BaseEntity entity, int desiredPosition)
     {
         if (nowTurnEntity is PlayableCharacter)
         {
             var index = -1;
-            foreach (var character in playableCharacters)
+            foreach (var character in _playableCharacters)
             {
                 if (character == entity)
                 {
-                    index = playableCharacters.IndexOf(character);
+                    index = _playableCharacters.IndexOf(character);
                     break;
                 }
             }
@@ -147,19 +308,21 @@ public class BattleManager : Singleton<BattleManager>
             {
                 return;
             }
+
             // 구조 분해를 이용한 스왑 예시: 고맙다! 라이더야!
             // (a, b) = (b, a) 형태로 한 줄로 스왑 가능
-            (playableCharacters[index], playableCharacters[desiredPosition]) = (playableCharacters[desiredPosition], playableCharacters[index]);
-            SwapEntityTransform(playableCharacters[index], playableCharacters[desiredPosition]);
+            (_playableCharacters[index], _playableCharacters[desiredPosition]) =
+                (_playableCharacters[desiredPosition], _playableCharacters[index]);
+            SwapEntityTransform(_playableCharacters[index], _playableCharacters[desiredPosition]);
         }
         else
         {
             var index = -1;
-            foreach (var character in enemyCharacters)
+            foreach (var character in _enemyCharacters)
             {
                 if (character == entity)
                 {
-                    index = enemyCharacters.IndexOf(character);
+                    index = _enemyCharacters.IndexOf(character);
                     break;
                 }
             }
@@ -171,20 +334,24 @@ public class BattleManager : Singleton<BattleManager>
 
             if (index + 1 == desiredPosition || index - 1 == desiredPosition)
             {
-                (enemyCharacters[index], enemyCharacters[desiredPosition]) = (enemyCharacters[desiredPosition], enemyCharacters[index]);
-                SwapEntityTransform(enemyCharacters[index], enemyCharacters[desiredPosition]);;
+                (_enemyCharacters[index], _enemyCharacters[desiredPosition]) =
+                    (_enemyCharacters[desiredPosition], _enemyCharacters[index]);
+                SwapEntityTransform(_enemyCharacters[index], _enemyCharacters[desiredPosition]);
+                ;
             }
             else
             {
                 if (index > desiredPosition)
                 {
-                    (enemyCharacters[desiredPosition - 1], enemyCharacters[desiredPosition]) = (enemyCharacters[desiredPosition], enemyCharacters[desiredPosition - 1]);
-                    SwapEntityTransform(enemyCharacters[desiredPosition-1], enemyCharacters[desiredPosition]);
+                    (_enemyCharacters[desiredPosition - 1], _enemyCharacters[desiredPosition]) = (
+                        _enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition - 1]);
+                    SwapEntityTransform(_enemyCharacters[desiredPosition - 1], _enemyCharacters[desiredPosition]);
                 }
                 else
                 {
-                    (enemyCharacters[desiredPosition], enemyCharacters[desiredPosition]) = (enemyCharacters[desiredPosition], enemyCharacters[desiredPosition]);
-                    SwapEntityTransform(enemyCharacters[desiredPosition], enemyCharacters[desiredPosition]);
+                    (_enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition]) = (
+                        _enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition]);
+                    SwapEntityTransform(_enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition]);
                 }
             }
         }

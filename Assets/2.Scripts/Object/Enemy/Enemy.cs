@@ -52,8 +52,11 @@ public class Enemy : BaseEntity
 
         foreach (var position in enemyPosition)
         {
-            if (position.Item2 == _id)
-                return position.Item1;
+            var currentPosition = position.Item1;
+            var currentId = position.Item2;
+            
+            if (currentId == _id)
+                return currentPosition;
         }
         return -1;
     }
