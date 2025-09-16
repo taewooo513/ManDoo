@@ -12,14 +12,8 @@ public class Enemy : BaseEntity
     private float standardPercentage = 0.25f;
     private int mark = -1;
     private int _id;
-    private List<(int,int)> playerPosition;
-    private List<(int,int)> enemyPosition;  
-    
-    private void Awake()
-    {
-        playerPosition = BattleManager.Instance.GetPlayerPosition();
-        enemyPosition = BattleManager.Instance.GetEnemyPosition();
-    }
+    private List<(int, int)> playerPosition;
+    private List<(int, int)> enemyPosition;
 
     public void Init(int id)
     {
@@ -54,6 +48,8 @@ public class Enemy : BaseEntity
     {
         // enemyPosition 에서 받아온 item2 가 _id 와 일치하는 인덱스를 찾는다.
         // 그 후, 그 인덱스의 item1 을 리턴해서 현재 스킬을 사용하는 enemy 의 위치값을 넘겨준다.
+        enemyPosition = BattleManager.Instance.GetEnemyPosition();
+
         foreach (var position in enemyPosition)
         {
             if (position.Item2 == _id)
@@ -64,7 +60,7 @@ public class Enemy : BaseEntity
 
     private Skill GetRandomSkill()
     {
-        List<Skill> possibleSkills = new List<Skill>();
+        var possibleSkills = new List<Skill>();
         int currentPosition = GetCurrentPosition();
         if (currentPosition == -1) return null;
 
@@ -74,6 +70,8 @@ public class Enemy : BaseEntity
             {
                 if (CanUseSkill(skill))
                     possibleSkills.Add(skill);
+                //else swapPosition 요청
+                    
             }
             else
             {
@@ -94,11 +92,12 @@ public class Enemy : BaseEntity
     private bool CanUseSkill(Skill skill)
     {
         int currentPosition = GetCurrentPosition();
+        var playerPosition = BattleManager.Instance.GetPlayerPosition();
         var info = skill.skillInfo;
 
         bool atEnablePosition = info.enablePos.Contains(currentPosition);
         bool atTargetPosition = playerPosition.Any(x => info.targetPos.Contains(x.Item1));
-        
+
         if (atEnablePosition && atTargetPosition)
             return true;
         else
@@ -117,37 +116,3 @@ public class Enemy : BaseEntity
         base.Attack(baseEntity);
     }
 }
-
-/*
-
-    public bool GetDroppedItem(int dropTable, out GameObject droppedItems)
-    {
-        float total = 0f;
-        foreach (var drop in DropItemTables[dropTable].DropItemDatas)
-        {
-            total += drop.Percent;
-        }
-
-        float random = UnityEngine.Random.value * total;
-        int id = 0;
-        foreach (var drop in DropItemTables[dropTable].DropItemDatas)
-        {
-            random -= drop.Percent;
-            if (random <= 0f)
-            {
-                id = drop.ID;
-                break;
-            }
-        }
-
-        if (id == 0)
-        {
-            droppedItems = null;
-            return false;
-        }
-
-        droppedItems = ItemDatas[id].Prefab;
-        return true;
-    }
-
-*/
