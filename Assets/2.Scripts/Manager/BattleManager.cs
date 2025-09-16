@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -8,6 +9,8 @@ public class BattleManager : Singleton<BattleManager>
 {
     private List<BaseEntity> playableCharacters;
     public List<BaseEntity> PlayableCharacters => playableCharacters;
+    
+    
     private List<BaseEntity> enemyCharacters;
 
     public List<BaseEntity> EnemyCharacters => enemyCharacters;
@@ -22,6 +25,15 @@ public class BattleManager : Singleton<BattleManager>
         base.Awake();
         playableCharacters = new List<BaseEntity>();
         enemyCharacters = new List<BaseEntity>();
+    }
+
+    public int? FindEntityPosition(BaseEntity baseEntity)
+    {
+        if (baseEntity is PlayableCharacter)
+        {
+            return playableCharacters.IndexOf(baseEntity);
+        }
+        return enemyCharacters.IndexOf(baseEntity);
     }
     public void AttackEntity(BaseEntity baseEntity)
     {
@@ -70,7 +82,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var pos in skillRange)
             {
-                if (enemyCharacters.Count >= pos && enemyCharacters[pos - 1] != null)
+                if (enemyCharacters.Count >= pos && enemyCharacters[pos] != null)
                 {
                     possibleSkillRange.Add(pos);
                 }
@@ -80,7 +92,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var pos in skillRange)
             {
-                if (playableCharacters.Count >= pos && playableCharacters[pos - 1] != null)
+                if (playableCharacters.Count >= pos && playableCharacters[pos] != null)
                 {
                     possibleSkillRange.Add(pos);
                 }
@@ -91,8 +103,8 @@ public class BattleManager : Singleton<BattleManager>
 
     public void SwitchPlayerPosition(PlayableCharacter playableCharacterA, PlayableCharacter playableCharacterB)
     {
-        int indexA = 0;
-        int indexB = 0;
+        int indexA = -1;
+        int indexB = -1;
 
         for (int i = 0; i < playableCharacters.Count; i++)
         {
@@ -105,11 +117,76 @@ public class BattleManager : Singleton<BattleManager>
                 indexB = i;
             }
         }
+        if(indexA == -1 || indexB == -1) return;
         playableCharacters[indexA] = playableCharacterB;
         playableCharacters[indexB] = playableCharacterA;
 
-        var swapPos = playableCharacterB.transform.position;
-        playableCharacterB.transform.position = playableCharacterA.transform.position;
-        playableCharacterA.transform.position = swapPos;
+        SwapEntityTransform(playableCharacterA, playableCharacterB);
+    }
+
+    private void SwapEntityTransform(BaseEntity entityA, BaseEntity entityB)
+    {
+        (entityB.transform.position, entityA.transform.position) = (entityA.transform.position, entityB.transform.position);
+    }
+    //SwitchPosition(entity, desiredPosition-1);
+    public void SwitchPosition(BaseEntity entity, int desiredPosition)
+    {
+        if (nowTurnEntity is PlayableCharacter)
+        {
+            var index = -1;
+            foreach (var character in playableCharacters)
+            {
+                if (character == entity)
+                {
+                    index = playableCharacters.IndexOf(character);
+                    break;
+                }
+            }
+
+            if (index == -1)
+            {
+                return;
+            }
+            // 구조 분해를 이용한 스왑 예시: 고맙다! 라이더야!
+            // (a, b) = (b, a) 형태로 한 줄로 스왑 가능
+            (playableCharacters[index], playableCharacters[desiredPosition]) = (playableCharacters[desiredPosition], playableCharacters[index]);
+            SwapEntityTransform(playableCharacters[index], playableCharacters[desiredPosition]);
+        }
+        else
+        {
+            var index = -1;
+            foreach (var character in enemyCharacters)
+            {
+                if (character == entity)
+                {
+                    index = enemyCharacters.IndexOf(character);
+                    break;
+                }
+            }
+
+            if (index == -1)
+            {
+                return;
+            }
+
+            if (index + 1 == desiredPosition || index - 1 == desiredPosition)
+            {
+                (enemyCharacters[index], enemyCharacters[desiredPosition]) = (enemyCharacters[desiredPosition], enemyCharacters[index]);
+                SwapEntityTransform(enemyCharacters[index], enemyCharacters[desiredPosition]);;
+            }
+            else
+            {
+                if (index > desiredPosition)
+                {
+                    (enemyCharacters[desiredPosition - 1], enemyCharacters[desiredPosition]) = (enemyCharacters[desiredPosition], enemyCharacters[desiredPosition - 1]);
+                    SwapEntityTransform(enemyCharacters[desiredPosition-1], enemyCharacters[desiredPosition]);
+                }
+                else
+                {
+                    (enemyCharacters[desiredPosition], enemyCharacters[desiredPosition]) = (enemyCharacters[desiredPosition], enemyCharacters[desiredPosition]);
+                    SwapEntityTransform(enemyCharacters[desiredPosition], enemyCharacters[desiredPosition]);
+                }
+            }
+        }
     }
 }

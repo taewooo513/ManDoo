@@ -26,3 +26,16 @@ public enum TargetType
     Single,
     Range
 }
+
+[UGS(typeof(WeaponType))]
+public enum WeaponType
+{
+    TwoHandedSword,
+    Spear,
+    Shield,
+    Bow,
+    ShortSword,
+    Knuckle,
+    SwordAndShield,
+    Staff
+}
