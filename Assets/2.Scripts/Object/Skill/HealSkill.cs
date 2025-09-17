@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealSkill : SkillEffect
 {
 
-    public override void ActiveEffect()
+    public override void ActiveEffect(BaseEntity actionEntity, BaseEntity targetEntity)
     {
     }
 }
