@@ -8,9 +8,7 @@ public class UITest : MonoBehaviour
     void Start()
     {
         UIManager.Instance.OpenUI<InGameUIManager>();
-        
-
+        UIManager.Instance.OpenUI<InGamePlayerUI>();
     }
-
-    
+ 
 }

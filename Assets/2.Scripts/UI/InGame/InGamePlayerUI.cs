@@ -18,15 +18,15 @@ public class InGamePlayerUI : UIBase
     
 
 
-    public void UpdateHpUI(EntityInfo entityInfo)
+    public void UpdateUI(EntityInfo entityInfo, Skill[] skills)
     {
         nameText.text = entityInfo.name;
         hpUI.text = entityInfo.maxHp.ToString();
         currentHpUI.text = entityInfo.currentHp.ToString();
 
-        for(int i = 0; i < skillUIObjects.Length; i++)
+        for(int i = 0; i < skills.Length; i++)
         {
-            //skillUIObjects[i]
+            skillUIObjects[i].GetComponent<SelectSkillButton>().SetButton(skills[i]);
         }
     }
 }

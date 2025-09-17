@@ -5,17 +5,21 @@ using UnityEngine.UI;
 
 public class SelectSkillButton : MonoBehaviour
 {
-    private Skill skill;
+    
     private Button skillButton;
     private InGameUIManager inGameUIManager;
 
     private void Awake()
     {
-        skillButton.onClick.AddListener(OnClickSkillButton);
+        
         inGameUIManager = UIManager.Instance.OpenUI<InGameUIManager>();
     }
+    public void SetButton(Skill skill)
+    {
+        skillButton.onClick.AddListener(() => OnClickSkillButton(skill));
+    }
 
-    private void OnClickSkillButton()
+    private void OnClickSkillButton(Skill skill)
     {
         inGameUIManager.OnClickSkillButton(skill);
     }

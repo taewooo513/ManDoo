@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2484092861313200035}
   - component: {fileID: 6240469891588707610}
   - component: {fileID: 7426729054177256655}
+  - component: {fileID: 7033922008799134938}
   m_Layer: 5
   m_Name: skillC
   m_TagString: Untagged
@@ -120,6 +121,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7033922008799134938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222782846703492849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fae1dd2b39a2d4bbe2eff3705065d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670088175023299014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1201,7 @@ GameObject:
   - component: {fileID: 5686375502292856107}
   - component: {fileID: 3422584195619594555}
   - component: {fileID: 2824600669058322927}
+  - component: {fileID: 5869196526866308020}
   m_Layer: 5
   m_Name: SkillB
   m_TagString: Untagged
@@ -1296,6 +1310,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5869196526866308020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111957430856339317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fae1dd2b39a2d4bbe2eff3705065d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5588880006540096007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,6 +1817,7 @@ GameObject:
   - component: {fileID: 8308366575608248593}
   - component: {fileID: 8100352645885409063}
   - component: {fileID: 5172874404308555524}
+  - component: {fileID: 682301298759117091}
   m_Layer: 5
   m_Name: SkillA
   m_TagString: Untagged
@@ -1899,6 +1926,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &682301298759117091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6279661312001204214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fae1dd2b39a2d4bbe2eff3705065d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7127447160244041690
 GameObject:
   m_ObjectHideFlags: 0
@@ -2190,6 +2229,7 @@ GameObject:
   - component: {fileID: 744553924176888284}
   - component: {fileID: 4128702336311705818}
   - component: {fileID: 5199266687225825400}
+  - component: {fileID: 464833050755841097}
   m_Layer: 5
   m_Name: WaeponeSkill
   m_TagString: Untagged
@@ -2298,6 +2338,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &464833050755841097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7999593438257076646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fae1dd2b39a2d4bbe2eff3705065d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8016752617527685620
 GameObject:
   m_ObjectHideFlags: 0
