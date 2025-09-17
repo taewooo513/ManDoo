@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UITest : MonoBehaviour
 {
-    
+
     void Start()
     {
         DataManager.Instance.Initialize();
@@ -13,5 +13,4 @@ public class UITest : MonoBehaviour
         UIManager.Instance.OpenUI<InGameInventoryUI>();
     }
 
-    
 }

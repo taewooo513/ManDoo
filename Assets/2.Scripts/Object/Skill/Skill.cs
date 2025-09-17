@@ -27,7 +27,8 @@ public class SkillInfo
         skillEffects = new SkillEffect[sd.effectId.Count];
         for (int i = 0; i < sd.effectId.Count; i++)
         {
-            skillEffects[0].Init(sd.effectId[i]);
+            //Debug.Log(sd.effectId.Count);
+            //skillEffects[i].Init(sd.effectId[i]);
         }
     }
 }

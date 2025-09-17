@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class SelectSkillButton : MonoBehaviour
 {
-    
+
     private Button skillButton;
     private InGameUIManager inGameUIManager;
 
     private void Awake()
     {
+        skillButton = GetComponent<Button>();
         inGameUIManager = UIManager.Instance.OpenUI<InGameUIManager>();
     }
     public void SetButton(Skill skill)
