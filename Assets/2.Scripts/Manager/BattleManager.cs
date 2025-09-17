@@ -63,23 +63,23 @@ public class BattleManager : Singleton<BattleManager>
         Turn();
     }
 
-    public void GetLowHpEntityWeight(out float playerWeight, out float enemyWeight)
+    public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
     {
-        playerWeight = 0.0f;
-        enemyWeight = 0.0f;
+        playerSkillWeight = 0.0f;
+        enemySkillWeight = 0.0f;
         foreach (var item in _playableCharacters)
         {
-            if (item.entityInfo.LowHPStatPlayer())
+            if (item.entityInfo.LowHPStatPlayer()) //플레이어블 캐릭터 체력이 40% 일때
             {
-                playerWeight += 0.3f;
+                playerSkillWeight += 0.3f; //플레이어블 캐릭터의 스킬 가중치 추가(공격/스킬 우선 사용)
             }
         }
 
         foreach (var item in _enemyCharacters)
         {
-            if (item.entityInfo.LowHPStatEnemy())
+            if (item.entityInfo.LowHPStatEnemy()) //enemy 체력이 10% 이하일 때
             {
-                enemyWeight += 0.3f;
+                enemySkillWeight += 0.3f; //enemy 캐릭터의 스킬 가중치 추가(보호/힐 우선 사용)
             }
         }
     }
