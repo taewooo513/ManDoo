@@ -7,11 +7,11 @@ using UnityEngine.Playables;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    private List<BaseEntity> _playableCharacters;
+    public List<BaseEntity> _playableCharacters;
     public List<BaseEntity> PlayableCharacters => _playableCharacters;
 
 
-    private List<BaseEntity> _enemyCharacters;
+    public List<BaseEntity> _enemyCharacters;
 
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
 
@@ -51,16 +51,22 @@ public class BattleManager : Singleton<BattleManager>
         if (Input.GetKeyDown(KeyCode.V))
         {
             BattleStartTrigger(_playableCharacters, _enemyCharacters);
+            for(int i = 0; i < _playableCharacters.Count; i++)
+            {
+                _playableCharacters[i].StartTurn();
+            }
         }
     }
 
     public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
     {
+        Debug.Log("Test");
         _playableCharacters = playerList;
         _enemyCharacters = enemyList;
         //전투 시작 UI 출력
-        UIManager.Instance.OpenUI<InGameBattleStartUI>();
+        //UIManager.Instance.OpenUI<InGameBattleStartUI>();
         Turn();
+
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -85,12 +91,14 @@ public class BattleManager : Singleton<BattleManager>
     }
     private void Turn() //한 턴
     {
+        
         if (_turnQueue.Count == 0)
         {
             SetTurnQueue();
         }
 
         nowTurnEntity = _turnQueue.Peek();
+        Debug.Log(nowTurnEntity);
         nowTurnEntity.StartTurn();
     }
 
@@ -134,13 +142,13 @@ public class BattleManager : Singleton<BattleManager>
         //전투회피
         UIManager.Instance.OpenUI<InGameBattleRunButton>();
         EndBattle();
-    }  
+    }
 
     private void Win()
     {
         Debug.Log("승리!");
         //승리 UI 출력
-        UIManager.Instance.OpenUI<InGameVictoryUI>();   
+        UIManager.Instance.OpenUI<InGameVictoryUI>();
         EndBattle();
     }
 
@@ -161,8 +169,19 @@ public class BattleManager : Singleton<BattleManager>
     {
         int n = _playableCharacters.Count;
         int m = _enemyCharacters.Count;
-        List<BaseEntity> tempPlayerList = _playableCharacters;
-        List<BaseEntity> tempEnemyList = _enemyCharacters;
+        List<BaseEntity> tempPlayerList = new();
+        List<BaseEntity> tempEnemyList = new();
+
+        foreach (var item in _playableCharacters)
+        {
+            tempPlayerList.Add(item);
+        }
+
+        foreach (var item in _enemyCharacters)
+        {
+            tempEnemyList.Add(item);
+        }
+        
         while (n > 1)
         {
             n--;

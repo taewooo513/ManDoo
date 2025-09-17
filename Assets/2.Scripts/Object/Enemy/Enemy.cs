@@ -12,16 +12,16 @@ public class Enemy : BaseEntity
         BattleManager.Instance.AddEnemyCharacter(this);
         Init(2001);
     }
-    public void Init(int id)
+    public void Init(int idx)
     {
-        SetData(id);
+        SetData(idx);
         SetSkill();
     }
 
-    private void SetData(int id)
+    private void SetData(int idx)
     {
         this.id = id;
-        data = DataManager.Instance.Enemy.GetEnemyData(id);
+        data = DataManager.Instance.Enemy.GetEnemyData(idx);
         entityInfo = new EntityInfo(
             data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
         );
