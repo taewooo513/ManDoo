@@ -2,7 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SkillEffect : MonoBehaviour
+public class SkillEffect : MonoBehaviour
 {
-    public abstract void ActiveEffect();
+    SkillDatas datas;
+    public void Init(int id)
+    {
+        //DataManager.Instance.Effect.GetEnemyData;
+    }
+    public virtual void ActiveEffect(BaseEntity actionEntity, BaseEntity targetEntity)
+    {
+
+    }
 }

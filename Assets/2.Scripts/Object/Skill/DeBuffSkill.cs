@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class DeBuffSkill : SkillEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    public virtual void ActiveEffect(BaseEntity actionEntity, BaseEntity targetEntity)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
