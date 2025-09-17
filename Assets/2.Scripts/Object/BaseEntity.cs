@@ -50,31 +50,29 @@ public class EntityInfo
         return result;
     }
 
-    public void LowHPStatEnemy() //적(플레이어블) hp가 낮을 때. TODO : 스킬 공격 시작할 때마다 / 적들 hp 확인하고 / 호출해서? 검증해줘야 됨
+    public bool LowHPStatEnemy() //적(플레이어블) hp가 낮을 때. TODO : 스킬 공격 시작할 때마다 / 적들 hp 확인하고 / 호출해서? 검증해줘야 됨
     {
         double percentage = maxHp * 0.1 * 4;
         if (currentHp <= percentage) //현재 hp가 40% 이하일 때
         {
             hpWeight += addWeight;
+            return true;
         }
-
-        if (currentHp > percentage) //hp가 40% 초과일 때
-        {
-            hpWeight = 0f;
-        }
+        hpWeight = 0f;
+        return false;
     }
 
-    public void LowHPStatPlayer() //아군(enemy) hp가 낮을 때.
+    public bool LowHPStatPlayer() //아군(enemy) hp가 낮을 때.
     {
         double percentage = maxHp * 0.1;
         if (currentHp <= percentage) //현재 hp가 10% 이일 때
         {
             hpWeight += addWeight;
+            return true;
         }
-        if (currentHp > percentage) //hp가 10% 초과일 때
-        {
-            hpWeight = 0f;
-        }
+        //hp가 10% 초과일 때
+        hpWeight = 0f;
+        return false;
     }
 }
 
