@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayableCharacter : BaseEntity
 {
     private MercenaryData data;
-    public SkillInfo[] skills { get; private set; }
+    public Skill[] skills { get; private set; }
 
     protected void Awake()
     {
@@ -26,10 +26,11 @@ public class PlayableCharacter : BaseEntity
 
         for (int i = 0; i < data.skillId.Count; i++)
         {
+            skills[i] = new Skill(); 
             var skillData = DataManager.Instance.Skill.GetSkillData(data.skillId[i]);
-            skills[i] = new SkillInfo(skillData.skillName,skillData.effectType,skillData.adRatio
-                ,skillData.constantValue,skillData.duration,skillData.targetType,skillData.enablePos,
-                skillData.targetPos,skillData.iconPathString);
+            //skills[i] = new SkillInfo(skillData.skillName,skillData.effectType,skillData.adRatio
+            //    ,skillData.constantValue,skillData.duration,skillData.targetType,skillData.enablePos,
+            //    skillData.targetPos,skillData.iconPathString);
 
         }
     }
@@ -44,4 +45,13 @@ public class PlayableCharacter : BaseEntity
     {
         base.UseSkill(baseEntity);
     }
+    public override void StartTurn()
+    {
+        UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo,skills);
+    }
+    public override void EndTurn()
+    {
+
+    }
+
 }
