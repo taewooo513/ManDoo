@@ -223,3 +223,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00937963ca926b46bbe1f88ce5cca42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  closeTimer: 2

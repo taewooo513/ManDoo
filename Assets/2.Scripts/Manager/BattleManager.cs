@@ -48,10 +48,7 @@ public class BattleManager : Singleton<BattleManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            BattleStartTrigger(_playableCharacters, _enemyCharacters);
-        }
+
     }
 
     public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
@@ -128,13 +125,13 @@ public class BattleManager : Singleton<BattleManager>
             Turn();
         }
     }
-    private void BattleRun()
-    {
-        Debug.Log("전투회피!");
-        //전투회피
-        UIManager.Instance.OpenUI<InGameBattleRunButton>();
-        EndBattle();
-    }  
+    //private void BattleRun()
+    //{
+    //    Debug.Log("전투회피!");
+    //    //전투회피
+    //    UIManager.Instance.OpenUI<InGameBattleRunButton>();
+    //    EndBattle();
+    //}  
 
     private void Win()
     {
