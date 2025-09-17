@@ -17,39 +17,39 @@ using UnityEngine;
 namespace DataTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class SkillData : ITable
+    public partial class EffectData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<SkillData> loadedList, Dictionary<int, SkillData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<EffectData> loadedList, Dictionary<int, EffectData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1iwjiLK5PVjfgPniQ51iY7rrnAmWC4gSnHuZH9kyLkOo"; // it is file id
-        static string sheetID = "1537606748"; // it is sheet id
+        static string sheetID = "1730604969"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, SkillData> SkillDataMap = new Dictionary<int, SkillData>();  
-        public static List<SkillData> SkillDataList = new List<SkillData>();   
+        public static Dictionary<int, EffectData> EffectDataMap = new Dictionary<int, EffectData>();  
+        public static List<EffectData> EffectDataList = new List<EffectData>();   
 
         /// <summary>
-        /// Get SkillData List 
+        /// Get EffectData List 
         /// Auto Load
         /// </summary>
-        public static List<SkillData> GetList()
+        public static List<EffectData> GetList()
         {{
            if (isLoaded == false) Load();
-           return SkillDataList;
+           return EffectDataList;
         }}
 
         /// <summary>
-        /// Get SkillData Dictionary, keyType is your sheet A1 field type.
+        /// Get EffectData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, SkillData>  GetDictionary()
+        public static Dictionary<int, EffectData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return SkillDataMap;
+           return EffectDataMap;
         }}
 
     
@@ -57,12 +57,10 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 id;
-		public System.String skillName;
-		public System.Collections.Generic.List<Int32> effectId;
-		public TargetType targetType;
-		public System.Collections.Generic.List<Int32> enablePos;
-		public System.Collections.Generic.List<Int32> targetPos;
-		public System.String iconPathString;
+		public EffectType effectType;
+		public System.Single adRatio;
+		public System.Int32 constantValue;
+		public System.Int32 duration;
   
 
 #region fuctions
@@ -73,7 +71,7 @@ namespace DataTable
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("SkillData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("EffectData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -89,7 +87,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<SkillData>, Dictionary<int, SkillData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<EffectData>, Dictionary<int, EffectData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -117,14 +115,14 @@ namespace DataTable
                
 
 
-    public static (List<SkillData> list, Dictionary<int, SkillData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, SkillData> Map = new Dictionary<int, SkillData>();
-            List<SkillData> List = new List<SkillData>();     
+    public static (List<EffectData> list, Dictionary<int, EffectData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, EffectData> Map = new Dictionary<int, EffectData>();
+            List<EffectData> List = new List<EffectData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(SkillData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(EffectData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["SkillData"];
+            var sheet = jsonObject["EffectData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -143,7 +141,7 @@ namespace DataTable
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            SkillData instance = new SkillData();
+                            EffectData instance = new EffectData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -184,8 +182,8 @@ namespace DataTable
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            SkillDataList = List;
-                            SkillDataMap = Map;
+                            EffectDataList = List;
+                            EffectDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -195,10 +193,10 @@ namespace DataTable
 
  
 
-        public static void Write(SkillData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(EffectData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(SkillData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(EffectData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {

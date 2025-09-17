@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +14,6 @@ public class StatEffectInfo //상태이상 효과 정보 리스트
 
     public void Init(SkillInfo skill) //스킬 사용할 때 호출
     {
-        duration = skill.duration;
+        //duration = skill.duration;
     }
 }

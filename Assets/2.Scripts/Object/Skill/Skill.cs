@@ -7,44 +7,41 @@ using System.Linq;
 public class SkillInfo
 {
     public string skillName;
-    public EffectType effectType;
-    public float adRatio;
-    public int constantValue;
-    public int duration;
     public TargetType targetType;
     public List<int> enablePos;
     public List<int> targetPos;
     public string iconPathString;
+    public SkillEffect[] skillEffects;
 
-    public SkillInfo(string skillName, EffectType effectType, float adRatio
-        , int constantValue, int duration, TargetType targetType, List<int> enablePos, List<int> targetPos,
-        string iconPathString)
+    private SkillData sd;
+
+    public SkillInfo(int id)
     {
-        this.skillName = skillName;
-        this.effectType = effectType;
-        this.adRatio = adRatio;
-        this.constantValue = constantValue;
-        this.duration = duration;
-        this.targetType = targetType;
-        this.enablePos = enablePos;
-        this.targetPos = targetPos;
-        this.iconPathString = iconPathString;
+        sd = DataManager.Instance.Skill.GetSkillData(id);
+
+        this.skillName = sd.skillName;
+        this.targetType = sd.targetType;
+        this.enablePos = sd.enablePos;
+        this.targetPos = sd.targetPos;
+        this.iconPathString = sd.iconPathString;
+        skillEffects = new SkillEffect[sd.effectId.Count];
+        for (int i = 0; i < sd.effectId.Count; i++)
+        {
+            skillEffects[0].Init(sd.effectId[i]);
+        }
     }
 }
 
 public class Skill
 {
-    private SkillData sd;
     public SkillInfo skillInfo { get; private set; }
-
+    public const float defaultWeight = 0.25f;
     SkillEffect[] skillEffects;
-
-    public void Init(int id)
+    BaseEntity baseEntity;
+    public void Init(int id, BaseEntity entity)
     {
-        sd = DataManager.Instance.Skill.GetSkillData(id);
-        skillInfo = new SkillInfo(
-            sd.skillName, sd.effectType, sd.adRatio, sd.constantValue,
-            sd.duration, sd.targetType, sd.enablePos, sd.targetPos, sd.iconPathString);
+        skillInfo = new SkillInfo(id);
+        baseEntity = entity;
     }
 
     public void Setting()
@@ -52,10 +49,11 @@ public class Skill
 
     }
 
-    public void UseSkill(float ad, BaseEntity targetEntity)
+    public void UseSkill(BaseEntity targetEntity)
     {
         for (int i = 0; i < skillEffects.Length; i++)
         {
+            skillEffects[i].ActiveEffect(baseEntity, targetEntity);
         }
     }
 }
