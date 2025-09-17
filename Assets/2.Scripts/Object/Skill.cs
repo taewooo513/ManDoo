@@ -44,7 +44,8 @@ public class Skill
             sd.duration, sd.targetType, sd.enablePos, sd.targetPos, sd.iconPathString);
     }
 
-    public void UseSkill(ArrayList attacker)
+    public void UseSkill()
     {
+        
     }
 }

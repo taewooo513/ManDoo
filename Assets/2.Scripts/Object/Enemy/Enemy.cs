@@ -103,7 +103,13 @@ public class Enemy : BaseEntity
         else return false;
     }
 
-    public override void Attack(BaseEntity baseEntity) => base.Attack(baseEntity);
+    public override void Attack(BaseEntity baseEntity)
+    {
+        base.Attack(baseEntity);
+        var attackSkill = GetRandomSkill();
+        // RandomizeUtility.TryGetRandomPlayerIndexByWeight(); -> Player 에서 가중치 리스트 받아와서 매개변수로 넣기
+        attackSkill.UseSkill();
+    }
 
     private int GetDesiredPosition(Skill skill)
     {
