@@ -28,4 +28,6 @@ public static class RandomizeUtility
         }
         return playerIndex;
     }
+
+    //TODO: GetRandomSkillByWeight(List<Skill> skills) 작성
 }
