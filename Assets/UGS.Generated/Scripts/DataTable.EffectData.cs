@@ -58,6 +58,10 @@ namespace DataTable
 
 		public System.Int32 id;
 		public EffectType effectType;
+		public BuffType buffType;
+		public DeBuffType debuffType;
+		public System.String effectName;
+		public System.String effectIconPath;
 		public System.Single adRatio;
 		public System.Int32 constantValue;
 		public System.Int32 duration;
