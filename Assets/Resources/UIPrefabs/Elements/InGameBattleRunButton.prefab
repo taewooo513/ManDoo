@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 5138200837094696655}
   - component: {fileID: 5472137720177663073}
   - component: {fileID: 4520134877899699519}
+  - component: {fileID: -7004492472880190276}
   m_Layer: 5
   m_Name: InGameBattleRunButton
   m_TagString: Untagged
@@ -267,3 +268,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-7004492472880190276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5580561851388977684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f48c428139ac09409520e2db9d98abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

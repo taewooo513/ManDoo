@@ -99,6 +99,13 @@ public class BattleManager : Singleton<BattleManager>
             Turn();
         }
     }
+    private void BattleRun()
+    {
+        Debug.Log("전투회피!");
+        //전투회피
+        UIManager.Instance.OpenUI<InGameBattleRunButton>();
+        EndBattle();
+    }  
 
     private void Win()
     {
@@ -112,7 +119,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("패배...");
         //패배 UI출력
-        UIManager.Instance.OpenUI<InGameDefeatUI>();
+        UIManager.Instance.OpenUI<InGameLoseUI>();
         EndBattle();
     }
 

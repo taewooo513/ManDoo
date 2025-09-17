@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 6777910803779522940}
   - component: {fileID: -3021650101119472025}
   m_Layer: 5
-  m_Name: InGameDefeatUI
+  m_Name: InGameLoseUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

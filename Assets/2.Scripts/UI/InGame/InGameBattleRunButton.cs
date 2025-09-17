@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InGameVictoryUI : InGameBattleStartUI
+public class InGameBattleRunButton : UIBase
 {
     
 }
