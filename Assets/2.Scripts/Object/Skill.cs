@@ -31,7 +31,7 @@ public class SkillInfo
     }
 }
 
-public class Skill : MonoBehaviour
+public class Skill
 {
     private SkillData sd;
     public SkillInfo skillInfo { get; private set; }
@@ -44,7 +44,8 @@ public class Skill : MonoBehaviour
             sd.duration, sd.targetType, sd.enablePos, sd.targetPos, sd.iconPathString);
     }
 
-    public void UseSkill(ArrayList attacker)
+    public void UseSkill()
     {
+        
     }
 }

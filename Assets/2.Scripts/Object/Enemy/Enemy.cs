@@ -1,16 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using DataTable;
-using System;
+using System.Linq;
 
 public class Enemy : BaseEntity
 {
     private EnemyData data;
     private Skill[] skills;
-    private float[] percentage;
-    private float standardPercentage = 0.25f;
-    private int mark = -1;
-    private int _id;
 
     public void Init(int id)
     {
@@ -27,8 +23,9 @@ public class Enemy : BaseEntity
         );
     }
 
-    private void SetSkill()
+    private void SetSkill() // monobehaviour 는 new 를 사용할 수 없어서 Skill.cs 변경 요청.
     {
+        skills = new Skill[data.skillId.Count];
         int i = 0;
         foreach (var id in data.skillId)
         {
@@ -38,88 +35,118 @@ public class Enemy : BaseEntity
             i++;
         }
     }
-     
+
     private Skill GetRandomSkill()
     {
-        List<Skill> possibleSkills = new List<Skill>();
+        var possibleSkills = new List<Skill>();
+        if (skills == null || skills.Length == 0) return null;
 
         foreach (var skill in skills)
         {
-            if (true)
-                possibleSkills.Add(skill);
+            if (skill == null || skill.skillInfo == null) continue;
+            var info = skill.skillInfo;
+            var desiredPosition = GetDesiredPosition(skill);
+
+            if (IsSingleTargetSkill(skill))
+            {
+                if (CanUseSkill(skill))
+                    possibleSkills.Add(skill);
+                else if (desiredPosition != -1)
+                {
+                    BattleManager.Instance.SwitchPosition(this, desiredPosition);
+                    if (CanUseSkill(skill))
+                        possibleSkills.Add(skill);
+                }
+            }
+
+            else
+            {
+                bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+
+                if (!atEnablePosition && desiredPosition != -1)
+                {
+                    BattleManager.Instance.SwitchPosition(this, desiredPosition);
+                    atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+                }
+
+                if (atEnablePosition)
+                {
+                    var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
+                    if (possibleSkillRange != null && possibleSkillRange.Count > 0)
+                        possibleSkills.Add(skill);
+                }
+            }
         }
 
-        return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
+        if (possibleSkills.Count == 0) return null;
+        else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
+    }
+
+    private bool CanUseSkill(Skill skill)
+    {
+        if (skill == null || skill.skillInfo == null) return false;
+        var info = skill.skillInfo;
+        var playerPosition = BattleManager.Instance.GetPlayerPosition();
+        bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+        bool atTargetPosition = playerPosition.Any(x => info.targetPos.Contains(x.Item1));
+
+        if (atEnablePosition && atTargetPosition)
+            return true;
+        else
+            return false;
+    }
+
+    private bool IsSingleTargetSkill(Skill skill)
+    {
+        if (skill.skillInfo.targetType == TargetType.Single)
+            return true;
+        else return false;
     }
 
     public override void Attack(BaseEntity baseEntity)
     {
         base.Attack(baseEntity);
+        var attackSkill = GetRandomSkill();
+        // int targetIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(); -> Player 에서 가중치 리스트 받아와서 매개변수로 넣기
+        // var target = 
+        var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
+        // int damage = 
+        // attackSkill.UseSkill(BaseEntity target);
+        //
+        // if (IsSingleTargetSkill(attackSkill))
+        //     BattleManager.Instance.AttackEntity(targetIndex, damage);
+        // else
+        //     BattleManager.Instance.AttackEntity(targetIndicies, damage);
+
+        
     }
 
-    private void AttackPercentage()
+    private int GetDesiredPosition(Skill skill)
     {
-        //float total = battlemanager.instance.GetTotalNumOfPlayerCharacters();
-        float temp = 10;
-        float rand = UnityEngine.Random.value * temp;
-    }
+        if (skill == null || skill.skillInfo == null) return -1;
+        var info = skill.skillInfo;
+        if (info.enablePos == null || info.enablePos.Count == 0) return -1;
 
-    private void Mark()
-    {
-        //battlemanager.instance.
-    }
+        var currentIndex = BattleManager.Instance.FindEntityPosition(this) ?? -1;
+        if (currentIndex < 0) return -1;
 
-    private void Buff() 
-    {
+        var entities = BattleManager.Instance.EnemyCharacters;
+        int entityCount = entities?.Count ?? 0;
+        if (entityCount == 0) return -1;
 
-    }
-
-    private void Guard()
-    {
-
-    }
-
-    private void PlayerReact() // 플레이어가 행동에 대한 가중치 계산
-    {
-
-    }
-
-    private void SwapPosition()
-    {
-
-    }
-}
-
-/*
-
-    public bool GetDroppedItem(int dropTable, out GameObject droppedItems)
-    {
-        float total = 0f;
-        foreach (var drop in DropItemTables[dropTable].DropItemDatas)
+        foreach (var position in info.enablePos)
         {
-            total += drop.Percent;
-        }
+            int targetIndex = position;
 
-        float random = UnityEngine.Random.value * total;
-        int id = 0;
-        foreach (var drop in DropItemTables[dropTable].DropItemDatas)
-        {
-            random -= drop.Percent;
-            if (random <= 0f)
+            if (targetIndex >= 0 && targetIndex < entityCount)
             {
-                id = drop.ID;
-                break;
+                if (targetIndex != currentIndex)
+                    return targetIndex;
             }
+            return targetIndex;
         }
-
-        if (id == 0)
-        {
-            droppedItems = null;
-            return false;
-        }
-
-        droppedItems = ItemDatas[id].Prefab;
-        return true;
+        return -1;
     }
 
-*/
+
+}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5939862589847810199}
   - component: {fileID: 2863219222470369227}
   - component: {fileID: 6498451516334941923}
+  - component: {fileID: 69834486029824011}
   m_Layer: 5
   m_Name: BackImg
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &69834486029824011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276085068980641199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08aaba4a32db1fe4ab692a75ae04b200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &851607423845975558
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,3 +512,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1e6b7cf28a545bfb28b8fd438ff9fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityInfo:
+    name: 
+    currentHp: 0
+    maxHp: 0
+    attackDamage: 0
+    defense: 0
+    speed: 0
+    isDie: 0
+    evasion: 0
+    critical: 0
