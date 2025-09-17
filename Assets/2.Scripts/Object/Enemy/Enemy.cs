@@ -27,7 +27,7 @@ public class Enemy : BaseEntity
         );
     }
 
-    private void SetSkill() // monobehaviour 는 new 를 사용할 수 없어서 Skill.cs 변경 요청.
+    private void SetSkill()
     {
         skills = new Skill[data.skillId.Count];
         int i = 0;
@@ -44,10 +44,10 @@ public class Enemy : BaseEntity
     {
         var possibleSkills = new List<Skill>();
         if (skills == null || skills.Length == 0) return null;
-
+        
         foreach (var skill in skills)
         {
-            if (skill == null || skill.skillInfo == null) continue;
+            if (skill == null || skill.skillInfo == null) continue; 
             var info = skill.skillInfo;
             var desiredPosition = GetDesiredPosition(skill);
 
