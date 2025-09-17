@@ -14,14 +14,11 @@ public class InGameEnemyUI : UIBase
 
     public void UpdateUI(EntityInfo entityInfo)
     {
-        Debug.Log(entityInfo.name);
         nameText.text = entityInfo.name;
         hpText.text = entityInfo.currentHp.ToString();
         maxHpText.text = entityInfo.maxHp.ToString();
         attackText.text = entityInfo.attackDamage.ToString();
         defenseText.text = entityInfo.defense.ToString();
         speedText.text = entityInfo.speed.ToString();
-
-
     }
 }

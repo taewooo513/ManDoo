@@ -27,7 +27,7 @@ public class PlayableCharacter : BaseEntity
         entityInfo = new EntityInfo(
             data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
         );
-
+        skills = new Skill[4];
         for (int i = 0; i < data.skillId.Count; i++)
         {
             skills[i] = new Skill();
@@ -47,6 +47,8 @@ public class PlayableCharacter : BaseEntity
     }
     public override void StartTurn()
     {
+        base.StartTurn();
+        Debug.Log("asdvknlo");
         UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo, skills);
     }
     public override void EndTurn()
