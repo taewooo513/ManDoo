@@ -31,7 +31,7 @@ public class SkillInfo
     }
 }
 
-public class Skill : MonoBehaviour
+public class Skill
 {
     private SkillData sd;
     public SkillInfo skillInfo { get; private set; }
