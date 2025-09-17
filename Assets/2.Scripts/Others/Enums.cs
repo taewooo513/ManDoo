@@ -16,9 +16,11 @@ public enum RoleType
 public enum EffectType
 {
     Attack,
-    Protect,
-    Support,
-    StatusEffect
+    Heal,
+    Buff,
+    Debuff,
+    Mark,
+    Protect
 }
 [UGS(typeof(TargetType))]
 public enum TargetType
@@ -38,4 +40,27 @@ public enum WeaponType
     Knuckle,
     SwordAndShield,
     Staff
+}
+[UGS(typeof(BuffType))]
+public enum BuffType
+{
+    None,
+    AttackUp,
+    DefenseUp,
+    SpeedUp,
+    EvasionUp,
+    CriticalUp,
+    AllStatUp
+}
+
+[UGS(typeof(DeBuffType))]
+public enum DeBuffType
+{
+    None,
+    AttackDown,
+    DefenseDown,
+    SpeedDown,
+    EvasionDown,
+    CriticalDown,
+    AllStatDown
 }
