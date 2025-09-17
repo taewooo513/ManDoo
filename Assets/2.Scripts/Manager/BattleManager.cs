@@ -55,6 +55,7 @@ public class BattleManager : Singleton<BattleManager>
         _playableCharacters = playerList;
         _enemyCharacters = enemyList;
         //전투 시작 UI 출력
+        UIManager.Instance.OpenUI<InGameBattleStartUI>();
         Turn();
     }
 
@@ -99,6 +100,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("승리!");
         //승리 UI 출력
+        UIManager.Instance.OpenUI<InGameVictoryUI>();   
         EndBattle();
     }
 
@@ -106,6 +108,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("패배...");
         //패배 UI출력
+        UIManager.Instance.OpenUI<InGameDefeatUI>();
         EndBattle();
     }
 

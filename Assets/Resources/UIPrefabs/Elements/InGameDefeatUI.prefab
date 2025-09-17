@@ -145,8 +145,9 @@ GameObject:
   - component: {fileID: 2307012865711118197}
   - component: {fileID: 2516842051697716764}
   - component: {fileID: 6777910803779522940}
+  - component: {fileID: -3021650101119472025}
   m_Layer: 5
-  m_Name: InGamelossUI
+  m_Name: InGameDefeatUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,3 +211,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-3021650101119472025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715429058683539906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04291c9ceeeb2949865b7e244ac5076, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
