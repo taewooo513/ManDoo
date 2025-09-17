@@ -26,7 +26,7 @@ public class PlayableCharacter : BaseEntity
 
         for (int i = 0; i < data.skillId.Count; i++)
         {
-            skills[i] = new Skill(); 
+            skills[i] = new Skill();
             var skillData = DataManager.Instance.Skill.GetSkillData(data.skillId[i]);
             //skills[i] = new SkillInfo(skillData.skillName,skillData.effectType,skillData.adRatio
             //    ,skillData.constantValue,skillData.duration,skillData.targetType,skillData.enablePos,
@@ -35,9 +35,9 @@ public class PlayableCharacter : BaseEntity
         }
     }
 
-    public override void Attack(BaseEntity baseEntity)
+    public override void Attack(int dmg, BaseEntity baseEntity)
     {
-        base.Attack(baseEntity);
+        base.Attack(dmg, baseEntity);
         // BattleManager.Instance.AttackEnemy(baseEntity);
     }
 
@@ -47,7 +47,7 @@ public class PlayableCharacter : BaseEntity
     }
     public override void StartTurn()
     {
-        UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo,skills);
+        UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo, skills);
     }
     public override void EndTurn()
     {
