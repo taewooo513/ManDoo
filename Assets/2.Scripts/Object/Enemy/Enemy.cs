@@ -30,7 +30,7 @@ public class Enemy : BaseEntity
         foreach (var id in data.skillId)
         {
             Skill skill = new Skill();
-            skill.Init(id);
+            skill.Init(id, this);
             skills[i] = skill;
             i++;
         }
