@@ -63,31 +63,25 @@ public class BattleManager : Singleton<BattleManager>
         Turn();
     }
 
-    public List<int> GetLowHpEntityIndexList(bool isPlayer)
+    public void GetLowHpEntityWeight(out float playerWeight, out float enemyWeight)
     {
-        List<int> indexList = new List<int>();
-        if (isPlayer)
+        playerWeight = 0.0f;
+        enemyWeight = 0.0f;
+        foreach (var item in _playableCharacters)
         {
-            foreach (var item in _playableCharacters)
+            if (item.entityInfo.LowHPStatPlayer())
             {
-                if (item.entityInfo.currentHp / (float)item.entityInfo.maxHp <= 0.4f)
-                {
-                    indexList.Add(_playableCharacters.IndexOf(item));
-                }
-            }
-        }
-        else
-        {
-            foreach (var item in _enemyCharacters)
-            {
-                if (item.entityInfo.currentHp / (float)item.entityInfo.maxHp <= 0.1f)
-                {
-                    indexList.Add(_enemyCharacters.IndexOf(item));
-                }
+                playerWeight += 0.3f;
             }
         }
 
-        return indexList;
+        foreach (var item in _enemyCharacters)
+        {
+            if (item.entityInfo.LowHPStatEnemy())
+            {
+                enemyWeight += 0.3f;
+            }
+        }
     }
     private void Turn() //한 턴
     {
