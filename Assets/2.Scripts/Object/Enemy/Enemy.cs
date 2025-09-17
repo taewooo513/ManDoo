@@ -1,25 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using DataTable;
-using System;
 using System.Linq;
 
 public class Enemy : BaseEntity
 {
     private EnemyData data;
     private Skill[] skills;
-    private float[] percentage;
-    private float standardPercentage = 0.25f;
-    private int mark = -1;
-    private int _id;
-    private List<(int, int)> playerPosition;
-    private List<(int, int)> enemyPosition;
 
     public void Init(int id)
     {
         SetData(id);
         SetSkill();
-        _id = id; //현재 Enemy id
     }
 
     private void SetData(int id)
@@ -44,87 +36,58 @@ public class Enemy : BaseEntity
         }
     }
 
-    private int GetCurrentPosition()
-    {
-        // enemyPosition 에서 받아온 item2 가 _id 와 일치하는 인덱스를 찾는다.
-        // 그 후, 그 인덱스의 item1 을 리턴해서 현재 스킬을 사용하는 enemy 의 위치값을 넘겨준다.
-        enemyPosition = BattleManager.Instance.GetEnemyPosition();
-
-        foreach (var position in enemyPosition)
-        {
-            var currentPosition = position.Item1;
-            var currentId = position.Item2;
-            
-            if (currentId == _id)
-                return currentPosition;
-        }
-        return -1;
-    }
-
     private Skill GetRandomSkill()
     {
         var possibleSkills = new List<Skill>();
-        int currentPosition = GetCurrentPosition();
-        
-        if (currentPosition == -1) return null;
+        if (skills == null || skills.Length == 0) return null;
 
         foreach (var skill in skills)
         {
+            if (skill == null || skill.skillInfo == null) continue;
+            var info = skill.skillInfo;
             var desiredPosition = GetDesiredPosition(skill);
 
             if (IsSingleTargetSkill(skill))
             {
                 if (CanUseSkill(skill))
                     possibleSkills.Add(skill);
-                else
+                else if (desiredPosition != -1)
                 {
-                    if (desiredPosition != -1)
-                    {
-                        BattleManager.Instance.SwitchPosition(this, desiredPosition);
-                        // 아래 코드는 만약 적이 스킬 사용 가능 구역으로 이동 후 바로 스킬을 사용 할 수 있는지 판단 후 작성.
-                        // if (CanUseSkill(skill))
-                        //     possibleSkills.Add(skill);
-                    }
-                }
-
-            }
-            else
-            {
-                var info = skill.skillInfo;
-                bool atEnablePosition = info.enablePos.Contains(currentPosition);
-
-                if (!atEnablePosition)
-                {
-                    if (desiredPosition != -1)
-                    {
-                        BattleManager.Instance.SwitchPosition(this, desiredPosition);
-                        currentPosition = GetCurrentPosition();
-                        atEnablePosition = info.enablePos.Contains(currentPosition);
-                    }
-                }
-                
-                else
-                {
-                    var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos);
-                    if (possibleSkillRange.Count > 0)
+                    BattleManager.Instance.SwitchPosition(this, desiredPosition);
+                    if (CanUseSkill(skill))
                         possibleSkills.Add(skill);
                 }
+            }
 
+            else
+            {
+                bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+
+                if (!atEnablePosition && desiredPosition != -1)
+                {
+                    BattleManager.Instance.SwitchPosition(this, desiredPosition);
+                    atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+                }
+
+                if (atEnablePosition)
+                {
+                    var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
+                    if (possibleSkillRange != null && possibleSkillRange.Count > 0)
+                        possibleSkills.Add(skill);
+                }
             }
         }
 
         if (possibleSkills.Count == 0) return null;
-        else
-            return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
+        else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
     }
 
     private bool CanUseSkill(Skill skill)
     {
-        int currentPosition = GetCurrentPosition();
-        var playerPosition = BattleManager.Instance.GetPlayerPosition();
+        if (skill == null || skill.skillInfo == null) return false;
         var info = skill.skillInfo;
-
-        bool atEnablePosition = info.enablePos.Contains(currentPosition);
+        var playerPosition = BattleManager.Instance.GetPlayerPosition();
+        bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
         bool atTargetPosition = playerPosition.Any(x => info.targetPos.Contains(x.Item1));
 
         if (atEnablePosition && atTargetPosition)
@@ -140,15 +103,14 @@ public class Enemy : BaseEntity
         else return false;
     }
 
-    public override void Attack(BaseEntity baseEntity)
-    {
-        base.Attack(baseEntity);
-    }
+    public override void Attack(BaseEntity baseEntity) => base.Attack(baseEntity);
 
     private int GetDesiredPosition(Skill skill)
     {
+        if (skill == null || skill.skillInfo == null) return -1;
         var info = skill.skillInfo;
-        if (info.enablePos.Count == 0) return -1;
+        if (info.enablePos == null || info.enablePos.Count == 0) return -1;
+
         var currentIndex = BattleManager.Instance.FindEntityPosition(this) ?? -1;
         if (currentIndex < 0) return -1;
 
