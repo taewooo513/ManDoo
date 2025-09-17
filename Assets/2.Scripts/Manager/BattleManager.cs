@@ -66,14 +66,10 @@ public class BattleManager : Singleton<BattleManager>
         }
 
         nowTurnEntity = _turnQueue.Peek();
-        //nowTurnEntity.StartTurn();
-        //if(GetAverageSpeed()/10 >= UnityEngine.Random.Value)
-        // {
-        //     nowTurnEntity.StartExtraTurn();
-        // }
+        nowTurnEntity.StartTurn();
     }
 
-    public void EndTurn()
+    public void EndTurn(bool hasExtraTurn)
     {
         if (_playableCharacters.Count == 0)
         {
@@ -86,6 +82,14 @@ public class BattleManager : Singleton<BattleManager>
         }
         else
         {
+            if (hasExtraTurn)
+            {
+                //if((nowTurnEntity.EntityInfo.speed - GetAverageSpeed())/10 >= UnityEngine.Random.Value)
+                // {
+                //     nowTurnEntity.StartExtraTurn();
+                // }
+            }
+
             _turnQueue.Dequeue();
             Turn();
         }
@@ -94,12 +98,14 @@ public class BattleManager : Singleton<BattleManager>
     private void Win()
     {
         Debug.Log("승리!");
+        //승리 UI 출력
         EndBattle();
     }
 
     private void Lose()
     {
         Debug.Log("패배...");
+        //패배 UI출력
         EndBattle();
     }
 
@@ -114,21 +120,20 @@ public class BattleManager : Singleton<BattleManager>
         int m = _enemyCharacters.Count;
         List<BaseEntity> tempPlayerList = _playableCharacters;
         List<BaseEntity> tempEnemyList = _enemyCharacters;
-        while (n > 1 && m > 1)
+        while (n > 1)
         {
             n--;
-            if (n > 0)
-            {
-                int k = _random.Next(n + 1);
-                (tempPlayerList[k], tempPlayerList[n]) = (tempPlayerList[n], tempPlayerList[k]);
-            }
 
+            int k = _random.Next(n + 1);
+            (tempPlayerList[k], tempPlayerList[n]) = (tempPlayerList[n], tempPlayerList[k]);
+        }
+
+        while (m > 1)
+        {
             m--;
-            if (m > 0)
-            {
-                int k = _random.Next(m + 1);
-                (tempEnemyList[k], tempEnemyList[m]) = (tempEnemyList[m], tempEnemyList[k]);
-            }
+
+            int k = _random.Next(m + 1);
+            (tempEnemyList[k], tempEnemyList[m]) = (tempEnemyList[m], tempEnemyList[k]);
         }
 
         tempPlayerList.Sort((a, b) => b.entityInfo.speed.CompareTo(a.entityInfo.speed));
