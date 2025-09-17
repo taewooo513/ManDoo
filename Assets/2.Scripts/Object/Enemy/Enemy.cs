@@ -44,7 +44,8 @@ public class Enemy : BaseEntity
     {
         var possibleSkills = new List<Skill>();
         if (skills == null || skills.Length == 0) return null;
-        //BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
+        var weights = new List<float>();
+        BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
 
         foreach (var skill in skills)
         {
@@ -124,18 +125,24 @@ public class Enemy : BaseEntity
     {
         base.Attack(dmg, baseEntity);
         var attackSkill = GetRandomSkill();
+        var info = attackSkill.skillInfo;
+        var targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
+        int damage = entityInfo.attackDamage; // 여기서 스킬의 adRatio 곱하는걸로 기억하는데 어디로 간건지 물어보기.
+        //int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights);
+        if (IsSingleTargetSkill(attackSkill))
+        {
+            //int pickPlayer = 
+        }
         // float targetIndex = BattleManager.Instance.GetLowHpSkillWeight()
-        // var target = 
-        // var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
-        // int damage = 
-        // attackSkill.UseSkill(BaseEntity target);
+            // var target = 
+            // var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
+            // int damage = 
+            //attackSkill.UseSkill();
         //
         // if (IsSingleTargetSkill(attackSkill))
         //     BattleManager.Instance.AttackEntity(targetIndex, damage);
         // else
         //     BattleManager.Instance.AttackEntity(targetIndicies, damage);
-
-
     }
 
     private int GetDesiredPosition(Skill skill)
