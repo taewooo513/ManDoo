@@ -9,8 +9,8 @@ public class BattleManager : Singleton<BattleManager>
 {
     private List<BaseEntity> _playableCharacters;
     public List<BaseEntity> PlayableCharacters => _playableCharacters;
-    
-    
+
+
     private List<BaseEntity> _enemyCharacters;
 
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
@@ -46,39 +46,66 @@ public class BattleManager : Singleton<BattleManager>
         return sum / (_playableCharacters.Count + _enemyCharacters.Count);
     }
 
-    private void Start()//준비되면 주석 풀기.
+    private void Start() //준비되면 주석 풀기.
     {
-        
     }
 
-    public void BattleStartTrigger()
+    public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
     {
-        // while (true) <- Update 작동 안함 다른 방법 강구해야됨
-        // {
-        //     if (_turnQueue.Count == 0) SetTurnQueue();
-        //     Turn();
-        //     if (_playableCharacters.Count == 0)
-        //     {
-        //         Lose();
-        //         break;
-        //     }
-        //     else if (_enemyCharacters.Count == 0)
-        //     {
-        //         Win();
-        //         break;
-        //     }
-        // }
+        _playableCharacters = playerList;
+        _enemyCharacters = enemyList;
+        //전투 시작 UI 출력
+        Turn();
     }
+
     private void Turn() //한 턴
     {
-        //nowTurnEntity = _turnQueue.Peek();
+        if (_turnQueue.Count == 0)
+        {
+            SetTurnQueue();
+        }
+
+        nowTurnEntity = _turnQueue.Peek();
         //nowTurnEntity.StartTurn();
-        //nowTurnEntity.EndTurn();
         //if(GetAverageSpeed()/10 >= UnityEngine.Random.Value)
         // {
         //     nowTurnEntity.StartExtraTurn();
         // }
-        //_turnQueue.Dequeue();
+    }
+
+    public void EndTurn()
+    {
+        if (_playableCharacters.Count == 0)
+        {
+            Lose();
+        }
+
+        else if (_enemyCharacters.Count == 0)
+        {
+            Win();
+        }
+        else
+        {
+            _turnQueue.Dequeue();
+            Turn();
+        }
+    }
+
+    private void Win()
+    {
+        Debug.Log("승리!");
+        EndBattle();
+    }
+
+    private void Lose()
+    {
+        Debug.Log("패배...");
+        EndBattle();
+    }
+
+    private void EndBattle()
+    {
+        //TODO: 전투가 끝났을 때 공통적으로 해야하는 것...?
     }
 
     private void SetTurnQueue() //한번 섞은 후, 순서별 정렬, 플레이어 우선 정렬
@@ -103,7 +130,7 @@ public class BattleManager : Singleton<BattleManager>
                 (tempEnemyList[k], tempEnemyList[m]) = (tempEnemyList[m], tempEnemyList[k]);
             }
         }
-        
+
         tempPlayerList.Sort((a, b) => b.entityInfo.speed.CompareTo(a.entityInfo.speed));
         tempEnemyList.Sort((a, b) => b.entityInfo.speed.CompareTo(a.entityInfo.speed));
         while (tempPlayerList.Count != 0 || tempEnemyList.Count != 0)
@@ -118,7 +145,8 @@ public class BattleManager : Singleton<BattleManager>
                 tempEnemyList.Clear();
                 break;
             }
-            else if (tempEnemyList.Count == 0)
+
+            if (tempEnemyList.Count == 0)
             {
                 foreach (var item in tempPlayerList)
                 {
@@ -128,24 +156,22 @@ public class BattleManager : Singleton<BattleManager>
                 tempPlayerList.Clear();
                 break;
             }
+
+            if (tempPlayerList[0].entityInfo.speed >= tempEnemyList[0].entityInfo.speed)
+            {
+                _turnQueue.Enqueue(tempPlayerList[0]);
+                tempPlayerList.RemoveAt(0);
+            }
             else
             {
-                if (tempPlayerList[0].entityInfo.speed >= tempEnemyList[0].entityInfo.speed)
-                {
-                    _turnQueue.Enqueue(tempPlayerList[0]);
-                    tempPlayerList.RemoveAt(0);
-                }
-                else
-                {
-                    _turnQueue.Enqueue(tempEnemyList[0]);
-                    tempEnemyList.RemoveAt(0);
-                }
+                _turnQueue.Enqueue(tempEnemyList[0]);
+                tempEnemyList.RemoveAt(0);
             }
         }
     }
 
     //특정 Entity를 보내면 Position을 return합니다.
-    public int? FindEntityPosition(BaseEntity baseEntity) 
+    public int? FindEntityPosition(BaseEntity baseEntity)
     {
         if (baseEntity is PlayableCharacter)
         {
@@ -209,7 +235,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         _enemyCharacters[index].Damaged(damageValue);
     }
-    
+
     //안쓰지 않을까요?
     public void AttackPlayer(int damageValue, int index)
     {
@@ -247,6 +273,7 @@ public class BattleManager : Singleton<BattleManager>
 
         return false;
     }
+
     //플레이어 위치 받아오는 함수
     public List<(int, int)> GetPlayerPosition()
     {
@@ -369,17 +396,18 @@ public class BattleManager : Singleton<BattleManager>
             }
             else
             {
-                if (index > desiredPosition)//TODO:나중에 로직 변경해야됨, 지금 desiredPosition이 두 번 들어감.
+                //index가 현재 바꾸고 싶어하는 entity의 위치
+                if (index > desiredPosition)
                 {
-                    (_enemyCharacters[desiredPosition - 1], _enemyCharacters[desiredPosition]) = (
-                        _enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition - 1]);
-                    SwapEntityTransform(_enemyCharacters[desiredPosition - 1], _enemyCharacters[desiredPosition]);
+                    (_enemyCharacters[index - 1], _enemyCharacters[index]) = (
+                        _enemyCharacters[index], _enemyCharacters[index - 1]);
+                    SwapEntityTransform(_enemyCharacters[index - 1], _enemyCharacters[index]);
                 }
                 else
                 {
-                    (_enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition]) = (
-                        _enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition]);
-                    SwapEntityTransform(_enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition]);
+                    (_enemyCharacters[index + 1], _enemyCharacters[index]) = (
+                        _enemyCharacters[index], _enemyCharacters[index + 1]);
+                    SwapEntityTransform(_enemyCharacters[index + 1], _enemyCharacters[index]);
                 }
             }
         }
