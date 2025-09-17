@@ -10,11 +10,13 @@ public class InGameBattleStartUI : UIBase
     {
         base.OnOpen();
         StartCoroutine(ClosePanel());
+   
     }
 
     private IEnumerator ClosePanel()
     {
         yield return new WaitForSeconds(closeTimer);
-        base.OnClose();
+        base.CloseUI();
+        
     }
 }
