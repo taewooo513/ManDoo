@@ -17,4 +17,9 @@ public class SelectEnemyButton : SelectEntityButton
     {
         UIManager.Instance.OpenUI<InGameEnemyUI>().UpdateUI(enemy.entityInfo);
     }
+
+    protected override void OnClickActionButton(Skill skill)
+    {
+        skill.UseSkill(enemy);
+    }
 }

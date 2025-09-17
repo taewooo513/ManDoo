@@ -105,7 +105,7 @@ public class BaseEntity : MonoBehaviour
         //hpbarUI.UpdateUI();
     }
 
-    public virtual void Attack(int dmg, BaseEntity baseEntity)
+    public virtual void Attack(float dmg, BaseEntity baseEntity)
     {
     }
 

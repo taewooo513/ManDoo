@@ -7,7 +7,11 @@ public class Enemy : BaseEntity
 {
     private EnemyData data;
     private Skill[] skills;
-
+    public void Start()
+    {
+        BattleManager.Instance.AddEnemyCharacter(this);
+        Init(2001);
+    }
     public void Init(int id)
     {
         SetData(id);
@@ -30,7 +34,7 @@ public class Enemy : BaseEntity
         foreach (var id in data.skillId)
         {
             Skill skill = new Skill();
-            skill.Init(id);
+            skill.Init(id, this);
             skills[i] = skill;
             i++;
         }
@@ -103,7 +107,7 @@ public class Enemy : BaseEntity
         else return false;
     }
 
-    public override void Attack(int dmg, BaseEntity baseEntity)
+    public override void Attack(float dmg, BaseEntity baseEntity)
     {
         base.Attack(dmg, baseEntity);
         var attackSkill = GetRandomSkill();
