@@ -42,11 +42,10 @@ public class EntityInfo
         }
     }
 
-    public float GetTotalWeight() //개개인이 가지고 있는 가중치 합
+    public float GetTotalTargetWeight() //개개인이 가지고 있는 타깃 가중치 합
     {
-        float result = _standardWeight + hpWeight + statEffect.AttackWeight(); //가중치 합
-        GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가
-                                                          //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
+        float result = _standardWeight + statEffect.AttackWeight(); //가중치 합
+        //GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가 //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
         return result;
     }
 
