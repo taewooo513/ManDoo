@@ -6,11 +6,11 @@ public class StatEffect
 {
     private List<StatEffectInfo> _entityCurrentStatus = new();
     private SetTotalEffectStat _setTotalEffectStat;
-    private float totalWeight = 0f;
+    private float _totalWeight = 0f;
 
-    public void AttackPercentage() //가중치 계산/부여
+    public float AttackWeight() //가중치 계산/부여
     { //스킬 쓸 때마다 호출
-        totalWeight = 0;
+        _totalWeight = 0;
         
         //상태이상 효과에 따라 다른 가중치 부여
         for (int i = 0; i < _entityCurrentStatus.Count;)
@@ -18,40 +18,40 @@ public class StatEffect
             for (int j = 0; j < _entityCurrentStatus[i].entityStatus.Count; j++)
             {
                 var status = _entityCurrentStatus[i].entityStatus[j];
-                if (status == StatusType.Normal) return;
+                if (status == StatusType.Normal) return 0f;
                 if (status == StatusType.Mark)
                 {
-                    totalWeight += SetTotalEffectStat.Mark;
+                    _totalWeight += SetTotalEffectStat.Mark;
                 }
 
                 if (status == StatusType.Buff)
                 {
-                    totalWeight += SetTotalEffectStat.Buff;
+                    _totalWeight += SetTotalEffectStat.Buff;
                 }
 
                 if (status == StatusType.Debuff)
                 {
-                    totalWeight += SetTotalEffectStat.Debuff;
+                    _totalWeight += SetTotalEffectStat.Debuff;
                 }
 
                 if (status == StatusType.Guard)
                 {
-                    totalWeight += SetTotalEffectStat.Guard;
+                    _totalWeight += SetTotalEffectStat.Guard;
                 }
 
                 if (status == StatusType.Guardian)
                 {
-                    totalWeight += SetTotalEffectStat.Guardian;
+                    _totalWeight += SetTotalEffectStat.Guardian;
                 }
 
                 if (status == StatusType.PlayerReactAtk)
                 {
-                    totalWeight += SetTotalEffectStat.PlayerReactAtk;
+                    _totalWeight += SetTotalEffectStat.PlayerReactAtk;
                 }
 
                 if (status == StatusType.PlayerReactSupport)
                 {
-                    totalWeight += SetTotalEffectStat.PlayerReactSupport;
+                    _totalWeight += SetTotalEffectStat.PlayerReactSupport;
                 }
             }
 
@@ -65,6 +65,8 @@ public class StatEffect
                 i++;
             }
         }
+        
+        return _totalWeight;
     }
     
     public void AddStatus(StatEffectInfo status) //상태이상 추가
