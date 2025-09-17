@@ -4,5 +4,4 @@ using UnityEngine;
 
 static public class Utillity
 {
-
 }
