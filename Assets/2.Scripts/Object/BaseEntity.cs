@@ -76,4 +76,12 @@ public class BaseEntity : MonoBehaviour
     {
 
     }
+    public virtual void StartTurn()
+    {
+        
+    }
+    public virtual void EndTurn()
+    {
+
+    }
 }
