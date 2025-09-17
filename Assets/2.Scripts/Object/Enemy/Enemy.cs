@@ -103,7 +103,13 @@ public class Enemy : BaseEntity
         else return false;
     }
 
-    public override void Attack(BaseEntity baseEntity) => base.Attack(baseEntity);
+    public override void Attack(BaseEntity baseEntity)
+    {
+        base.Attack(baseEntity);
+        var attackSkill = GetRandomSkill();
+        // RandomizeUtility.TryGetRandomPlayerIndexByWeight(); // 플레이어에서 가중치 받아오기
+        // attackSkill.UseSkill();
+    }
 
     private int GetDesiredPosition(Skill skill)
     {
@@ -131,4 +137,6 @@ public class Enemy : BaseEntity
         }
         return -1;
     }
+
+
 }
