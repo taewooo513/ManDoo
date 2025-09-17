@@ -8,9 +8,5 @@ public class Test : MonoBehaviour
     {
         if (DataManager.Instance != null)
             DataManager.Instance.Initialize();
-
-        DataManager.Instance.Test();
     }
-
-
 }
