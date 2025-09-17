@@ -15,4 +15,9 @@ public static class GenerateWeightListUtility
     {
         return weightsList;
     }
+
+    public static void Clear()
+    {
+        weightsList.Clear();
+    }
 }
