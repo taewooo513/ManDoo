@@ -10,7 +10,7 @@ public class DamageSkill : SkillEffect
     }
     public void HitDamageSkill(BaseEntity attackEntity, BaseEntity damagedEntity)
     {
-        attackEntity.Attack(1, damagedEntity);
+        attackEntity.Attack(((float)attackEntity.entityInfo.attackDamage) * adRatio, damagedEntity);
     }
 
     public void UseBuffSkill(BaseEntity attackEntity, BaseEntity damagedEntity)

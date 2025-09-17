@@ -35,12 +35,13 @@ public class SkillInfo
 public class Skill
 {
     public SkillInfo skillInfo { get; private set; }
-
+    public const float defaultWeight = 0.25f;
     SkillEffect[] skillEffects;
-
-    public void Init(int id)
+    BaseEntity baseEntity;
+    public void Init(int id, BaseEntity entity)
     {
         skillInfo = new SkillInfo(id);
+        baseEntity = entity;
     }
 
     public void Setting()
@@ -48,11 +49,11 @@ public class Skill
 
     }
 
-    public void UseSkill(BaseEntity actionEntity, BaseEntity targetEntity)
+    public void UseSkill(BaseEntity targetEntity)
     {
         for (int i = 0; i < skillEffects.Length; i++)
         {
-            skillEffects[i].ActiveEffect(actionEntity,targetEntity);
+            skillEffects[i].ActiveEffect(baseEntity, targetEntity);
         }
     }
 }
