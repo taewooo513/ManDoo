@@ -58,6 +58,32 @@ public class BattleManager : Singleton<BattleManager>
         Turn();
     }
 
+    public List<int> GetLowHpEntityIndexList(bool isPlayer)
+    {
+        List<int> indexList = new List<int>();
+        if (isPlayer)
+        {
+            foreach (var item in _playableCharacters)
+            {
+                if (item.entityInfo.currentHp / (float)item.entityInfo.maxHp <= 0.4f)
+                {
+                    indexList.Add(_playableCharacters.IndexOf(item));
+                }
+            }
+        }
+        else
+        {
+            foreach (var item in _enemyCharacters)
+            {
+                if (item.entityInfo.currentHp / (float)item.entityInfo.maxHp <= 0.1f)
+                {
+                    indexList.Add(_enemyCharacters.IndexOf(item));
+                }
+            }
+        }
+
+        return indexList;
+    }
     private void Turn() //한 턴
     {
         if (_turnQueue.Count == 0)
