@@ -7,11 +7,11 @@ using UnityEngine.Playables;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    private List<BaseEntity> _playableCharacters;
+    public List<BaseEntity> _playableCharacters;
     public List<BaseEntity> PlayableCharacters => _playableCharacters;
 
 
-    private List<BaseEntity> _enemyCharacters;
+    public List<BaseEntity> _enemyCharacters;
 
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
 
@@ -60,6 +60,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
     {
+        Debug.Log("Test");
         _playableCharacters = playerList;
         _enemyCharacters = enemyList;
         //전투 시작 UI 출력
@@ -90,12 +91,14 @@ public class BattleManager : Singleton<BattleManager>
     }
     private void Turn() //한 턴
     {
+        
         if (_turnQueue.Count == 0)
         {
             SetTurnQueue();
         }
 
         nowTurnEntity = _turnQueue.Peek();
+        Debug.Log(nowTurnEntity);
         nowTurnEntity.StartTurn();
     }
 
@@ -166,8 +169,19 @@ public class BattleManager : Singleton<BattleManager>
     {
         int n = _playableCharacters.Count;
         int m = _enemyCharacters.Count;
-        List<BaseEntity> tempPlayerList = _playableCharacters;
-        List<BaseEntity> tempEnemyList = _enemyCharacters;
+        List<BaseEntity> tempPlayerList = new();
+        List<BaseEntity> tempEnemyList = new();
+
+        foreach (var item in _playableCharacters)
+        {
+            tempPlayerList.Add(item);
+        }
+
+        foreach (var item in _enemyCharacters)
+        {
+            tempEnemyList.Add(item);
+        }
+        
         while (n > 1)
         {
             n--;
