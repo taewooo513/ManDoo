@@ -11,7 +11,6 @@ public class SelectSkillButton : MonoBehaviour
 
     private void Awake()
     {
-        
         inGameUIManager = UIManager.Instance.OpenUI<InGameUIManager>();
     }
     public void SetButton(Skill skill)
@@ -23,5 +22,4 @@ public class SelectSkillButton : MonoBehaviour
     {
         inGameUIManager.OnClickSkillButton(skill);
     }
-
 }

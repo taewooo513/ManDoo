@@ -14,6 +14,10 @@ public class PlayableCharacter : BaseEntity
         DataManager.Instance.Initialize();
         SetData(1001);
     }
+    public void Start()
+    {
+        BattleManager.Instance.AddPlayableCharacter(this);
+    }
 
     private void SetData(int id)
     {
@@ -28,14 +32,10 @@ public class PlayableCharacter : BaseEntity
         {
             skills[i] = new Skill();
             var skillData = DataManager.Instance.Skill.GetSkillData(data.skillId[i]);
-            //skills[i] = new SkillInfo(skillData.skillName,skillData.effectType,skillData.adRatio
-            //    ,skillData.constantValue,skillData.duration,skillData.targetType,skillData.enablePos,
-            //    skillData.targetPos,skillData.iconPathString);
-
         }
     }
 
-    public override void Attack(int dmg, BaseEntity baseEntity)
+    public override void Attack(float dmg, BaseEntity baseEntity)
     {
         base.Attack(dmg, baseEntity);
         // BattleManager.Instance.AttackEnemy(baseEntity);

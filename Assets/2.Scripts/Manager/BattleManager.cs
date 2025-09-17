@@ -46,8 +46,12 @@ public class BattleManager : Singleton<BattleManager>
         return sum / (_playableCharacters.Count + _enemyCharacters.Count);
     }
 
-    private void Start() //준비되면 주석 풀기.
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            BattleStartTrigger(_playableCharacters, _enemyCharacters);
+        }
     }
 
     public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
@@ -290,6 +294,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         return new List<(int, int)>(); //임시: Item1 = 위치값; Item2 = id 값
     }
+
 
     //날 것의 스킬 범위를 던져주면 "때릴 수 있는" 적의 위치 리스트를 반환합니다. 범위 공격에 적합합니다.
     public List<int> GetPossibleSkillRange(List<int> skillRange)
