@@ -10,9 +10,9 @@ public static class RandomizeUtility
         int playerIndex = -1;
 
         foreach (var weight in weights)
-            total += weight; 
+            total += weight;
 
-        float rand = UnityEngine.Random.value * total; 
+        float rand = UnityEngine.Random.value * total;
 
         int i = 0;
         foreach (var weight in weights)
