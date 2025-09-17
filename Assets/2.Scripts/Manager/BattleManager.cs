@@ -69,7 +69,7 @@ public class BattleManager : Singleton<BattleManager>
         nowTurnEntity.StartTurn();
     }
 
-    public void EndTurn(bool hasExtraTurn)
+    public void EndTurn(bool hasExtraTurn = true)
     {
         if (_playableCharacters.Count == 0)
         {
@@ -84,10 +84,19 @@ public class BattleManager : Singleton<BattleManager>
         {
             if (hasExtraTurn)
             {
-                //if((nowTurnEntity.EntityInfo.speed - GetAverageSpeed())/10 >= UnityEngine.Random.Value)
-                // {
-                //     nowTurnEntity.StartExtraTurn();
-                // }
+                if ((nowTurnEntity.entityInfo.speed - GetAverageSpeed()) / 10 >= UnityEngine.Random.value)
+                {
+                    //nowTurnEntity.StartExtraTurn();
+                    if (_playableCharacters.Count == 0)
+                    {
+                        Lose();
+                    }
+
+                    else if (_enemyCharacters.Count == 0)
+                    {
+                        Win();
+                    }
+                }
             }
 
             _turnQueue.Dequeue();
