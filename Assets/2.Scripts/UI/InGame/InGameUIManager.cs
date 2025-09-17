@@ -19,4 +19,10 @@ public class InGameUIManager : UIBase
     {
         buttonSkillActiveAction -= action;
     }
+    public void OpenInventoryUI()
+    {
+        UIManager.Instance.CloseUI<InGameEnemyUI>();
+        UIManager.Instance.OpenUI<InGameInventoryUI>();
+    }
 }
+        

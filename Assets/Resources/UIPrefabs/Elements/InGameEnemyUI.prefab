@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8473657238387407181}
   - component: {fileID: 4647461660132731623}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Text (TMP)Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 5596012819286532825}
   - component: {fileID: 6790595015117888850}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Text (TMP)AD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -337,10 +337,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: move
+  m_text: "\uC774\uB3D9"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -435,9 +435,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7361886818765188990}
-  - {fileID: 8254463414153831879}
   - {fileID: 8840112084421138252}
   - {fileID: 1597718573804369329}
+  - {fileID: 8254463414153831879}
   m_Father: {fileID: 5091506785497807455}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -586,10 +586,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\rbleeding"
+  m_text: "\uCD9C\uD608"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -759,10 +759,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: "\uC774\uB984\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1011,7 +1011,7 @@ GameObject:
   - component: {fileID: 224699035414097126}
   - component: {fileID: 8762789742771150325}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1200,8 +1200,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: HP
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1434,8 +1434,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1566,10 +1566,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: faint
+  m_text: "\uAE30\uC808"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1684,7 +1684,7 @@ GameObject:
   - component: {fileID: 6700050805320688254}
   - component: {fileID: 975793829432239259}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Text (TMP)Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1739,8 +1739,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1970,7 +1970,7 @@ GameObject:
   - component: {fileID: 6324803026833681160}
   - component: {fileID: 5693623224627789508}
   m_Layer: 5
-  m_Name: Text (TMP) (2)
+  m_Name: Text (TMP)/
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,8 +2025,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: /
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2104,7 +2104,7 @@ GameObject:
   - component: {fileID: 2768306716549936986}
   - component: {fileID: 5654599804776430983}
   m_Layer: 5
-  m_Name: Text (TMP) (3)
+  m_Name: Text (TMP)Def
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2316,7 +2316,7 @@ GameObject:
   - component: {fileID: 3409518649115984345}
   - component: {fileID: 9176486301808497972}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2503,10 +2503,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: poison
+  m_text: "\uC911\uB3C5"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89a007232ba379b419374c396d1b4077, type: 2}
+  m_sharedMaterial: {fileID: 9010689696155022204, guid: 89a007232ba379b419374c396d1b4077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
