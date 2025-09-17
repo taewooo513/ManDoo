@@ -48,7 +48,12 @@ public class BattleManager : Singleton<BattleManager>
 
     private void Start()//준비되면 주석 풀기.
     {
-        // while (true)
+        
+    }
+
+    public void BattleStartTrigger()
+    {
+        // while (true) <- Update 작동 안함 다른 방법 강구해야됨
         // {
         //     if (_turnQueue.Count == 0) SetTurnQueue();
         //     Turn();
@@ -64,7 +69,6 @@ public class BattleManager : Singleton<BattleManager>
         //     }
         // }
     }
-
     private void Turn() //한 턴
     {
         //nowTurnEntity = _turnQueue.Peek();
@@ -72,8 +76,7 @@ public class BattleManager : Singleton<BattleManager>
         //nowTurnEntity.EndTurn();
         //if(GetAverageSpeed()/10 >= UnityEngine.Random.Value)
         // {
-        //     nowTurnEntity.StartTurn();
-        //     nowTurnEntity.EndTurn();
+        //     nowTurnEntity.StartExtraTurn();
         // }
         //_turnQueue.Dequeue();
     }
@@ -363,11 +366,10 @@ public class BattleManager : Singleton<BattleManager>
                 (_enemyCharacters[index], _enemyCharacters[desiredPosition]) =
                     (_enemyCharacters[desiredPosition], _enemyCharacters[index]);
                 SwapEntityTransform(_enemyCharacters[index], _enemyCharacters[desiredPosition]);
-                ;
             }
             else
             {
-                if (index > desiredPosition)
+                if (index > desiredPosition)//TODO:나중에 로직 변경해야됨, 지금 desiredPosition이 두 번 들어감.
                 {
                     (_enemyCharacters[desiredPosition - 1], _enemyCharacters[desiredPosition]) = (
                         _enemyCharacters[desiredPosition], _enemyCharacters[desiredPosition - 1]);

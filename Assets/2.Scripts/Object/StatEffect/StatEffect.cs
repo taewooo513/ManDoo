@@ -59,7 +59,7 @@ public class StatEffect
             {
                 RemoveStatus(_entityCurrentStatus[i]); //상태이상 제거
             }
-            else
+            else //지속시간이 남았다면
             {
                 _entityCurrentStatus[i].duration--; //턴 감소
                 i++;
