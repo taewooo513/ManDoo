@@ -51,6 +51,10 @@ public class BattleManager : Singleton<BattleManager>
         if (Input.GetKeyDown(KeyCode.V))
         {
             BattleStartTrigger(_playableCharacters, _enemyCharacters);
+            for(int i = 0; i < _playableCharacters.Count; i++)
+            {
+                _playableCharacters[i].StartTurn();
+            }
         }
     }
 
@@ -59,8 +63,9 @@ public class BattleManager : Singleton<BattleManager>
         _playableCharacters = playerList;
         _enemyCharacters = enemyList;
         //전투 시작 UI 출력
-        UIManager.Instance.OpenUI<InGameBattleStartUI>();
+        //UIManager.Instance.OpenUI<InGameBattleStartUI>();
         Turn();
+
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -134,13 +139,13 @@ public class BattleManager : Singleton<BattleManager>
         //전투회피
         UIManager.Instance.OpenUI<InGameBattleRunButton>();
         EndBattle();
-    }  
+    }
 
     private void Win()
     {
         Debug.Log("승리!");
         //승리 UI 출력
-        UIManager.Instance.OpenUI<InGameVictoryUI>();   
+        UIManager.Instance.OpenUI<InGameVictoryUI>();
         EndBattle();
     }
 
