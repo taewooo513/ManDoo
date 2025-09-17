@@ -107,8 +107,8 @@ public class Enemy : BaseEntity
     {
         base.Attack(baseEntity);
         var attackSkill = GetRandomSkill();
-        // RandomizeUtility.TryGetRandomPlayerIndexByWeight(); // 플레이어에서 가중치 받아오기
-        // attackSkill.UseSkill();
+        // RandomizeUtility.TryGetRandomPlayerIndexByWeight(); -> Player 에서 가중치 리스트 받아와서 매개변수로 넣기
+        attackSkill.UseSkill();
     }
 
     private int GetDesiredPosition(Skill skill)
