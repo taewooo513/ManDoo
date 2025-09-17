@@ -147,6 +147,4 @@ public class Enemy : BaseEntity
         }
         return -1;
     }
-
-
 }
