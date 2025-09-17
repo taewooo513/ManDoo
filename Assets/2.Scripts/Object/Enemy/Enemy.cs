@@ -111,9 +111,9 @@ public class Enemy : BaseEntity
     {
         base.Attack(dmg, baseEntity);
         var attackSkill = GetRandomSkill();
-        // int targetIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(); -> Player 에서 가중치 리스트 받아와서 매개변수로 넣기
+        // float targetIndex = BattleManager.Instance.GetLowHpSkillWeight()
         // var target = 
-        var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
+        // var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
         // int damage = 
         // attackSkill.UseSkill(BaseEntity target);
         //
