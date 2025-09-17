@@ -5,7 +5,7 @@ using DataTable;
 
 public class EffectDatas : EffectData
 {
-    public EffectData GetEnemyData(int idx)
+    public EffectData GetEffectData(int idx)
     {
         return EffectDataMap[idx];
     }

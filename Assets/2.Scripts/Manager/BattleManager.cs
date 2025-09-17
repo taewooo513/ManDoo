@@ -63,6 +63,26 @@ public class BattleManager : Singleton<BattleManager>
         Turn();
     }
 
+    public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
+    {
+        playerSkillWeight = 0.0f;
+        enemySkillWeight = 0.0f;
+        foreach (var item in _playableCharacters)
+        {
+            if (item.entityInfo.LowHPStatPlayer()) //플레이어블 캐릭터 체력이 40% 일때
+            {
+                playerSkillWeight += 0.3f; //플레이어블 캐릭터의 스킬 가중치 추가(공격/스킬 우선 사용)
+            }
+        }
+
+        foreach (var item in _enemyCharacters)
+        {
+            if (item.entityInfo.LowHPStatEnemy()) //enemy 체력이 10% 이하일 때
+            {
+                enemySkillWeight += 0.3f; //enemy 캐릭터의 스킬 가중치 추가(보호/힐 우선 사용)
+            }
+        }
+    }
     private void Turn() //한 턴
     {
         if (_turnQueue.Count == 0)
@@ -74,7 +94,7 @@ public class BattleManager : Singleton<BattleManager>
         nowTurnEntity.StartTurn();
     }
 
-    public void EndTurn(bool hasExtraTurn)
+    public void EndTurn(bool hasExtraTurn = true)
     {
         if (_playableCharacters.Count == 0)
         {
@@ -89,10 +109,19 @@ public class BattleManager : Singleton<BattleManager>
         {
             if (hasExtraTurn)
             {
-                //if((nowTurnEntity.EntityInfo.speed - GetAverageSpeed())/10 >= UnityEngine.Random.Value)
-                // {
-                //     nowTurnEntity.StartExtraTurn();
-                // }
+                if ((nowTurnEntity.entityInfo.speed - GetAverageSpeed()) / 10 >= UnityEngine.Random.value)
+                {
+                    //nowTurnEntity.StartExtraTurn();
+                    if (_playableCharacters.Count == 0)
+                    {
+                        Lose();
+                    }
+
+                    else if (_enemyCharacters.Count == 0)
+                    {
+                        Win();
+                    }
+                }
             }
 
             _turnQueue.Dequeue();

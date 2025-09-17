@@ -42,39 +42,36 @@ public class EntityInfo
         }
     }
 
-    public float GetTotalWeight() //개개인이 가지고 있는 가중치 합
+    public float GetTotalTargetWeight() //개개인이 가지고 있는 타깃 가중치 합
     {
-        float result = _standardWeight + hpWeight + statEffect.AttackWeight(); //가중치 합
-        GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가
-                                                          //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
+        float result = _standardWeight + statEffect.AttackWeight(); //가중치 합
+        //GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가 //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
         return result;
     }
 
-    public void LowHPStatEnemy() //적(플레이어블) hp가 낮을 때. TODO : 스킬 공격 시작할 때마다 / 적들 hp 확인하고 / 호출해서? 검증해줘야 됨
+    public bool LowHPStatEnemy() //적(플레이어블) hp가 낮을 때. TODO : 스킬 공격 시작할 때마다 / 적들 hp 확인하고 / 호출해서? 검증해줘야 됨
     {
         double percentage = maxHp * 0.1 * 4;
         if (currentHp <= percentage) //현재 hp가 40% 이하일 때
         {
             hpWeight += addWeight;
+            return true;
         }
-
-        if (currentHp > percentage) //hp가 40% 초과일 때
-        {
-            hpWeight = 0f;
-        }
+        hpWeight = 0f;
+        return false;
     }
 
-    public void LowHPStatPlayer() //아군(enemy) hp가 낮을 때.
+    public bool LowHPStatPlayer() //아군(enemy) hp가 낮을 때.
     {
         double percentage = maxHp * 0.1;
         if (currentHp <= percentage) //현재 hp가 10% 이일 때
         {
             hpWeight += addWeight;
+            return true;
         }
-        if (currentHp > percentage) //hp가 10% 초과일 때
-        {
-            hpWeight = 0f;
-        }
+        //hp가 10% 초과일 때
+        hpWeight = 0f;
+        return false;
     }
 }
 
