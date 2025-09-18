@@ -10,7 +10,8 @@ public class SkillEffect : MonoBehaviour
     protected float adRatio;
     protected int constantValue;
     protected int duration;
-  
+    public EffectType GetEffectType() { return effectType; }
+
     public void Init(int id)
     {
         //DataManager.Instance.Effect.GetEnemyData;
@@ -19,4 +20,5 @@ public class SkillEffect : MonoBehaviour
     {
 
     }
+
 }

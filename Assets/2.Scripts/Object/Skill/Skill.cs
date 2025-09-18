@@ -47,7 +47,6 @@ public class Skill
 
     public void Setting()
     {
-
     }
 
     public void UseSkill(BaseEntity targetEntity)

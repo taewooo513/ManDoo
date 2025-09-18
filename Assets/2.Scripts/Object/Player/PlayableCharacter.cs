@@ -11,11 +11,11 @@ public class PlayableCharacter : BaseEntity
 
     protected void Awake()
     {
-        DataManager.Instance.Initialize();
-        SetData(1001);
     }
     public void Start()
     {
+        SetData(1001);
+
         BattleManager.Instance.AddPlayableCharacter(this);
     }
 
@@ -48,7 +48,6 @@ public class PlayableCharacter : BaseEntity
     public override void StartTurn()
     {
         base.StartTurn();
-        Debug.Log("asdvknlo");
         UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo, skills);
     }
     public override void EndTurn()
