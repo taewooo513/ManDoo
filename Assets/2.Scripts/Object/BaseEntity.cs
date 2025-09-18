@@ -92,6 +92,7 @@ public class BaseEntity : MonoBehaviour
     //private HpbarUI hpbarUI;
     public int id { get; protected set; }
     protected bool hasExtraTurn = true;
+    public Action<BaseEntity> OnDied;
 
     protected virtual void Awake()
     {
@@ -107,10 +108,25 @@ public class BaseEntity : MonoBehaviour
     {
         entityInfo.Damaged(value);
         //hpbarUI.UpdateUI();
+        if (entityInfo.currentHp <= 0)
+        {
+            OnDied?.Invoke(this);
+        }
+    }
+
+    public void BattleStarted()
+    {
+        OnDied += BattleManager.Instance.EntityDead;
+    }
+
+    private void OnDestroy()
+    {
+        OnDied -= BattleManager.Instance.EntityDead;
     }
 
     public virtual void Attack(float dmg, BaseEntity baseEntity)
     {
+
     }
 
     public virtual void Support(float amount, BaseEntity baseEntity)
@@ -119,6 +135,7 @@ public class BaseEntity : MonoBehaviour
     }
     public virtual void UseSkill(BaseEntity baseEntity)
     {
+
     }
     public virtual void StartTurn()
     {
