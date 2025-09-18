@@ -27,8 +27,14 @@ public class SkillInfo
         skillEffects = new SkillEffect[sd.effectId.Count];
         for (int i = 0; i < sd.effectId.Count; i++)
         {
-            //Debug.Log(sd.effectId.Count);
-            //skillEffects[i].Init(sd.effectId[i]);
+            var datas = DataManager.Instance.Effect.GetEffectData(sd.effectId[i]);
+            switch (datas.effectType)
+            {
+                case EffectType.Attack:
+                    skillEffects[i] = new DamageSkill();
+                    skillEffects[i].Init(datas);
+                    break;
+            }
         }
     }
 }
@@ -38,23 +44,25 @@ public class Skill
     public SkillInfo skillInfo { get; private set; }
     public const float defaultWeight = 0.25f;
     public float addedWeight;
-    SkillEffect[] skillEffects;
     BaseEntity baseEntity;
     public void Init(int id, BaseEntity entity)
     {
         skillInfo = new SkillInfo(id);
         baseEntity = entity;
+        Setting();
     }
 
-    public void Setting()
+    private void Setting()
     {
+
     }
 
     public void UseSkill(BaseEntity targetEntity)
     {
-        for (int i = 0; i < skillEffects.Length; i++)
+        for (int i = 0; i < skillInfo.skillEffects.Length; i++)
         {
-            skillEffects[i].ActiveEffect(baseEntity, targetEntity);
+            skillInfo.skillEffects[i].ActiveEffect(baseEntity, targetEntity);
         }
+        BattleManager.Instance.EndTurn();
     }
 }

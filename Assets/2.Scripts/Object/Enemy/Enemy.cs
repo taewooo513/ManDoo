@@ -159,7 +159,7 @@ public class Enemy : BaseEntity
 
     public override void Attack(float dmg, BaseEntity targetEntity) //적->플레이어 공격
     {
-        //BattleManager.Instance.AttackEntity(Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity), dmg);
+        BattleManager.Instance.AttackEntity(Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity), dmg);
     }
 
     public override void Support(float amount, BaseEntity baseEntity)

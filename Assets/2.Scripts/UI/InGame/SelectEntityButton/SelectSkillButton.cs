@@ -16,7 +16,6 @@ public class SelectSkillButton : MonoBehaviour
     }
     public void SetButton(Skill skill)
     {
-        Debug.Log("asdfknl");
         skillButton.onClick.AddListener(() => OnClickSkillButton(skill));
     }
 
