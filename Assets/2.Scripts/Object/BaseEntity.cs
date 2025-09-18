@@ -127,4 +127,8 @@ public class BaseEntity : MonoBehaviour
     {
 
     }
+    public virtual void StartExtraTurn()
+    {
+        
+    }
 }
