@@ -64,4 +64,15 @@ public class Skill
             skillInfo.skillEffects[i].ActiveEffect(baseEntity, targetEntity);
         }
     }
+
+    public EffectType GetSkillType()
+    {
+        EffectType skillType;
+
+        for (int i = 0; i < skillInfo.skillEffects.Length; i++)
+        {
+
+        }
+        return skillInfo.skillEffects[0].GetEffectType();
+    }
 }
