@@ -104,7 +104,17 @@ public class Enemy : BaseEntity
     public override void StartTurn()
     {
         //1순위 - 스킬 사용 //만약에 skill 그게 null이다
-        //if(skill == null) hasExtraTurn = false;
+        //if(TryAttack(out float dmg, out BaseEntity targetEntity)){
+        
+        // Attack(dmg, targetEntity);
+        // 
+        //}
+        //어? 안되네????
+        //이동
+        //else{
+        // _hasExtraTurn = false;
+        //이동할게요
+        //}
         //2순위 - 이동 //스킬을 사용할 수 있는 곳으로 이동한다.
         //3순위 - 턴 넘기기 //혹시 이동도 못해, 그러면 턴 넘기기
 
@@ -132,6 +142,21 @@ public class Enemy : BaseEntity
     //     else return false;
     // }
 
+    /*
+     *private bool TryAttack(out float dmg, out BaseEntity targetEntity){
+     * -> 어 스킬 쓸 수 있네?
+     * dmg 얼마, targetEntity 누구
+     * return true;
+     *
+     * -> 어 안되네?
+     * dmg = 0; targetEntity = null;
+     * return false;
+     *
+     * }
+     *
+     *
+     * 
+     */
     public override void Attack(float dmg, BaseEntity baseEntity) //적->플레이어 공격
     {
         base.Attack(dmg, baseEntity);

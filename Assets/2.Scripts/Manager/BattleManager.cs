@@ -64,16 +64,17 @@ public class BattleManager : Singleton<BattleManager>
         foreach (var item in playerList)
         {
             _playableCharacters.Add(item);
+            item.BattleStarted();
         }
 
         foreach (var item in enemyList)
         {
             _enemyCharacters.Add(item);
+            item.BattleStarted();       
         }
         //전투 시작 UI 출력
         //UIManager.Instance.OpenUI<InGameBattleStartUI>();
         Turn();
-
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -125,7 +126,7 @@ public class BattleManager : Singleton<BattleManager>
             {
                 if ((nowTurnEntity.entityInfo.speed - GetAverageSpeed()) / 10 >= UnityEngine.Random.value)
                 {
-                    //nowTurnEntity.StartExtraTurn();
+                    nowTurnEntity.StartExtraTurn();
                     if (_playableCharacters.Count == 0)
                     {
                         Lose();
@@ -517,7 +518,6 @@ public class BattleManager : Singleton<BattleManager>
             for (int i = (int)index; i < _playableCharacters.Count - 1; i++)
             {
                 SwitchPosition(entity, i+1);
-                
             }
             Destroy(entity.gameObject);
             _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
