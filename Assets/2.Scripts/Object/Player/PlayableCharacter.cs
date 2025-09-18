@@ -43,7 +43,7 @@ public class PlayableCharacter : BaseEntity
         base.StartTurn();
         UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo, entityInfo.skills);
     }
-    public override void EndTurn()
+    public override void EndTurn(bool hasExtraTurn = true)
     {
 
     }

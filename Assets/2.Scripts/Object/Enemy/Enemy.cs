@@ -98,6 +98,29 @@ public class Enemy : BaseEntity
             return false;
     }
 
+    public override void StartTurn()
+    {
+        //bool hasExtraTurn = true;
+        //1순위 - 스킬 사용 //만약에 skill 그게 null이다
+        //if(skill == null) hasExtraTurn = false;
+        //2순위 - 이동 //스킬을 사용할 수 있는 곳으로 이동한다.
+        //3순위 - 턴 넘기기 //혹시 이동도 못해, 그러면 턴 넘기기
+        
+        //다시 여기로 돌아옴
+        //EndTurn(hasExtraTurn);
+    }
+
+    public override void EndTurn(bool hasExtraTurn = true)
+    {
+        //지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다.
+        //BattleManager.Instance.EndTurn();
+    }
+    
+    //public override void StartExtraTurn(){
+    //1순위 - 스킬 사용
+    //2순위 - 이동
+    //3순위 - 턴 넘기기
+    //}
     private bool IsSingleTargetSkill(Skill skill)
     {
         if (skill.skillInfo.targetType == TargetType.Single)
