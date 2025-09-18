@@ -18,6 +18,7 @@ public class EntityInfo
     public StatEffect statEffect;
     public float hpWeight = 0f;
     public float addWeight = 0.3f;
+    public Skill[] skills;
     private readonly float _standardWeight = 0.25f;
 
     public EntityInfo(string name, int maxHp, int attackDamage, int defense, int speed, float evasion, float critical)
@@ -45,17 +46,15 @@ public class EntityInfo
     public float GetTotalTargetWeight() //개개인이 가지고 있는 타깃 가중치 합
     {
         float result = _standardWeight + statEffect.AttackWeight(); //가중치 합
-        //GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가 //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
+        GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가 //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
         return result;
     }
 
     public bool LowHPStatEnemy() //적(플레이어블) hp가 낮을 때. TODO : 스킬 공격 시작할 때마다 / 적들 hp 확인하고 / 호출해서? 검증해줘야 됨
     {
-        hpWeight = 0f;
         double percentage = maxHp * 0.4;
         if (currentHp <= percentage) //현재 hp가 40% 이하일 때
         {
-            hpWeight += addWeight;
             return true;
         }
         return false;
@@ -63,14 +62,22 @@ public class EntityInfo
 
     public bool LowHPStatPlayer() //아군(enemy) hp가 낮을 때.
     {
-        hpWeight = 0f;
         double percentage = maxHp * 0.1;
         if (currentHp <= percentage) //현재 hp가 10% 이일 때
         {
-            hpWeight += addWeight;
             return true;
         }
         return false;
+    }
+
+    public void SetUpSkill(List<int> skillIdList, BaseEntity nowEntity)
+    {
+        skills = new Skill[skillIdList.Count];
+        for (int i = 0; i < skillIdList.Count; i++)
+        {
+            skills[i] = new Skill();
+            skills[i].Init(skillIdList[i], nowEntity);
+        }
     }
 }
 

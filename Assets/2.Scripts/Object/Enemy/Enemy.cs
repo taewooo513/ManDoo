@@ -6,7 +6,6 @@ using System.Linq;
 public class Enemy : BaseEntity
 {
     private EnemyData data;
-    private Skill[] skills;
     public void Start()
     {
         BattleManager.Instance.AddEnemyCharacter(this);
@@ -29,19 +28,20 @@ public class Enemy : BaseEntity
 
     private void SetSkill()
     {
-        skills = new Skill[data.skillId.Count];
+        entityInfo.skills = new Skill[data.skillId.Count];
         int i = 0;
         foreach (var id in data.skillId)
         {
             Skill skill = new Skill();
             skill.Init(id, this);
-            skills[i] = skill;
+            entityInfo.skills[i] = skill;
             i++;
         }
     }
 
     private Skill GetRandomSkill()
     {
+<<<<<<< HEAD
         var skillCandidates = new List<Skill>();
         if (skills == null || skills.Length == 0) return null;
 
@@ -49,6 +49,14 @@ public class Enemy : BaseEntity
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight); // 만약 플레이어의 체력이 40프로 이하거나 아군 체력이 10프로 이하면 해당하는 entity 에 대한 가중치 증가.
         
         foreach (var skill in skills) // 현재 적군이 가지고 있는 스킬 순회
+=======
+        var possibleSkills = new List<Skill>();
+        if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
+        var weights = new List<float>();
+        BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
+
+        foreach (var skill in entityInfo.skills)
+>>>>>>> Develop
         {
             if (skill == null || skill.skillInfo == null) continue; 
             var info = skill.skillInfo;
