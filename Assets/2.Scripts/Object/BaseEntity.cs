@@ -16,6 +16,9 @@ public class EntityInfo
     public float evasion;
     public float critical;
     public StatEffect statEffect;
+    public float hpWeight = 0f;
+    public float addWeight = 0.3f;
+    public Skill[] skills;
     private readonly float _standardWeight = 0.25f;
 
     public EntityInfo(string name, int maxHp, int attackDamage, int defense, int speed, float evasion, float critical)
@@ -65,6 +68,16 @@ public class EntityInfo
             return true;
         }
         return false;
+    }
+
+    public void SetUpSkill(List<int> skillIdList, BaseEntity nowEntity)
+    {
+        skills = new Skill[skillIdList.Count];
+        for (int i = 0; i < skillIdList.Count; i++)
+        {
+            skills[i] = new Skill();
+            skills[i].Init(skillIdList[i], nowEntity);
+        }
     }
 }
 
