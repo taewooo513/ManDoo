@@ -5,10 +5,10 @@ using System.Linq;
 
 public class Enemy : BaseEntity
 {
-    private EnemyData data;
-    private Skill[] skills;
-    private bool hasExtraTurn = true;
-    private bool usedSkill = false;
+    private EnemyData _data;
+    private Skill[] _skills;
+    private bool _hasExtraTurn = true;
+    private Skill _attackSkill;
 
     public void Start()
     {
@@ -24,25 +24,52 @@ public class Enemy : BaseEntity
     private void SetData(int idx)
     {
         this.id = idx;
-        data = DataManager.Instance.Enemy.GetEnemyData(idx);
+        _data = DataManager.Instance.Enemy.GetEnemyData(idx);
         entityInfo = new EntityInfo(
-            data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
+            _data.name, _data.health, _data.attack, _data.defense, _data.speed, _data.evasion, _data.critical
         );
-        entityInfo.SetUpSkill(data.skillId, this);
+        entityInfo.SetUpSkill(_data.skillId, this);
+    }
+    
+    public override void StartTurn()
+    {
+        if (TryAttack(out int position)) //공격 시도 성공시
+        {
+            _hasExtraTurn = true;
+        }
+        else //공격 실패 시
+        {
+            _hasExtraTurn = false; //추가 공격도 실패
+            if (position != -1)
+            { 
+                BattleManager.Instance.SwitchPosition(this, position); //이동
+            }
+        }
+        
+        EndTurn(_hasExtraTurn);
     }
 
-    // private void SetSkill()
-    // {
-    //     skills = new Skill[data.skillId.Count];
-    //     int i = 0;
-    //     foreach (var id in data.skillId)
-    //     {
-    //         Skill skill = new Skill();
-    //         skill.Init(id, this);
-    //         entityInfo.skills[i] = skill;
-    //         i++;
-    //     }
-    // }
+    public override void EndTurn(bool hasExtraTurn = true)
+    {
+        //TODO : 지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다?
+        _attackSkill = null; //선택한 스킬 비워주기
+        BattleManager.Instance.EndTurn(hasExtraTurn);
+    }
+
+    public override void StartExtraTurn()
+    {
+        if (TryAttack(out int position)) //공격 시도 성공시
+        {
+        }
+        else //공격 실패 시
+        {
+            if (position != -1)
+            { 
+                BattleManager.Instance.SwitchPosition(this, position); //이동
+            }
+        }
+        EndTurn(false);
+    }
 
     private Skill GetRandomSkill()
     {
@@ -101,61 +128,38 @@ public class Enemy : BaseEntity
             return false;
     }
 
-    public override void StartTurn()
+    private bool TryAttack(out int position) //스킬 선택, 타겟 선택
     {
-        //1순위 - 스킬 사용 //만약에 skill 그게 null이다
-        //if(skill == null) hasExtraTurn = false;
-        //2순위 - 이동 //스킬을 사용할 수 있는 곳으로 이동한다.
-        //3순위 - 턴 넘기기 //혹시 이동도 못해, 그러면 턴 넘기기
-
-        //다시 여기로 돌아옴
-        //EndTurn(hasExtraTurn);
-    }
-
-    public override void EndTurn(bool hasExtraTurn = true)
-    {
-        //지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다.
-        BattleManager.Instance.EndTurn();
-    }
-
-    public override void StartExtraTurn()
-    {
-        //1순위 - 스킬 사용
-        //2순위 - 이동
-        //3순위 - 턴 넘기기
-    }
-
-    // private bool IsSingleTargetSkill(Skill skill)
-    // {
-    //     if (skill.skillInfo.targetType == TargetType.Single)
-    //         return true;
-    //     else return false;
-    // }
-
-    public override void Attack(float dmg, BaseEntity baseEntity) //적->플레이어 공격
-    {
-        base.Attack(dmg, baseEntity);
-        var attackSkill = GetRandomSkill(); //사용할 스킬 랜덤 선택
-        var info = attackSkill.skillInfo; //사용할 스킬 정보
+        _attackSkill = GetRandomSkill(); //사용할 스킬 랜덤 선택
+        if (_attackSkill == null) //스킬이 없을 때
+        {
+            position = -1; //사용 안 하겠다는 뜻. 이동도 못 함.
+            return false;
+        }
+        var info = _attackSkill.skillInfo; //사용할 스킬 정보
         List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
         List<float> weights = BattleManager.Instance.GetWeightList(true); //타겟 가중치 리스트 가져옴
-        //List<float> weights = GenerateWeightListUtility.GetWeights(); //타겟 가중치 리스트 가져옴
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
-        if (CanUseSkill(attackSkill))
+        var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
+        float dmg = 10000f; //TODO : 태웅님 오면 attack에서 스킬 dmg부분 필요한지 물어보기
+        
+        if (CanUseSkill(_attackSkill))
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                attackSkill.UseSkill(BattleManager.Instance.PlayableCharacters[pickedIndex]); //스킬 사용
-                EndTurn();
-            }
-            else //없으면 위치 바꾸기
-            {
-                int position = GetDesiredPosition(attackSkill); //현재 enemy가 서 있는 위치
-                BattleManager.Instance.SwitchPosition(this, position);
-                EndTurn();
+                UseSkill(targetEntity);
+                position = -1;
+                return true;
             }
         }
+        position = GetDesiredPosition(_attackSkill); //현재 enemy가 서 있는 위치
+        return false;
+    }
+
+    public override void Attack(float dmg, BaseEntity targetEntity) //적->플레이어 공격
+    {
+        //BattleManager.Instance.AttackEntity(Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity), dmg);
     }
 
     public override void Support(float amount, BaseEntity baseEntity)
@@ -260,8 +264,27 @@ private Skill GetRandomSkill()
     //             }
     //         }
     //     }
-
-
     // //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
     }
+    
+    // private void SetSkill()
+    // {
+    //     skills = new Skill[data.skillId.Count];
+    //     int i = 0;
+    //     foreach (var id in data.skillId)
+    //     {
+    //         Skill skill = new Skill();
+    //         skill.Init(id, this);
+    //         entityInfo.skills[i] = skill;
+    //         i++;
+    //     }
+    // }
+
+    
+    // private bool IsSingleTargetSkill(Skill skill)
+    // {
+    //     if (skill.skillInfo.targetType == TargetType.Single)
+    //         return true;
+    //     else return false;
+    // }
 */
