@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UIElements;
 
 public class BattleManager : Singleton<BattleManager>
 {
@@ -50,8 +51,9 @@ public class BattleManager : Singleton<BattleManager>
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            BattleStartTrigger(_playableCharacters, _enemyCharacters);
-            for(int i = 0; i < _playableCharacters.Count; i++)
+            List<BaseEntity> dummy = new List<BaseEntity>();
+            BattleStartTrigger(dummy, dummy);
+            for (int i = 0; i < _playableCharacters.Count; i++)
             {
                 _playableCharacters[i].StartTurn();
             }
@@ -60,20 +62,20 @@ public class BattleManager : Singleton<BattleManager>
 
     public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
     {
-        Debug.Log("Test");
         foreach (var item in playerList)
         {
             _playableCharacters.Add(item);
+            item.BattleStarted();
         }
 
         foreach (var item in enemyList)
         {
             _enemyCharacters.Add(item);
+            item.BattleStarted();       
         }
         //전투 시작 UI 출력
         //UIManager.Instance.OpenUI<InGameBattleStartUI>();
         Turn();
-
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -125,7 +127,7 @@ public class BattleManager : Singleton<BattleManager>
             {
                 if ((nowTurnEntity.entityInfo.speed - GetAverageSpeed()) / 10 >= UnityEngine.Random.value)
                 {
-                    //nowTurnEntity.StartExtraTurn();
+                    nowTurnEntity.StartExtraTurn();
                     if (_playableCharacters.Count == 0)
                     {
                         Lose();
@@ -169,6 +171,16 @@ public class BattleManager : Singleton<BattleManager>
     private void EndBattle()
     {
         //TODO: 전투가 끝났을 때 공통적으로 해야하는 것...?
+        foreach (var item in _playableCharacters)
+        {
+            item.BattleEnded();
+        }
+
+        foreach (var item in _enemyCharacters)
+        {
+            item.BattleEnded();
+        }
+
         _playableCharacters.Clear();
         _enemyCharacters.Clear();
     }
@@ -189,7 +201,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             tempEnemyList.Add(item);
         }
-        
+
         while (n > 1)
         {
             n--;
@@ -262,8 +274,9 @@ public class BattleManager : Singleton<BattleManager>
     }
 
     //index와 대미지를 넣으면 공격합니다.
-    public void AttackEntity(int index, int attackDamage)
+    public void AttackEntity(int index, float attackDamage)
     {
+        Debug.Log(nowTurnEntity);
         if (nowTurnEntity is PlayableCharacter)
         {
             _enemyCharacters[index].Damaged(attackDamage);
@@ -275,7 +288,7 @@ public class BattleManager : Singleton<BattleManager>
     }
 
     //범위 공격에 적합한 타입입니다.
-    public void AttackEntity(List<int> indexList, int attackDamage)
+    public void AttackEntity(List<int> indexList, float attackDamage)
     {
         if (nowTurnEntity is PlayableCharacter)
         {
@@ -506,5 +519,29 @@ public class BattleManager : Singleton<BattleManager>
             item.entityInfo.GetTotalTargetWeight();
         }
         return GenerateWeightListUtility.GetWeights();
+    }
+
+    public void EntityDead(BaseEntity entity)
+    {
+        var index = FindEntityPosition(entity);
+        if (index == null) return;
+        if (entity is PlayableCharacter)
+        {
+            for (int i = (int)index; i < _playableCharacters.Count - 1; i++)
+            {
+                SwitchPosition(entity, i+1);
+            }
+            Destroy(entity.gameObject);
+            _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
+            return;
+        }
+        
+        for (int i = (int)index; i < _enemyCharacters.Count - 1; i++)
+        {
+            SwitchPosition(entity, i+1);
+        }
+        //TODO: 이후 적 사망시 보상 연결은 여기서? 아니면 Enemy에서?
+        Destroy(entity.gameObject);
+        _enemyCharacters.RemoveAt(_enemyCharacters.Count - 1);
     }
 }

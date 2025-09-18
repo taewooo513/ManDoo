@@ -24,4 +24,9 @@ public class DamageSkill : SkillEffect
             HitDamageSkill(attackEntity, damagedEntity);
         }
     }
+
+    public override void ActiveEffect(BaseEntity actionEntity, BaseEntity targetEntity)
+    {
+        HitDamageSkill(actionEntity, targetEntity);
+    }
 }

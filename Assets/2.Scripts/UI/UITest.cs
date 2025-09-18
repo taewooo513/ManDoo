@@ -5,7 +5,7 @@ using UnityEngine;
 public class UITest : MonoBehaviour
 {
 
-    void Start()
+    void Awake()
     {
         DataManager.Instance.Initialize();
         UIManager.Instance.OpenUI<InGameUIManager>();

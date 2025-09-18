@@ -34,9 +34,10 @@ public class EntityInfo
         statEffect = new StatEffect();
     }
 
-    public void Damaged(int value)
+    public void Damaged(float value)
     {
-        currentHp -= value;
+        var hp = currentHp - value;
+        currentHp = (int)hp;
         if (currentHp <= 0)
         {
             currentHp = 0;
@@ -91,6 +92,8 @@ public class BaseEntity : MonoBehaviour
     }
     //private HpbarUI hpbarUI;
     public int id { get; protected set; }
+    protected bool hasExtraTurn = true;
+    public Action<BaseEntity> OnDied;
 
     protected virtual void Awake()
     {
@@ -102,24 +105,53 @@ public class BaseEntity : MonoBehaviour
     {
     }
 
-    public virtual void Damaged(int value)
+    public virtual void Damaged(float value)
     {
         entityInfo.Damaged(value);
         //hpbarUI.UpdateUI();
+        if (entityInfo.currentHp <= 0)
+        {
+            OnDied?.Invoke(this);
+        }
+    }
+
+    public void BattleStarted()
+    {
+        OnDied += BattleManager.Instance.EntityDead;
+    }
+
+    private void OnDestroy()
+    {
+        OnDied -= BattleManager.Instance.EntityDead;
+    }
+
+    public void BattleEnded()
+    {
+        OnDied -= BattleManager.Instance.EntityDead;
     }
 
     public virtual void Attack(float dmg, BaseEntity baseEntity)
     {
+
     }
 
+    public virtual void Support(float amount, BaseEntity baseEntity)
+    {
+
+    }
     public virtual void UseSkill(BaseEntity baseEntity)
     {
+
     }
     public virtual void StartTurn()
     {
 
     }
     public virtual void EndTurn(bool hasExtraTurn = true)
+    {
+
+    }
+    public virtual void StartExtraTurn()
     {
 
     }
