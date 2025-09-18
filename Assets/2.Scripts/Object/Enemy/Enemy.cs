@@ -42,17 +42,19 @@ public class Enemy : BaseEntity
 
     private Skill GetRandomSkill()
     {
-        var possibleSkills = new List<Skill>();
+        var skillCandidates = new List<Skill>();
         if (skills == null || skills.Length == 0) return null;
-        var weights = new List<float>();
-        BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
 
-        foreach (var skill in skills)
+        var weights = new List<float>(); // 아군 가중치들
+        BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight); // 만약 플레이어의 체력이 40프로 이하거나 아군 체력이 10프로 이하면 해당하는 entity 에 대한 가중치 증가.
+        
+        foreach (var skill in skills) // 현재 적군이 가지고 있는 스킬 순회
         {
-            if (skill == null || skill.skillInfo == null) continue;
+            if (skill == null || skill.skillInfo == null) continue; 
             var info = skill.skillInfo;
             var desiredPosition = GetDesiredPosition(skill);
-            float weight = Skill.defaultWeight;
+            skill.addedWeight = enemyWeight;
+            float totalEnemyWeight = Skill.defaultWeight + skill.addedWeight;
 
             if (IsSingleTargetSkill(skill))
             {
@@ -95,9 +97,9 @@ public class Enemy : BaseEntity
             }
         }
 
-        if (possibleSkills.Count == 0) return null;
+        if (skillCandidates.Count == 0) return null;
         //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
-        return RandomizeUtility.GetRandomSkillByWeight(possibleSkills);
+        return RandomizeUtility.GetRandomSkillByWeight(skillCandidates);
     }
 
     private bool CanUseSkill(Skill skill)
