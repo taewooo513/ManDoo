@@ -8,7 +8,7 @@ static public class Utillity
     {
         for (int i = 0; i < types.Count; i++)
         {
-            if (types[i].Equals(t))
+            if (EqualityComparer<T>.Default.Equals(types[i], t))
             {
                 return i;
             }

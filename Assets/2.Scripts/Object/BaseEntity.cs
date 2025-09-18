@@ -34,9 +34,10 @@ public class EntityInfo
         statEffect = new StatEffect();
     }
 
-    public void Damaged(int value)
+    public void Damaged(float value)
     {
-        currentHp -= value;
+        var hp = currentHp - value;
+        currentHp = (int)hp;
         if (currentHp <= 0)
         {
             currentHp = 0;
@@ -102,7 +103,7 @@ public class BaseEntity : MonoBehaviour
     {
     }
 
-    public virtual void Damaged(int value)
+    public virtual void Damaged(float value)
     {
         entityInfo.Damaged(value);
         //hpbarUI.UpdateUI();

@@ -14,7 +14,7 @@ public class PlayableCharacter : BaseEntity
     public void Start()
     {
         BattleManager.Instance.AddPlayableCharacter(this);
-        SetData(1001);
+        SetData(1004);
     }
 
     private void SetData(int id)
@@ -31,7 +31,8 @@ public class PlayableCharacter : BaseEntity
     public override void Attack(float dmg, BaseEntity baseEntity)
     {
         base.Attack(dmg, baseEntity);
-        // BattleManager.Instance.AttackEnemy(baseEntity);
+        BattleManager.Instance.AttackEntity(
+            Utillity.GetIndexInListToObject(BattleManager.Instance._enemyCharacters, baseEntity), dmg);
     }
 
     public override void UseSkill(BaseEntity baseEntity)

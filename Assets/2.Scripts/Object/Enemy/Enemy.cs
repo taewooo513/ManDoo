@@ -27,7 +27,7 @@ public class Enemy : BaseEntity
     }
 
     private void SetSkill()
-    {
+    { 
         entityInfo.skills = new Skill[data.skillId.Count];
         int i = 0;
         foreach (var id in data.skillId)
