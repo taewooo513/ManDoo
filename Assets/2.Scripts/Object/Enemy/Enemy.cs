@@ -79,7 +79,7 @@ public class Enemy : BaseEntity
         float weight = Skill.defaultWeight;
         if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
-
+        //TODO : 범위 공격 - 스킬 랜덤으로 뽑아주는 부분에서, 랜덤으로뽑힌스킬.UseSkill 하면 된다고 함.
 
         for (int i = 0; i < entityInfo.skills.Length; i++)
         {
@@ -143,13 +143,12 @@ public class Enemy : BaseEntity
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
-        float dmg = 10000f; //TODO : 태웅님 오면 attack에서 스킬 dmg부분 필요한지 물어보기 -> 필요하다고 함. 이 부분 나중에 지워야 됨.
         
         if (CanUseSkill(_attackSkill))
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity);
+                UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Attack 순서
                 position = -1;
                 return true;
             }
