@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UIElements;
 
 public class BattleManager : Singleton<BattleManager>
 {
@@ -50,8 +51,9 @@ public class BattleManager : Singleton<BattleManager>
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            BattleStartTrigger(_playableCharacters, _enemyCharacters);
-            for(int i = 0; i < _playableCharacters.Count; i++)
+            List<BaseEntity> dummy = new List<BaseEntity>();
+            BattleStartTrigger(dummy, dummy);
+            for (int i = 0; i < _playableCharacters.Count; i++)
             {
                 _playableCharacters[i].StartTurn();
             }
@@ -60,7 +62,6 @@ public class BattleManager : Singleton<BattleManager>
 
     public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
     {
-        Debug.Log("Test");
         foreach (var item in playerList)
         {
             _playableCharacters.Add(item);
@@ -190,7 +191,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             tempEnemyList.Add(item);
         }
-        
+
         while (n > 1)
         {
             n--;
@@ -263,8 +264,9 @@ public class BattleManager : Singleton<BattleManager>
     }
 
     //index와 대미지를 넣으면 공격합니다.
-    public void AttackEntity(int index, int attackDamage)
+    public void AttackEntity(int index, float attackDamage)
     {
+        Debug.Log(nowTurnEntity);
         if (nowTurnEntity is PlayableCharacter)
         {
             _enemyCharacters[index].Damaged(attackDamage);
@@ -276,7 +278,7 @@ public class BattleManager : Singleton<BattleManager>
     }
 
     //범위 공격에 적합한 타입입니다.
-    public void AttackEntity(List<int> indexList, int attackDamage)
+    public void AttackEntity(List<int> indexList, float attackDamage)
     {
         if (nowTurnEntity is PlayableCharacter)
         {
