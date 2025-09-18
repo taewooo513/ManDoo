@@ -79,7 +79,7 @@ public class Enemy : BaseEntity
         float weight = Skill.defaultWeight;
         if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
-        //TODO : 범위 공격 - 스킬 랜덤으로 뽑아주는 부분에서, 랜덤으로뽑힌스킬.UseSkill 하면 된다고 함.
+        
 
         for (int i = 0; i < entityInfo.skills.Length; i++)
         {
@@ -163,10 +163,10 @@ public class Enemy : BaseEntity
         BattleManager.Instance.AttackEntity(index, (int)dmg);
     }
 
-    public override void Support(float amount, BaseEntity baseEntity)
-    {
-
-    }
+    // public override void Support(StatEffecInfo type, BaseEntity baseEntity)
+    // {
+    //     //TODO: 지원류 스킬 -> 아군한테
+    // }
 
     private int GetDesiredPosition(Skill skill) //현재 엔티티 위치 읽는 함수
     {

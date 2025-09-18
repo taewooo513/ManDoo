@@ -130,9 +130,9 @@ public class BaseEntity : MonoBehaviour
 
     }
 
-    public virtual void Support(float amount, BaseEntity baseEntity)
+    public virtual void Support(StatEffectInfo type, BaseEntity baseEntity)
     {
-
+        
     }
     public virtual void UseSkill(BaseEntity baseEntity)
     {
