@@ -6,7 +6,6 @@ using System.Linq;
 public class Enemy : BaseEntity
 {
     private EnemyData data;
-    private Skill[] skills;
     public void Start()
     {
         BattleManager.Instance.AddEnemyCharacter(this);
@@ -20,7 +19,7 @@ public class Enemy : BaseEntity
 
     private void SetData(int idx)
     {
-        this.id = id;
+        this.id = idx;
         data = DataManager.Instance.Enemy.GetEnemyData(idx);
         entityInfo = new EntityInfo(
             data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
@@ -29,13 +28,13 @@ public class Enemy : BaseEntity
 
     private void SetSkill()
     {
-        skills = new Skill[data.skillId.Count];
+        entityInfo.skills = new Skill[data.skillId.Count];
         int i = 0;
         foreach (var id in data.skillId)
         {
             Skill skill = new Skill();
             skill.Init(id, this);
-            skills[i] = skill;
+            entityInfo.skills[i] = skill;
             i++;
         }
     }
@@ -43,23 +42,33 @@ public class Enemy : BaseEntity
     private Skill GetRandomSkill()
     {
         var possibleSkills = new List<Skill>();
-        if (skills == null || skills.Length == 0) return null;
-        
-        foreach (var skill in skills)
+        if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
+        var weights = new List<float>();
+        BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
+
+        foreach (var skill in entityInfo.skills)
         {
-            if (skill == null || skill.skillInfo == null) continue; 
+            if (skill == null || skill.skillInfo == null) continue;
             var info = skill.skillInfo;
             var desiredPosition = GetDesiredPosition(skill);
+            float weight = Skill.defaultWeight;
 
             if (IsSingleTargetSkill(skill))
             {
                 if (CanUseSkill(skill))
-                    possibleSkills.Add(skill);
+                {
+                    // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
+                    // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
+                }
+
                 else if (desiredPosition != -1)
                 {
                     BattleManager.Instance.SwitchPosition(this, desiredPosition);
                     if (CanUseSkill(skill))
-                        possibleSkills.Add(skill);
+                    {
+                        // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
+                        // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
+                    }
                 }
             }
 
@@ -77,13 +86,17 @@ public class Enemy : BaseEntity
                 {
                     var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
                     if (possibleSkillRange != null && possibleSkillRange.Count > 0)
-                        possibleSkills.Add(skill);
+                    {
+                        // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
+                        // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
+                    }
                 }
             }
         }
 
         if (possibleSkills.Count == 0) return null;
-        else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)];
+        //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
+        return RandomizeUtility.GetRandomSkillByWeight(possibleSkills);
     }
 
     private bool CanUseSkill(Skill skill)
@@ -111,18 +124,24 @@ public class Enemy : BaseEntity
     {
         base.Attack(dmg, baseEntity);
         var attackSkill = GetRandomSkill();
-        // int targetIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(); -> Player 에서 가중치 리스트 받아와서 매개변수로 넣기
-        // var target = 
-        var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
-        // int damage = 
-        // attackSkill.UseSkill(BaseEntity target);
+        var info = attackSkill.skillInfo;
+        var targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
+        int damage = entityInfo.attackDamage; // 여기서 스킬의 adRatio 곱하는걸로 기억하는데 어디로 간건지 물어보기.
+        //int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights);
+        if (IsSingleTargetSkill(attackSkill))
+        {
+            //int pickPlayer = 
+        }
+        // float targetIndex = BattleManager.Instance.GetLowHpSkillWeight()
+            // var target = 
+            // var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
+            // int damage = 
+            //attackSkill.UseSkill();
         //
         // if (IsSingleTargetSkill(attackSkill))
         //     BattleManager.Instance.AttackEntity(targetIndex, damage);
         // else
         //     BattleManager.Instance.AttackEntity(targetIndicies, damage);
-
-
     }
 
     private int GetDesiredPosition(Skill skill)

@@ -37,6 +37,7 @@ public class Skill
 {
     public SkillInfo skillInfo { get; private set; }
     public const float defaultWeight = 0.25f;
+    public float addedWeight;
     SkillEffect[] skillEffects;
     BaseEntity baseEntity;
     public void Init(int id, BaseEntity entity)

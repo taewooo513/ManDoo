@@ -61,8 +61,15 @@ public class BattleManager : Singleton<BattleManager>
     public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
     {
         Debug.Log("Test");
-        _playableCharacters = playerList;
-        _enemyCharacters = enemyList;
+        foreach (var item in playerList)
+        {
+            _playableCharacters.Add(item);
+        }
+
+        foreach (var item in enemyList)
+        {
+            _enemyCharacters.Add(item);
+        }
         //전투 시작 UI 출력
         //UIManager.Instance.OpenUI<InGameBattleStartUI>();
         Turn();
@@ -91,7 +98,6 @@ public class BattleManager : Singleton<BattleManager>
     }
     private void Turn() //한 턴
     {
-        
         if (_turnQueue.Count == 0)
         {
             SetTurnQueue();
@@ -163,6 +169,8 @@ public class BattleManager : Singleton<BattleManager>
     private void EndBattle()
     {
         //TODO: 전투가 끝났을 때 공통적으로 해야하는 것...?
+        _playableCharacters.Clear();
+        _enemyCharacters.Clear();
     }
 
     private void SetTurnQueue() //한번 섞은 후, 순서별 정렬, 플레이어 우선 정렬
