@@ -6,6 +6,7 @@ using System.Linq;
 public class Enemy : BaseEntity
 {
     private EnemyData data;
+    private Skill[] skills;
     public void Start()
     {
         BattleManager.Instance.AddEnemyCharacter(this);
@@ -28,7 +29,7 @@ public class Enemy : BaseEntity
 
     private void SetSkill()
     {
-        entityInfo.skills = new Skill[data.skillId.Count];
+        skills = new Skill[data.skillId.Count];
         int i = 0;
         foreach (var id in data.skillId)
         {
@@ -41,72 +42,44 @@ public class Enemy : BaseEntity
 
     private Skill GetRandomSkill()
     {
-<<<<<<< HEAD
         var skillCandidates = new List<Skill>();
-        if (skills == null || skills.Length == 0) return null;
-
-        var weights = new List<float>(); // 아군 가중치들
-        BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight); // 만약 플레이어의 체력이 40프로 이하거나 아군 체력이 10프로 이하면 해당하는 entity 에 대한 가중치 증가.
-        
-        foreach (var skill in skills) // 현재 적군이 가지고 있는 스킬 순회
-=======
-        var possibleSkills = new List<Skill>();
-        if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         var weights = new List<float>();
+        float weight = Skill.defaultWeight;
+        if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
 
-        foreach (var skill in entityInfo.skills)
->>>>>>> Develop
+
+        for (int i = 0; i < entityInfo.skills.Length; i++)
         {
-            if (skill == null || skill.skillInfo == null) continue; 
+            var skill = entityInfo.skills[i];
+            if (skill == null || skill.skillInfo == null) continue;
+
             var info = skill.skillInfo;
-            var desiredPosition = GetDesiredPosition(skill);
-            skill.addedWeight = enemyWeight;
-            float totalEnemyWeight = Skill.defaultWeight + skill.addedWeight;
+            if (info.enablePos == null || info.targetPos == null) continue;
 
-            if (IsSingleTargetSkill(skill))
+            bool isAttackSkill = false;
+            bool isSupportSkill = false;
+            var effectArray = info.skillEffects;
+
+            for (int j = 0; j < effectArray.Length; j++)
             {
-                if (CanUseSkill(skill))
-                {
-                    // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
-                    // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
-                }
-
-                else if (desiredPosition != -1)
-                {
-                    BattleManager.Instance.SwitchPosition(this, desiredPosition);
-                    if (CanUseSkill(skill))
-                    {
-                        // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
-                        // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
-                    }
-                }
+                var effect = effectArray[j];
+                var effectType = effect.GetEffectType();
+                if (effectType == EffectType.Attack || effectType == EffectType.Debuff)
+                    isAttackSkill = true;
+                if (effectType == EffectType.Heal || effectType == EffectType.Protect)
+                    isSupportSkill = true;
             }
 
-            else
-            {
-                bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+            if (isAttackSkill)
+                skill.addedWeight = playerWeight + weight;
+            if (isSupportSkill)
+                skill.addedWeight = enemyWeight + weight;
 
-                if (!atEnablePosition && desiredPosition != -1)
-                {
-                    BattleManager.Instance.SwitchPosition(this, desiredPosition);
-                    atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
-                }
-
-                if (atEnablePosition)
-                {
-                    var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
-                    if (possibleSkillRange != null && possibleSkillRange.Count > 0)
-                    {
-                        // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
-                        // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
-                    }
-                }
-            }
+            skillCandidates.Add(skill);
         }
 
         if (skillCandidates.Count == 0) return null;
-        //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
         return RandomizeUtility.GetRandomSkillByWeight(skillCandidates);
     }
 
@@ -144,10 +117,10 @@ public class Enemy : BaseEntity
             //int pickPlayer = 
         }
         // float targetIndex = BattleManager.Instance.GetLowHpSkillWeight()
-            // var target = 
-            // var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
-            // int damage = 
-            //attackSkill.UseSkill();
+        // var target = 
+        // var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
+        // int damage = 
+        //attackSkill.UseSkill();
         //
         // if (IsSingleTargetSkill(attackSkill))
         //     BattleManager.Instance.AttackEntity(targetIndex, damage);
@@ -182,3 +155,78 @@ public class Enemy : BaseEntity
         return -1;
     }
 }
+
+/*
+private Skill GetRandomSkill()
+{
+    // bool[] isSupportSkill = new bool[entityInfo.skills.Length];
+    // bool[] isAttackSkill = new bool[entityInfo.skills.Length];
+
+    // for (int i = 0; i < entityInfo.skills.Length; i++)
+    // {
+    //     for (int j = 0; j < entityInfo.skills[i].skillInfo.skillEffects.Length; j++)
+    //     {
+    //         var effectType = entityInfo.skills[i].skillInfo.skillEffects[j].GetEffectType();
+    //         if (effectType == EffectType.Attack || effectType == EffectType.Debuff)
+    //             isAttackSkill[i] = true;
+    //         else if (effectType == EffectType.Heal || effectType == EffectType.Protect)
+    //             isSupportSkill[i] = true;
+    //         else continue;
+    //     }
+    // }
+    // foreach (var skill in entityInfo.skills)
+    //     {
+
+    //         if (skill == null || skill.skillInfo == null) continue;
+    //         var info = skill.skillInfo;
+    //         var desiredPosition = GetDesiredPosition(skill);
+
+    //         //if ()
+    //         skill.addedWeight = enemyWeight;
+    //         float supportSkillWeight = Skill.defaultWeight + skill.addedWeight;
+
+    //         if (IsSingleTargetSkill(skill))
+    //         {
+    //             if (CanUseSkill(skill))
+    //             {
+    //                 // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
+    //                 // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
+    //             }
+
+    //             else if (desiredPosition != -1)
+    //             {
+    //                 BattleManager.Instance.SwitchPosition(this, desiredPosition);
+    //                 if (CanUseSkill(skill))
+    //                 {
+    //                     // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
+    //                     // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
+    //                 }
+    //             }
+    //         }
+
+    //         else
+    //         {
+    //             bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+
+    //             if (!atEnablePosition && desiredPosition != -1)
+    //             {
+    //                 BattleManager.Instance.SwitchPosition(this, desiredPosition);
+    //                 atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+    //             }
+
+    //             if (atEnablePosition)
+    //             {
+    //                 var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
+    //                 if (possibleSkillRange != null && possibleSkillRange.Count > 0)
+    //                 {
+    //                     // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
+    //                     // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
+    //                 }
+    //             }
+    //         }
+    //     }
+
+
+    // //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
+    }
+*/
