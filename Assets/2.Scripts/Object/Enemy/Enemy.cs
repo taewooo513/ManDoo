@@ -117,14 +117,16 @@ public class Enemy : BaseEntity
 
         if (CanUseSkill(attackSkill))
         {
-            if(targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
+            if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
                 attackSkill.UseSkill(BattleManager.Instance.PlayableCharacters[pickedIndex]); //스킬 사용
+                EndTurn();
             }
             else //없으면 위치 바꾸기
             {
                 int position = GetDesiredPosition(attackSkill); //현재 enemy가 서 있는 위치
                 BattleManager.Instance.SwitchPosition(this, position);
+                EndTurn();
             }
         }
     }
