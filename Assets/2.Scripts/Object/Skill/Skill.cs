@@ -63,6 +63,5 @@ public class Skill
         {
             skillInfo.skillEffects[i].ActiveEffect(baseEntity, targetEntity);
         }
-        BattleManager.Instance.EndTurn();
     }
 }
