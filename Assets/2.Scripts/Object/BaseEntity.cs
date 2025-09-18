@@ -112,6 +112,10 @@ public class BaseEntity : MonoBehaviour
     {
     }
 
+    public virtual void Support(float amout, BaseEntity baseEntity)
+    {
+
+    }
     public virtual void UseSkill(BaseEntity baseEntity)
     {
     }
