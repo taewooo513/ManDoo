@@ -96,8 +96,8 @@ public class Enemy : BaseEntity
         }
 
         if (possibleSkills.Count == 0) return null;
-        else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
-        // return RandomizeUtility.GetRandomSkillByWeight(possibleSkills);
+        //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
+        return RandomizeUtility.GetRandomSkillByWeight(possibleSkills);
     }
 
     private bool CanUseSkill(Skill skill)

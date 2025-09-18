@@ -29,5 +29,26 @@ public static class RandomizeUtility
         return playerIndex;
     }
 
-    //TODO: GetRandomSkillByWeight(List<Skill> skills) 작성
+    public static Skill GetRandomSkillByWeight(List<Skill> skills)
+    {
+        float total = 0f;
+        var pickedSkill = new Skill();
+
+        foreach (var skill in skills)
+            total += skill.addedWeight;
+
+        float rand = UnityEngine.Random.value * total;
+
+        foreach (var skill in skills)
+        {
+            rand -= skill.addedWeight; // 지정된 랜덤값에서 가중치를 반복해서 빼줌.
+
+            if (rand <= 0f)
+            {
+                pickedSkill = skill;
+                break;
+            }
+        }
+        return pickedSkill;
+    }
 }
