@@ -489,7 +489,7 @@ public class BattleManager : Singleton<BattleManager>
         }
     }
 
-    public List<float> GetWeightList(bool isPlayer)
+    public List<float> GetWeightList(bool isPlayer) //타겟 가중치 리스트
     {
         if (isPlayer)
         {

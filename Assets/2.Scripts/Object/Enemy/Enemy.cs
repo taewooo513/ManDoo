@@ -109,23 +109,23 @@ public class Enemy : BaseEntity
     {
         base.Attack(dmg, baseEntity);
         var attackSkill = GetRandomSkill(); //사용할 스킬 랜덤 선택
-        var info = attackSkill.skillInfo;
+        var info = attackSkill.skillInfo; //사용할 스킬 정보
         List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
-        //List<float> weights = BattleManager.Instance.; //타겟 가중치 리스트 가져옴
-        List<float> weights = GenerateWeightListUtility.GetWeights(); //타겟 가중치 리스트 가져옴
+        List<float> weights = BattleManager.Instance.GetWeightList(true); //타겟 가중치 리스트 가져옴
+        //List<float> weights = GenerateWeightListUtility.GetWeights(); //타겟 가중치 리스트 가져옴
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
         if (CanUseSkill(attackSkill))
         {
             if(targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                attackSkill.UseSkill(BattleManager.Instance.PlayableCharacters[pickedIndex]);
+                attackSkill.UseSkill(BattleManager.Instance.PlayableCharacters[pickedIndex]); //스킬 사용
             }
             else //없으면 위치 바꾸기
             {
-                int position = GetDesiredPosition(attackSkill);
+                int position = GetDesiredPosition(attackSkill); //현재 enemy가 서 있는 위치
                 BattleManager.Instance.SwitchPosition(this, position);
-            } 
+            }
         }
     }
 
