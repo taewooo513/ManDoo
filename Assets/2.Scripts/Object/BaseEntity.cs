@@ -123,7 +123,7 @@ public class BaseEntity : MonoBehaviour
     {
 
     }
-    public virtual void EndTurn()
+    public virtual void EndTurn(bool hasExtraTurn = true)
     {
 
     }
