@@ -42,7 +42,7 @@ public class EntityInfo
             currentHp = 0;
         }
     }
-
+    
     public float GetTotalTargetWeight() //개개인이 가지고 있는 타깃 가중치 합
     {
         float result = _standardWeight + statEffect.AttackWeight(); //가중치 합
