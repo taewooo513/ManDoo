@@ -160,8 +160,8 @@ public class Enemy : BaseEntity
 
     public override void Attack(float dmg, BaseEntity targetEntity) //적->플레이어 공격
     {
-        int index = Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity); //이렇게 하면 attack - tryattack 연결하는 부분이 없음. 어떻게 연결?
-        BattleManager.Instance.AttackEntity(index, (int)dmg); //TODO : 범위공격/단일공격 처리 안 되어있음. 스킬에서 해주는 건지?
+        int index = Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity);
+        BattleManager.Instance.AttackEntity(index, (int)dmg);
     }
 
     public override void Support(float amount, BaseEntity baseEntity)
