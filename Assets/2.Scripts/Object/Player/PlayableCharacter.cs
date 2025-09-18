@@ -7,16 +7,14 @@ using UnityEngine;
 public class PlayableCharacter : BaseEntity
 {
     private MercenaryData data;
-    public Skill[] skills { get; private set; }
-
     protected void Awake()
     {
-        DataManager.Instance.Initialize();
-        SetData(1001);
+
     }
     public void Start()
     {
         BattleManager.Instance.AddPlayableCharacter(this);
+        SetData(1001);
     }
 
     private void SetData(int id)
@@ -27,12 +25,7 @@ public class PlayableCharacter : BaseEntity
         entityInfo = new EntityInfo(
             data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
         );
-        skills = new Skill[4];
-        for (int i = 0; i < data.skillId.Count; i++)
-        {
-            skills[i] = new Skill();
-            var skillData = DataManager.Instance.Skill.GetSkillData(data.skillId[i]);
-        }
+        entityInfo.SetUpSkill(data.skillId, this);
     }
 
     public override void Attack(float dmg, BaseEntity baseEntity)
@@ -48,8 +41,7 @@ public class PlayableCharacter : BaseEntity
     public override void StartTurn()
     {
         base.StartTurn();
-        Debug.Log("asdvknlo");
-        UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo, skills);
+        UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo, entityInfo.skills);
     }
     public override void EndTurn()
     {
