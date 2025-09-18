@@ -14,7 +14,7 @@ public class Enemy : BaseEntity
     public void Init(int idx)
     {
         SetData(idx);
-        SetSkill();
+        //SetSkill(); //스킬 자체를 셋업하는 부분이 엔티티인포에 들어있어서 사용x
     }
 
     private void SetData(int idx)
@@ -24,6 +24,7 @@ public class Enemy : BaseEntity
         entityInfo = new EntityInfo(
             data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
         );
+        entityInfo.SetUpSkill(data.skillId, this);
     }
 
     private void SetSkill()
@@ -99,7 +100,7 @@ public class Enemy : BaseEntity
         return RandomizeUtility.GetRandomSkillByWeight(possibleSkills);
     }
 
-    private bool CanUseSkill(Skill skill)
+    private bool CanUseSkill(Skill skill) //스킬이 사용 가능한 위치 enemy가 서있는지, 스킬 범위 내에 플레이어가 서 있는지
     {
         if (skill == null || skill.skillInfo == null) return false;
         var info = skill.skillInfo;
@@ -120,31 +121,31 @@ public class Enemy : BaseEntity
         else return false;
     }
 
-    public override void Attack(float dmg, BaseEntity baseEntity)
+    public override void Attack(float dmg, BaseEntity baseEntity) //적->플레이어 공격
     {
         base.Attack(dmg, baseEntity);
-        var attackSkill = GetRandomSkill();
+        var attackSkill = GetRandomSkill(); //사용할 스킬 랜덤 선택
         var info = attackSkill.skillInfo;
-        var targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
-        int damage = entityInfo.attackDamage; // 여기서 스킬의 adRatio 곱하는걸로 기억하는데 어디로 간건지 물어보기.
-        //int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights);
-        if (IsSingleTargetSkill(attackSkill))
+        List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
+        //List<float> weights = BattleManager.Instance.; //타겟 가중치 리스트 가져옴
+        //List<float> weights = GenerateWeightListUtility.GetWeights(); //타겟 가중치 리스트 가져옴
+        int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
+
+        if (CanUseSkill(attackSkill))
         {
-            //int pickPlayer = 
+            if(targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
+            {
+                attackSkill.UseSkill(BattleManager.Instance.PlayableCharacters[pickedIndex]);
+            }
+            else //없으면 위치 바꾸기
+            {
+                int position = GetDesiredPosition(attackSkill);
+                BattleManager.Instance.SwitchPosition(this, position);
+            } 
         }
-        // float targetIndex = BattleManager.Instance.GetLowHpSkillWeight()
-            // var target = 
-            // var targetIndicies = BattleManager.Instance.GetPossibleSkillRange(attackSkill.skillInfo.targetPos);
-            // int damage = 
-            //attackSkill.UseSkill();
-        //
-        // if (IsSingleTargetSkill(attackSkill))
-        //     BattleManager.Instance.AttackEntity(targetIndex, damage);
-        // else
-        //     BattleManager.Instance.AttackEntity(targetIndicies, damage);
     }
 
-    private int GetDesiredPosition(Skill skill)
+    private int GetDesiredPosition(Skill skill) //현재 엔티티 위치 읽는 함수
     {
         if (skill == null || skill.skillInfo == null) return -1;
         var info = skill.skillInfo;

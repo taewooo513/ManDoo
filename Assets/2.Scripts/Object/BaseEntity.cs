@@ -43,11 +43,10 @@ public class EntityInfo
         }
     }
 
-    public float GetTotalTargetWeight() //개개인이 가지고 있는 타깃 가중치 합
+    public void GetTotalTargetWeight() //개개인이 가지고 있는 타깃 가중치 합
     {
         float result = _standardWeight + statEffect.AttackWeight(); //가중치 합
         GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가 //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
-        return result;
     }
 
     public bool LowHPStatEnemy() //적(플레이어블) hp가 낮을 때. TODO : 스킬 공격 시작할 때마다 / 적들 hp 확인하고 / 호출해서? 검증해줘야 됨
