@@ -10,10 +10,17 @@ public static class GenerateWeightListUtility //타겟 가중치 리스트
     {
         weightsList.Add(weight);
     }
-
+    
     public static List<float> GetWeights()
     {
-        return weightsList;
+        List<float> weights = new();
+        foreach (var item in weightsList)
+        {
+            weights.Add(item);
+        }
+
+        weightsList.Clear();
+        return weights;
     }
 
     public static void Clear()
