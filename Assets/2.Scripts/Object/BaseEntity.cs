@@ -125,6 +125,11 @@ public class BaseEntity : MonoBehaviour
         OnDied -= BattleManager.Instance.EntityDead;
     }
 
+    public void BattleEnded()
+    {
+        OnDied -= BattleManager.Instance.EntityDead;
+    }
+
     public virtual void Attack(float dmg, BaseEntity baseEntity)
     {
 
