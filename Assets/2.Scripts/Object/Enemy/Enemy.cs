@@ -7,6 +7,9 @@ public class Enemy : BaseEntity
 {
     private EnemyData data;
     private Skill[] skills;
+    private bool hasExtraTurn = true;
+    private bool usedSkill = false;
+
     public void Start()
     {
         BattleManager.Instance.AddEnemyCharacter(this);
@@ -28,18 +31,18 @@ public class Enemy : BaseEntity
         entityInfo.SetUpSkill(data.skillId, this);
     }
 
-    private void SetSkill()
-    {
-        skills = new Skill[data.skillId.Count];
-        int i = 0;
-        foreach (var id in data.skillId)
-        {
-            Skill skill = new Skill();
-            skill.Init(id, this);
-            entityInfo.skills[i] = skill;
-            i++;
-        }
-    }
+    // private void SetSkill()
+    // {
+    //     skills = new Skill[data.skillId.Count];
+    //     int i = 0;
+    //     foreach (var id in data.skillId)
+    //     {
+    //         Skill skill = new Skill();
+    //         skill.Init(id, this);
+    //         entityInfo.skills[i] = skill;
+    //         i++;
+    //     }
+    // }
 
     private Skill GetRandomSkill()
     {
@@ -100,12 +103,11 @@ public class Enemy : BaseEntity
 
     public override void StartTurn()
     {
-        //bool hasExtraTurn = true;
         //1순위 - 스킬 사용 //만약에 skill 그게 null이다
         //if(skill == null) hasExtraTurn = false;
         //2순위 - 이동 //스킬을 사용할 수 있는 곳으로 이동한다.
         //3순위 - 턴 넘기기 //혹시 이동도 못해, 그러면 턴 넘기기
-        
+
         //다시 여기로 돌아옴
         //EndTurn(hasExtraTurn);
     }
@@ -113,20 +115,22 @@ public class Enemy : BaseEntity
     public override void EndTurn(bool hasExtraTurn = true)
     {
         //지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다.
-        //BattleManager.Instance.EndTurn();
+        BattleManager.Instance.EndTurn();
     }
-    
-    //public override void StartExtraTurn(){
-    //1순위 - 스킬 사용
-    //2순위 - 이동
-    //3순위 - 턴 넘기기
-    //}
-    private bool IsSingleTargetSkill(Skill skill)
+
+    public override void StartExtraTurn()
     {
-        if (skill.skillInfo.targetType == TargetType.Single)
-            return true;
-        else return false;
+        //1순위 - 스킬 사용
+        //2순위 - 이동
+        //3순위 - 턴 넘기기
     }
+
+    // private bool IsSingleTargetSkill(Skill skill)
+    // {
+    //     if (skill.skillInfo.targetType == TargetType.Single)
+    //         return true;
+    //     else return false;
+    // }
 
     public override void Attack(float dmg, BaseEntity baseEntity) //적->플레이어 공격
     {
@@ -140,16 +144,23 @@ public class Enemy : BaseEntity
 
         if (CanUseSkill(attackSkill))
         {
-            if(targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
+            if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
                 attackSkill.UseSkill(BattleManager.Instance.PlayableCharacters[pickedIndex]); //스킬 사용
+                EndTurn();
             }
             else //없으면 위치 바꾸기
             {
                 int position = GetDesiredPosition(attackSkill); //현재 enemy가 서 있는 위치
                 BattleManager.Instance.SwitchPosition(this, position);
+                EndTurn();
             }
         }
+    }
+
+    public override void Support(float amount, BaseEntity baseEntity)
+    {
+
     }
 
     private int GetDesiredPosition(Skill skill) //현재 엔티티 위치 읽는 함수
