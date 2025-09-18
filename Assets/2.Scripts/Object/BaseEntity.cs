@@ -91,6 +91,7 @@ public class BaseEntity : MonoBehaviour
     }
     //private HpbarUI hpbarUI;
     public int id { get; protected set; }
+    protected bool hasExtraTurn = true;
 
     protected virtual void Awake()
     {
@@ -112,7 +113,7 @@ public class BaseEntity : MonoBehaviour
     {
     }
 
-    public virtual void Support(float amout, BaseEntity baseEntity)
+    public virtual void Support(float amount, BaseEntity baseEntity)
     {
 
     }
@@ -129,6 +130,6 @@ public class BaseEntity : MonoBehaviour
     }
     public virtual void StartExtraTurn()
     {
-        
+
     }
 }

@@ -110,10 +110,6 @@ public class Enemy : BaseEntity
 
         //다시 여기로 돌아옴
         //EndTurn(hasExtraTurn);
-        if (usedSkill)
-        {
-            
-        }
     }
 
     public override void EndTurn(bool hasExtraTurn = true)
@@ -160,6 +156,11 @@ public class Enemy : BaseEntity
                 EndTurn();
             }
         }
+    }
+
+    public override void Support(float amount, BaseEntity baseEntity)
+    {
+
     }
 
     private int GetDesiredPosition(Skill skill) //현재 엔티티 위치 읽는 함수
