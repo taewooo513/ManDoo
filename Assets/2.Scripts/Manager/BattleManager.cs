@@ -507,4 +507,29 @@ public class BattleManager : Singleton<BattleManager>
         }
         return GenerateWeightListUtility.GetWeights();
     }
+
+    public void EntityDead(BaseEntity entity)
+    {
+        var index = FindEntityPosition(entity);
+        if (index == null) return;
+        if (entity is PlayableCharacter)
+        {
+            for (int i = (int)index; i < _playableCharacters.Count - 1; i++)
+            {
+                SwitchPosition(entity, i+1);
+                
+            }
+            Destroy(entity.gameObject);
+            _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
+            return;
+        }
+        
+        for (int i = (int)index; i < _enemyCharacters.Count - 1; i++)
+        {
+            SwitchPosition(entity, i+1);
+        }
+        //TODO: 이후 적 사망시 보상 연결은 여기서? 아니면 Enemy에서?
+        Destroy(entity.gameObject);
+        _enemyCharacters.RemoveAt(_enemyCharacters.Count - 1);
+    }
 }
