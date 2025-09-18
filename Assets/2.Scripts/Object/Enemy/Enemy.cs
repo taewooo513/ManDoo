@@ -7,6 +7,9 @@ public class Enemy : BaseEntity
 {
     private EnemyData data;
     private Skill[] skills;
+    private bool hasExtraTurn = true;
+    private bool usedSkill = false;
+
     public void Start()
     {
         BattleManager.Instance.AddEnemyCharacter(this);
@@ -28,18 +31,18 @@ public class Enemy : BaseEntity
         entityInfo.SetUpSkill(data.skillId, this);
     }
 
-    private void SetSkill()
-    {
-        skills = new Skill[data.skillId.Count];
-        int i = 0;
-        foreach (var id in data.skillId)
-        {
-            Skill skill = new Skill();
-            skill.Init(id, this);
-            entityInfo.skills[i] = skill;
-            i++;
-        }
-    }
+    // private void SetSkill()
+    // {
+    //     skills = new Skill[data.skillId.Count];
+    //     int i = 0;
+    //     foreach (var id in data.skillId)
+    //     {
+    //         Skill skill = new Skill();
+    //         skill.Init(id, this);
+    //         entityInfo.skills[i] = skill;
+    //         i++;
+    //     }
+    // }
 
     private Skill GetRandomSkill()
     {
@@ -100,8 +103,6 @@ public class Enemy : BaseEntity
 
     public override void StartTurn()
     {
-        bool hasExtraTurn = true;
-        
         //1순위 - 스킬 사용 //만약에 skill 그게 null이다
         //if(skill == null) hasExtraTurn = false;
         //2순위 - 이동 //스킬을 사용할 수 있는 곳으로 이동한다.
@@ -109,6 +110,10 @@ public class Enemy : BaseEntity
 
         //다시 여기로 돌아옴
         //EndTurn(hasExtraTurn);
+        if (usedSkill)
+        {
+            
+        }
     }
 
     public override void EndTurn(bool hasExtraTurn = true)
@@ -124,12 +129,12 @@ public class Enemy : BaseEntity
         //3순위 - 턴 넘기기
     }
 
-    private bool IsSingleTargetSkill(Skill skill)
-    {
-        if (skill.skillInfo.targetType == TargetType.Single)
-            return true;
-        else return false;
-    }
+    // private bool IsSingleTargetSkill(Skill skill)
+    // {
+    //     if (skill.skillInfo.targetType == TargetType.Single)
+    //         return true;
+    //     else return false;
+    // }
 
     public override void Attack(float dmg, BaseEntity baseEntity) //적->플레이어 공격
     {
