@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DataTable;
 using System.Linq;
+using UnityEditorInternal;
 
 public class Enemy : BaseEntity
 {
@@ -56,7 +57,7 @@ public class Enemy : BaseEntity
         BattleManager.Instance.EndTurn(hasExtraTurn);
     }
 
-    public override void StartExtraTurn()
+    public override void StartExtraTurn() //추가 공격 턴
     {
         if (TryAttack(out int position)) //공격 시도 성공시
         {
@@ -142,13 +143,13 @@ public class Enemy : BaseEntity
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
-        float dmg = 10000f; //TODO : 태웅님 오면 attack에서 스킬 dmg부분 필요한지 물어보기
+        float dmg = 10000f; //TODO : 태웅님 오면 attack에서 스킬 dmg부분 필요한지 물어보기 -> 필요하다고 함. 이 부분 나중에 지워야 됨.
         
         if (CanUseSkill(_attackSkill))
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                UseSkill(targetEntity);
+                UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity);
                 position = -1;
                 return true;
             }
@@ -159,7 +160,8 @@ public class Enemy : BaseEntity
 
     public override void Attack(float dmg, BaseEntity targetEntity) //적->플레이어 공격
     {
-        //BattleManager.Instance.AttackEntity(Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity), dmg);
+        int index = Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity); //이렇게 하면 attack - tryattack 연결하는 부분이 없음. 어떻게 연결?
+        BattleManager.Instance.AttackEntity(index, (int)dmg); //TODO : 범위공격/단일공격 처리 안 되어있음. 스킬에서 해주는 건지?
     }
 
     public override void Support(float amount, BaseEntity baseEntity)
