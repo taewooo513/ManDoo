@@ -488,4 +488,23 @@ public class BattleManager : Singleton<BattleManager>
             }
         }
     }
+
+    public List<float> GetWeightList(bool isPlayer)
+    {
+        if (isPlayer)
+        {
+            foreach (var item in _playableCharacters)
+            {
+                item.entityInfo.GetTotalTargetWeight();
+            }
+
+            return GenerateWeightListUtility.GetWeights();
+        }
+
+        foreach (var item in _enemyCharacters)
+        {
+            item.entityInfo.GetTotalTargetWeight();
+        }
+        return GenerateWeightListUtility.GetWeights();
+    }
 }
