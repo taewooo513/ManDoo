@@ -65,16 +65,17 @@ public class BattleManager : Singleton<BattleManager>
         foreach (var item in playerList)
         {
             _playableCharacters.Add(item);
+            item.BattleStarted();
         }
 
         foreach (var item in enemyList)
         {
             _enemyCharacters.Add(item);
+            item.BattleStarted();       
         }
         //전투 시작 UI 출력
         //UIManager.Instance.OpenUI<InGameBattleStartUI>();
         Turn();
-
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -126,7 +127,7 @@ public class BattleManager : Singleton<BattleManager>
             {
                 if ((nowTurnEntity.entityInfo.speed - GetAverageSpeed()) / 10 >= UnityEngine.Random.value)
                 {
-                    //nowTurnEntity.StartExtraTurn();
+                    nowTurnEntity.StartExtraTurn();
                     if (_playableCharacters.Count == 0)
                     {
                         Lose();
@@ -489,5 +490,48 @@ public class BattleManager : Singleton<BattleManager>
                 }
             }
         }
+    }
+
+    public List<float> GetWeightList(bool isPlayer) //타겟 가중치 리스트
+    {
+        if (isPlayer)
+        {
+            foreach (var item in _playableCharacters)
+            {
+                item.entityInfo.GetTotalTargetWeight();
+            }
+
+            return GenerateWeightListUtility.GetWeights();
+        }
+
+        foreach (var item in _enemyCharacters)
+        {
+            item.entityInfo.GetTotalTargetWeight();
+        }
+        return GenerateWeightListUtility.GetWeights();
+    }
+
+    public void EntityDead(BaseEntity entity)
+    {
+        var index = FindEntityPosition(entity);
+        if (index == null) return;
+        if (entity is PlayableCharacter)
+        {
+            for (int i = (int)index; i < _playableCharacters.Count - 1; i++)
+            {
+                SwitchPosition(entity, i+1);
+            }
+            Destroy(entity.gameObject);
+            _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
+            return;
+        }
+        
+        for (int i = (int)index; i < _enemyCharacters.Count - 1; i++)
+        {
+            SwitchPosition(entity, i+1);
+        }
+        //TODO: 이후 적 사망시 보상 연결은 여기서? 아니면 Enemy에서?
+        Destroy(entity.gameObject);
+        _enemyCharacters.RemoveAt(_enemyCharacters.Count - 1);
     }
 }

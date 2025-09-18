@@ -5,7 +5,11 @@ using System.Linq;
 
 public class Enemy : BaseEntity
 {
-    private EnemyData data;
+    private EnemyData _data;
+    private Skill[] _skills;
+    private bool _hasExtraTurn = true;
+    private Skill _attackSkill;
+
     public void Start()
     {
         BattleManager.Instance.AddEnemyCharacter(this);
@@ -14,17 +18,131 @@ public class Enemy : BaseEntity
     public void Init(int idx)
     {
         SetData(idx);
-        SetSkill();
+        //SetSkill(); //스킬 자체를 셋업하는 부분이 엔티티인포에 들어있어서 사용x
     }
 
     private void SetData(int idx)
     {
         this.id = idx;
-        data = DataManager.Instance.Enemy.GetEnemyData(idx);
+        _data = DataManager.Instance.Enemy.GetEnemyData(idx);
         entityInfo = new EntityInfo(
-            data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
+            _data.name, _data.health, _data.attack, _data.defense, _data.speed, _data.evasion, _data.critical
         );
+        entityInfo.SetUpSkill(_data.skillId, this);
     }
+
+    public override void StartTurn()
+    {
+        if (TryAttack(out int position)) //공격 시도 성공시
+        {
+            _hasExtraTurn = true;
+        }
+        else //공격 실패 시
+        {
+            _hasExtraTurn = false; //추가 공격도 실패
+            if (position != -1)
+            {
+                BattleManager.Instance.SwitchPosition(this, position); //이동
+            }
+        }
+
+        EndTurn(_hasExtraTurn);
+    }
+
+    public override void EndTurn(bool hasExtraTurn = true)
+    {
+        //TODO : 지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다?
+        _attackSkill = null; //선택한 스킬 비워주기
+        BattleManager.Instance.EndTurn(hasExtraTurn);
+    }
+
+    public override void StartExtraTurn()
+    {
+        if (TryAttack(out int position)) //공격 시도 성공시
+        {
+        }
+        else //공격 실패 시
+        {
+            if (position != -1)
+            {
+                BattleManager.Instance.SwitchPosition(this, position); //이동
+            }
+        }
+        EndTurn(false);
+    }
+
+    private Skill GetRandomSkill()
+    {
+        var skillCandidates = new List<Skill>();
+        var weights = new List<float>();
+        float weight = Skill.defaultWeight;
+        if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
+        BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
+
+
+        for (int i = 0; i < entityInfo.skills.Length; i++)
+        {
+            var skill = entityInfo.skills[i];
+            if (skill == null || skill.skillInfo == null) continue;
+
+            var info = skill.skillInfo;
+            if (info.enablePos == null || info.targetPos == null) continue;
+
+            bool isAttackSkill = false;
+            bool isSupportSkill = false;
+            var effectArray = info.skillEffects;
+
+            for (int j = 0; j < effectArray.Length; j++)
+            {
+                var effect = effectArray[j];
+                var effectType = effect.GetEffectType();
+                if (effectType == EffectType.Attack || effectType == EffectType.Debuff)
+                    isAttackSkill = true;
+                if (effectType == EffectType.Heal || effectType == EffectType.Protect)
+                    isSupportSkill = true;
+            }
+
+            if (isAttackSkill)
+                skill.addedWeight = playerWeight + weight;
+            if (isSupportSkill)
+                skill.addedWeight = enemyWeight + weight;
+
+            skillCandidates.Add(skill);
+        }
+
+        if (skillCandidates.Count == 0) return null;
+        return RandomizeUtility.GetRandomSkillByWeight(skillCandidates);
+    }
+
+    private bool CanUseSkill(Skill skill) //스킬이 사용 가능한 위치 enemy가 서있는지, 스킬 범위 내에 플레이어가 서 있는지
+    {
+        if (skill == null || skill.skillInfo == null) return false;
+        var info = skill.skillInfo;
+        var playerPosition = BattleManager.Instance.GetPlayerPosition();
+        bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
+        bool atTargetPosition = playerPosition.Any(x => info.targetPos.Contains(x.Item1));
+
+        if (atEnablePosition && atTargetPosition)
+    private EnemyData data;
+        else
+            return false;
+    }
+
+    private bool TryAttack(out int position) //스킬 선택, 타겟 선택
+    {
+        _attackSkill = GetRandomSkill(); //사용할 스킬 랜덤 선택
+        if (_attackSkill == null) //스킬이 없을 때
+        {
+            position = -1; //사용 안 하겠다는 뜻. 이동도 못 함.
+            return false;
+        }
+        var info = _attackSkill.skillInfo; //사용할 스킬 정보
+        List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
+        List<float> weights = BattleManager.Instance.GetWeightList(true); //타겟 가중치 리스트 가져옴
+        int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
+
+        var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
+        float dmg = 10000f; //TODO : 태웅님 오면 attack에서 스킬 dmg부분 필요한지 물어보기
 
     private void SetSkill()
     { 
@@ -45,14 +163,14 @@ public class Enemy : BaseEntity
         if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         var weights = new List<float>();
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
-
+    {
         foreach (var skill in entityInfo.skills)
         {
             if (skill == null || skill.skillInfo == null) continue;
             var info = skill.skillInfo;
             var desiredPosition = GetDesiredPosition(skill);
             float weight = Skill.defaultWeight;
-
+        var info = skill.skillInfo;
             if (IsSingleTargetSkill(skill))
             {
                 if (CanUseSkill(skill))
@@ -71,7 +189,7 @@ public class Enemy : BaseEntity
                     }
                 }
             }
-
+            {
             else
             {
                 bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
@@ -81,7 +199,7 @@ public class Enemy : BaseEntity
                     BattleManager.Instance.SwitchPosition(this, desiredPosition);
                     atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
                 }
-
+/*
                 if (atEnablePosition)
                 {
                     var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
@@ -93,33 +211,32 @@ public class Enemy : BaseEntity
                 }
             }
         }
+    //             isAttackSkill[i] = true;
+    //         else if (effectType == EffectType.Heal || effectType == EffectType.Protect)
+    //             isSupportSkill[i] = true;
+    //         else continue;
+    //     }
+    // }
+    // foreach (var skill in entityInfo.skills)
+    //     {
 
-        if (possibleSkills.Count == 0) return null;
-        //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
-        return RandomizeUtility.GetRandomSkillByWeight(possibleSkills);
-    }
+    //         if (skill == null || skill.skillInfo == null) continue;
+    //         var info = skill.skillInfo;
+    //         var desiredPosition = GetDesiredPosition(skill);
 
-    private bool CanUseSkill(Skill skill)
-    {
-        if (skill == null || skill.skillInfo == null) return false;
-        var info = skill.skillInfo;
-        var playerPosition = BattleManager.Instance.GetPlayerPosition();
-        bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
-        bool atTargetPosition = playerPosition.Any(x => info.targetPos.Contains(x.Item1));
+    //         //if ()
+    //         skill.addedWeight = enemyWeight;
+    //         float supportSkillWeight = Skill.defaultWeight + skill.addedWeight;
 
-        if (atEnablePosition && atTargetPosition)
-            return true;
-        else
-            return false;
-    }
-
+    //         if (IsSingleTargetSkill(skill))
+    //         {
     private bool IsSingleTargetSkill(Skill skill)
     {
         if (skill.skillInfo.targetType == TargetType.Single)
             return true;
         else return false;
-    }
 
+    //             else if (desiredPosition != -1)
     public override void Attack(float dmg, BaseEntity baseEntity)
     {
         base.Attack(dmg, baseEntity);
@@ -142,32 +259,34 @@ public class Enemy : BaseEntity
         //     BattleManager.Instance.AttackEntity(targetIndex, damage);
         // else
         //     BattleManager.Instance.AttackEntity(targetIndicies, damage);
+    //                 var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
+    //                 if (possibleSkillRange != null && possibleSkillRange.Count > 0)
+    //                 {
+    //                     // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
+    //                     // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
+    //                 }
+    //             }
+    //         }
+    //     }
+    // //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
     }
+    
+    // private void SetSkill()
+    // {
+    //     skills = new Skill[data.skillId.Count];
+    //     int i = 0;
+    //     foreach (var id in data.skillId)
+    //     {
+    //         Skill skill = new Skill();
+    //         skill.Init(id, this);
+    //         entityInfo.skills[i] = skill;
+    //         i++;
+    //     }
+    // }
 
-    private int GetDesiredPosition(Skill skill)
-    {
-        if (skill == null || skill.skillInfo == null) return -1;
-        var info = skill.skillInfo;
-        if (info.enablePos == null || info.enablePos.Count == 0) return -1;
-
-        var currentIndex = BattleManager.Instance.FindEntityPosition(this) ?? -1;
-        if (currentIndex < 0) return -1;
-
-        var entities = BattleManager.Instance.EnemyCharacters;
-        int entityCount = entities?.Count ?? 0;
-        if (entityCount == 0) return -1;
-
-        foreach (var position in info.enablePos)
-        {
-            int targetIndex = position;
-
-            if (targetIndex >= 0 && targetIndex < entityCount)
-            {
-                if (targetIndex != currentIndex)
-                    return targetIndex;
-            }
-            return targetIndex;
-        }
-        return -1;
-    }
-}
+    
+    // private bool IsSingleTargetSkill(Skill skill)
+    // {
+}    //     else return false;
+    // }
+*/

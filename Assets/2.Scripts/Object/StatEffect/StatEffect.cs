@@ -55,6 +55,7 @@ public class StatEffect
                 }
             }
 
+            //TODO : 버프 지속시간 끝나는거 체크하는 부분이 여기 위치 맞는지 체크하기
             if (_entityCurrentStatus[i].duration <= 0) //버프 지속시간이 끝나면
             {
                 RemoveStatus(_entityCurrentStatus[i]); //상태이상 제거
