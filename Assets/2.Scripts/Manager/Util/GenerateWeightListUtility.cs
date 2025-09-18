@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GenerateWeightListUtility
+public static class GenerateWeightListUtility //타겟 가중치 리스트
 {
     public static List<float> weightsList = new List<float>();
 

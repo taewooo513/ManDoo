@@ -29,7 +29,7 @@ public static class RandomizeUtility
         return playerIndex;
     }
 
-    public static Skill GetRandomSkillByWeight(List<Skill> skills)
+    public static Skill GetRandomSkillByWeight(List<Skill> skills) //스킬 가중치 뽑기
     {
         float total = 0f;
         var pickedSkill = new Skill();
