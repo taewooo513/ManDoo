@@ -177,7 +177,6 @@ public class Enemy : BaseEntity
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
         //TargetCheckUI(targetEntity);
-        Debug.Log( this.gameObject.name+ " " + CanUseSkill(_attackSkill) + " " + _attackSkill.skillInfo.skillName);
         if (CanUseSkill(_attackSkill))
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
