@@ -383,7 +383,6 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var item in posList)
             {
-                Debug.Log(item);
                 if (Utillity.GetIndexInListToObject<BaseEntity>(EnemyCharacters, nowTurnEntity) == item)
                 {
                     return true;
