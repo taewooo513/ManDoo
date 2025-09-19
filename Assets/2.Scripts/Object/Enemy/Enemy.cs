@@ -16,6 +16,7 @@ public class Enemy : BaseEntity
     {
         Init(initID);
     }
+
     public void Init(int idx)
     {
         SetData(idx);
@@ -30,7 +31,7 @@ public class Enemy : BaseEntity
         );
         entityInfo.SetUpSkill(_data.skillId, this);
     }
-    
+
     public override void StartTurn()
     {
         bool isAttack = false; //공격 타입의 스킬공격인지
@@ -38,19 +39,20 @@ public class Enemy : BaseEntity
         if (_attackSkill == null) //선택한 스킬이 null이면
         {
             EndTurn(false);
+            return;
         }
-        else //선택한 스킬이 있으면
+
+        foreach (var item in _attackSkill.skillInfo.skillEffects) //스킬효과를 돌면서
         {
-            foreach (var item in _attackSkill.skillInfo.skillEffects) //스킬효과를 돌면서
+            var effectType = item.GetEffectType(); //스킬 효과 타입 챙겨오기
+            if (effectType == EffectType.Attack || effectType == EffectType.Debuff) //공격류 스킬이면
             {
-                var effectType = item.GetEffectType(); //스킬 효과 타입 챙겨오기
-                if (effectType == EffectType.Attack || effectType == EffectType.Debuff) //공격류 스킬이면
-                {
-                    isAttack = true;
-                    break;
-                }
+                isAttack = true;
+                break;
             }
         }
+
+        Debug.Log(this.gameObject.name + " " + _attackSkill.skillInfo.skillName + " " + isAttack);
         if (isAttack) //공격류 스킬일 시 실행
         {
             if (TryAttack(out int position)) //공격 시도 성공 시
@@ -81,7 +83,7 @@ public class Enemy : BaseEntity
                 }
             }
         }
-        
+
         EndTurn(_hasExtraTurn);
     }
 
@@ -91,7 +93,7 @@ public class Enemy : BaseEntity
         _attackSkill = null; //선택한 스킬 비워주기
         BattleManager.Instance.EndTurn(hasExtraTurn);
     }
-    
+
     public override void StartExtraTurn() //추가 공격 턴
     {
         if (TryAttack(out int position)) //공격 시도 성공시
@@ -100,10 +102,11 @@ public class Enemy : BaseEntity
         else //공격 실패 시
         {
             if (position != -1)
-            { 
+            {
                 BattleManager.Instance.SwitchPosition(this, position); //이동
             }
         }
+
         EndTurn(false);
     }
 
@@ -121,6 +124,7 @@ public class Enemy : BaseEntity
             {
                 continue;
             }
+
             //TODO : 2차 때 캐릭터성/1회성 계산 로직
             var skill = entityInfo.skills[i];
             if (skill == null || skill.skillInfo == null) continue;
@@ -153,7 +157,7 @@ public class Enemy : BaseEntity
         if (skillCandidates.Count == 0) return null;
         return RandomizeUtility.GetRandomSkillByWeight(skillCandidates);
     }
-    
+
     private bool CanUseSkill(Skill skill) //스킬이 사용 가능한 위치 enemy가 서있는지, 스킬 범위 내에 플레이어가 서 있는지
     {
         if (skill == null || skill.skillInfo == null) return false;
@@ -169,7 +173,8 @@ public class Enemy : BaseEntity
     private bool TryAttack(out int position) //스킬 선택, 타겟 선택
     {
         var info = _attackSkill.skillInfo; //사용할 스킬 정보
-        List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
+        List<int> targetRange =
+            BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
         List<float> weights = BattleManager.Instance.GetWeightList(true); //타겟 가중치 리스트 가져옴
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
@@ -179,12 +184,13 @@ public class Enemy : BaseEntity
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                _attackSkill.UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Attack 순서
+                _attackSkill
+                    .UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Attack 순서
                 position = -1;
                 return true;
-                
             }
         }
+
         position = GetDesiredPosition(_attackSkill); //현재 enemy가 서 있는 위치
         return false;
     }
@@ -192,22 +198,25 @@ public class Enemy : BaseEntity
     private bool TrySupport(out int position)
     {
         var info = _attackSkill.skillInfo; //사용할 스킬 정보
-        List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
+        List<int> targetRange =
+            BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
         List<float> weights = BattleManager.Instance.GetWeightList(false); //타겟 가중치 리스트 가져옴
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
         //TargetCheckUI(targetEntity);
-        
+
         if (CanUseSkill(_attackSkill))
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                _attackSkill.UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Support 순서
+                _attackSkill
+                    .UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Support 순서
                 position = -1;
                 return true;
             }
         }
+
         position = GetDesiredPosition(_attackSkill); //현재 enemy가 서 있는 위치
         return false;
     }
@@ -222,7 +231,7 @@ public class Enemy : BaseEntity
     {
         //아마 다른 서포터류 함수 만들고 그거 추가해주는 작업 할듯
     }
-    
+
     // private void TargetCheckUI(BaseEntity targetEntity) //때리려는 타겟만 붉은색으로 표시해주는 UI 함수
     // {
     //     //플레이어 프리팹 접근해서 AttackChoice 켜주는 함수. 근데 이거 ui에서 해줘야됨.
@@ -247,14 +256,16 @@ public class Enemy : BaseEntity
             // 타겟이 dead 상태일 경우 continue;
             // var target = BattleManager.Instance.PlayableCharacters[targetIndex];
             // if (BattleManager.Instance.EntityDead(target)) continue;
-            
+
             if (targetIndex >= 0 && targetIndex < entityCount) //유효한 인덱스 범위인지 확인
             {
                 if (targetIndex != currentIndex) //현재 위치와 다른 위치면 그 위치로 이동
                     return targetIndex;
             }
+
             return targetIndex; //현재 위치와 같거나 유효하지 않은 위치면 그대로 반환
         }
+
         return -1; //적절한 위치를 찾지 못하면 -1 반환
     }
 }
