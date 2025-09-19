@@ -154,6 +154,7 @@ public class Enemy : BaseEntity
 
     private bool CanUseSkill(Skill skill) //스킬이 사용 가능한 위치 enemy가 서있는지, 스킬 범위 내에 플레이어가 서 있는지
     {
+        Debug.Log("CanUseSkill");
         if (skill == null || skill.skillInfo == null) return false;
         var info = skill.skillInfo;
         var playerPosition = BattleManager.Instance.GetPlayerPosition();
