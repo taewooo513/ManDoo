@@ -486,7 +486,7 @@ public class BattleManager : Singleton<BattleManager>
             {
                 if (character == entity)
                 {
-                    index = _enemyCharacters.IndexOf(character);
+                    index = _enemyCharacters.IndexOf(entity);
                     break;
                 }
             }
