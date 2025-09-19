@@ -14,7 +14,7 @@ public class Enemy : BaseEntity
     public void Start()
     {
         BattleManager.Instance.AddEnemyCharacter(this);
-        Init(2001);
+        Init(id);
     }
     public void Init(int idx)
     {
@@ -173,6 +173,7 @@ public class Enemy : BaseEntity
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
+        //TargetCheckUI(targetEntity);
         
         if (CanUseSkill(_attackSkill))
         {
@@ -195,6 +196,7 @@ public class Enemy : BaseEntity
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
+        //TargetCheckUI(targetEntity);
         
         if (CanUseSkill(_attackSkill))
         {
@@ -219,6 +221,11 @@ public class Enemy : BaseEntity
     {
         //아마 다른 서포터류 함수 만들고 그거 추가해주는 작업 할듯
     }
+    
+    // private void TargetCheckUI(BaseEntity targetEntity) //때리려는 타겟만 붉은색으로 표시해주는 UI 함수
+    // {
+    //     //플레이어 프리팹 접근해서 AttackChoice 켜주는 함수. 근데 이거 ui에서 해줘야됨.
+    // }
 
     private int GetDesiredPosition(Skill skill) //스킬을 사용하기 위해 이동해야 할 위치를 반환하는 함수
     {
