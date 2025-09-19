@@ -58,7 +58,8 @@ public class EntityInfo
         return result;
     }
 
-    public bool LowHPStatEnemy() //적(플레이어블) hp가 낮을 때. TODO : 스킬 공격 시작할 때마다 / 적들 hp 확인하고 / 호출해서? 검증해줘야 됨
+    //TODO : 스킬 확률 관리 부분에서, 스킬 효과에 따른 증감 가중치 주려면 구조 변경해야됨. curHP를 넘겨서 따로 작업?
+    public bool LowHPStatEnemy() //적(플레이어블) hp가 낮을 때.
     {
         double percentage = maxHp * 0.4;
         if (currentHp <= percentage) //현재 hp가 40% 이하일 때
