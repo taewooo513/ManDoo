@@ -232,13 +232,11 @@ public class BattleManager : Singleton<BattleManager>
 
             if (tempPlayerList[0].entityInfo.speed >= tempEnemyList[0].entityInfo.speed)
             {
-                Debug.Log(tempPlayerList[0]);
                 _turnQueue.Enqueue(tempPlayerList[0]);
                 tempPlayerList.RemoveAt(0);
             }
             else
             {
-                Debug.Log(tempEnemyList[0]);
                 _turnQueue.Enqueue(tempEnemyList[0]);
                 tempEnemyList.RemoveAt(0);
             }
