@@ -236,7 +236,10 @@ public class Enemy : BaseEntity
         foreach (var position in info.enablePos) //스킬 사용 가능 위치들을 순회
         {
             int targetIndex = position;
-
+            // 타겟이 dead 상태일 경우 continue;
+            // var target = BattleManager.Instance.PlayableCharacters[targetIndex];
+            // if (BattleManager.Instance.EntityDead(target)) continue;
+            
             if (targetIndex >= 0 && targetIndex < entityCount) //유효한 인덱스 범위인지 확인
             {
                 if (targetIndex != currentIndex) //현재 위치와 다른 위치면 그 위치로 이동
