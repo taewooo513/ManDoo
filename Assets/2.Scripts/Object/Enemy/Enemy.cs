@@ -160,10 +160,11 @@ public class Enemy : BaseEntity
         bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
         bool atTargetPosition = playerPosition.Any(x => info.targetPos.Contains(x.Item1));
 
-        if (atEnablePosition && atTargetPosition)
+        bool atTargetPositionTest = BattleManager.Instance.IsTargetInList(info.targetPos);
+        if (atEnablePosition && atTargetPositionTest)
             return true;
         if(!atEnablePosition) Debug.Log(this.transform.gameObject.name + " EnablePosition이 아님");
-        if(!atTargetPosition) Debug.Log(this.transform.gameObject.name + " TargetPosition이 아님");
+        if(!atTargetPositionTest) Debug.Log(this.transform.gameObject.name + " TargetPosition이 아님");
             return false;
     }
 
