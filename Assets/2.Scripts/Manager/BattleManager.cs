@@ -48,19 +48,6 @@ public class BattleManager : Singleton<BattleManager>
         return sum / (_playableCharacters.Count + _enemyCharacters.Count);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            List<BaseEntity> dummy = new List<BaseEntity>();
-            BattleStartTrigger(dummy, dummy);
-            for (int i = 0; i < _playableCharacters.Count; i++)
-            {
-                _playableCharacters[i].StartTurn();
-            }
-        }
-    }
-
     public void BattleStartTrigger(List<BaseEntity> playerList, List<BaseEntity> enemyList)
     {
         foreach (var item in playerList)
@@ -373,28 +360,20 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var item in posList)
             {
-                if (_playableCharacters[item] == entity)
+                if (_playableCharacters.Count > item && _playableCharacters[item] == entity)
                 {
                     return true;
                 }
-                //if (_playableCharacters.Count > item && _playableCharacters[item] == entity)
-                //{
-                //    return true;
-                //}
             }
         }
         else
         {
             foreach (var item in posList)
             {
-                if (Utillity.GetIndexInListToObject<BaseEntity>(EnemyCharacters, nowTurnEntity) == item)
+                if (_enemyCharacters.Count > item && _enemyCharacters[item] == entity)
                 {
                     return true;
                 }
-                //if (_enemyCharacters.Count > item && _enemyCharacters[item] == entity)
-                //{
-                //    return true;
-                //}
             }
         }
 
@@ -476,7 +455,7 @@ public class BattleManager : Singleton<BattleManager>
     //entity의 위치를 desiredPosition index와 변경합니다.
     public void SwitchPosition(BaseEntity entity, int desiredPosition)
     {
-        if (nowTurnEntity is PlayableCharacter)
+        if (entity is PlayableCharacter)
         {
             var index = -1;
             foreach (var character in _playableCharacters)
@@ -510,7 +489,7 @@ public class BattleManager : Singleton<BattleManager>
                     break;
                 }
             }
-
+            Debug.Log(index + " " + desiredPosition);
             if (index == -1)
             {
                 return;
