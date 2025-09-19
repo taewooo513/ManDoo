@@ -44,10 +44,17 @@ public class EntityInfo
         }
     }
     
-    public float GetTotalTargetWeight() //개개인이 가지고 있는 타깃 가중치 합
+    public float GetPlayableTargetWeight() //플레이어블 캐릭터의 타깃 가중치 합
     {
         float result = _standardWeight + statEffect.AttackWeight(); //가중치 합
         GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가 //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
+        return result;
+    }
+
+    public float GetEnemyTargetWeight() //enemy의 타깃 가중치 합
+    {
+        float result = _standardWeight;
+        GenerateWeightListUtility.CombineWeights(result);
         return result;
     }
 
@@ -90,7 +97,7 @@ public class BaseEntity : MonoBehaviour
     {
         get { return entityInfo; }
     }
-    //private HpbarUI hpbarUI;
+    private HpbarUI hpbarUI;
     public int id { get; protected set; }
     protected bool hasExtraTurn = true;
     public Action<BaseEntity> OnDied;
@@ -98,7 +105,7 @@ public class BaseEntity : MonoBehaviour
     protected virtual void Awake()
     {
         SetData();
-        //hpbarUI = GetComponentInParent<HpbarUI>();
+        hpbarUI = GetComponentInParent<HpbarUI>();
     }
 
     public virtual void SetData()
@@ -108,7 +115,7 @@ public class BaseEntity : MonoBehaviour
     public virtual void Damaged(float value)
     {
         entityInfo.Damaged(value);
-        //hpbarUI.UpdateUI();
+        hpbarUI.UpdateUI();
         if (entityInfo.currentHp <= 0)
         {
             OnDied?.Invoke(this);
@@ -125,14 +132,19 @@ public class BaseEntity : MonoBehaviour
         OnDied -= BattleManager.Instance.EntityDead;
     }
 
+    public void BattleEnded()
+    {
+        OnDied -= BattleManager.Instance.EntityDead;
+    }
+
     public virtual void Attack(float dmg, BaseEntity baseEntity)
     {
 
     }
 
-    public virtual void Support(StatEffectInfo type, BaseEntity baseEntity)
+    public virtual void Support(Skill skill, BaseEntity baseEntity)
     {
-        
+
     }
     public virtual void UseSkill(BaseEntity baseEntity)
     {

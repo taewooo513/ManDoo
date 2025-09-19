@@ -171,6 +171,16 @@ public class BattleManager : Singleton<BattleManager>
     private void EndBattle()
     {
         //TODO: 전투가 끝났을 때 공통적으로 해야하는 것...?
+        foreach (var item in _playableCharacters)
+        {
+            item.BattleEnded();
+        }
+
+        foreach (var item in _enemyCharacters)
+        {
+            item.BattleEnded();
+        }
+
         _playableCharacters.Clear();
         _enemyCharacters.Clear();
     }
@@ -498,7 +508,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var item in _playableCharacters)
             {
-                item.entityInfo.GetTotalTargetWeight();
+                item.entityInfo.GetPlayableTargetWeight(); //playable 가중치 가져오기
             }
 
             return GenerateWeightListUtility.GetWeights();
@@ -506,7 +516,7 @@ public class BattleManager : Singleton<BattleManager>
 
         foreach (var item in _enemyCharacters)
         {
-            item.entityInfo.GetTotalTargetWeight();
+            item.entityInfo.GetEnemyTargetWeight(); //enemy 가중치 가져오기
         }
         return GenerateWeightListUtility.GetWeights();
     }
