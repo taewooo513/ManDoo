@@ -34,65 +34,53 @@ public class Enemy : BaseEntity
     
     public override void StartTurn()
     {
-        // _attackSkill = GetRandomSkill();
-        // if (_attackSkill == null)
-        // {
-        //     //EndTurn(false);
-        // }
-        // else
-        // {
-        //     bool isAttack = false;
-        //     foreach (var item in _attackSkill.skillInfo.skillEffects)
-        //     {
-        //         var effectType = item.GetEffectType();
-        //         if (effectType == EffectType.Attack || effectType == EffectType.Debuff)
-        //         {
-        //             isAttack = true;
-        //             break;
-        //         }
-        //     }
-        // }
-        // if (isAttack)
-        // {
-        //     if (TryAttack(out int position))
-        //     {
-        //         _hasExtraTurn = true;
-        //     }
-        //     else
-        //     {
-        //         _hasExtraTurn = false;
-        //         if (position != -1)
-        //         {
-        //             BattleManager.Instance.SwitchPosition(this, position); //이동
-        //         }
-        //     }
-        // }
-        // else
-        // {
-        //     if (TrySupport(out int position))
-        //     {
-        //         _hasExtraTurn = true;
-        //     }
-        //     else
-        //     {
-        //         _hasExtraTurn = false;
-        //         if (position != -1)
-        //         {
-        //             BattleManager.Instance.SwitchPosition(this, position);
-        //         }
-        //     }
-        // }
-        
-        if (TryAttack(out int position)) //공격 시도 성공시
+        bool isAttack = false; //공격 타입의 스킬공격인지
+        _attackSkill = GetRandomSkill();
+        if (_attackSkill == null) //선택한 스킬이 null이면
         {
-            _hasExtraTurn = true;
+            EndTurn(false);
         }
-        else //공격 실패 시
+        else //선택한 스킬이 있으면
         {
-            _hasExtraTurn = false; //추가 공격도 실패
-            if (position != -1)
-            { 
-                BattleManager.Instance.SwitchPosition(this, position); //이동
+            foreach (var item in _attackSkill.skillInfo.skillEffects) //스킬효과를 돌면서
+            {
+                var effectType = item.GetEffectType(); //스킬 효과 타입 챙겨오기
+                if (effectType == EffectType.Attack || effectType == EffectType.Debuff) //공격류 스킬이면
+                {
+                    isAttack = true;
+                    break;
+                }
+            }
+        }
+        
+        if (isAttack) //공격류 스킬일 시 실행
+        {
+            if (TryAttack(out int position)) //공격 시도 성공 시
+            {
+                _hasExtraTurn = true; //추가 공격 체크용
+            }
+            else //공격 시도 실패 시
+            {
+                _hasExtraTurn = false;
+                if (position != -1)
+                {
+                    BattleManager.Instance.SwitchPosition(this, position); //이동
+                }
+            }
+        }
+        else //서포터류 스킬일 시 실행
+        {
+            if (TrySupport(out int position))
+            {
+                _hasExtraTurn = true;
+            }
+            else
+            {
+                _hasExtraTurn = false;
+                if (position != -1)
+                {
+                    BattleManager.Instance.SwitchPosition(this, position); //이동
+                }
             }
         }
         
@@ -180,14 +168,6 @@ public class Enemy : BaseEntity
 
     private bool TryAttack(out int position) //스킬 선택, 타겟 선택
     {
-        //-> 빼기
-        _attackSkill = GetRandomSkill(); //사용할 스킬 랜덤 선택
-        if (_attackSkill == null) //스킬이 없을 때
-        {
-            position = -1; //사용 안 하겠다는 뜻. 이동도 못 함.
-            return false;
-        }
-        //<- 빼기
         var info = _attackSkill.skillInfo; //사용할 스킬 정보
         List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
         List<float> weights = BattleManager.Instance.GetWeightList(true); //타겟 가중치 리스트 가져옴
@@ -208,15 +188,37 @@ public class Enemy : BaseEntity
         return false;
     }
 
-    public override void Attack(float dmg, BaseEntity targetEntity) //적->플레이어 공격
+    private bool TrySupport(out int position)
     {
-        int index = Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity); //이렇게 하면 attack - tryattack 연결하는 부분이 없음. 어떻게 연결?
-        BattleManager.Instance.AttackEntity(index, (int)dmg); //TODO : 범위공격/단일공격 처리 안 되어있음. 스킬에서 해주는 건지?
+        var info = _attackSkill.skillInfo; //사용할 스킬 정보
+        List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
+        List<float> weights = BattleManager.Instance.GetWeightList(false); //타겟 가중치 리스트 가져옴
+        int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
+
+        var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
+        
+        if (CanUseSkill(_attackSkill))
+        {
+            if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
+            {
+                UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Attack 순서
+                position = -1;
+                return true;
+            }
+        }
+        position = GetDesiredPosition(_attackSkill); //현재 enemy가 서 있는 위치
+        return false;
     }
 
-    public override void Support(float amount, BaseEntity baseEntity)
+    public override void Attack(float dmg, BaseEntity targetEntity) //적->플레이어 공격
     {
+        int index = Utillity.GetIndexInListToObject(BattleManager.Instance.PlayableCharacters, targetEntity);
+        BattleManager.Instance.AttackEntity(index, (int)dmg); //범위/단일 공격 처리는 skill에서 되어있음
+    }
 
+    public override void Support(Skill skill, BaseEntity baseEntity)
+    {
+        //아마 다른 서포터류 함수 만들고 그거 추가해주는 작업 할듯
     }
 
     private int GetDesiredPosition(Skill skill) //현재 엔티티 위치 읽는 함수
