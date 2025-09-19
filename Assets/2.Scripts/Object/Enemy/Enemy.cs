@@ -14,7 +14,7 @@ public class Enemy : BaseEntity
     public void Start()
     {
         BattleManager.Instance.AddEnemyCharacter(this);
-        Init(2001);
+        Init(id);
     }
     public void Init(int idx)
     {
@@ -116,9 +116,10 @@ public class Enemy : BaseEntity
         if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
         //TODO : 범위 공격 - 스킬 랜덤으로 뽑아주는 부분에서, 랜덤으로뽑힌스킬.UseSkill 하면 된다고 함.
-
+        
         for (int i = 0; i < entityInfo.skills.Length; i++)
         {
+            //TODO : 2차 때 캐릭터성/1회성 계산 로직
             var skill = entityInfo.skills[i];
             if (skill == null || skill.skillInfo == null) continue;
 
@@ -133,9 +134,9 @@ public class Enemy : BaseEntity
             {
                 var effect = effectArray[j];
                 var effectType = effect.GetEffectType();
-                if (effectType == EffectType.Attack || effectType == EffectType.Debuff)
+                if (effectType == EffectType.Attack)
                     isAttackSkill = true;
-                if (effectType == EffectType.Heal || effectType == EffectType.Protect)
+                if (effectType == EffectType.Heal)
                     isSupportSkill = true;
             }
 
@@ -173,6 +174,7 @@ public class Enemy : BaseEntity
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
+        //TargetCheckUI(targetEntity);
         
         if (CanUseSkill(_attackSkill))
         {
@@ -195,12 +197,13 @@ public class Enemy : BaseEntity
         int pickedIndex = RandomizeUtility.TryGetRandomPlayerIndexByWeight(weights); //가중치 기반으로 랜덤하게 플레이어 인덱스를 선택
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
+        //TargetCheckUI(targetEntity);
         
         if (CanUseSkill(_attackSkill))
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Attack 순서
+                UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Support 순서
                 position = -1;
                 return true;
             }
@@ -219,6 +222,11 @@ public class Enemy : BaseEntity
     {
         //아마 다른 서포터류 함수 만들고 그거 추가해주는 작업 할듯
     }
+    
+    // private void TargetCheckUI(BaseEntity targetEntity) //때리려는 타겟만 붉은색으로 표시해주는 UI 함수
+    // {
+    //     //플레이어 프리팹 접근해서 AttackChoice 켜주는 함수. 근데 이거 ui에서 해줘야됨.
+    // }
 
     private int GetDesiredPosition(Skill skill) //스킬을 사용하기 위해 이동해야 할 위치를 반환하는 함수
     {
@@ -250,97 +258,3 @@ public class Enemy : BaseEntity
         return -1; //적절한 위치를 찾지 못하면 -1 반환
     }
 }
-
-/*
-private Skill GetRandomSkill()
-{
-    // bool[] isSupportSkill = new bool[entityInfo.skills.Length];
-    // bool[] isAttackSkill = new bool[entityInfo.skills.Length];
-
-    // for (int i = 0; i < entityInfo.skills.Length; i++)
-    // {
-    //     for (int j = 0; j < entityInfo.skills[i].skillInfo.skillEffects.Length; j++)
-    //     {
-    //         var effectType = entityInfo.skills[i].skillInfo.skillEffects[j].GetEffectType();
-    //         if (effectType == EffectType.Attack || effectType == EffectType.Debuff)
-    //             isAttackSkill[i] = true;
-    //         else if (effectType == EffectType.Heal || effectType == EffectType.Protect)
-    //             isSupportSkill[i] = true;
-    //         else continue;
-    //     }
-    // }
-    // foreach (var skill in entityInfo.skills)
-    //     {
-
-    //         if (skill == null || skill.skillInfo == null) continue;
-    //         var info = skill.skillInfo;
-    //         var desiredPosition = GetDesiredPosition(skill);
-
-    //         //if ()
-    //         skill.addedWeight = enemyWeight;
-    //         float supportSkillWeight = Skill.defaultWeight + skill.addedWeight;
-
-    //         if (IsSingleTargetSkill(skill))
-    //         {
-    //             if (CanUseSkill(skill))
-    //             {
-    //                 // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
-    //                 // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
-    //             }
-
-    //             else if (desiredPosition != -1)
-    //             {
-    //                 BattleManager.Instance.SwitchPosition(this, desiredPosition);
-    //                 if (CanUseSkill(skill))
-    //                 {
-    //                     // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
-    //                     // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
-    //                 }
-    //             }
-    //         }
-
-    //         else
-    //         {
-    //             bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
-
-    //             if (!atEnablePosition && desiredPosition != -1)
-    //             {
-    //                 BattleManager.Instance.SwitchPosition(this, desiredPosition);
-    //                 atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
-    //             }
-
-    //             if (atEnablePosition)
-    //             {
-    //                 var possibleSkillRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>());
-    //                 if (possibleSkillRange != null && possibleSkillRange.Count > 0)
-    //                 {
-    //                     // TODO: Player 중에 체력이 40프로 이하인 플레이어가 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다
-    //                     // TODO: Enemy 중에 체력이 10프로 이하인 적이 존재 한다면 skill 의 가중치를 + 0.3 하고 possibleSkills.Add(skill); 한다.
-    //                 }
-    //             }
-    //         }
-    //     }
-    // //else return possibleSkills[UnityEngine.Random.Range(0, possibleSkills.Count)]; // 나중에 삭제
-    }
-    
-    // private void SetSkill()
-    // {
-    //     skills = new Skill[data.skillId.Count];
-    //     int i = 0;
-    //     foreach (var id in data.skillId)
-    //     {
-    //         Skill skill = new Skill();
-    //         skill.Init(id, this);
-    //         entityInfo.skills[i] = skill;
-    //         i++;
-    //     }
-    // }
-
-    
-    // private bool IsSingleTargetSkill(Skill skill)
-    // {
-    //     if (skill.skillInfo.targetType == TargetType.Single)
-    //         return true;
-    //     else return false;
-    // }
-*/

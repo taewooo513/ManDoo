@@ -554,6 +554,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public void EntityDead(BaseEntity entity)
     {
+        Debug.Log("vad");
         var index = FindEntityPosition(entity);
         if (index == null) return;
         if (entity is PlayableCharacter)
