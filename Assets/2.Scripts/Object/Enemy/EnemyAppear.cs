@@ -35,11 +35,11 @@ public class EnemyAppear : MonoBehaviour
                 continue;
             }
 
-            if (enemyPrefabs[i] == null)
-            {
-                //Debug.LogError($"프리팹이 연결되지 않았습니다: {i}");
-                continue;
-            }
+            //if (enemyPrefabs[i] == null)
+            //{
+            //    //Debug.LogError($"프리팹이 연결되지 않았습니다: {i}");
+            //    continue;
+            //}
 
             GameObject obj = Instantiate(enemyPrefabs[i], spawnPoints[spawnIndex].position, Quaternion.identity);
             spawnedEnemies.Add(obj);
