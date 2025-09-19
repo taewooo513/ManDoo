@@ -574,7 +574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4694533221868639730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -645,6 +645,7 @@ GameObject:
   - component: {fileID: 2047294341538729468}
   - component: {fileID: 3602395446089691920}
   - component: {fileID: 6589394436654584170}
+  - component: {fileID: 7684380192036176265}
   m_Layer: 5
   m_Name: Button
   m_TagString: Enemy
@@ -766,3 +767,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a3c8962fb31f64da5d9caf6b230dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7684380192036176265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8516723416726755989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49677e08d98ebfe4da94fa259a4a271e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetImage: {fileID: 5632551139525624306}
