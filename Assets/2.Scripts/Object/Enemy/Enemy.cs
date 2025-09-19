@@ -51,7 +51,6 @@ public class Enemy : BaseEntity
                 }
             }
         }
-        
         if (isAttack) //공격류 스킬일 시 실행
         {
             if (TryAttack(out int position)) //공격 시도 성공 시
@@ -92,7 +91,7 @@ public class Enemy : BaseEntity
         _attackSkill = null; //선택한 스킬 비워주기
         BattleManager.Instance.EndTurn(hasExtraTurn);
     }
-
+    
     public override void StartExtraTurn() //추가 공격 턴
     {
         if (TryAttack(out int position)) //공격 시도 성공시
@@ -116,9 +115,12 @@ public class Enemy : BaseEntity
         if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
         //TODO : 범위 공격 - 스킬 랜덤으로 뽑아주는 부분에서, 랜덤으로뽑힌스킬.UseSkill 하면 된다고 함.
-        
         for (int i = 0; i < entityInfo.skills.Length; i++)
         {
+            if (!CanUseSkill(entityInfo.skills[i]))
+            {
+                continue;
+            }
             //TODO : 2차 때 캐릭터성/1회성 계산 로직
             var skill = entityInfo.skills[i];
             if (skill == null || skill.skillInfo == null) continue;
@@ -151,7 +153,7 @@ public class Enemy : BaseEntity
         if (skillCandidates.Count == 0) return null;
         return RandomizeUtility.GetRandomSkillByWeight(skillCandidates);
     }
-
+    
     private bool CanUseSkill(Skill skill) //스킬이 사용 가능한 위치 enemy가 서있는지, 스킬 범위 내에 플레이어가 서 있는지
     {
         if (skill == null || skill.skillInfo == null) return false;
@@ -159,12 +161,9 @@ public class Enemy : BaseEntity
         var playerPosition = BattleManager.Instance.GetPlayerPosition();
         bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
         bool atTargetPosition = BattleManager.Instance.IsTargetInList(info.targetPos);
-        Debug.Log(skill.skillInfo.skillName);
         if (atEnablePosition && atTargetPosition)
             return true;
-        if(!atEnablePosition) Debug.Log(this.transform.gameObject.name + " EnablePosition이 아님");
-        if(!atTargetPosition) Debug.Log(this.transform.gameObject.name + " TargetPosition이 아님");
-            return false;
+        return false;
     }
 
     private bool TryAttack(out int position) //스킬 선택, 타겟 선택
@@ -183,6 +182,7 @@ public class Enemy : BaseEntity
                 _attackSkill.UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Attack 순서
                 position = -1;
                 return true;
+                
             }
         }
         position = GetDesiredPosition(_attackSkill); //현재 enemy가 서 있는 위치
