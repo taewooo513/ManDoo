@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class HpbarUI : MonoBehaviour
 {
     private EntityInfo entityInfo;
+    [SerializeField]
     private Image hpBar;
-    private void Awake()
+
+    private void Start()
     {
         entityInfo = GetComponentInParent<BaseEntity>().entityInfo;
-        hpBar = GetComponentInChildren<Image>();
     }
-
     public void UpdateUI()
     {
         if (hpBar != null || entityInfo != null)
