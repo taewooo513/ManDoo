@@ -10,11 +10,11 @@ public class Enemy : BaseEntity
     private Skill[] _skills;
     private bool _hasExtraTurn = true;
     private Skill _attackSkill;
+    [SerializeField] private int initID;
 
     public void Start()
     {
-        BattleManager.Instance.AddEnemyCharacter(this);
-        Init(id);
+        Init(initID);
     }
     public void Init(int idx)
     {
