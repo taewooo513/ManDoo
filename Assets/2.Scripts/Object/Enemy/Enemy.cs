@@ -159,6 +159,7 @@ public class Enemy : BaseEntity
         var playerPosition = BattleManager.Instance.GetPlayerPosition();
         bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
         bool atTargetPosition = BattleManager.Instance.IsTargetInList(info.targetPos);
+        Debug.Log(skill.skillInfo.skillName);
         if (atEnablePosition && atTargetPosition)
             return true;
         if(!atEnablePosition) Debug.Log(this.transform.gameObject.name + " EnablePosition이 아님");
