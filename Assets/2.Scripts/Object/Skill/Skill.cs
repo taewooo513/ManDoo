@@ -68,11 +68,11 @@ public class Skill
                 {
                     if (targetEntity is PlayableCharacter)
                     {
-                        skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._enemyCharacters[val[j]]);
+                        skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._playableCharacters[val[j]]);
                     }
                     else
                     {
-                        skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._playableCharacters[val[j]]);
+                        skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._enemyCharacters[val[j]]);
                     }
                 }
             }
