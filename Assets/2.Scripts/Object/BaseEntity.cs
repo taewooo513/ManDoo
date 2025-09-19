@@ -51,6 +51,13 @@ public class EntityInfo
         return result;
     }
 
+    public float GetEnemyTargetWeight()
+    {
+        float result = _standardWeight;
+        GenerateWeightListUtility.CombineWeights(result);
+        return result;
+    }
+
     public bool LowHPStatEnemy() //적(플레이어블) hp가 낮을 때. TODO : 스킬 공격 시작할 때마다 / 적들 hp 확인하고 / 호출해서? 검증해줘야 됨
     {
         double percentage = maxHp * 0.4;

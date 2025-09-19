@@ -34,6 +34,55 @@ public class Enemy : BaseEntity
     
     public override void StartTurn()
     {
+        // _attackSkill = GetRandomSkill();
+        // if (_attackSkill == null)
+        // {
+        //     //EndTurn(false);
+        // }
+        // else
+        // {
+        //     bool isAttack = false;
+        //     foreach (var item in _attackSkill.skillInfo.skillEffects)
+        //     {
+        //         var effectType = item.GetEffectType();
+        //         if (effectType == EffectType.Attack || effectType == EffectType.Debuff)
+        //         {
+        //             isAttack = true;
+        //             break;
+        //         }
+        //     }
+        // }
+        // if (isAttack)
+        // {
+        //     if (TryAttack(out int position))
+        //     {
+        //         _hasExtraTurn = true;
+        //     }
+        //     else
+        //     {
+        //         _hasExtraTurn = false;
+        //         if (position != -1)
+        //         {
+        //             BattleManager.Instance.SwitchPosition(this, position); //이동
+        //         }
+        //     }
+        // }
+        // else
+        // {
+        //     if (TrySupport(out int position))
+        //     {
+        //         _hasExtraTurn = true;
+        //     }
+        //     else
+        //     {
+        //         _hasExtraTurn = false;
+        //         if (position != -1)
+        //         {
+        //             BattleManager.Instance.SwitchPosition(this, position);
+        //         }
+        //     }
+        // }
+        
         if (TryAttack(out int position)) //공격 시도 성공시
         {
             _hasExtraTurn = true;
@@ -131,12 +180,14 @@ public class Enemy : BaseEntity
 
     private bool TryAttack(out int position) //스킬 선택, 타겟 선택
     {
+        //-> 빼기
         _attackSkill = GetRandomSkill(); //사용할 스킬 랜덤 선택
         if (_attackSkill == null) //스킬이 없을 때
         {
             position = -1; //사용 안 하겠다는 뜻. 이동도 못 함.
             return false;
         }
+        //<- 빼기
         var info = _attackSkill.skillInfo; //사용할 스킬 정보
         List<int> targetRange = BattleManager.Instance.GetPossibleSkillRange(info.targetPos ?? new List<int>()); //타겟 가능한 범위 가져오기
         List<float> weights = BattleManager.Instance.GetWeightList(true); //타겟 가중치 리스트 가져옴
