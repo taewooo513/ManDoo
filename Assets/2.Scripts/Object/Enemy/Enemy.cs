@@ -154,13 +154,11 @@ public class Enemy : BaseEntity
 
     private bool CanUseSkill(Skill skill) //스킬이 사용 가능한 위치 enemy가 서있는지, 스킬 범위 내에 플레이어가 서 있는지
     {
-        Debug.Log("CanUseSkill");
         if (skill == null || skill.skillInfo == null) return false;
         var info = skill.skillInfo;
         var playerPosition = BattleManager.Instance.GetPlayerPosition();
         bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
         bool atTargetPosition = BattleManager.Instance.IsTargetInList(info.targetPos);
-        
         if (atEnablePosition && atTargetPosition)
             return true;
         if(!atEnablePosition) Debug.Log(this.transform.gameObject.name + " EnablePosition이 아님");
@@ -177,12 +175,11 @@ public class Enemy : BaseEntity
 
         var targetEntity = BattleManager.Instance.PlayableCharacters[pickedIndex]; //타겟
         //TargetCheckUI(targetEntity);
-        Debug.Log( this.gameObject.name+ " " + CanUseSkill(_attackSkill) + " " + _attackSkill.skillInfo.skillName);
         if (CanUseSkill(_attackSkill))
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Attack 순서
+                _attackSkill.UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Attack 순서
                 position = -1;
                 return true;
             }
@@ -205,7 +202,7 @@ public class Enemy : BaseEntity
         {
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
-                UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Support 순서
+                _attackSkill.UseSkill(targetEntity); //기존 : Attack(dmg, targetEntity); //스킬 작동 흐름 : tryAttack -> UseSkill -> Support 순서
                 position = -1;
                 return true;
             }

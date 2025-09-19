@@ -24,7 +24,6 @@ public class HpbarUI : MonoBehaviour
             }
             else
             {
-
                 hpBar.fillAmount = val;
             }
         }

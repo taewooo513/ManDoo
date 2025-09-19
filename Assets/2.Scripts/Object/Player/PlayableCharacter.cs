@@ -8,10 +8,6 @@ public class PlayableCharacter : BaseEntity
 {
     [SerializeField] private int initID;
     private MercenaryData data;
-    protected void Awake()
-    {
-
-    }
     public void Start()
     {
         SetData(initID);
