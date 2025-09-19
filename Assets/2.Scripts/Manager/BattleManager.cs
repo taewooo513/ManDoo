@@ -188,7 +188,6 @@ public class BattleManager : Singleton<BattleManager>
         {
             tempEnemyList.Add(item);
         }
-
         while (n > 1)
         {
             n--;
@@ -379,6 +378,30 @@ public class BattleManager : Singleton<BattleManager>
         return false;
     }
 
+    public bool IsTargetInList(List<int> targetPos)
+    {
+        if (nowTurnEntity is PlayableCharacter)
+        {
+            foreach (var item in targetPos)
+            {
+                if (_enemyCharacters.Count > item)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        foreach (var item in targetPos)
+        {
+            if (_playableCharacters.Count > item)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //플레이어 위치 받아오는 함수
     public List<(int, int)> GetPlayerPosition()
     {
@@ -484,7 +507,7 @@ public class BattleManager : Singleton<BattleManager>
             {
                 if (character == entity)
                 {
-                    index = _enemyCharacters.IndexOf(character);
+                    index = _enemyCharacters.IndexOf(entity);
                     break;
                 }
             }
@@ -557,8 +580,23 @@ public class BattleManager : Singleton<BattleManager>
         {
             SwitchPosition(entity, i + 1);
         }
+        RemoveDeadEntityFromTurnQueue(entity);
         //TODO: 이후 적 사망시 보상 연결은 여기서? 아니면 Enemy에서?
         Destroy(entity.gameObject);
         _enemyCharacters.RemoveAt(_enemyCharacters.Count - 1);
+    }
+
+    private void RemoveDeadEntityFromTurnQueue(BaseEntity entity)
+    {
+        int loopTime = _turnQueue.Count;
+        for (int i = 0; i < loopTime; i++)
+        {
+            var item = _turnQueue.Dequeue();
+            if (item == entity)
+            {
+                continue;
+            }
+            _turnQueue.Enqueue(item);
+        }
     }
 }
