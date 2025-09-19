@@ -571,8 +571,8 @@ public class BattleManager : Singleton<BattleManager>
             {
                 SwitchPosition(entity, i + 1);
             }
-            Destroy(entity.gameObject);
             _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
+            Destroy(entity.gameObject);
             return;
         }
 
@@ -582,8 +582,8 @@ public class BattleManager : Singleton<BattleManager>
         }
         RemoveDeadEntityFromTurnQueue(entity);
         //TODO: 이후 적 사망시 보상 연결은 여기서? 아니면 Enemy에서?
-        Destroy(entity.gameObject);
         _enemyCharacters.RemoveAt(_enemyCharacters.Count - 1);
+        Destroy(entity.gameObject);
     }
 
     private void RemoveDeadEntityFromTurnQueue(BaseEntity entity)

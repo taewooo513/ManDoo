@@ -10,6 +10,8 @@ public class DamageSkill : SkillEffect
     }
     public void HitDamageSkill(BaseEntity attackEntity, BaseEntity damagedEntity)
     {
+        Debug.Log(attackEntity.entityInfo.name + "가 " + damagedEntity.entityInfo.name + "를 공격함");
+        Debug.Log("대미지: " + (attackEntity.entityInfo.attackDamage) * adRatio);
         attackEntity.Attack(((float)attackEntity.entityInfo.attackDamage) * adRatio, damagedEntity);
     }
 
