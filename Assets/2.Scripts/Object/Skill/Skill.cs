@@ -66,7 +66,14 @@ public class Skill
             {
                 for (int i = 0; i < skillInfo.skillEffects.Length; i++)
                 {
-                    skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._enemyCharacters[val[j]]);
+                    if (targetEntity is PlayableCharacter)
+                    {
+                        skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._enemyCharacters[val[j]]);
+                    }
+                    else
+                    {
+                        skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._playableCharacters[val[j]]);
+                    }
                 }
             }
         }
