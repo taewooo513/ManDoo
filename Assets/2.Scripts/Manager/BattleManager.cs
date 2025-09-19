@@ -383,7 +383,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var pos in skillRange)
             {
-                if (_enemyCharacters.Count >= pos && _enemyCharacters[pos] != null)
+                if (_enemyCharacters.Count > pos && _enemyCharacters[pos] != null)
                 {
                     possibleSkillRange.Add(pos);
                 }
@@ -393,7 +393,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             foreach (var pos in skillRange)
             {
-                if (_playableCharacters.Count >= pos && _playableCharacters[pos] != null)
+                if (_playableCharacters.Count > pos && _playableCharacters[pos] != null)
                 {
                     possibleSkillRange.Add(pos);
                 }
