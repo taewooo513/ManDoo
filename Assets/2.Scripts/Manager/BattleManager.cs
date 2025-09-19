@@ -381,6 +381,30 @@ public class BattleManager : Singleton<BattleManager>
         return false;
     }
 
+    public bool IsTargetInList(List<int> targetPos)
+    {
+        if (nowTurnEntity is PlayableCharacter)
+        {
+            foreach (var item in targetPos)
+            {
+                if (_enemyCharacters.Count > item)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        foreach (var item in targetPos)
+        {
+            if (_playableCharacters.Count > item)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     //플레이어 위치 받아오는 함수
     public List<(int, int)> GetPlayerPosition()
     {
