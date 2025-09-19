@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayableCharacter : BaseEntity
 {
+    [SerializeField] private int initID;
     private MercenaryData data;
     protected void Awake()
     {
@@ -13,8 +14,7 @@ public class PlayableCharacter : BaseEntity
     }
     public void Start()
     {
-        BattleManager.Instance.AddPlayableCharacter(this);
-        SetData(1004);
+        SetData(initID);
     }
 
     private void SetData(int id)
