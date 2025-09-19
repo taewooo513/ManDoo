@@ -116,9 +116,10 @@ public class Enemy : BaseEntity
         if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
         //TODO : 범위 공격 - 스킬 랜덤으로 뽑아주는 부분에서, 랜덤으로뽑힌스킬.UseSkill 하면 된다고 함.
-
+        
         for (int i = 0; i < entityInfo.skills.Length; i++)
         {
+            //TODO : 2차 때 캐릭터성/1회성 계산 로직
             var skill = entityInfo.skills[i];
             if (skill == null || skill.skillInfo == null) continue;
 
@@ -133,9 +134,9 @@ public class Enemy : BaseEntity
             {
                 var effect = effectArray[j];
                 var effectType = effect.GetEffectType();
-                if (effectType == EffectType.Attack || effectType == EffectType.Debuff)
+                if (effectType == EffectType.Attack)
                     isAttackSkill = true;
-                if (effectType == EffectType.Heal || effectType == EffectType.Protect)
+                if (effectType == EffectType.Heal)
                     isSupportSkill = true;
             }
 
