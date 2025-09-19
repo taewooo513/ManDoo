@@ -21,8 +21,16 @@ public class SkillInfo
 
         this.skillName = sd.skillName;
         this.targetType = sd.targetType;
-        this.enablePos = sd.enablePos;
-        this.targetPos = sd.targetPos;
+        this.enablePos = new List<int>();
+        for (int i = 0; i < sd.enablePos.Count; i++)
+        {
+            this.enablePos.Add(sd.enablePos[i] - 1);
+        }
+        this.targetPos = new List<int>();
+        for (int i = 0; i < sd.targetPos.Count; i++)
+        {
+            this.targetPos.Add(sd.targetPos[i] - 1);
+        }
         this.iconPathString = sd.iconPathString;
         skillEffects = new SkillEffect[sd.effectId.Count];
         for (int i = 0; i < sd.effectId.Count; i++)
