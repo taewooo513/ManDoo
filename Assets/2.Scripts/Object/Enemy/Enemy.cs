@@ -159,13 +159,12 @@ public class Enemy : BaseEntity
         var info = skill.skillInfo;
         var playerPosition = BattleManager.Instance.GetPlayerPosition();
         bool atEnablePosition = BattleManager.Instance.IsEnablePos(this, info.enablePos);
-        bool atTargetPosition = playerPosition.Any(x => info.targetPos.Contains(x.Item1));
-
-        bool atTargetPositionTest = BattleManager.Instance.IsTargetInList(info.targetPos);
-        if (atEnablePosition && atTargetPositionTest)
+        bool atTargetPosition = BattleManager.Instance.IsTargetInList(info.targetPos);
+        
+        if (atEnablePosition && atTargetPosition)
             return true;
         if(!atEnablePosition) Debug.Log(this.transform.gameObject.name + " EnablePosition이 아님");
-        if(!atTargetPositionTest) Debug.Log(this.transform.gameObject.name + " TargetPosition이 아님");
+        if(!atTargetPosition) Debug.Log(this.transform.gameObject.name + " TargetPosition이 아님");
             return false;
     }
 
