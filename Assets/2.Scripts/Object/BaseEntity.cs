@@ -105,7 +105,7 @@ public class BaseEntity : MonoBehaviour
     protected virtual void Awake()
     {
         SetData();
-        hpbarUI = GetComponentInParent<HpbarUI>();
+        hpbarUI = GetComponentInChildren<HpbarUI>();
     }
 
     public virtual void SetData()
@@ -119,6 +119,7 @@ public class BaseEntity : MonoBehaviour
         if (entityInfo.currentHp <= 0)
         {
             OnDied?.Invoke(this);
+            Debug.Log("IsDead");
         }
     }
 
