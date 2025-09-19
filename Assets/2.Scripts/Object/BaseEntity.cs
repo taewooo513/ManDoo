@@ -130,7 +130,6 @@ public class BaseEntity : MonoBehaviour
 
     public void BattleStarted()
     {
-        Debug.Log("OnDied");
         OnDied += BattleManager.Instance.EntityDead;
     }
 

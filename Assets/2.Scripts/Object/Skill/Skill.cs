@@ -59,7 +59,6 @@ public class Skill
 
     public void UseSkill(BaseEntity targetEntity)
     {
-        Debug.Log(skillInfo.skillName);
         var val = BattleManager.Instance.GetPossibleSkillRange(skillInfo.targetPos);
         if (skillInfo.targetType == TargetType.Range)
         {

@@ -294,7 +294,6 @@ public class BattleManager : Singleton<BattleManager>
     //index와 대미지를 넣으면 공격합니다.
     public void AttackEntity(int index, float attackDamage)
     {
-        Debug.Log(nowTurnEntity);
         if (nowTurnEntity is PlayableCharacter)
         {
             _enemyCharacters[index].Damaged(attackDamage);
@@ -489,12 +488,12 @@ public class BattleManager : Singleton<BattleManager>
                     break;
                 }
             }
-            Debug.Log(index + " " + desiredPosition);
-            if (index == -1)
+            
+            if (index == -1 || index == desiredPosition || desiredPosition >= _enemyCharacters.Count)
             {
                 return;
             }
-
+            
             if (index + 1 == desiredPosition || index - 1 == desiredPosition)
             {
                 (_enemyCharacters[index], _enemyCharacters[desiredPosition]) =
@@ -541,7 +540,6 @@ public class BattleManager : Singleton<BattleManager>
 
     public void EntityDead(BaseEntity entity)
     {
-        Debug.Log("EntityDead");
         var index = FindEntityPosition(entity);
         if (index == null) return;
         if (entity is PlayableCharacter)
