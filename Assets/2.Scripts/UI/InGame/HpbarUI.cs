@@ -5,19 +5,28 @@ using UnityEngine.UI;
 
 public class HpbarUI : MonoBehaviour
 {
-    private EntityInfo entityInfo;
-    [SerializeField]
+    private BaseEntity entity;
     private Image hpBar;
 
     private void Start()
     {
-        entityInfo = GetComponentInParent<BaseEntity>().entityInfo;
+        entity = GetComponentInParent<BaseEntity>();
+        hpBar = GetComponent<Image>();
     }
     public void UpdateUI()
     {
-        if (hpBar != null || entityInfo != null)
+        if (hpBar != null || entity != null)
         {
-            hpBar.fillAmount = 1f / entityInfo.maxHp * entityInfo.currentHp;
+            float val = 1f / entity.entityInfo.maxHp * entity.entityInfo.currentHp;
+            if (val < 0f)
+            {
+                hpBar.fillAmount = 0f;
+            }
+            else
+            {
+
+                hpBar.fillAmount = val;
+            }
         }
     }
 }

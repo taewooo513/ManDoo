@@ -59,9 +59,24 @@ public class Skill
 
     public void UseSkill(BaseEntity targetEntity)
     {
-        for (int i = 0; i < skillInfo.skillEffects.Length; i++)
+        Debug.Log(skillInfo.skillName);
+        var val = BattleManager.Instance.GetPossibleSkillRange(skillInfo.targetPos);
+        if (skillInfo.targetType == TargetType.Range)
         {
-            skillInfo.skillEffects[i].ActiveEffect(baseEntity, targetEntity);
+            for (int j = 0; j < val.Count; j++)
+            {
+                for (int i = 0; i < skillInfo.skillEffects.Length; i++)
+                {
+                    skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._enemyCharacters[val[j]]);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < skillInfo.skillEffects.Length; i++)
+            {
+                skillInfo.skillEffects[i].ActiveEffect(baseEntity, targetEntity);
+            }
         }
     }
 
