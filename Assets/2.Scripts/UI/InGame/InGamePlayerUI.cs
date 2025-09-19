@@ -14,10 +14,6 @@ public class InGamePlayerUI : UIBase
     public TextMeshProUGUI currentHpUI;
 
     public GameObject[] skillUIObjects;
-
-    
-
-
     public void UpdateUI(EntityInfo entityInfo, Skill[] skills)
     {
         nameText.text = entityInfo.name;

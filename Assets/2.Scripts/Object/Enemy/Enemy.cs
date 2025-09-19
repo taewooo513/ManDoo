@@ -215,35 +215,35 @@ public class Enemy : BaseEntity
         BattleManager.Instance.AttackEntity(index, (int)dmg); //범위/단일 공격 처리는 skill에서 되어있음
     }
 
-    public override void Support(Skill skill, BaseEntity baseEntity)
+    public override void Support(Skill skill, BaseEntity baseEntity) // 스킬 받아오는 구조로 변경
     {
         //아마 다른 서포터류 함수 만들고 그거 추가해주는 작업 할듯
     }
 
-    private int GetDesiredPosition(Skill skill) //현재 엔티티 위치 읽는 함수
+    private int GetDesiredPosition(Skill skill) //스킬을 사용하기 위해 이동해야 할 위치를 반환하는 함수
     {
-        if (skill == null || skill.skillInfo == null) return -1;
+        if (skill == null || skill.skillInfo == null) return -1; //스킬이나 스킬 정보가 없으면 -1 반환
         var info = skill.skillInfo;
-        if (info.enablePos == null || info.enablePos.Count == 0) return -1;
+        if (info.enablePos == null || info.enablePos.Count == 0) return -1; //스킬 사용 가능 위치가 없으면 -1 반환
 
-        var currentIndex = BattleManager.Instance.FindEntityPosition(this) ?? -1;
-        if (currentIndex < 0) return -1;
+        var currentIndex = BattleManager.Instance.FindEntityPosition(this) ?? -1; //현재 엔티티의 위치 인덱스
+        if (currentIndex < 0) return -1; //현재 위치를 찾을 수 없으면 -1 반환
 
-        var entities = BattleManager.Instance.EnemyCharacters;
-        int entityCount = entities?.Count ?? 0;
-        if (entityCount == 0) return -1;
+        var entities = BattleManager.Instance.EnemyCharacters; //적 캐릭터 리스트
+        int entityCount = entities?.Count ?? 0; //적 캐릭터 수 
+        if (entityCount == 0) return -1; //적이 없으면 -1 반환
 
-        foreach (var position in info.enablePos)
+        foreach (var position in info.enablePos) //스킬 사용 가능 위치들을 순회
         {
             int targetIndex = position;
 
-            if (targetIndex >= 0 && targetIndex < entityCount)
+            if (targetIndex >= 0 && targetIndex < entityCount) //유효한 인덱스 범위인지 확인
             {
-                if (targetIndex != currentIndex)
+                if (targetIndex != currentIndex) //현재 위치와 다른 위치면 그 위치로 이동
                     return targetIndex;
             }
-            return targetIndex;
+            return targetIndex; //현재 위치와 같거나 유효하지 않은 위치면 그대로 반환
         }
-        return -1;
+        return -1; //적절한 위치를 찾지 못하면 -1 반환
     }
 }

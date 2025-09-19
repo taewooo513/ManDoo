@@ -59,6 +59,7 @@ public class Skill
 
     public void UseSkill(BaseEntity targetEntity)
     {
+        //BattleManager.Instance
         for (int i = 0; i < skillInfo.skillEffects.Length; i++)
         {
             skillInfo.skillEffects[i].ActiveEffect(baseEntity, targetEntity);

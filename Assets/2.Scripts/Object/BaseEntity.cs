@@ -43,7 +43,7 @@ public class EntityInfo
             currentHp = 0;
         }
     }
-    
+
     public float GetPlayableTargetWeight() //플레이어블 캐릭터의 타깃 가중치 합
     {
         float result = _standardWeight + statEffect.AttackWeight(); //가중치 합
@@ -106,7 +106,12 @@ public class BaseEntity : MonoBehaviour
     protected virtual void Awake()
     {
         SetData();
-        hpbarUI = GetComponentInParent<HpbarUI>();
+        hpbarUI = GetComponentInChildren<HpbarUI>();
+    }
+
+    public virtual void Release()
+    {
+        OnDied -= BattleManager.Instance.EntityDead;
     }
 
     public virtual void SetData()
@@ -120,17 +125,13 @@ public class BaseEntity : MonoBehaviour
         if (entityInfo.currentHp <= 0)
         {
             OnDied?.Invoke(this);
+            Debug.Log("IsDead");
         }
     }
 
     public void BattleStarted()
     {
         OnDied += BattleManager.Instance.EntityDead;
-    }
-
-    private void OnDestroy()
-    {
-        OnDied -= BattleManager.Instance.EntityDead;
     }
 
     public void BattleEnded()
