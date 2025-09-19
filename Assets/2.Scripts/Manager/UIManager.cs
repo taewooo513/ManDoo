@@ -14,8 +14,6 @@ public class UIManager : Singleton<UIManager>
 
     private Dictionary<string, UIBase> _uiDictionary = new();
 
-
-    // IsExistUI<T> 제네릭 함수 추가
     private bool IsExistUI<T>() where T : UIBase
     {
         var uiName = typeof(T).Name;
