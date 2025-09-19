@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 106133217061120107}
   - component: {fileID: 4195623839132120081}
   - component: {fileID: 4030063728698212477}
+  - component: {fileID: 1011775598669933420}
   m_Layer: 5
   m_Name: hp
   m_TagString: Untagged
@@ -239,6 +240,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1011775598669933420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851607423845975558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08aaba4a32db1fe4ab692a75ae04b200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1457989496838907282
 GameObject:
   m_ObjectHideFlags: 0
