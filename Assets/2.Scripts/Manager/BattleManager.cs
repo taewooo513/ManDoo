@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -71,7 +72,7 @@ public class BattleManager : Singleton<BattleManager>
         foreach (var item in enemyList)
         {
             _enemyCharacters.Add(item);
-            item.BattleStarted();       
+            item.BattleStarted();
         }
         //전투 시작 UI 출력
         //UIManager.Instance.OpenUI<InGameBattleStartUI>();
@@ -106,7 +107,6 @@ public class BattleManager : Singleton<BattleManager>
         }
 
         nowTurnEntity = _turnQueue.Peek();
-        Debug.Log(nowTurnEntity);
         nowTurnEntity.StartTurn();
     }
 
@@ -272,6 +272,37 @@ public class BattleManager : Singleton<BattleManager>
     {
         baseEntity.Damaged(nowTurnEntity.entityInfo.attackDamage);
     }
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < _enemyCharacters.Count; i++)
+        {
+            _enemyCharacters[i].Release();
+        }
+        for (int i = 0; i < _playableCharacters.Count; i++)
+        {
+            _playableCharacters[i].Release();
+        }
+    }
+
+
+    //public List<BaseEntity> SelectEntityRange(List<int> targetPos, BaseEntity tagetEntity, List<BaseEntity> tagetList)
+    //{
+    //    List<BaseEntity> result = new List<BaseEntity>();
+    //    int index = Utillity.GetIndexInListToObject<BaseEntity>(tagetList, tagetEntity);
+    //    if (tagetList.Count < index)
+    //    {
+    //        return result;
+    //    }
+
+    //    for (int i = 0; i < targetPos.Count; i++)
+    //    {
+    //        if (targetPos[i] < index)
+    //        {
+    //            continue;
+    //        }
+    //    }
+    //}
 
     //index와 대미지를 넣으면 공격합니다.
     public void AttackEntity(int index, float attackDamage)
@@ -529,16 +560,16 @@ public class BattleManager : Singleton<BattleManager>
         {
             for (int i = (int)index; i < _playableCharacters.Count - 1; i++)
             {
-                SwitchPosition(entity, i+1);
+                SwitchPosition(entity, i + 1);
             }
             Destroy(entity.gameObject);
             _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
             return;
         }
-        
+
         for (int i = (int)index; i < _enemyCharacters.Count - 1; i++)
         {
-            SwitchPosition(entity, i+1);
+            SwitchPosition(entity, i + 1);
         }
         //TODO: 이후 적 사망시 보상 연결은 여기서? 아니면 Enemy에서?
         Destroy(entity.gameObject);
