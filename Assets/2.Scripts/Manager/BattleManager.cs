@@ -94,6 +94,7 @@ public class BattleManager : Singleton<BattleManager>
         }
 
         nowTurnEntity = _turnQueue.Peek();
+        Debug.Log(nowTurnEntity);
         nowTurnEntity.StartTurn();
     }
 
@@ -299,6 +300,7 @@ public class BattleManager : Singleton<BattleManager>
         }
         else
         {
+            Debug.Log(index);
             _playableCharacters[index].Damaged(attackDamage);
         }
     }

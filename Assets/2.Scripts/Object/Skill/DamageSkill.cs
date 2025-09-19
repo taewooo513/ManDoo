@@ -10,6 +10,7 @@ public class DamageSkill : SkillEffect
     }
     public void HitDamageSkill(BaseEntity attackEntity, BaseEntity damagedEntity)
     {
+        Debug.Log(attackEntity + " " + effectName);
         attackEntity.Attack(((float)attackEntity.entityInfo.attackDamage) * adRatio, damagedEntity);
     }
 

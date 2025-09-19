@@ -51,8 +51,6 @@ public class Enemy : BaseEntity
                 break;
             }
         }
-
-        Debug.Log(this.gameObject.name + " " + _attackSkill.skillInfo.skillName + " " + isAttack);
         if (isAttack) //공격류 스킬일 시 실행
         {
             if (TryAttack(out int position)) //공격 시도 성공 시
