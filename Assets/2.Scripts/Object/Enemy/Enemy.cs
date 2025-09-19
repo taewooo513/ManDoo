@@ -111,7 +111,7 @@ public class Enemy : BaseEntity
     private Skill GetRandomSkill()
     {
         var skillCandidates = new List<Skill>();
-        var weights = new List<float>();
+        //var weights = new List<float>();
         float weight = Skill.defaultWeight;
         if (entityInfo.skills == null || entityInfo.skills.Length == 0) return null;
         BattleManager.Instance.GetLowHpSkillWeight(out float playerWeight, out float enemyWeight);
