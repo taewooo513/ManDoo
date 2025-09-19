@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SelectSkillButton : MonoBehaviour
@@ -13,6 +14,7 @@ public class SelectSkillButton : MonoBehaviour
     {
         skillButton = GetComponent<Button>();
         inGameUIManager = UIManager.Instance.OpenUI<InGameUIManager>();
+        
     }
     public void SetButton(Skill skill)
     {
@@ -23,4 +25,5 @@ public class SelectSkillButton : MonoBehaviour
     {
         inGameUIManager.OnClickSkillButton(skill);
     }
+    
 }
