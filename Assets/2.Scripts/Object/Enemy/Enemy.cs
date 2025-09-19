@@ -119,7 +119,6 @@ public class Enemy : BaseEntity
         {
             if (!CanUseSkill(entityInfo.skills[i]))
             {
-                Debug.Log(entityInfo.skills[i].skillInfo.skillName + "CanUseSkill false");
                 continue;
             }
             //TODO : 2차 때 캐릭터성/1회성 계산 로직
@@ -164,9 +163,7 @@ public class Enemy : BaseEntity
         bool atTargetPosition = BattleManager.Instance.IsTargetInList(info.targetPos);
         if (atEnablePosition && atTargetPosition)
             return true;
-        if(!atEnablePosition) Debug.Log(this.transform.gameObject.name + " EnablePosition이 아님");
-        if(!atTargetPosition) Debug.Log(this.transform.gameObject.name + " TargetPosition이 아님");
-            return false;
+        return false;
     }
 
     private bool TryAttack(out int position) //스킬 선택, 타겟 선택
