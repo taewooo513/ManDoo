@@ -125,7 +125,6 @@ public class BaseEntity : MonoBehaviour
         if (entityInfo.currentHp <= 0)
         {
             OnDied?.Invoke(this);
-            Debug.Log("IsDead");
         }
     }
 
