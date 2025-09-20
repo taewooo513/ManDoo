@@ -780,3 +780,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetImage: {fileID: 5632551139525624306}
+  isSkillSelected: 1
