@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class EntityInfo
     public bool isDie;
     public float evasion;
     public float critical;
-    public StatEffect statEffect;
+    public Buff statEffect;
     public float hpWeight = 0f;
     public float addWeight = 0.3f;
     public Skill[] skills;
@@ -31,7 +32,7 @@ public class EntityInfo
         this.speed = speed;
         this.evasion = evasion;
         this.critical = critical;
-        statEffect = new StatEffect();
+        statEffect = new Buff();
     }
 
     public void Damaged(float value)
@@ -56,6 +57,21 @@ public class EntityInfo
         float result = _standardWeight;
         GenerateWeightListUtility.CombineWeights(result);
         return result;
+    }
+
+    public void Heal(float value)
+    {
+        var hp = currentHp + value;
+        currentHp = (int)hp;
+        if (currentHp > maxHp)
+        {
+            currentHp = maxHp;
+        }
+    }
+
+    public void AddEffect(BuffInfo statEffectInfo)
+    {
+        statEffect.AddStatus(statEffectInfo);
     }
 
     //TODO : 스킬 확률 관리 부분에서, 스킬 효과에 따른 증감 가중치 주려면 구조 변경해야됨. curHP를 넘겨서 따로 작업?
@@ -118,6 +134,16 @@ public class BaseEntity : MonoBehaviour
     {
     }
 
+    public void AddEffect(BuffInfo statEffectInfo)
+    {
+        entityInfo.AddEffect(statEffectInfo);
+    }
+
+    public virtual void Heal(float value)
+    {
+        entityInfo.Heal(value);
+        hpbarUI.UpdateUI();
+    }
     public virtual void Damaged(float value)
     {
         entityInfo.Damaged(value);
@@ -131,11 +157,6 @@ public class BaseEntity : MonoBehaviour
     public void BattleStarted()
     {
         OnDied += BattleManager.Instance.EntityDead;
-    }
-
-    public void BattleEnded()
-    {
-        OnDied -= BattleManager.Instance.EntityDead;
     }
 
     public virtual void Attack(float dmg, BaseEntity baseEntity)
