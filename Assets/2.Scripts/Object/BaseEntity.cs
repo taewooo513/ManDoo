@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,6 +57,21 @@ public class EntityInfo
         float result = _standardWeight;
         GenerateWeightListUtility.CombineWeights(result);
         return result;
+    }
+
+    public void Heal(float value)
+    {
+        var hp = currentHp + value;
+        currentHp = (int)hp;
+        if (currentHp > maxHp)
+        {
+            currentHp = maxHp;
+        }
+    }
+
+    public void AddEffect(StatEffectInfo statEffectInfo)
+    {
+        statEffect.AddStatus(statEffectInfo);
     }
 
     //TODO : 스킬 확률 관리 부분에서, 스킬 효과에 따른 증감 가중치 주려면 구조 변경해야됨. curHP를 넘겨서 따로 작업?
@@ -118,6 +134,16 @@ public class BaseEntity : MonoBehaviour
     {
     }
 
+    public void AddEffect(StatEffectInfo statEffectInfo)
+    {
+        entityInfo.AddEffect(statEffectInfo);
+    }
+
+    public virtual void Heal(float value)
+    {
+        entityInfo.Heal(value);
+        hpbarUI.UpdateUI();
+    }
     public virtual void Damaged(float value)
     {
         entityInfo.Damaged(value);

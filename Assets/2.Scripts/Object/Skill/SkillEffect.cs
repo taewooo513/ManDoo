@@ -31,5 +31,4 @@ public class SkillEffect
     public virtual void ActiveEffect(BaseEntity actionEntity, BaseEntity targetEntity)
     {
     }
-
 }
