@@ -8,8 +8,6 @@ public class PlayableCharacter : BaseEntity
 {
     [SerializeField] private int initID;
     private MercenaryData data;
-    private Weapon equipWeapon;
-
     public void Start()
     {
         SetData(initID);
@@ -47,27 +45,4 @@ public class PlayableCharacter : BaseEntity
 
     }
 
-    public void EquipWeapon(Weapon weapon)
-    {
-        if (IsEquipWeapon(weapon))
-        {
-            UnEquipWeapon();
-            return;
-        }
-        equipWeapon = weapon;
-        entityInfo.skills[3] = weapon.skill;
-    }
-    private void UnEquipWeapon()
-    {
-        equipWeapon = null;
-        entityInfo.skills[3] = null;
-    }
-    private bool IsEquipWeapon(Weapon weapon)
-    {
-        if (equipWeapon == weapon)
-        {
-            return true;
-        }
-        return false;
-    }
 }
