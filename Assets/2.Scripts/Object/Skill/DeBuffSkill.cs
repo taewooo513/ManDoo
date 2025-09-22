@@ -7,7 +7,7 @@ public class DeBuffSkill : SkillEffect
 {
     public virtual void ActiveEffect(BaseEntity actionEntity, BaseEntity targetEntity) // not used
     {
-        StatEffectInfo statEffectInfo = new StatEffectInfo();
+        BuffInfo statEffectInfo = new BuffInfo();
 
         targetEntity.AddEffect(statEffectInfo);
     }

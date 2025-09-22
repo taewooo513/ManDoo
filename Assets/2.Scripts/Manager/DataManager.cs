@@ -11,6 +11,7 @@ public class DataManager : Singleton<DataManager>
     public EnemyDatas Enemy;
     public EffectDatas Effect;
     public WeaponDatas Weapon;
+    //Item 데이터테이블 만들고 생성; 원본 데이터에는 아이템 id.
     public void Initialize()
     {
         UnityGoogleSheet.LoadAllData();
