@@ -6,7 +6,7 @@ public class BuffSkill : SkillEffect
 {
     public virtual void UseBuffSkill(BaseEntity actionEntity, BaseEntity targetEntity)
     {
-        StatEffectInfo statEffectInfo = new StatEffectInfo();
+        BuffInfo statEffectInfo = new BuffInfo();
         statEffectInfo.Init(duration,constantValue,actionEntity);
         targetEntity.AddEffect(statEffectInfo);
     }
