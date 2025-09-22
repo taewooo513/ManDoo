@@ -20,6 +20,7 @@ public class EntityInfo
     public float addWeight = 0.3f;
     public Skill[] skills;
     private readonly float _standardWeight = 0.25f;
+    public bool canMove = true;
 
     public EntityInfo(string name, int maxHp, int attackDamage, int defense, int speed, float evasion, float critical)
     {
