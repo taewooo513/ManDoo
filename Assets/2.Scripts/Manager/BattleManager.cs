@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
+using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UIElements;
@@ -161,12 +163,12 @@ public class BattleManager : Singleton<BattleManager>
         //TODO: 전투가 끝났을 때 공통적으로 해야하는 것...?
         foreach (var item in _playableCharacters)
         {
-            item.BattleEnded();
+            item.Release();
         }
 
         foreach (var item in _enemyCharacters)
         {
-            item.BattleEnded();
+            item.Release();
         }
 
         _playableCharacters.Clear();
@@ -584,6 +586,7 @@ public class BattleManager : Singleton<BattleManager>
         }
         RemoveDeadEntityFromTurnQueue(entity);
         //TODO: 이후 적 사망시 보상 연결은 여기서? 아니면 Enemy에서?
+        entity.Release();
         _enemyCharacters.RemoveAt(_enemyCharacters.Count - 1);
         Destroy(entity.gameObject);
     }
@@ -601,4 +604,5 @@ public class BattleManager : Singleton<BattleManager>
             _turnQueue.Enqueue(item);
         }
     }
+    
 }
