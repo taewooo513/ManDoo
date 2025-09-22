@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour // 없어도 될거같음. item manager 를 만들고 그 안에 UseItem() 생성. 
 {
     public static InventoryManager Instance;
 
