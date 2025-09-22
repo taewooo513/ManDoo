@@ -1041,6 +1041,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1433331912}
     m_Modifications:
+    - target: {fileID: 920043549945373343, guid: 89347f060bdbcbb45a27cfc73c64788d, type: 3}
+      propertyPath: outlineSize
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4542880567707903376, guid: 89347f060bdbcbb45a27cfc73c64788d, type: 3}
       propertyPath: m_Name
       value: NotActiveTrapObject
