@@ -8,6 +8,8 @@ public class PlayableCharacter : BaseEntity
 {
     [SerializeField] private int initID;
     private MercenaryData data;
+    private Weapon equipWeapon;
+
     public void Start()
     {
         SetData(initID);
@@ -45,4 +47,15 @@ public class PlayableCharacter : BaseEntity
 
     }
 
+    public void EquipWeapon(Weapon weapon)
+    {
+        equipWeapon = weapon;
+        entityInfo.skills[3] = weapon.skill;
+    }
+
+    public void UnEquipWeapon()
+    {
+        equipWeapon = null;
+        entityInfo.skills[3] = null;
+    }
 }
