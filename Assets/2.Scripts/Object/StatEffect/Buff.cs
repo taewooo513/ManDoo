@@ -7,9 +7,9 @@ public class TotalBuffStat
     public int speed = 0;
     public float defense = 0;
     public float attackDmg = 0; //공격데미지
-    public float evasionUp;
+    public float evasionUp = 0;
     public float totalWeight = 0;
-    public float crtitical;
+    public float crtitical = 0;
     public void Reset()
     {
         damagedValue = 0;

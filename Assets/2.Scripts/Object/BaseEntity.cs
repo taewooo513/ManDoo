@@ -89,6 +89,19 @@ public class EntityInfo
             skills[i].Init(skillIdList[i], nowEntity);
         }
     }
+    public void Heal(float value)
+    {
+        var hp = currentHp + value;
+        currentHp = (int)hp;
+        if (currentHp > maxHp)
+        {
+            currentHp = maxHp;
+        }
+    }
+    public void AddEffect(BuffInfo statEffectInfo)
+    {
+        statEffect.AddStatus(statEffectInfo);
+    }
 }
 
 public class BaseEntity : MonoBehaviour
@@ -146,6 +159,16 @@ public class BaseEntity : MonoBehaviour
     public virtual void UseSkill(BaseEntity baseEntity)
     {
 
+    }
+    public void AddEffect(BuffInfo statEffectInfo)
+    {
+        entityInfo.AddEffect(statEffectInfo);
+    }
+
+    public virtual void Heal(float value)
+    {
+        entityInfo.Heal(value);
+        hpbarUI.UpdateUI();
     }
     public virtual void StartTurn()
     {
