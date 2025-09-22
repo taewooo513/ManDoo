@@ -9,7 +9,7 @@ public class TotalBuffStat
     public float attackDmg = 0; //공격데미지
     public float evasionUp;
     public float totalWeight = 0;
-
+    public float crtitical;
     public void Reset()
     {
         damagedValue = 0;
@@ -41,14 +41,22 @@ public class Buff
             switch (buff)
             {
                 case BuffType.AttackUp:
+                    totalStat.attackDmg += _entityCurrentStatus[i].constantValue;
                     break;
                 case BuffType.AllStatUp:
+                    totalStat.attackDmg += _entityCurrentStatus[i].constantValue;
+                    totalStat.speed += _entityCurrentStatus[i].constantValue;
+                    totalStat.evasionUp += _entityCurrentStatus[i].constantValue;
+                    totalStat.defense += _entityCurrentStatus[i].constantValue;
                     break;
                 case BuffType.CriticalUp:
+                    totalStat.crtitical += _entityCurrentStatus[i].constantValue;
                     break;
                 case BuffType.EvasionUp:
+                    totalStat.evasionUp += _entityCurrentStatus[i].constantValue;
                     break;
                 case BuffType.SpeedUp:
+                    totalStat.speed += _entityCurrentStatus[i].constantValue;
                     break;
             }
 
@@ -56,16 +64,25 @@ public class Buff
             switch (deBuff)
             {
                 case DeBuffType.AttackDown:
+                    totalStat.attackDmg -= _entityCurrentStatus[i].constantValue;
                     break;
                 case DeBuffType.DefenseDown:
+                    totalStat.defense -= _entityCurrentStatus[i].constantValue;
                     break;
                 case DeBuffType.SpeedDown:
+                    totalStat.speed -= _entityCurrentStatus[i].constantValue;
                     break;
                 case DeBuffType.EvasionDown:
+                    totalStat.evasionUp -= _entityCurrentStatus[i].constantValue;
                     break;
                 case DeBuffType.CriticalDown:
+                    totalStat.crtitical -= _entityCurrentStatus[i].constantValue;
                     break;
                 case DeBuffType.AllStatDown:
+                    totalStat.attackDmg -= _entityCurrentStatus[i].constantValue;
+                    totalStat.speed -= _entityCurrentStatus[i].constantValue;
+                    totalStat.evasionUp -= _entityCurrentStatus[i].constantValue;
+                    totalStat.defense -= _entityCurrentStatus[i].constantValue;
                     break;
             }
         }
@@ -73,7 +90,7 @@ public class Buff
     }
 
 
-    public void ReduceTurn(List<BuffType> buffTypes, List<DeBuffType> deBuffTypes)
+    public void ReduceTurn(List<BuffType> buffTypes, List<DeBuffType> deBuffTypes) // 리스트에 담은 타입 삭제
     {
         foreach (var item in buffTypes)
         {
