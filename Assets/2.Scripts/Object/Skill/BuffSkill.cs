@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class BuffSkill : SkillEffect
 {
-    public virtual void UseBuffSkill(BaseEntity actionEntity, BaseEntity targetEntity)
+    public void UseBuffSkill(BaseEntity attackEntity, BaseEntity damagedEntity)
     {
-        BuffInfo statEffectInfo = new BuffInfo();
-        statEffectInfo.Init(duration,constantValue,actionEntity);
-        targetEntity.AddEffect(statEffectInfo);
+
     }
 }

@@ -146,14 +146,6 @@ PrefabInstance:
       propertyPath: initID
       value: 1001
       objectReference: {fileID: 0}
-    - target: {fileID: 1137936368613964723, guid: 2bbea05c140390941ae0046c1e1d43c2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1457989496838907282, guid: 2bbea05c140390941ae0046c1e1d43c2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1752828063701483507, guid: 2bbea05c140390941ae0046c1e1d43c2, type: 3}
       propertyPath: m_Text
       value: Player0
@@ -328,17 +320,9 @@ PrefabInstance:
       propertyPath: initID
       value: 1002
       objectReference: {fileID: 0}
-    - target: {fileID: 1457989496838907282, guid: 11e8633d57532e44b880228254abb5c7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1752828063701483507, guid: 11e8633d57532e44b880228254abb5c7, type: 3}
       propertyPath: m_Text
       value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6846066318527972566, guid: 11e8633d57532e44b880228254abb5c7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7759368497565610848, guid: 11e8633d57532e44b880228254abb5c7, type: 3}
       propertyPath: m_Name
@@ -573,10 +557,6 @@ PrefabInstance:
     - target: {fileID: 3300019286506647477, guid: 98e77ff731d55ec44885a6e5a682c63e, type: 3}
       propertyPath: m_Name
       value: Wisps
-      objectReference: {fileID: 0}
-    - target: {fileID: 7684380192036176265, guid: 98e77ff731d55ec44885a6e5a682c63e, type: 3}
-      propertyPath: isSkillSelected
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
