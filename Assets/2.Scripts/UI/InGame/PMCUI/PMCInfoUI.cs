@@ -14,7 +14,6 @@ public class PMCInfo : BaseEntity
 
     [SerializeField] private int initID;
 
-
     public void Start()
     {
         SetData(initID);
@@ -28,14 +27,12 @@ public class PMCInfo : BaseEntity
         entityInfo = new EntityInfo(
             data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
         );
-        entityInfo.SetUpSkill(data.skillId, this);
 
         // UI 표시 추가!
         if (nameText != null)
             nameText.text = data.name;
         if (roleTypeText != null)
             roleTypeText.text = data.roleType.ToString();
-        //if (Weapon != null)
-        //    Weapon.text = data.weaponLv; // MercenaryData에 무기레벨이 생기면
+        
     }
 }
