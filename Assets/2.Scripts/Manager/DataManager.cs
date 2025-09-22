@@ -10,6 +10,7 @@ public class DataManager : Singleton<DataManager>
     public MercenaryDatas Mercenary;//Player로 변경해도 됨.
     public EnemyDatas Enemy;
     public EffectDatas Effect;
+    //Item 데이터테이블 만들고 생성; 원본 데이터에는 아이템 id.
     public void Initialize()
     {
         UnityGoogleSheet.LoadAllData();
