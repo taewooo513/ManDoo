@@ -15,7 +15,7 @@ public class EntityInfo
     public bool isDie;
     public float evasion;
     public float critical;
-    public StatEffect statEffect;
+    public Buff statEffect;
     public float hpWeight = 0f;
     public float addWeight = 0.3f;
     public Skill[] skills;
@@ -32,7 +32,7 @@ public class EntityInfo
         this.speed = speed;
         this.evasion = evasion;
         this.critical = critical;
-        statEffect = new StatEffect();
+        statEffect = new Buff();
     }
 
     public void Damaged(float value)
