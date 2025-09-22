@@ -28,9 +28,4 @@ public class Item // 데이터 테이블 생성 후 제대로 만들기.
     {
         
     }
-    
-    public void UseItem()
-    {
-        // TODO: switch 로 itemdata 에서 받아온 아이템 타입에 따라 다르게 아이템 사용
-    }
 }

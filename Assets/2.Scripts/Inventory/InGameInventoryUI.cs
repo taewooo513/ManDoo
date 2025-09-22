@@ -78,7 +78,8 @@ public class InGameInventoryUI : UIBase
         if (from < 0 || from >= items.Length) return;
         if (to < 0 || to >= items.Length) return;
 
-        // TODO: 아이템을 스왑하는 로직 추가
+        if (!ItemManager.Instance.CanSwapItem(items[from], from, to)) return;
+        ItemManager.Instance.SwapItem(items, from, to);
         RefreshSlots();
     }
 }
