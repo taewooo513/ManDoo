@@ -705,8 +705,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8234750198614422343}
   - component: {fileID: 1137936368613964723}
-  m_Layer: 0
-  m_Name: PlayableCharacterID1003
+  m_Layer: 3
+  m_Name: PlayableCharacterID1001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -752,4 +752,6 @@ MonoBehaviour:
     critical: 0
     hpWeight: 0
     addWeight: 0
-  initID: 1004
+    canMove: 0
+    contractGold: 0
+  initID: 1001
