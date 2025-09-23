@@ -13,4 +13,11 @@ public class UITest : MonoBehaviour
         UIManager.Instance.OpenUI<InGameInventoryUI>();
     }
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.G))
+            UIManager.Instance.OpenUI<InGamePMCUI>();
+        if(Input.GetKeyDown(KeyCode.H))
+            UIManager.Instance.CloseUI<InGamePMCUI>();
+    }
 }

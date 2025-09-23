@@ -133,13 +133,13 @@ public class BattleManager : Singleton<BattleManager>
             Turn();
         }
     }
-    private void BattleRun()
-    {
-        Debug.Log("전투회피!");
-        //전투회피
-        UIManager.Instance.OpenUI<InGameBattleRunButton>();
-        EndBattle();
-    }
+    //private void BattleRun()
+    //{
+    //    Debug.Log("전투회피!");
+    //    //전투회피
+    //    UIManager.Instance.OpenUI<InGameBattleRunButton>();
+    //    EndBattle();
+    //}
 
     private void Win()
     {
