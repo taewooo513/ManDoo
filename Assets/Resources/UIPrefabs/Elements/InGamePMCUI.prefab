@@ -258,7 +258,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7557152712225427869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3239198985060978986}
+        m_TargetAssemblyTypeName: PMCInfoUI, Assembly-CSharp
+        m_MethodName: OnClickHire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3239198985060978986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,7 +961,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5012401575965321908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3670375809655986041}
+        m_TargetAssemblyTypeName: PMCInfoUI, Assembly-CSharp
+        m_MethodName: OnClickHire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3670375809655986041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1640,7 +1664,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8070488178249194713}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1130275823159832679}
+        m_TargetAssemblyTypeName: PMCInfoUI, Assembly-CSharp
+        m_MethodName: OnClickHire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1130275823159832679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2028,7 +2064,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4239778785852235982}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5220691008396043487}
+        m_TargetAssemblyTypeName: PMCInfoUI, Assembly-CSharp
+        m_MethodName: OnClickHire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5220691008396043487
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,12 @@ public class InGamePMCUI : UIBase
     private void Awake()
     {
         Instance = this;
+
+        spawnPoints = new Transform[4];
+        spawnPoints[0] = GameObject.Find("First").transform;
+        spawnPoints[1] = GameObject.Find("Second").transform;
+        spawnPoints[2] = GameObject.Find("Third").transform;
+        spawnPoints[3] = GameObject.Find("Fourth").transform;
     }
 
     public void SpawnPMC(int spawnIndex, int initID)
