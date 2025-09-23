@@ -62,5 +62,32 @@ public enum DeBuffType
     SpeedDown,
     EvasionDown,
     CriticalDown,
-    AllStatDown
+    AllStatDown,
+    Damaged
+}
+
+[UGS(typeof(ItemType))]
+public enum ItemType
+{
+    None,
+    BattleSupport,
+    ExplorerSupport,
+    Gold
+}
+
+
+public enum RoomDirection
+{
+    Up,
+    Right,
+    Down,
+    Left
+}
+
+public enum RoomType
+{
+    Start,
+    Empty,
+    Battle,
+    Item
 }

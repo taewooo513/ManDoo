@@ -12,12 +12,8 @@ public class Enemy : BaseEntity
     private Skill _attackSkill;
     [SerializeField] private int initID;
 
-    public void Start()
-    {
-        Init(initID);
-    }
-
-    public void Init(int idx)
+    
+    public override void Init(int idx)
     {
         SetData(idx);
     }

@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmptyRoom : BaseRoom
+public class Spawn : MonoBehaviour
 {
-    void Start()
+    public void PlayableCharacterSpawn()
     {
-        
     }
 
-    void Update()
+    public void EnemySpawn()
     {
         
     }
