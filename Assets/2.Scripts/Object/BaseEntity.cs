@@ -117,11 +117,17 @@ public class BaseEntity : MonoBehaviour
     public int id { get; protected set; }
     protected bool hasExtraTurn = true;
     public Action<BaseEntity> OnDied;
-
+    protected BuffIcons buffIcons;
     protected virtual void Awake()
     {
         SetData();
         hpbarUI = GetComponentInChildren<HpbarUI>();
+        buffIcons = GetComponentInChildren<BuffIcons>();
+    }
+
+    public virtual void Init(int id)
+    {
+
     }
 
     public virtual void Release()
@@ -164,6 +170,7 @@ public class BaseEntity : MonoBehaviour
     public void AddEffect(BuffInfo statEffectInfo)
     {
         entityInfo.AddEffect(statEffectInfo);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
     }
 
     public virtual void Heal(float value)

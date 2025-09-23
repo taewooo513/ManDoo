@@ -12,6 +12,13 @@ public class PlayableCharacter : BaseEntity
     public void Start()
     {
         SetData(initID);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
+    }
+
+    public override void Init(int id)
+    {
+        SetData(id);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
     }
 
     private void SetData(int id)
