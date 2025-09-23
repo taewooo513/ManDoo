@@ -22,6 +22,11 @@ public class GameManager : Singleton<GameManager>
     {
         enemyCharacter.Add(baseEntity);
     }
+    public bool HasPlayerById(int id)
+    {
+        // id 중복 체크용
+        return playableCharacter.Exists(pc => pc.id == id);
+    }
 
     public void Update()
     {
