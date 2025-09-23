@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class NotActiveTrap : MonoBehaviour
 {
     public GameObject outline;
-    public GameObject notActiveTrapBtn;
+    public GameObject notActiveTrapUI;
     public LayerMask playableLayer; //레이어 선택
     private float _findRange = 4f; //범위
 
     public void Start()
     {
         outline.SetActive(false);
-        notActiveTrapBtn.SetActive(true);
+        notActiveTrapUI.SetActive(true);
     }
 
     public void Update()
@@ -22,12 +22,12 @@ public class NotActiveTrap : MonoBehaviour
         if (playableSensor != null) //플레이어가 다가왔을 때
         {
             outline.SetActive(true);
-            notActiveTrapBtn.SetActive(true);
+            notActiveTrapUI.SetActive(true);
         }
         if(playableSensor == null)
         {
             outline.SetActive(false);
-            notActiveTrapBtn.SetActive(false);
+            notActiveTrapUI.SetActive(false);
         }
     }
 
