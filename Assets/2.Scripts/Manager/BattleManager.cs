@@ -463,7 +463,7 @@ public class BattleManager : Singleton<BattleManager>
                 indexB = i;
             }
         }
-
+        
         if (indexA == -1 || indexB == -1) return;
         _playableCharacters[indexA] = playableCharacterB;
         _playableCharacters[indexB] = playableCharacterA;
