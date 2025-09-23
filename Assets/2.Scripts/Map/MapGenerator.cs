@@ -28,7 +28,7 @@ public class MapGenerator : MonoBehaviour
         GenerateRoom(startRoom, ref recentlyListedRooms, true);
         roomCount--;
 
-        while (roomCount > 1)
+        while (roomCount > 0)
         {
             List<BaseRoom> tempList = new List<BaseRoom>();
             foreach (var item in recentlyListedRooms)
@@ -37,6 +37,7 @@ public class MapGenerator : MonoBehaviour
                 GenerateRoom(item, ref tempList);
                 roomCount--;
             }
+            if (roomCount <= 1) break;
             recentlyListedRooms.Clear();
             recentlyListedRooms.AddRange(tempList);
         }

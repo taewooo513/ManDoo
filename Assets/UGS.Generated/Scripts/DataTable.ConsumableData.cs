@@ -17,10 +17,10 @@ using UnityEngine;
 namespace DataTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class ConsomableData : ITable
+    public partial class ConsumableData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<ConsomableData> loadedList, Dictionary<int, ConsomableData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<ConsumableData> loadedList, Dictionary<int, ConsumableData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1iwjiLK5PVjfgPniQ51iY7rrnAmWC4gSnHuZH9kyLkOo"; // it is file id
@@ -29,27 +29,27 @@ namespace DataTable
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, ConsomableData> ConsomableDataMap = new Dictionary<int, ConsomableData>();  
-        public static List<ConsomableData> ConsomableDataList = new List<ConsomableData>();   
+        public static Dictionary<int, ConsumableData> ConsumableDataMap = new Dictionary<int, ConsumableData>();  
+        public static List<ConsumableData> ConsumableDataList = new List<ConsumableData>();   
 
         /// <summary>
-        /// Get ConsomableData List 
+        /// Get ConsumableData List 
         /// Auto Load
         /// </summary>
-        public static List<ConsomableData> GetList()
+        public static List<ConsumableData> GetList()
         {{
            if (isLoaded == false) Load();
-           return ConsomableDataList;
+           return ConsumableDataList;
         }}
 
         /// <summary>
-        /// Get ConsomableData Dictionary, keyType is your sheet A1 field type.
+        /// Get ConsumableData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, ConsomableData>  GetDictionary()
+        public static Dictionary<int, ConsumableData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return ConsomableDataMap;
+           return ConsumableDataMap;
         }}
 
     
@@ -74,7 +74,7 @@ namespace DataTable
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("ConsomableData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("ConsumableData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -90,7 +90,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<ConsomableData>, Dictionary<int, ConsomableData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<ConsumableData>, Dictionary<int, ConsumableData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -118,14 +118,14 @@ namespace DataTable
                
 
 
-    public static (List<ConsomableData> list, Dictionary<int, ConsomableData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, ConsomableData> Map = new Dictionary<int, ConsomableData>();
-            List<ConsomableData> List = new List<ConsomableData>();     
+    public static (List<ConsumableData> list, Dictionary<int, ConsumableData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, ConsumableData> Map = new Dictionary<int, ConsumableData>();
+            List<ConsumableData> List = new List<ConsumableData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(ConsomableData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(ConsumableData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["ConsomableData"];
+            var sheet = jsonObject["ConsumableData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -144,7 +144,7 @@ namespace DataTable
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            ConsomableData instance = new ConsomableData();
+                            ConsumableData instance = new ConsumableData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -185,8 +185,8 @@ namespace DataTable
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            ConsomableDataList = List;
-                            ConsomableDataMap = Map;
+                            ConsumableDataList = List;
+                            ConsumableDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -196,10 +196,10 @@ namespace DataTable
 
  
 
-        public static void Write(ConsomableData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(ConsumableData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(ConsomableData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(ConsumableData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {
