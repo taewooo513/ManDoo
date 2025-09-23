@@ -22,7 +22,7 @@ public class TotalBuffStat
 }
 public class Buff
 {
-    private List<BuffInfo> _entityCurrentStatus = new();
+    public List<BuffInfo> _entityCurrentStatus = new();
     private SetTotalBuffStat _setTotalEffectStat;
     private float _totalWeight = 0f;
     public TotalBuffStat totalStat;
@@ -84,11 +84,13 @@ public class Buff
                     totalStat.evasionUp -= _entityCurrentStatus[i].constantValue;
                     totalStat.defense -= _entityCurrentStatus[i].constantValue;
                     break;
+                case DeBuffType.Damaged:
+                    totalStat.damagedValue = _entityCurrentStatus[i].constantValue;
+                    break;
             }
         }
         return _totalWeight;
     }
-
 
     public void ReduceTurn(List<BuffType> buffTypes, List<DeBuffType> deBuffTypes) // 리스트에 담은 타입 삭제
     {
