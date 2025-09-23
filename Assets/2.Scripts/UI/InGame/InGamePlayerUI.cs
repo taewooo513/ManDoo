@@ -14,6 +14,8 @@ public class InGamePlayerUI : UIBase
     public TextMeshProUGUI currentHpUI;
 
     public GameObject[] skillUIObjects;
+    
+    [SerializeField] private EquipmentSlotUI[] equipmentSlots;
     public void UpdateUI(EntityInfo entityInfo, Skill[] skills)
     {
         nameText.text = entityInfo.name;
@@ -23,6 +25,16 @@ public class InGamePlayerUI : UIBase
         for(int i = 0; i < skills.Length; i++)
         {
             skillUIObjects[i].GetComponent<SelectSkillButton>().SetButton(skills[i]);
+        }
+    }
+
+    public void RefeshSlots()
+    {
+        if (equipmentSlots == null) return;
+
+        for (int i = 0; i < equipmentSlots.Length; i++)
+        {
+            // TODO: Icon refresh 로직 추가.
         }
     }
 }
