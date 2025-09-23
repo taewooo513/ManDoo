@@ -14,7 +14,7 @@ public class PlayableCharacter : BaseEntity
         SetData(initID);
     }
 
-    private void SetData(int id)
+    public void SetData(int id)
     {
         this.id = id;
         data = DataManager.Instance.Mercenary.GetMercenaryData(id);

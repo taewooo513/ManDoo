@@ -752,4 +752,6 @@ MonoBehaviour:
     critical: 0
     hpWeight: 0
     addWeight: 0
-  initID: 1004
+    canMove: 0
+    contractGold: 0
+  initID: 1002
