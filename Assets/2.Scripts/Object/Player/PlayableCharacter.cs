@@ -17,7 +17,7 @@ public class PlayableCharacter : BaseEntity
 
     public override void Init(int id)
     {
-        SetData(id);
+        SetData(initID);
         buffIcons.UpdateIcon(entityInfo.statEffect);
     }
 
