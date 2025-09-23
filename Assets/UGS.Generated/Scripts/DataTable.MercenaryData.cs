@@ -67,6 +67,7 @@ namespace DataTable
 		public System.Single critical;
 		public System.Collections.Generic.List<Int32> skillId;
 		public System.String gameObjectString;
+		public System.Int32 contractGold;
   
 
 #region fuctions

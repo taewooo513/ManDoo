@@ -34,6 +34,18 @@ public class SkillInfo
                     skillEffects[i] = new DamageSkill();
                     skillEffects[i].Init(datas);
                     break;
+                case EffectType.Heal:
+                    skillEffects[i] = new HealSkill();
+                    skillEffects[i].Init(datas);
+                    break;
+                case EffectType.Buff:
+                case EffectType.Debuff:
+                case EffectType.Mark:
+                    skillEffects[i] = new BuffSkill();
+                    skillEffects[i].Init(datas);
+                    break;
+                case EffectType.Protect:
+                    break;
             }
         }
     }

@@ -1,4 +1,4 @@
-Shader "Sprites/Outline"
+﻿Shader "Sprites/Outline"
 {
     Properties
     {
