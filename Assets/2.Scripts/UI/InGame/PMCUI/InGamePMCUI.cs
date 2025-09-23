@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PMCUI : UIBase
+public class InGamePMCUI : UIBase
 {
-   
+    
 }

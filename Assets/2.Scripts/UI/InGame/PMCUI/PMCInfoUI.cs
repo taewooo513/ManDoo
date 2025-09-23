@@ -10,7 +10,7 @@ public class PMCInfo : BaseEntity
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI roleTypeText;
-    public TextMeshProUGUI Money;
+    public TextMeshProUGUI contractGoldText;
 
     [SerializeField] private int initID;
 
@@ -33,6 +33,9 @@ public class PMCInfo : BaseEntity
             nameText.text = data.name;
         if (roleTypeText != null)
             roleTypeText.text = data.roleType.ToString();
-        
+        if (contractGoldText != null)
+            contractGoldText.text = data.contractGold.ToString();
+
+
     }
 }
