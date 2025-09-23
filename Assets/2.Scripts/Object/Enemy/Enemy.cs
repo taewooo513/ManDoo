@@ -15,6 +15,7 @@ public class Enemy : BaseEntity
     public void Start()
     {
         Init(initID);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
     }
 
     public void Init(int idx)

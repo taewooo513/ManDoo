@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BuffSkill : SkillEffect
 {
-    public virtual void UseBuffSkill(BaseEntity actionEntity, BaseEntity targetEntity)
+    public override void ActiveEffect(BaseEntity actionEntity, BaseEntity targetEntity)
     {
         BuffInfo statEffectInfo = new BuffInfo();
-        statEffectInfo.Init(duration, constantValue, actionEntity);
+        statEffectInfo.Init(duration, constantValue, actionEntity, buffType, debuffType);
         targetEntity.AddEffect(statEffectInfo);
     }
 }
