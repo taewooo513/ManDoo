@@ -5,7 +5,6 @@ using UnityEngine;
 public class BaseRoom : MonoBehaviour
 {
     public Dictionary<int, GameObject> playableCharacterDic; //int에 키값, 게임오브젝트에 대응하는 프리팹
-    //데이터테이블에 있는 id 값 넣고, 리소스에 있는 프리팹을 게임오브젝트에 넣어주는 작업 필요함
     
     public virtual void EnterRoom()
     {
