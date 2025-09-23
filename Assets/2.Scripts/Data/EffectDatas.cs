@@ -9,4 +9,5 @@ public class EffectDatas : EffectData
     {
         return EffectDataMap[idx];
     }
+
 }

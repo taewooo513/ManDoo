@@ -582,6 +582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameTrapUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4069718310027370313, guid: e01f647578db3c240b8b6c0ca80d7eff, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
