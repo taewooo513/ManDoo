@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BattleDatas : BattleData
 {
-    public BattleData GetSkillData(int idx)
+    public BattleData GetBattleData(int idx)
     {
         return BattleDataMap[idx];
     }

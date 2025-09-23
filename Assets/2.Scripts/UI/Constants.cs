@@ -10,7 +10,7 @@ public class Constants : MonoBehaviour
     public static string UICommonPath = "UIPrefabs/Common/";
     public static string UIElementsPath = "UIPrefabs/Elements/";
 
-    public const string Enemy = "Prefabs";
+    public const string Enemy = "Prefabs/";
 
     //Sprite
     public const string BuffSpriteIcon = "Sprites/Buff/";
