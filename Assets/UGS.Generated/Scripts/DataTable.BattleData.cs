@@ -57,8 +57,10 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 id;
-		public System.Collections.Generic.List<Int32> BattleEnemys;
-		public System.Int32 RewordId;
+		public System.Collections.Generic.List<Int32> battleEnemies;
+		public System.Int32 dropGold;
+		public System.Int32 rewardId;
+		public System.Single dropProb;
   
 
 #region fuctions

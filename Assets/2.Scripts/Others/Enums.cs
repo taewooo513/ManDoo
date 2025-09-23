@@ -74,3 +74,20 @@ public enum ItemType
     ExplorerSupport,
     Gold
 }
+
+
+public enum RoomDirection
+{
+    Up,
+    Right,
+    Down,
+    Left
+}
+
+public enum RoomType
+{
+    Start,
+    Empty,
+    Battle,
+    Item
+}
