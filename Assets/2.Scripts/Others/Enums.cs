@@ -65,3 +65,12 @@ public enum DeBuffType
     AllStatDown,
     Damaged
 }
+
+[UGS(typeof(ItemType))]
+public enum ItemType
+{
+    None,
+    BattleSupport,
+    ExplorerSupport,
+    Gold
+}
