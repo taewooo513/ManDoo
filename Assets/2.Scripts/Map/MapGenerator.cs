@@ -33,22 +33,21 @@ public class MapGenerator : MonoBehaviour
             List<BaseRoom> tempList = new List<BaseRoom>();
             foreach (var item in recentlyListedRooms)
             {
-                if (roomCount <= 0) break;
+                if (roomCount <= 1) break;
                 GenerateRoom(item, ref tempList);
                 roomCount--;
             }
-
-            if (roomCount <= 0)
-            {
-                break;
-            }
+            if (roomCount <= 1) break;
             recentlyListedRooms.Clear();
             recentlyListedRooms.AddRange(tempList);
         }
-
+        
+        var bossRoom = recentlyListedRooms[UnityEngine.Random.Range(0, recentlyListedRooms.Count)];
+        GenerateBossRoom(bossRoom);
+        
         return rooms;
     }
-
+    
     private void GenerateRoom(BaseRoom parentRoom, ref List<BaseRoom> recentlyListedRooms, bool isFirstRoom = false)
     {
         if (isFirstRoom)
@@ -134,6 +133,17 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
+    private void GenerateBossRoom(BaseRoom parentRoom)
+    {
+        List<RoomDirection> possibleDirection = GetPossibleDirection(parentRoom);
+        if (possibleDirection.Count == 0) return;
+        RoomDirection direction = possibleDirection[UnityEngine.Random.Range(0, possibleDirection.Count)];
+        
+        var BattleRoom = new BattleRoom();
+        //_battleRoomCount--;
+        rooms.Add(BattleRoom);
+        ConnectRoom(parentRoom, BattleRoom, direction);
+    }
     private void ConnectRoom(BaseRoom parentRoom, BaseRoom childRoom, RoomDirection direction)
     {
         var corridor = parentRoom.MakeConnection(childRoom, direction);
@@ -163,7 +173,7 @@ public class MapGenerator : MonoBehaviour
     private List<RoomType> GetPossibleRoomType()
     {
         List<RoomType> possibleRoomType = new();
-        //if(BattleRoomCount > 0)
+        //if(BattleRoomCount > 1)
         //possibleRoomType.Add(RoomType.Battle);
         possibleRoomType.Add(RoomType.Battle);
         //if(ItemRoomCount > 0)

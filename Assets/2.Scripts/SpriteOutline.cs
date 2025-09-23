@@ -2,7 +2,7 @@
 
 
 [ExecuteInEditMode]
-public class SpriteOutline : MonoBehaviour {
+public class SpriteOutline : MonoBehaviour { //이거 실제로 안 써서 지워도 됨
     public Color color = Color.white;
 
     public int outlineSize = 100;
