@@ -12,6 +12,7 @@ public class DataManager : Singleton<DataManager>
     public EnemyDatas Enemy;
     public EffectDatas Effect;
     public WeaponDatas Weapon;
+    public BattleDatas Battle;
     //public ItemDatas Item;
     public void Initialize()
     {
@@ -21,6 +22,7 @@ public class DataManager : Singleton<DataManager>
         Enemy = new EnemyDatas();
         Effect = new EffectDatas();
         Weapon = new WeaponDatas();
+        Battle = new BattleDatas();
         //Item = new ItemDatas();
     }
 }
