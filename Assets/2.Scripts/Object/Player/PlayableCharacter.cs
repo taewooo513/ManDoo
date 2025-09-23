@@ -9,11 +9,7 @@ public class PlayableCharacter : BaseEntity
     [SerializeField] private int initID;
     private MercenaryData data;
     private Weapon equipWeapon;
-    public void Start()
-    {
-        SetData(initID);
-        buffIcons.UpdateIcon(entityInfo.statEffect);
-    }
+   
 
     public override void Init(int id)
     {

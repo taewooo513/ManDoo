@@ -12,12 +12,7 @@ public class Enemy : BaseEntity
     private Skill _attackSkill;
     [SerializeField] private int initID;
 
-    public void Start()
-    {
-        Init(initID);
-        buffIcons.UpdateIcon(entityInfo.statEffect);
-    }
-
+    
     public override void Init(int idx)
     {
         SetData(idx);

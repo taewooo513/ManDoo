@@ -12,9 +12,7 @@ public class PMCInfoUI : BaseEntity
     public TextMeshProUGUI roleTypeText;
     public TextMeshProUGUI contractGoldText;
 
-    [SerializeField] private int playerIndex;     // <- 추가!
-    [SerializeField] private int spawnIndex;   // <- 추가!
-    [SerializeField] private int initID;       // 기존 변수 사용
+    [SerializeField] private int initID; // 용병 id
 
     public void Start()
     {
@@ -30,7 +28,6 @@ public class PMCInfoUI : BaseEntity
             data.name, data.health, data.attack, data.defense, data.speed, data.evasion, data.critical
         );
 
-        // UI 표시 추가!
         if (nameText != null)
             nameText.text = data.name;
         if (roleTypeText != null)
@@ -47,7 +44,7 @@ public class PMCInfoUI : BaseEntity
             Debug.Log("빈 스폰 위치가 없습니다. PMC 소환 불가.");
             return;
         }
-        InGamePMCUI.Instance.SpawnPMC(playerIndex, emptyIndex, initID);
+        InGamePMCUI.Instance.SpawnPMC(emptyIndex, initID);
     }
 }
 

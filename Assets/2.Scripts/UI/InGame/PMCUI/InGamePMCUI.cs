@@ -6,10 +6,9 @@ public class InGamePMCUI : UIBase
 {
     public static InGamePMCUI Instance { get; private set; }
 
-    public GameObject[] playerPrefabs;
+    public GameObject playerPrefab; 
     public Transform[] spawnPoints;
 
-    // 소환된 PMC 저장용
     private List<GameObject> spawnedPMCs = new List<GameObject>();
 
     private void Awake()
@@ -17,32 +16,23 @@ public class InGamePMCUI : UIBase
         Instance = this;
     }
 
-
-    public void SpawnPMC(int playerIndex, int spawnIndex, int initID)
+    public void SpawnPMC(int spawnIndex, int initID)
     {
-        // 동일 PMC 중복 소환 방지
-        bool isDuplicated = spawnedPMCs.Exists(pmc =>
-            pmc.TryGetComponent(out PlayableCharacter pc) && pc.id == initID
-        );
-
-        if (isDuplicated)
+        // 1. GameManager 플레이어 리스트에서 중복 체크 (id 기준)
+        if (GameManager.Instance.HasPlayerById(initID))
         {
             Debug.Log("이미 소환된 PMC입니다!");
             return;
         }
 
-        if (playerIndex < 0 || playerIndex >= playerPrefabs.Length)
-        {
-            Debug.LogError($"playerIndex({playerIndex})가 playerPrefabs 배열 범위를 벗어났습니다!");
-            return;
-        }
+        // 2. 스폰 위치 인덱스 체크
         if (spawnIndex < 0 || spawnIndex >= spawnPoints.Length)
         {
             Debug.LogError($"spawnIndex({spawnIndex})가 spawnPoints 배열 범위를 벗어났습니다!");
             return;
         }
 
-        // 해당 위치에 이미 PMC가 있는지 확인
+        // 3. 해당 위치에 이미 PMC가 있는지 확인
         bool alreadySpawned = spawnedPMCs.Exists(pmc =>
             pmc != null && Vector3.Distance(pmc.transform.position, spawnPoints[spawnIndex].position) < 0.1f
         );
@@ -52,13 +42,15 @@ public class InGamePMCUI : UIBase
             return;
         }
 
-        GameObject pmc = Instantiate(playerPrefabs[playerIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
+        // 4. 생성 및 등록
+        GameObject pmc = Instantiate(playerPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
         spawnedPMCs.Add(pmc);
 
         var playable = pmc.GetComponent<PlayableCharacter>();
         if (playable != null)
         {
             playable.SetData(initID);
+            GameManager.Instance.AddPlayer(playable);
         }
         else
         {
