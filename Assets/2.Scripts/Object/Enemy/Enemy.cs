@@ -18,7 +18,7 @@ public class Enemy : BaseEntity
         buffIcons.UpdateIcon(entityInfo.statEffect);
     }
 
-    public void Init(int idx)
+    public override void Init(int idx)
     {
         SetData(idx);
     }

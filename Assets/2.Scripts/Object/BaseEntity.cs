@@ -124,6 +124,11 @@ public class BaseEntity : MonoBehaviour
         buffIcons = GetComponentInChildren<BuffIcons>();
     }
 
+    public virtual void Init(int id)
+    {
+
+    }
+
     public virtual void Release()
     {
         OnDied -= BattleManager.Instance.EntityDead;
