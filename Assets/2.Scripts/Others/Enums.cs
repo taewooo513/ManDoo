@@ -62,5 +62,6 @@ public enum DeBuffType
     SpeedDown,
     EvasionDown,
     CriticalDown,
-    AllStatDown
+    AllStatDown,
+    Damaged
 }
