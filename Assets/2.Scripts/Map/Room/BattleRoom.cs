@@ -17,7 +17,7 @@ public class BattleRoom : BaseRoom
         //전투 알림 팝업 띄우기 -> 배틀매니저에서 한다고 함
         UIManager.Instance.OpenUI<InGameBattleStartUI>();
         var battleData = DataManager.Instance.Battle.GetBattleData(1001); //TODO : 1001 수정해야됨
-        spawn.EnemySpawn(battleData.BattleEnemys); //적 소환
+        spawn.EnemySpawn(battleData.battleEnemies); //적 소환
     }
 
     public override void ExitRoom()
