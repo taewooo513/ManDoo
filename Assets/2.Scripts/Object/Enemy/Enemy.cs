@@ -12,7 +12,11 @@ public class Enemy : BaseEntity
     private Skill _attackSkill;
     [SerializeField] private int initID;
 
-    
+    private void Start()
+    {
+        Init(initID);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
+    }
     public override void Init(int idx)
     {
         SetData(idx);
@@ -86,6 +90,28 @@ public class Enemy : BaseEntity
         //TODO : 지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다?
         _attackSkill = null; //선택한 스킬 비워주기
         BattleManager.Instance.EndTurn(hasExtraTurn);
+
+        List<BuffType> buffTypes = new List<BuffType>();
+        List<DeBuffType> deBuffTypes = new List<DeBuffType>();
+        buffTypes.Add(BuffType.AttackUp);
+        buffTypes.Add(BuffType.DefenseUp);
+        buffTypes.Add(BuffType.SpeedUp);
+        buffTypes.Add(BuffType.EvasionUp);
+        buffTypes.Add(BuffType.CriticalUp);
+        buffTypes.Add(BuffType.AllStatUp);
+
+        deBuffTypes.Add(DeBuffType.AttackDown);
+        deBuffTypes.Add(DeBuffType.DefenseDown);
+        deBuffTypes.Add(DeBuffType.SpeedDown);
+        deBuffTypes.Add(DeBuffType.EvasionDown);
+        deBuffTypes.Add(DeBuffType.CriticalDown);
+        deBuffTypes.Add(DeBuffType.AllStatDown);
+        deBuffTypes.Add(DeBuffType.Damaged);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
+        if (hasExtraTurn)
+        {
+            entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
+        }
     }
 
     public override void StartExtraTurn() //추가 공격 턴
