@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseRoom : MonoBehaviour
+public class BaseRoom : MonoBehaviour // 있어야할까요?
 {
+    public Dictionary<RoomDirection, BaseRoom> connectedRooms;
+    public Dictionary<RoomDirection, Corridor> corridors;
     public Dictionary<int, GameObject> playableCharacterDic; //int에 키값, 게임오브젝트에 대응하는 프리팹
     
     public virtual void EnterRoom()
@@ -20,5 +22,20 @@ public class BaseRoom : MonoBehaviour
 
     public virtual void ExitRoom()
     {
+    }
+    public Corridor MakeConnection(BaseRoom room, RoomDirection direction)
+    {
+        connectedRooms.Add(direction, room);
+        var corridor = new Corridor();
+        corridors.Add(direction, corridor);
+        corridor.MakeCells();
+
+        return corridor;
+    }
+
+    public void ApplyConnection(BaseRoom room, RoomDirection direction, Corridor corridor)
+    {
+        connectedRooms.Add(direction, room);
+        corridors.Add(direction, corridor);
     }
 }

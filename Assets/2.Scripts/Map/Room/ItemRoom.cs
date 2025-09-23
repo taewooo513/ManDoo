@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmptyRoom : BaseRoom
+public class ItemRoom : BaseRoom
 {
     void Start()
     {
