@@ -15,7 +15,7 @@ public class EntityInfo
     public bool isDie;
     public float evasion;
     public float critical;
-    public StatEffect statEffect;
+    public Buff statEffect;
     public float hpWeight = 0f;
     public float addWeight = 0.3f;
     public Skill[] skills;
@@ -32,7 +32,7 @@ public class EntityInfo
         this.speed = speed;
         this.evasion = evasion;
         this.critical = critical;
-        statEffect = new StatEffect();
+        statEffect = new Buff();
     }
 
     public void Damaged(float value)
@@ -88,6 +88,19 @@ public class EntityInfo
             skills[i] = new Skill();
             skills[i].Init(skillIdList[i], nowEntity);
         }
+    }
+    public void Heal(float value)
+    {
+        var hp = currentHp + value;
+        currentHp = (int)hp;
+        if (currentHp > maxHp)
+        {
+            currentHp = maxHp;
+        }
+    }
+    public void AddEffect(BuffInfo statEffectInfo)
+    {
+        statEffect.AddStatus(statEffectInfo);
     }
 }
 
@@ -146,6 +159,16 @@ public class BaseEntity : MonoBehaviour
     public virtual void UseSkill(BaseEntity baseEntity)
     {
 
+    }
+    public void AddEffect(BuffInfo statEffectInfo)
+    {
+        entityInfo.AddEffect(statEffectInfo);
+    }
+
+    public virtual void Heal(float value)
+    {
+        entityInfo.Heal(value);
+        hpbarUI.UpdateUI();
     }
     public virtual void StartTurn()
     {

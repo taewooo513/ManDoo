@@ -19,6 +19,7 @@ public class SelectSkillButton : MonoBehaviour
     public void SetButton(Skill skill)
     {
         skillButton.onClick.AddListener(() => OnClickSkillButton(skill));
+        //skillButton.OnDeselect
     }
 
     private void OnClickSkillButton(Skill skill)
