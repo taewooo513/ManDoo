@@ -47,8 +47,6 @@ public class BuffIconFactory
                 path = "BurnIcon";
                 break;
         }
-        Debug.Log(buff.buffType);
-        Debug.Log(buff.deBuffType);
         return path;
     }
 }

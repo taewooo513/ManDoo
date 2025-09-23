@@ -18,15 +18,17 @@ public class BuffIcons : MonoBehaviour
 
         if (buff != null)
         {
-            for (int j = buff._entityCurrentStatus.Count ; j < buffIcons.Length; j++)
+            for (int j = buff._entityCurrentStatus.Count; j < buffIcons.Length; j++)
             {
                 buffIcons[j].gameObject.SetActive(false);
             }
             foreach (var item in buff._entityCurrentStatus)
             {
-                i++;
+                if (buffIcons.Length <= i)
+                    break;
                 buffIcons[i].gameObject.SetActive(true);
                 buffIcons[i].UpdateUI(item);
+                i++;
             }
         }
     }
