@@ -77,4 +77,25 @@ public class InGamePMCUI : UIBase
         }
         return -1;
     }
+    public void RemovePlayerAt(int spawnIndex)
+    {
+        for (int i = spawnedPMCs.Count - 1; i >= 0; i--)
+        {
+            GameObject pmc = spawnedPMCs[i];
+            if (pmc != null && Vector3.Distance(pmc.transform.position, spawnPoints[spawnIndex].position) < 0.1f)
+            {
+                spawnedPMCs.RemoveAt(i);
+                var playable = pmc.GetComponent<PlayableCharacter>();
+                if (playable != null)
+                {
+                    GameManager.Instance.RemovePlayer(playable.id); // 또는 playable.ID
+                }
+                Destroy(pmc);
+                Debug.Log($"스폰 위치 {spawnIndex}의 플레이어 삭제 완료");
+                return;
+            }
+        }
+        Debug.Log($"스폰 위치 {spawnIndex}에 플레이어가 없습니다.");
+    }
+
 }
