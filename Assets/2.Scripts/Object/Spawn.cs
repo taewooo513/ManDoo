@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    private List<BaseEntity> _playerPositionList = new List<BaseEntity>(); //바뀐 플레이어 위치 받아오는 리스트
-    
     public void PlayableCharacterCreate(int id) //캐릭터 생성
     {
         GameObject playableCharacter = Instantiate(Resources.Load<GameObject>(Constants.Player + "playableCharacter"));
@@ -23,22 +21,8 @@ public class Spawn : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.PlayableCharacter.Count; i++) //현재 데리고 있는 플레이어 리스트만큼 카운트
         {
             pos -= add;
-            if(i < _playerPositionList.Count) //배틀매니저에서 받아온 플레이어 위치 정보가 없다면
-            {
-                BaseEntity playerPostion = _playerPositionList[i]; //전투하면서 바뀐 플레이어들 위치
-                playerPostion.transform.position = pos; //프리팹 위치별로 화면에 띄우기
-                GameManager.Instance.PlayableCharacter[i] = _playerPositionList[i]; //현재 플레이어 정보(hp, 위치 등) 게임매니저에 반영
-            }
-            else
-            {
-                GameManager.Instance.PlayableCharacter[i].transform.position = pos; //게임매니저에 있는 플레이어 호출
-            }
+            GameManager.Instance.PlayableCharacter[i].transform.position = pos; //게임매니저에 있는 플레이어를 화면에 호출
         }
-    }
-    
-    public void PlayableCharacterPosition(List<BaseEntity> playerPositionList) //캐릭터 스폰(위치 지정)
-    {
-        _playerPositionList = playerPositionList;
     }
 
     public void EnemySpawn(List<int> id) //적 생성

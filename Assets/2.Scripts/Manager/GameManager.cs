@@ -55,4 +55,9 @@ public class GameManager : Singleton<GameManager>
     public void EndGame()
     {
     }
+    
+    public void PlayableCharacterPosition(List<BaseEntity> playerPositionList) //캐릭터 스폰(위치 지정)
+    {
+        _playableCharacter = playerPositionList;
+    }
 }

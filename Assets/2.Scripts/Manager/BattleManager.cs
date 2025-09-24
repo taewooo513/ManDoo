@@ -17,8 +17,7 @@ public class BattleManager : Singleton<BattleManager>
     public List<BaseEntity> _enemyCharacters;
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
     
-    public BaseRoom baseRoom; //TODO : 이거 연결해야됨
-    public Weapon weapon; //TODO : 이거 연결해야됨
+    public Weapon weapon; //TODO : 이거 연결해야됨. 플레이어블 안에 equipWeapon... 등등
 
     private BaseEntity nowTurnEntity;
     private PlayableCharacter nowSeletePlayableCharacter;
@@ -162,7 +161,7 @@ public class BattleManager : Singleton<BattleManager>
     private void EndBattle()
     {
         //TODO: 전투가 끝났을 때 공통적으로 해야하는 것...?
-        baseRoom.spawn.PlayableCharacterPosition(_playableCharacters); //현재 플레이어 위치 넘기기
+        GameManager.Instance.PlayableCharacterPosition(_playableCharacters); //현재 플레이어 위치 넘기기
         foreach (var item in _playableCharacters)
         {
             item.Release();
