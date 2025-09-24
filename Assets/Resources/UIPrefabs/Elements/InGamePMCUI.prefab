@@ -1661,7 +1661,6 @@ MonoBehaviour:
   roleTypeText: {fileID: 156485662169965837}
   contractGoldText: {fileID: 3573577168493343456}
   initID: 1003
-  cardManager: {fileID: 0}
 --- !u!1 &2335820506517445213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,7 +1728,6 @@ MonoBehaviour:
   roleTypeText: {fileID: 5377483452796340426}
   contractGoldText: {fileID: 3294025914723979318}
   initID: 1002
-  cardManager: {fileID: 0}
 --- !u!1 &2395858498879353035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1795,6 @@ MonoBehaviour:
   roleTypeText: {fileID: 7529251160862991864}
   contractGoldText: {fileID: 4579975774613599964}
   initID: 1005
-  cardManager: {fileID: 0}
 --- !u!1 &3110705591646970623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,7 +1998,6 @@ MonoBehaviour:
   roleTypeText: {fileID: 3838700003119538037}
   contractGoldText: {fileID: 8993724026217294740}
   initID: 1001
-  cardManager: {fileID: 0}
 --- !u!1 &3649745810223080499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2203,7 +2199,6 @@ MonoBehaviour:
   roleTypeText: {fileID: 3962830117755900984}
   contractGoldText: {fileID: 6024688365218709590}
   initID: 1004
-  cardManager: {fileID: 0}
 --- !u!1 &3886212970596377992
 GameObject:
   m_ObjectHideFlags: 0
@@ -4110,7 +4105,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13, y: 260}
+  m_AnchoredPosition: {x: 50, y: 260}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4520215583069874252
