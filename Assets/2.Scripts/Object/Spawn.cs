@@ -23,15 +23,15 @@ public class Spawn : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.PlayableCharacter.Count; i++) //현재 데리고 있는 플레이어 리스트만큼 카운트
         {
             pos -= add;
-            if(_playerPositionList == null) //배틀매니저에서 받아온 플레이어 위치 정보가 없다면
-            {
-                GameManager.Instance.PlayableCharacter[i].transform.position = pos; //게임매니저에 있는 플레이어 호출
-            }
-            else if (_playerPositionList != null)
+            if(i < _playerPositionList.Count) //배틀매니저에서 받아온 플레이어 위치 정보가 없다면
             {
                 BaseEntity playerPostion = _playerPositionList[i]; //전투하면서 바뀐 플레이어들 위치
                 playerPostion.transform.position = pos; //프리팹 위치별로 화면에 띄우기
                 GameManager.Instance.PlayableCharacter[i] = _playerPositionList[i]; //현재 플레이어 정보(hp, 위치 등) 게임매니저에 반영
+            }
+            else
+            {
+                GameManager.Instance.PlayableCharacter[i].transform.position = pos; //게임매니저에 있는 플레이어 호출
             }
         }
     }

@@ -14,7 +14,6 @@ public class BattleRoom : BaseRoom
     public override void EnterRoom(int id) //방 입장 시 todo : 방 호출하는 부분에서 id 랜덤돌려서 넣어줘야 됨
     {
         base.EnterRoom(id); //플레이어 소환(위치 선정)
-        Debug.Log(spawn);
         var battleData = DataManager.Instance.Battle.GetBattleData(id); //배틀데이터 dt에서 배틀룸 id 받아오기
         spawn.EnemySpawn(battleData.battleEnemies); //적 소환
     }
