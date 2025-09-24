@@ -18,7 +18,13 @@ public class InventoryManager : Singleton<InventoryManager>
     private readonly Item[] equippedItems = new Item[3];
     public event Action<int, Item> OnSlotChanged; // slot index, item
     public event Action<EquipmentSlotType, Item> OnEquipChanged; // slot type, item
-    
+
+    protected override void Awake()
+    {
+        base.Awake();
+        for (int i = 0; i < slotItemIds.Length; i++)
+            slotItemIds[i] = -1;
+    }
     public void AddItem(int id, int amount)
     {
         if (amount <= 0) return;
@@ -51,7 +57,7 @@ public class InventoryManager : Singleton<InventoryManager>
 
     public int GetSlotCount(int id) => slotItemIds.Length;
 
-    public Item GetItemForSlot(int slotIndex)
+    public Item GetItemInSlot(int slotIndex)
     {
         if (!IsValidSlot(slotIndex)) return null;
         var item = slotItemIds[slotIndex];
@@ -77,14 +83,14 @@ public class InventoryManager : Singleton<InventoryManager>
 
     public Item GetEquipped(EquipmentSlotType slotType) => equippedItems[(int)slotType];
 
-    public bool TryEquipFromInventory(int from, EquipmentSlotType to)
+    public bool TryEquipFromInventory(int from, EquipmentSlotType to) // 인벤토리에서 장착해제
     {
-        var item = GetItemForSlot(from);
+        var item = GetItemInSlot(from);
         if (item == null) return false;
         if (!ItemManager.Instance.CanEquipItem(item, to)) return false;
 
         if (!RemoveItem(item.ItemId, 1)) return false;
-        slotItemIds[from] = 0;
+        slotItemIds[from] = -1;
         UpdateSlot(from);
 
         var prevSlot = equippedItems[(int)to];
@@ -96,8 +102,14 @@ public class InventoryManager : Singleton<InventoryManager>
         return true;
     }
 
-    public bool TryUnequipToInventory()
+    public bool TryUnequipToInventory(EquipmentSlotType from) // 장비창에서 인벤창으로 옮기면서 장착해제
     {
+        var equip = equippedItems[(int)from];
+        if (equip == null) return false;
+        
+        AddItem(equip.ItemId, 1);
+        equippedItems[(int)from] = null;
+        OnEquipChanged?.Invoke(from, null);
         return true;
     }
     
@@ -105,121 +117,40 @@ public class InventoryManager : Singleton<InventoryManager>
 
     private bool IsShownInSlots(int id)
     {
-        return true;
+        foreach (var i in slotItemIds)
+        {
+            if (i == id)
+                return true;
+        }
+        return false;
     }
 
     private void AssignToEmptySlot(int id)
     {
-        
+        for (int i = 0; i < slotItemIds.Length; i++)
+        {
+            var slot = slotItemIds[i];
+            if (slot == -1)
+            {
+                slotItemIds[i] = id;
+                UpdateSlot(i);
+                return;
+            }
+        }
     }
 
     private void RemoveFromSlots(int id)
     {
-        
+        for (int i = 0; i < slotItemIds.Length; i++)
+        {
+            var slot = slotItemIds[i];
+            if (slot != -1 && slot == id)
+            {
+                slotItemIds[i] = -1;
+                UpdateSlot(i);
+            }
+        }
     }
 
-    private void UpdateSlot(int slotIndex)
-    {
-        
-    }
-    // public bool RemoveItem(int itemId, int weaponId, int accessoryId, int amout)
-    // {
-    //     if (!inventoryItems.ContainsKey(itemId)) return false;
-    //     if (inventoryItems[itemId] < amout) return false;
-    //     
-    //     inventoryItems[itemId] -= amout;
-    //     if (inventoryItems[itemId] <= 0)
-    //     {
-    //         inventoryItems.Remove(itemId);
-    //         int index = FindSlotIndexOf(itemId);
-    //         if (index != -1)
-    //             RaiseSlotChanged(index);
-    //     }
-    //     return true;
-    // }
-    //
-    // public Item GenerateItem(int itemId, int weaponId, int accessoryId)
-    // {
-    //     var item = new Item();
-    //     item.Init(itemId);
-    //     item.icon = GetIcon(item);
-    //     return item;
-    // }
-    //
-    // public void SwapItems(int from, int to)
-    // {
-    //     if (!IsValidSlot(from))
-    // }
-    
-    // public Item GetItemInSlot(int slotIndex)
-    // {
-    //     return (inventoryItems != null && slotIndex < inventoryItems.Length) ? inventoryItems[slotIndex] : null;
-    // }
-    //
-    // public void SetItemInSlot(int slotIndex, Item item)
-    // {
-    //     if (inventoryItems != null && slotIndex < inventoryItems.Length)
-    //     {
-    //         inventoryItems[slotIndex] = item;
-    //         OnSlotChanged?.Invoke(slotIndex, item);
-    //     }
-    // }
-
-    // public void LoadItemDataFromPlayer(int id, int amount)
-    // {
-    //     foreach (var item in inventoryItems)
-    //     {
-    //         if (item != null)
-    //         {
-    //             item = ItemInfo.Id
-    //         }
-    //     }
-    //     // if (source == null)
-    //     // {
-    //     //     inventoryItems = Array.Empty<Item>();
-    //     //     return;
-    //     // }
-    //     //
-    //     // inventoryItems = new Item[source.Length];
-    //     // Array.Copy(source, inventoryItems, source.Length);
-    //     // for (int i = 0; i < source.Length; i++)
-    //     //     OnSlotChanged?.Invoke(i, inventoryItems[i]);
-    // }
-    //
-    // public void LoadWeaponDataFromPlayer(int id, int amout)
-    // {
-    //     
-    // }
-    //
-    // // public Item[] SendIVDataToPlayer()
-    // // {
-    // //     if (inventoryItems == null) return Array.Empty<Item>();
-    // //     var result = new Item[inventoryItems.Length];
-    // //     Array.Copy(inventoryItems, result, inventoryItems.Length);
-    // //     return result;
-    // // }
-    
-    // public bool CanSwapItem(int from, int to)
-    // {
-    //     if (inventoryItems == null) return false;
-    //     if (!((uint)from < inventoryItems.Length && (uint)to < inventoryItems.Length)) return false;
-    //     return true;
-    // }
-    // public void SwapItemInSlot(int from, int to)
-    // {
-    //     if (!CanSwapItem(from, to)) return;
-    //     (inventoryItems[to], inventoryItems[from]) = (inventoryItems[from], inventoryItems[to]);
-    //     OnSlotChanged?.Invoke(from, inventoryItems[from]);
-    //     OnSlotChanged?.Invoke(to, inventoryItems[to]);
-    // }
-
-    // public Sprite GetIcon(Item item)
-    // {
-    //     if (item == null || item.ItemInfo == null) return null;
-    //     var path = item.ItemInfo.iconPathString;
-    //     var load = Resources.Load<Sprite>(path);
-    //     if (load != null)
-    //         item.icon = load;
-    //     return item.icon;
-    // }
+    private void UpdateSlot(int slotIndex) => OnSlotChanged?.Invoke(slotIndex, GetItemInSlot(slotIndex));
 }
