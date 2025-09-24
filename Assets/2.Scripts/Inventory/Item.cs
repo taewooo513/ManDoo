@@ -5,8 +5,13 @@ using DataTable;
 
 public class ItemInfo
 {
-    // private ItemData _itemData;
+    public ItemType itemType;
+    public int consumableSkillId;
     public string itemName;
+    public string itemDescription;
+    public int maxCount;
+    public int price;
+    public string iconPathString;
     
     
     public ItemInfo()
