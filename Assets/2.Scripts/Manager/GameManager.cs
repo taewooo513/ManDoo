@@ -27,6 +27,10 @@ public class GameManager : Singleton<GameManager>
         // id 중복 체크용
         return playableCharacter.Exists(pc => pc.id == id);
     }
+    public void RemovePlayer(int id)
+    {
+        playableCharacter.RemoveAll(pc => pc.id == id);
+    }
 
     public void Update()
     {
@@ -43,12 +47,10 @@ public class GameManager : Singleton<GameManager>
 
     public void StartBattle()
     {
-        List<BaseEntity> baseEntities = new List<BaseEntity>();
         BattleManager.Instance.BattleStartTrigger(playableCharacter, enemyCharacter);
     }
 
     public void EndGame()
     {
-
     }
 }
