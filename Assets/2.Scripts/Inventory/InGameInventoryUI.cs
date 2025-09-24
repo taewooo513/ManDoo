@@ -5,7 +5,7 @@ using System.Linq;
 /// <summary>
 /// 게임 내 인벤토리 UI를 관리하는 클래스
 /// </summary>
-public class InGameInventoryUI : UIBase
+public class InGameInventoryUI : UIBase //inventorymanager 추가.
 {
     // 테스트 모드 활성화 여부를 설정하는 플래그
     public bool isTestMode = true;
@@ -23,7 +23,7 @@ public class InGameInventoryUI : UIBase
     /// <summary>
     /// 각 슬롯에 저장된 아이템 배열
     /// </summary>
-    private Item[] items;
+    private Item[] items; // TODO: 이거 나중에 인벤토리 매니저에서 가지고 있는 아이템만 받아오기
 
     /// <summary>
     /// Awake에서 초기 설정을 수행

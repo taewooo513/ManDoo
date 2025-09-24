@@ -9,7 +9,12 @@ public class PlayableCharacter : BaseEntity
     [SerializeField] private int initID;
     private MercenaryData data;
     private Weapon equipWeapon;
-   
+
+
+    private void Start()
+    {
+        Init(initID);
+    }
 
     public override void Init(int id)
     {
@@ -46,7 +51,27 @@ public class PlayableCharacter : BaseEntity
     }
     public override void EndTurn(bool hasExtraTurn = true)
     {
+        List<BuffType> buffTypes = new List<BuffType>();
+        List<DeBuffType> deBuffTypes = new List<DeBuffType>();
+        buffTypes.Add(BuffType.AttackUp);
+        buffTypes.Add(BuffType.DefenseUp);
+        buffTypes.Add(BuffType.SpeedUp);
+        buffTypes.Add(BuffType.EvasionUp);
+        buffTypes.Add(BuffType.CriticalUp);
+        buffTypes.Add(BuffType.AllStatUp);
 
+        deBuffTypes.Add(DeBuffType.AttackDown);
+        deBuffTypes.Add(DeBuffType.DefenseDown);
+        deBuffTypes.Add(DeBuffType.SpeedDown);
+        deBuffTypes.Add(DeBuffType.EvasionDown);
+        deBuffTypes.Add(DeBuffType.CriticalDown);
+        deBuffTypes.Add(DeBuffType.AllStatDown);
+        deBuffTypes.Add(DeBuffType.Damaged);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
+        if (hasExtraTurn)
+        {
+            entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
+        }
     }
 
     public void EquipWeapon(Weapon weapon)
