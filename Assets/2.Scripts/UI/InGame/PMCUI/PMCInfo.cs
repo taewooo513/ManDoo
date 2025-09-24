@@ -43,10 +43,9 @@ public class PMCInfo : BaseEntity
         gameObject.SetActive(!hasPlayer);
     }
 
-    public void OnClickHire() // 고용 버튼 클릭
+    public void OnClickHire()// 고용 버튼 클릭
     {
-       
-        PMCHire.Instance.HirePMC(initID);
+        
     }
 }
 
