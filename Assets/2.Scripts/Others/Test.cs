@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    public BattleRoom battleRoom;
+    
     void Awake()
     {
-        if (DataManager.Instance != null)
-            DataManager.Instance.Initialize();
+        DataManager.Instance.Initialize();
+        battleRoom = new BattleRoom();
+        battleRoom.EnterRoom();
     }
 }
