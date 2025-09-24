@@ -13,7 +13,7 @@ public class Trap : MonoBehaviour
     [SerializeField] private GameObject notActiveTrap;
     [SerializeField] private RectTransform activeTrapRect; //발동한 함정 오브젝트 위치
     [SerializeField] private GameObject trapUI; //함정 해제/취소 선택창 UI
-    [SerializeField] private InputActionReference moveAction;
+    //[SerializeField] private InputActionReference moveAction;
     private BaseEntity _trappedPlayer;
     private Vector3 _startPos = new Vector3(0, -1025, 0);
     private Vector3 _targetPos = new Vector3(0, -365, 0);
@@ -29,13 +29,13 @@ public class Trap : MonoBehaviour
     public void OnTrapUI()
     {
         trapUI.SetActive(true);
-        moveAction.action.Disable(); //캐릭터 움직임만 멈추기
+        //moveAction.action.Disable(); //캐릭터 움직임만 멈추기
     }
 
     public void OnTrapUIClose()
     {
         trapUI.SetActive(false);
-        moveAction.action.Enable(); //캐릭터 움직임 활성화
+        //moveAction.action.Enable(); //캐릭터 움직임 활성화
     }
 
     public void OnTrapRelease() //클릭해서 함정 해제하기
@@ -64,7 +64,7 @@ public class Trap : MonoBehaviour
     {   
         _trappedPlayer = trappedPlayer;
         activeTrapRect.DOAnchorPos(_targetPos, 0.1f).SetEase(Ease.Linear); //함정 튀어나오기
-        moveAction.action.Disable(); //플레이어 못 움직임
+        //moveAction.action.Disable(); //플레이어 못 움직임
         activeTrapUI.SetActive(true);
         TrapReleaseFail(_trappedPlayer); //데미지 닳음
         //TODO : 딜레이 주기
@@ -76,7 +76,7 @@ public class Trap : MonoBehaviour
         activeTrapRect.DOAnchorPos(_startPos, 0.1f).SetEase(Ease.Linear); //트랩 원위치
         //TODO : 짧은 딜레이 주기
         activeTrapUI.SetActive(false); //UI 끄기
-        moveAction.action.Enable(); //플레이어 움직이기 가능
+        //moveAction.action.Enable(); //플레이어 움직이기 가능
     }
 
     public void TrapReleaseSuccess() //미발동 함정 해제 성공 시

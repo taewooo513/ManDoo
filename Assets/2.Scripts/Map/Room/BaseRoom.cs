@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseRoom : MonoBehaviour // 있어야할까요?
+public class BaseRoom
 {
     public Dictionary<RoomDirection, BaseRoom> connectedRooms;
     public Dictionary<RoomDirection, Corridor> corridors;
