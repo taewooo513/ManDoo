@@ -11,8 +11,8 @@ public class PlayerRemoveButton : MonoBehaviour
     void Awake()
     {
         button.onClick.AddListener(() => {
-            if (InGamePMCUI.Instance != null)
-                InGamePMCUI.Instance.RemovePlayerAt(spawnIndex);
+            if (PMCHire.Instance != null)
+                PMCHire.Instance.RemovePlayerAt(spawnIndex);
         });
     }
 }
