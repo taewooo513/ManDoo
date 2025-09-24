@@ -53,6 +53,7 @@ public class InventoryManager : Singleton<InventoryManager>
         Array.Copy(inventoryItems, result, inventoryItems.Length);
         return result;
     }
+    
     public bool CanSwapItem(int from, int to)
     {
         if (inventoryItems == null) return false;

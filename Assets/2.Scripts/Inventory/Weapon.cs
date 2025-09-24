@@ -39,6 +39,8 @@ public class Weapon : MonoBehaviour
         gameObjectPath = weaponData.gameObjectString;
         iconPath = weaponData.iconPathString;
         this.id = id;
+
+        weaponType = weaponData.weaponType;
     }
 
     public void InitWeaponSkill(BaseEntity baseEntity)
@@ -76,4 +78,9 @@ public class Weapon : MonoBehaviour
         }
         return false;
     }
+    
+    // private 으로 되어있어서 getter 생성
+    public WeaponType GetWeaponType() => weaponType;
+    public int GetId => id;
+    public string GetIconPath() => iconPath;
 }
