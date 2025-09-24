@@ -3,12 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EquipmentSlotType
-{
-    Weapon = 0,
-    Accessory1 = 1,
-    Accessory2 = 2,
-}
+
 public class EquipmentManager : Singleton<EquipmentManager>
 {
     private Weapon equippedWeapon;

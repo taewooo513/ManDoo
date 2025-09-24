@@ -28,10 +28,15 @@ public class ItemInfo
 public class Item
 {
     public ItemInfo ItemInfo { get; private set; }
+    public int ItemId { get; private set; }
     public Sprite icon; // 아이템 아이콘 -> 인벤토리나 장착 슬롯 등에 표시하기 위해 설정
-    
     private EnemyData _data;
-    
+
+    public Item(int id)
+    {
+        ItemId = id;
+        Init(id);
+    }
     public void Init(int id)
     {
         ItemInfo = new ItemInfo(id);

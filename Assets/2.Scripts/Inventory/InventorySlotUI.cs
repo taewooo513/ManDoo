@@ -57,7 +57,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         if (slotIcon != null)
             Icon = slotIcon.GetComponent<InventoryItemUI>();
     }
-
+    
     /// <summary>
     /// 슬롯 초기화
     /// </summary>

@@ -9,20 +9,8 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
 {
     // 테스트 모드 활성화 여부를 설정하는 플래그
     public bool isTestMode = true;
-
-    /// <summary>
-    /// 인벤토리 UI가 속한 Canvas 컴포넌트
-    /// </summary> 
     public Canvas baseCanvas { get; private set; }
-    
-    /// <summary>
-    /// 인벤토리의 각 슬롯 UI 배열
-    /// </summary>
     [SerializeField] private InventorySlotUI[] inventorySlots;
-
-    /// <summary>
-    /// Awake에서 초기 설정을 수행
-    /// </summary>
     private void Awake()
     {
         // 부모 객체로부터 Canvas 컴포넌트 가져오기
