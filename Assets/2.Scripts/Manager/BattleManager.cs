@@ -14,10 +14,10 @@ public class BattleManager : Singleton<BattleManager>
     public List<BaseEntity> _playableCharacters;
     public List<BaseEntity> PlayableCharacters => _playableCharacters;
 
-
     public List<BaseEntity> _enemyCharacters;
-
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
+    
+    public Weapon weapon; //TODO : 이거 연결해야됨
 
     private BaseEntity nowTurnEntity;
     private PlayableCharacter nowSeletePlayableCharacter;
@@ -63,8 +63,7 @@ public class BattleManager : Singleton<BattleManager>
             _enemyCharacters.Add(item);
             item.BattleStarted();
         }
-        //전투 시작 UI 출력
-        //UIManager.Instance.OpenUI<InGameBattleStartUI>();
+        UIManager.Instance.OpenUI<InGameBattleStartUI>(); //전투 시작 UI 출력
         Turn();
     }
 
@@ -145,6 +144,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("승리!");
         //승리 UI 출력
+        weapon.AddWeaponExp(20); //숙련도 지급
         UIManager.Instance.OpenUI<InGameVictoryUI>();
         EndBattle();
     }
@@ -153,6 +153,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("패배...");
         //패배 UI출력
+        weapon.AddWeaponExp(5);
         UIManager.Instance.OpenUI<InGameLoseUI>();
         EndBattle();
     }
@@ -574,6 +575,7 @@ public class BattleManager : Singleton<BattleManager>
                 SwitchPosition(entity, i + 1);
             }
             _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
+            entity.Release();
             Destroy(entity.gameObject);
             return;
         }

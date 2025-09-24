@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class InGamePlayerUI : UIBase
 {
+    public bool isTestMode = true;
+    
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI jobText;
 
@@ -16,6 +18,7 @@ public class InGamePlayerUI : UIBase
     public GameObject[] skillUIObjects;
     
     [SerializeField] private EquipmentSlotUI[] equipmentSlots;
+    
     public void UpdateUI(EntityInfo entityInfo, Skill[] skills)
     {
         nameText.text = entityInfo.name;

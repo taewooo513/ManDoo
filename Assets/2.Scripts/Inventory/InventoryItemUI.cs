@@ -56,6 +56,8 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         Debug.Log("OnBeginDrag");
         // 필수 컴포넌트가 없으면 드래그 처리하지 않음
         if (baseCanvas == null || canvasRect == null || rect == null) return;
+        var image = GetComponent<UnityEngine.UI.Image>();
+        if (image == null || image.sprite == null) return;
         
         // 드래그 시작 시 현재 부모 Transform 저장
         original = transform.parent;

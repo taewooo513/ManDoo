@@ -109,7 +109,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         // 드래그된 아이템 UI 컴포넌트 가져오기
         var draggedItem = eventData.pointerDrag ? eventData.pointerDrag.GetComponent<InventoryItemUI>() : null;
         if (draggedItem == null) return;
-
+        
         // 이동할 출발지와 목적지 슬롯 인덱스 설정
         int from = draggedItem.SlotIndex;
         int to = SlotIndex;
@@ -145,11 +145,26 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
     public void SetIcon(Sprite icon)
     {
         if (slotIcon == null) return;
-
         slotIcon.sprite = icon;
-        slotIcon.enabled = (icon != null);
+        var hasIcon = (icon != null);
+        slotIcon.enabled = hasIcon;
+
+        if (Icon)
+        {
+            var cg = Icon.GetComponent<CanvasGroup>();
+            if (!cg)
+                cg = Icon.gameObject.AddComponent<CanvasGroup>();
+            cg.blocksRaycasts = hasIcon;
+            cg.interactable = hasIcon;
+            cg.alpha = hasIcon ? 1f : 0f;
+        }
     }
 
+    public void SetInteractableIcon(bool interactable)
+    {
+        if (slotIcon == null) return;
+        slotIcon.raycastTarget = interactable;
+    }
     /// <summary>
     /// 테스트 모드용 아이콘 표시 설정
     /// </summary>

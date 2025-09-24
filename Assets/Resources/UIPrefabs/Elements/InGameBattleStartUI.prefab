@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5752993521893249558}
   - component: {fileID: 8022935589518442350}
   - component: {fileID: 8073383252825879560}
-  - component: {fileID: 9172843781974739322}
+  - component: {fileID: 8846318323444028417}
   m_Layer: 5
   m_Name: InGameBattleStartUI
   m_TagString: Untagged
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bfd54b6f1b9be845ae845bdc460e273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeTimer: 0
+  closeTimer: 2
 --- !u!225 &8073383252825879560
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -104,7 +104,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &9172843781974739322
+--- !u!114 &8846318323444028417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,10 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c8d3bfc05c32446a4da3e242ed48a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeInSpeed: 0.5
-  fadeOutSpeed: 1
-  fadeInOnStart: 1
-  fadeOutOnExit: 1
+  canvasGroup: {fileID: 0}
 --- !u!1 &5421090153611558854
 GameObject:
   m_ObjectHideFlags: 0
