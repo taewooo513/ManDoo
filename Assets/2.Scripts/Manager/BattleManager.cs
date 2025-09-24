@@ -576,6 +576,7 @@ public class BattleManager : Singleton<BattleManager>
                 SwitchPosition(entity, i + 1);
             }
             _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
+            entity.Release();
             Destroy(entity.gameObject);
             return;
         }
