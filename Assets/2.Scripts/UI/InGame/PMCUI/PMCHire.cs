@@ -7,8 +7,8 @@ public class PMCHire : MonoBehaviour
     public static PMCHire Instance { get; private set; }
 
     public GameObject playerPrefab;
-    public Transform[] spawnPoints; // 4개
-
+    public Vector3[] spawnPoints = new Vector3[4];
+    
     private List<GameObject> spawnedPMCs = new List<GameObject>(); // 실제 오브젝트 순서대로
 
     [SerializeField] private PMCCardManager cardManager;
@@ -21,12 +21,6 @@ public class PMCHire : MonoBehaviour
             return;
         }
         Instance = this;
-
-        spawnPoints = new Transform[4];
-        spawnPoints[0] = GameObject.Find("First").transform;
-        spawnPoints[1] = GameObject.Find("Second").transform;
-        spawnPoints[2] = GameObject.Find("Third").transform;
-        spawnPoints[3] = GameObject.Find("Fourth").transform;
     }
 
     // 고용(소환)
@@ -44,9 +38,18 @@ public class PMCHire : MonoBehaviour
         {
             return;
         }
+        // 3. 실제 위치에 이미 캐릭터가 있는지 체크
+        for (int i = 0; i < spawnedPMCs.Count; i++)
+        {
+            if (spawnedPMCs[i] != null && spawnedPMCs[i].transform.position == spawnPoints[emptyIndex])
+            {
+                Debug.LogWarning("이미 해당 자리에 캐릭터가 있습니다!");
+                return;
+            }
+        }
 
         // 3. 생성 및 등록
-        GameObject pmc = Instantiate(playerPrefab, spawnPoints[emptyIndex].position, Quaternion.identity);
+        GameObject pmc = Instantiate(playerPrefab, spawnPoints[emptyIndex], Quaternion.identity);
 
         // 자리 맞춰서 리스트에 삽입
         if (emptyIndex < spawnedPMCs.Count)
@@ -101,7 +104,7 @@ public class PMCHire : MonoBehaviour
         {
             if (spawnedPMCs[i] != null)
             {
-                spawnedPMCs[i].transform.position = spawnPoints[i].position;
+                spawnedPMCs[i].transform.position = spawnPoints[i];
             }
         }
         RefreshCardsOnPanel();
