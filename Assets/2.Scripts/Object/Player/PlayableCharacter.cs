@@ -13,7 +13,7 @@ public class PlayableCharacter : BaseEntity
 
     private void Start()
     {
-        Init(initID);
+       
     }
 
     public override void Init(int id)
