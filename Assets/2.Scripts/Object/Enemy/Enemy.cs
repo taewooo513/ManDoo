@@ -14,12 +14,11 @@ public class Enemy : BaseEntity
 
     private void Start()
     {
-        Init(initID);
-        buffIcons.UpdateIcon(entityInfo.statEffect);
     }
     public override void Init(int idx)
     {
         SetData(idx);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
     }
 
     private void SetData(int idx)

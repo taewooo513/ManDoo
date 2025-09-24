@@ -6,7 +6,9 @@ public class StartRoom : BaseRoom
 {
     public override void EnterRoom()
     {
-        //플레이어 생성 함수 호출
+        GameObject spawnObject = new GameObject("Spawn");
+        Spawn spawn = spawnObject.AddComponent<Spawn>(); //스폰 컴포넌트 챙겨오기
+        spawn.PlayableCharacterSpawn(1004); //시작 플레이어(1004) 생성
         
         //인벤토리.gold += 1500;
         
