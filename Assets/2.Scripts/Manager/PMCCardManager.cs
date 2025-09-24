@@ -4,7 +4,17 @@ using UnityEngine;
 public class PMCCardManager : MonoBehaviour
 {
     public PMCInfo[] pmcCards;
+    public static PMCCardManager Instance { get; private set; }
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
     public void RefreshAllCards()
     {
         pmcCards = GetComponentsInChildren<PMCInfo>(true); // 항상 최신 카드 리스트

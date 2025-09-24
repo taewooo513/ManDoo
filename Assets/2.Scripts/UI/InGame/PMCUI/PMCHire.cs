@@ -11,8 +11,15 @@ public class PMCHire : MonoBehaviour
 
     private List<GameObject> spawnedPMCs = new List<GameObject>(); // 실제 오브젝트 순서대로
 
+    [SerializeField] private PMCCardManager cardManager;
+
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
 
         spawnPoints = new Transform[4];
@@ -101,9 +108,8 @@ public class PMCHire : MonoBehaviour
     }
     private void RefreshCardsOnPanel()
     {
-        var cardManager = FindObjectOfType<PMCCardManager>();
-        if (cardManager != null)
-            cardManager.RefreshAllCards();
+        if (PMCCardManager.Instance != null)
+            PMCCardManager.Instance.RefreshAllCards();
     }
 }
 
