@@ -14,8 +14,8 @@ public class Weapon : MonoBehaviour
     private float critical;
     private string gameObjectPath;
     private string iconPath;
-    private float exp;
-    private float maxExp;
+    private float _weaponExp;
+    private float _weaponMaxExp;
     private int id;
     private bool isLovedWeapon = false;
 
@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
     {
         Setting(id);
         this.id = id;
-        exp = 0;
+        _weaponExp = 0;
     }
 
     private void Setting(int id)
@@ -46,30 +46,16 @@ public class Weapon : MonoBehaviour
         skill = new Skill();
         skill.Init(weaponData.skillId, baseEntity);
     }
-    public void AddUseExp()
+    
+    public void AddWeaponExp(int exp)
     {
-        exp += 5;
+        _weaponExp += exp;
         IsLevelUpWeapon();
     }
-    public void AddKillExp()
-    {
-        exp += 15;
-        IsLevelUpWeapon();
-    }
-    public void AddExploringunexploredfrontiersExp()
-    {
-        exp += 15;
-        IsLevelUpWeapon();
-    }
-    public void AddVictoryExp()
-    {
-        exp += 30;
-        IsLevelUpWeapon();
-    }
-
+    
     private bool IsLevelUpWeapon()
     {
-        if (maxExp <= exp && isLovedWeapon == false)
+        if (_weaponMaxExp <= _weaponExp && isLovedWeapon == false)
         {
             Setting(id + 1);
             return true;
