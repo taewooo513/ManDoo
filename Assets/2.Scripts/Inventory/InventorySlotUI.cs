@@ -7,34 +7,13 @@ using UnityEngine.UI;
 /// </summary>
 public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler, IDropHandler
 {
-    /// <summary>
-    /// 슬롯의 인덱스 번호
-    /// </summary>
+
     public int SlotIndex { get; private set; }
-    
-    /// <summary>
-    /// 이 슬롯을 소유한 인벤토리 UI 
-    /// </summary>
-    private InGameInventoryUI owner;
-    
-    /// <summary>
-    /// 슬롯에 표시될 아이템 아이콘 UI
-    /// </summary>
     public InventoryItemUI Icon { get; private set; }
-
-    /// <summary>
-    /// 슬롯의 배경 이미지
-    /// </summary>
+    private InGameInventoryUI owner;
     [SerializeField] private Image slotBackground;
-
-    /// <summary>
-    /// 슬롯의 아이콘 이미지
-    /// </summary>
     [SerializeField] private Image slotIcon;
-
-    /// <summary>
-    /// 컴포넌트 초기화
-    /// </summary>
+    
     private void Awake()
     {
         // 슬롯 배경 이미지 컴포넌트가 없으면 가져오기
@@ -57,7 +36,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         if (slotIcon != null)
             Icon = slotIcon.GetComponent<InventoryItemUI>();
     }
-
+    
     /// <summary>
     /// 슬롯 초기화
     /// </summary>
@@ -67,23 +46,12 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
     {
         SlotIndex = slotIndex;
         owner = inGameInventoryUI;
-
-        if (slotIcon != null)
-        {
-            //itemIcon.Setting();
-        }
-        
     }
     
     /// <summary>
     /// 슬롯 클릭 시 호출
     /// </summary>
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerClick");
-        // 선택된 슬롯의 인덱스 번호로 상위 인벤토리 UI의 슬롯 클릭 처리 호출
-        owner?.OnSlotClicked(SlotIndex);
-    }
+    public void OnPointerClick(PointerEventData eventData) => owner?.OnSlotClicked(SlotIndex);
 
     /// <summary>
     /// 마우스가 슬롯에 들어올 때 호출 
@@ -114,57 +82,59 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         int from = draggedItem.SlotIndex;
         int to = SlotIndex;
 
-        // 인벤토리에서 아이템 이동 처리
-        owner.MoveItem(from, to);
-
-        // 드래그된 아이템의 원래 부모와 새로운 부모 설정
-        var sourceParent = draggedItem.original;
-        var targetParent = this.transform;
-
-        // 기존 슬롯에 있던 아이템 UI 처리
-        var existingIcon = GetComponentInChildren<InventoryItemUI>(true);
-        if (existingIcon != null && existingIcon != draggedItem && sourceParent != null)
+        if (owner != null && owner.isTestMode)
         {
-            existingIcon.transform.SetParent(sourceParent, false);
-            existingIcon.transform.SetAsLastSibling();
-            ResetRect(existingIcon.GetComponent<RectTransform>());
-            existingIcon.Setup(from, owner, owner.baseCanvas);
+            var targetContainer = this.transform;
+            var sourceContainer = draggedItem.original;
+            
+            var existingIcon = targetContainer.GetComponentInChildren<InventoryItemUI>(true);
+            if (existingIcon != null && existingIcon != draggedItem && sourceContainer != null)
+            {
+                existingIcon.transform.SetParent(sourceContainer, false);
+                ResetRectTransform(existingIcon.GetComponent<RectTransform>());
+                existingIcon.Setup(from, owner, owner.baseCanvas);
+            }
+            
+            draggedItem.transform.SetParent(targetContainer, false);
+            ResetRectTransform(draggedItem.GetComponent<RectTransform>());
+            draggedItem.Setup(to, owner, owner.baseCanvas);
+            
+            return;
         }
         
-        // 드래그된 아이템 UI를 새로운 위치로 이동
-        draggedItem.transform.SetParent(targetParent, false);
-        draggedItem.transform.SetAsLastSibling();
-        ResetRect(draggedItem.GetComponent<RectTransform>());
-        draggedItem.Setup(to, owner, owner.baseCanvas);
+        // 인벤토리에서 아이템 이동 처리
+        owner.MoveItem(from, to);
     }
 
     /// <summary>
     /// 슬롯의 아이콘 이미지 설정
     /// </summary>
     /// <param name="icon">표시할 아이콘 스프라이트</param>
+    
+    public Sprite GetIconSprite() => slotIcon ? slotIcon.sprite : null;
+    
     public void SetIcon(Sprite icon)
     {
         if (slotIcon == null) return;
         slotIcon.sprite = icon;
         var hasIcon = (icon != null);
         slotIcon.enabled = hasIcon;
-
-        if (Icon)
-        {
-            var cg = Icon.GetComponent<CanvasGroup>();
-            if (!cg)
-                cg = Icon.gameObject.AddComponent<CanvasGroup>();
-            cg.blocksRaycasts = hasIcon;
-            cg.interactable = hasIcon;
-            cg.alpha = hasIcon ? 1f : 0f;
-        }
     }
 
     public void SetInteractableIcon(bool interactable)
     {
         if (slotIcon == null) return;
         slotIcon.raycastTarget = interactable;
+        if (Icon)
+        {
+            var cg = Icon.GetComponent<CanvasGroup>();
+            if (!cg) cg = Icon.gameObject.AddComponent<CanvasGroup>();
+            cg.blocksRaycasts = interactable;
+            cg.interactable = interactable;
+            cg.alpha = interactable ? 1f : 0f;
+        }
     }
+    
     /// <summary>
     /// 테스트 모드용 아이콘 표시 설정
     /// </summary>
@@ -199,7 +169,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
     /// RectTransform 컴포넌트 초기화
     /// </summary>
     /// <param name="rt">초기화할 RectTransform</param>
-    public void ResetRect(RectTransform rt)
+    public void ResetRectTransform(RectTransform rt)
     {
         if (!rt) return;
         

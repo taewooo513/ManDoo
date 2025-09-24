@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTestMode: 1
+  testIcon: {fileID: -265622355, guid: 386842318d10b413ca7a1c37188e98c8, type: 3}
+  testIconCount: 5
   inventorySlots:
   - {fileID: 1719149840114894725}
   - {fileID: 8427588693534221719}
