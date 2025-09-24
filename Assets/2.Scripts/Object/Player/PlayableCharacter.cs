@@ -8,7 +8,7 @@ public class PlayableCharacter : BaseEntity
 {
     [SerializeField] private int initID;
     private MercenaryData data;
-    private Weapon equipWeapon;
+    public Weapon equipWeapon;
 
 
     private void Start()

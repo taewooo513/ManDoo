@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     private List<BaseEntity> _playableCharacter;
+    public List<BaseEntity> PlayableCharacter => _playableCharacter;
     
     private List<BaseEntity> _enemyCharacter;
 

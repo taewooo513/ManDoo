@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BattleRoom : BaseRoom
 {
-    public Spawn spawn;
-    
     // void Start() //호출하는 부분에서 이런식으로 호출
     // {
     //     DataManager.Instance.Initialize();
@@ -13,15 +11,16 @@ public class BattleRoom : BaseRoom
     //     battleRoom.EnterRoom();
     // }
 
-    public override void EnterRoom() //방 입장 시
+    public override void EnterRoom(int id) //방 입장 시 todo : 방 호출하는 부분에서 id 랜덤돌려서 넣어줘야 됨
     {
-        GameObject spawnObject = new GameObject("Spawn");
-        Spawn spawn = spawnObject.AddComponent<Spawn>(); //스폰 컴포넌트 챙겨오기
-        var battleData = DataManager.Instance.Battle.GetBattleData(1001); //TODO : 1001 수정해야됨 //배틀데이터 dt에서 배틀룸 id 챙겨옴
+        base.EnterRoom(id); //플레이어 소환(위치 선정)
+        Debug.Log(spawn);
+        var battleData = DataManager.Instance.Battle.GetBattleData(id); //배틀데이터 dt에서 배틀룸 id 받아오기
         spawn.EnemySpawn(battleData.battleEnemies); //적 소환
     }
 
     public override void ExitRoom()
     {
+        //전투 보상
     }
 }

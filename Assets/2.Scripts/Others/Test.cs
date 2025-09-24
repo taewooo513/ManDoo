@@ -11,10 +11,10 @@ public class Test : MonoBehaviour
     {
         DataManager.Instance.Initialize();
         battleRoom = new BattleRoom();
-        battleRoom.EnterRoom();
+        battleRoom.EnterRoom(1001);
         
         startRoom = new StartRoom();
-        startRoom.EnterRoom();
+        startRoom.EnterRoom(1001);
         
         //UIManager.Instance.OpenUI<InGameBattleStartUI>(); //ui 테스트
     }
