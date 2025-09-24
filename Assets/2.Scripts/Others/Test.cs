@@ -11,5 +11,7 @@ public class Test : MonoBehaviour
         DataManager.Instance.Initialize();
         battleRoom = new BattleRoom();
         battleRoom.EnterRoom();
+        
+        //UIManager.Instance.OpenUI<InGameBattleStartUI>(); //ui 테스트
     }
 }

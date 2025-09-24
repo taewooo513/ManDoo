@@ -63,8 +63,7 @@ public class BattleManager : Singleton<BattleManager>
             _enemyCharacters.Add(item);
             item.BattleStarted();
         }
-        //전투 시작 UI 출력
-        //UIManager.Instance.OpenUI<InGameBattleStartUI>();
+        UIManager.Instance.OpenUI<InGameBattleStartUI>(); //전투 시작 UI 출력
         Turn();
     }
 
