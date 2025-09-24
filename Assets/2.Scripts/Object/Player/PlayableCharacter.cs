@@ -97,4 +97,6 @@ public class PlayableCharacter : BaseEntity
         }
         return false;
     }
+    
+    // TODO: 장착/획득 아이템 전분 인벤토리매니저에 넘겨주기.
 }

@@ -19,11 +19,6 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
     /// 인벤토리의 각 슬롯 UI 배열
     /// </summary>
     [SerializeField] private InventorySlotUI[] inventorySlots;
-    
-    /// <summary>
-    /// 각 슬롯에 저장된 아이템 배열
-    /// </summary>
-    private Item[] items; // TODO: 이거 나중에 인벤토리 매니저에서 가지고 있는 아이템만 받아오기
 
     /// <summary>
     /// Awake에서 초기 설정을 수행
@@ -36,11 +31,16 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
         // 인벤토리 슬롯이 없으면 자식 객체들에서 가져옴
         if (inventorySlots == null || inventorySlots.Length == 0)
             inventorySlots = GetComponentsInChildren<InventorySlotUI>(includeInactive: true);
-        
-        // items 배열이 없거나 슬롯 개수와 맞지 않으면 새로 생성
-        if (items == null || items.Length != inventorySlots.Length)
-            items = new Item[inventorySlots.Length];
-        //inventorySlots = inventorySlots.OrderBy(slot => slot.transform.GetSiblingIndex()).ToArray();
+    }
+
+    private void OnEnable()
+    {
+        InventoryManager.Instance.OnSlotChanged += HandleSlotChanged;
+    }
+
+    private void OnDisable()
+    {
+        InventoryManager.Instance.OnSlotChanged -= HandleSlotChanged;
     }
     
     /// <summary>
@@ -66,10 +66,10 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
     /// <param name="slotIndex">클릭된 슬롯의 인덱스</param>
     public void OnSlotClicked(int slotIndex)
     {
-        var item = items[slotIndex];
+        var item = InventoryManager.Instance.GetItemInSlot(slotIndex);
         if (item == null) return;
         
-        // item.UseItem();
+        // TODO: 사용/버리기 구현
         RefreshSlots();
     }
 
@@ -88,13 +88,14 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
 
             return;
         }
-        
+        var im = InventoryManager.Instance;
         // 각 슬롯의 아이템 아이콘 업데이트
         for (int i = 0; i < inventorySlots.Length; i++)
         {
-            var item = items[i];
-            var icon = item != null ? item.icon : null;
+            var item = im.GetItemInSlot(i);
+            var icon = im.GetIcon(item);
             inventorySlots[i].SetIcon(icon);
+            inventorySlots[i].SetInteractableIcon(icon != null);
         }
     }
 
@@ -107,12 +108,16 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
     {
         // 같은 위치거나 잘못된 인덱스인 경우 리턴
         if (from == to) return;
-        if (from < 0 || from >= items.Length) return;
-        if (to < 0 || to >= items.Length) return;
+        InventoryManager.Instance.SwapItemInSlot(from, to);
+    }
 
-        // 아이템 교환이 가능한지 확인하고 교환 실행
-        if (!ItemManager.Instance.CanSwapItem(items[from], from, to)) return;
-        ItemManager.Instance.SwapItem(items, from, to);
-        RefreshSlots();
+    private void HandleSlotChanged(int slotIndex, Item item)
+    {
+        if (isTestMode) return;
+        if (inventorySlots == null || slotIndex >= inventorySlots.Length) return;
+        
+        var icon = InventoryManager.Instance.GetIcon(item);
+        inventorySlots[slotIndex].SetIcon(icon);
+        inventorySlots[slotIndex].SetInteractableIcon(icon != null);
     }
 }

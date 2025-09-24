@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ConsumableDatas : ConsumableData
 {
-    public ConsumableData GetSkillData(int idx)
+    public ConsumableData GetConsumableData(int idx)
     {
         return ConsumableDataMap[idx];
     }
