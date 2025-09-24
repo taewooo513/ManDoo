@@ -26,8 +26,7 @@ public class GameManager : Singleton<GameManager>
     }
     public bool HasPlayerById(int id)
     {
-        // id 중복 체크용
-        return _playableCharacter.Exists(pc => pc.id == id);
+        return _playableCharacter.Exists(pc => pc.id == id);//중복체크용
     }
     public void RemovePlayer(int id)
     {

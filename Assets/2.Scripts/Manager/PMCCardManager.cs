@@ -1,10 +1,10 @@
-﻿using DataTable;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PMCCardManager : MonoBehaviour
 {
-    public PMCInfo[] pmcCards;
     public static PMCCardManager Instance { get; private set; }
+
+    public PMCInfo[] pmcCards;
 
     private void Awake()
     {
@@ -15,12 +15,13 @@ public class PMCCardManager : MonoBehaviour
         }
         Instance = this;
     }
-    public void RefreshAllCards()
+
+    public void RefreshCardsOnPanel()
     {
-        pmcCards = GetComponentsInChildren<PMCInfo>(true); // 항상 최신 카드 리스트
+        pmcCards = GetComponentsInChildren<PMCInfo>(true);
         foreach (var card in pmcCards)
         {
-            bool hasPlayer = GameManager.Instance.HasPlayerById(card.InitID); // 프로퍼티로 접근!
+            bool hasPlayer = GameManager.Instance.HasPlayerById(card.InitID);
             card.gameObject.SetActive(!hasPlayer);
         }
     }

@@ -45,7 +45,7 @@ public class PMCInfo : BaseEntity
 
     public void OnClickHire()// 고용 버튼 클릭
     {
-        
+        PMCHire.Instance.SpawnPMC(initID);
     }
 }
 

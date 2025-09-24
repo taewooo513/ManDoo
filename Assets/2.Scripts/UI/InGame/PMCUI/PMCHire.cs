@@ -40,37 +40,27 @@ public class PMCHire : MonoBehaviour
         {
             playable.SetData(initID);
             GameManager.Instance.AddPlayer(playable);
+            
         }
         else
         {
             Debug.LogError("PlayableCharacter 컴포넌트가 프리팹에 없습니다!");
         }
-        RefreshCardsOnPanel();
+        PMCCardManager.Instance.RefreshCardsOnPanel();
     }
-    
 
-    // 자리 비우기(리무브) + 당김
-    public void RemovePlayerAt(int removeIndex)
+    public void RemovePlayerAt(int index)
     {
-        if (removeIndex < 0 || removeIndex >= spawnedPMCs.Count || spawnedPMCs[removeIndex] == null)
-        {
-            return;
-        }
-
-        GameObject pmc = spawnedPMCs[removeIndex];
-        var playable = pmc.GetComponent<PlayableCharacter>();
+        var playable = GameManager.Instance.PlayableCharacter[index];
         if (playable != null)
         {
             GameManager.Instance.RemovePlayer(playable.id);
+            Destroy(playable.gameObject);
+            // 리스트에서 직접 삭제하는 RemovePlayer 로직에 포함!
         }
-        Destroy(pmc);
-
-        // 리스트에서 삭제
-        spawnedPMCs.RemoveAt(removeIndex);
 
         UpdatePlayerPositions();
-
-        RefreshCardsOnPanel();
+        PMCCardManager.Instance.RefreshCardsOnPanel();
     }
     private void UpdatePlayerPositions()
     {
@@ -78,12 +68,6 @@ public class PMCHire : MonoBehaviour
         {
             GameManager.Instance.PlayableCharacter[i].transform.position = spawnPoints[i];
         }
-    }
-    private void RefreshCardsOnPanel()
-    {
-        if (PMCCardManager.Instance != null)
-            PMCCardManager.Instance.RefreshAllCards();
-
-    }
+    }  
 }
 

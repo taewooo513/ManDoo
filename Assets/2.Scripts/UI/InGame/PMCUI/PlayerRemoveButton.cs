@@ -1,13 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerRemoveButton : MonoBehaviour
 {
-    public int spawnIndex;
+    public int spawnIndex; // 이 버튼이 해당하는 자리의 인덱스 (0~3)
     public Button button;
 
     void Awake()
