@@ -12,8 +12,8 @@ public class Spawn : MonoBehaviour
 
     public void EnemySpawn(List<int> id)
     {
-        Vector3 pos = new Vector3(1, -1, 0);
-        Vector3 add = new Vector3(0, 2, 0);
+        Vector3 pos = new Vector3(-1, 0, 0);
+        Vector3 add = new Vector3(2, 0, 0);
         
         for (int i = 0; i < id.Count; i++) //적 특정 위치에 생성
         {

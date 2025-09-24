@@ -6,7 +6,7 @@ public class Test : MonoBehaviour
 {
     public BattleRoom battleRoom;
     
-    void Awake()
+    void Start()
     {
         DataManager.Instance.Initialize();
         battleRoom = new BattleRoom();

@@ -648,6 +648,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 894958271}
     - target: {fileID: 1804224506158478973, guid: acaaf56877893464fab501864462f38f, type: 3}
+      propertyPath: notActiveTrapUI
+      value: 
+      objectReference: {fileID: 1782504996}
+    - target: {fileID: 1804224506158478973, guid: acaaf56877893464fab501864462f38f, type: 3}
       propertyPath: notActiveTrapBtn
       value: 
       objectReference: {fileID: 1782504996}
