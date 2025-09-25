@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,6 +56,7 @@ public class BuffIcon : MonoBehaviour
 {
     private BuffInfo buff;
     Image image;
+    Coroutine coroutine;
     private void Awake()
     {
         image = GetComponent<Image>();
@@ -66,7 +68,47 @@ public class BuffIcon : MonoBehaviour
 
         if (buff.duration <= 1)
         {
-
+            if (coroutine == null)
+            {
+                Debug.Log("start");
+                coroutine = StartCoroutine("BeforeEraseBuff");
+            }
         }
+    }
+    private void OnDisable()
+    {
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+        coroutine = null;
+    }
+
+    IEnumerator BeforeEraseBuff()
+    {
+        bool isFade = false;
+        Color color = image.color;
+        while (true)
+        {
+            Debug.Log("start");
+            if (isFade)
+            {
+                if (color.a <= 0.3f)
+                {
+                    isFade = !isFade;
+                }
+                color.a -= 0.001f;
+            }
+            else
+            {
+                if (color.a >= 1)
+                {
+                    isFade = !isFade;
+                    yield return new WaitForSeconds(0.1f);
+                }
+                color.a += 0.001f;
+            }
+            image.color = color;
+            yield return null;
+        }
+
     }
 }
