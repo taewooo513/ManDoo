@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    void Awake()
+    public BattleRoom battleRoom;
+    public StartRoom startRoom;
+    
+    void Start()
     {
-        if (DataManager.Instance != null)
-            DataManager.Instance.Initialize();
+        DataManager.Instance.Initialize();
+        battleRoom = new BattleRoom();
+        battleRoom.EnterRoom(1001);
+        
+        startRoom = new StartRoom();
+        startRoom.EnterRoom(1001);
+        
+        //UIManager.Instance.OpenUI<InGameBattleStartUI>(); //ui 테스트
     }
 }

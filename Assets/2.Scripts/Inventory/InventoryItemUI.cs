@@ -12,11 +12,11 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     public int SlotIndex { get; private set; }
     public Transform original { get; private set; } // 드래그 전 원래 부모 Transform
     private Canvas baseCanvas;              // UI가 속한 캔버스
-    private InGameInventoryUI inGameInventoryUI;  // 인벤토리 UI 참조
+    private InGameInventoryUI owner;  // 인벤토리 UI 참조
     private RectTransform rect;             // 아이템의 RectTransform
     private RectTransform canvasRect;       // 캔버스의 RectTransform  
-    private Vector2 dragOffset;             // 드래그시 마우스와 아이템간의 오프셋
-    private CanvasGroup canvasGroup;        // UI 투명도와 레이캐스트 제어용
+    //private Vector2 dragOffset;             // 드래그시 마우스와 아이템간의 오프셋
+    private CanvasGroup cg;        // UI 투명도와 레이캐스트 제어용
     
     /// <summary>
     /// 컴포넌트 초기화 시 필요한 참조들을 가져옴
@@ -25,12 +25,12 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         baseCanvas = GetComponentInParent<Canvas>();
         rect = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        cg = GetComponent<CanvasGroup>();
         
         if (baseCanvas) 
             canvasRect = baseCanvas.GetComponent<RectTransform>();
-        if (inGameInventoryUI == null) 
-            inGameInventoryUI = GetComponentInParent<InGameInventoryUI>();
+        if (owner == null) 
+            owner = GetComponentInParent<InGameInventoryUI>();
     }
 
     /// <summary>
@@ -39,10 +39,10 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     /// <param name="slotIndex">슬롯 인덱스</param>
     /// <param name="owner">소속된 인벤토리 UI</param>
     /// <param name="canvas">UI가 속한 캔버스</param>
-    public void Setup(int slotIndex, InGameInventoryUI owner, Canvas canvas)
+    public void Setup(int slotIndex, InGameInventoryUI ui, Canvas canvas)
     {
         SlotIndex = slotIndex;
-        inGameInventoryUI = owner;
+        owner = ui;
         baseCanvas = canvas != null ? canvas : baseCanvas;
         if (baseCanvas)
             canvasRect = baseCanvas.transform as RectTransform;
@@ -53,41 +53,32 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     /// </summary>
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
-        // 필수 컴포넌트가 없으면 드래그 처리하지 않음
-        if (baseCanvas == null || canvasRect == null || rect == null) return;
+        var image = GetComponent<UnityEngine.UI.Image>();
+        if (image == null || image.sprite == null) return;
         
         // 드래그 시작 시 현재 부모 Transform 저장
         original = transform.parent;
-        
-        // 캔버스를 새로운 부모로 설정하고 최상위 자식으로 설정
         transform.SetParent(baseCanvas.transform, true);
         transform.SetAsLastSibling();
         
-        if (canvasGroup)
+        if (cg)
         {
-            canvasGroup.blocksRaycasts = false; // 드래그 중에 슬롯들이 레이캐스트 받게끔 설정
-            canvasGroup.alpha = 0.5f; // 투명도 설정
+            cg.blocksRaycasts = false; // 드래그 중에 슬롯들이 레이캐스트 받게끔 설정
+            cg.alpha = 0.5f; // 투명도 설정
         }
-
         UpdatePosition(eventData);
     }
 
     /// <summary>
     /// 드래그 중일 때 호출
     /// </summary>
-    public void OnDrag(PointerEventData eventData)
-    {
-        Debug.Log("OnDrag");
-        UpdatePosition(eventData);
-    }
+    public void OnDrag(PointerEventData eventData) => UpdatePosition(eventData);
     
     /// <summary>
     /// 드래그가 끝났을 때 호출
     /// </summary>
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
         // 아이템이 캔버스에 직접 속해있고 원래 부모가 있다면 원래 위치로 되돌림
         if (transform.parent == baseCanvas.transform && original != null)
         {
@@ -102,10 +93,10 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             }
         }
 
-        if (canvasGroup)
+        if (cg)
         {
-            canvasGroup.blocksRaycasts = true;
-            canvasGroup.alpha = 1f;
+            cg.blocksRaycasts = true;
+            cg.alpha = 1f;
         }
     }
 

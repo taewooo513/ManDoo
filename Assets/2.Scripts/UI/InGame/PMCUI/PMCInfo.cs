@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PMCInfoUI : BaseEntity
+public class PMCInfo : BaseEntity
 {
     private MercenaryData data;
 
@@ -13,7 +14,8 @@ public class PMCInfoUI : BaseEntity
     public TextMeshProUGUI contractGoldText;
 
     [SerializeField] private int initID; // 용병 id
-
+    public int InitID => initID; 
+    
     public void Start()
     {
         SetData(initID);
@@ -35,16 +37,21 @@ public class PMCInfoUI : BaseEntity
         if (contractGoldText != null)
             contractGoldText.text = data.contractGold.ToString();
     }
-
-    public void OnClickHire()
+    public void RefreshCardActive()
     {
-        int emptyIndex = InGamePMCUI.Instance.FindEmptySpawnIndex();
+        bool hasPlayer = GameManager.Instance.HasPlayerById(initID);
+        gameObject.SetActive(!hasPlayer);
+    }
+
+    public void OnClickHire()// 고용 버튼 클릭
+    {
+        int emptyIndex = PMCHire.Instance.FindEmptySpawnIndex();
         if (emptyIndex == -1)
         {
-            Debug.Log("빈 스폰 위치가 없습니다. PMC 소환 불가.");
             return;
         }
-        InGamePMCUI.Instance.SpawnPMC(emptyIndex, initID);
+        PMCHire.Instance.SpawnPMC(initID);
+
     }
 }
 

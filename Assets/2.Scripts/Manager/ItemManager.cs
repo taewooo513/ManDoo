@@ -4,43 +4,35 @@ using UnityEngine;
 
 public class ItemManager : Singleton<ItemManager>
 {
-    //public List<ItemData> itemData = new List<ItemData>();
-
-    private void Awake()
+    public Item CreateItem(int id)
     {
-        
+        var item = new Item(id);
+        //item.Init(id);
+        item.icon = GetIcon(item);
+        return item;
     }
 
     public Sprite GetIcon(Item item)
     {
-        if (item == null) return null;
-        return item.icon;
-    }
-    
-    public bool CanUseItem(Item item)
-    {
-        if (item == null) return false;
-        
-        // TODO: 나중에 타입/효과 데이터 테이블에서 받아솨서 switch 문으로 작성
-        
-        return false;
+        if (item == null || item.ItemInfo == null) return null;
+        return GetIconByPath(item.ItemInfo.iconPathString);
     }
 
-    public bool CanSwapItem(Item fromItem, int from, int to)
+    public Sprite GetIconByPath(string path)
     {
-        // TODO: 장착
+        Debug.Log("GetIconByPath: " + path + "");
+        if (string.IsNullOrEmpty(path)) return null;
+
+        var sprite = Resources.Load<Sprite>(path);
+        if (sprite == null)
+            Debug.LogError($"Item icon is not found at path: {path}.");
+        return sprite;
+    }
+
+    public bool CanEquipItem(Item item, EquipmentSlotType slotType)
+    {
+        if (item == null || item.ItemInfo == null) return false;
+        // TODO: 아이템/무기/악세서리 타입 비교해서 처리하는 로직 추가.
         return true;
-    }
-
-    public void SwapItem(Item[] items, int from, int to)
-    {
-        // 아이템 배열이 null인 경우 스왑 취소
-        if (items == null) return;
-        // from 인덱스가 배열 범위를 벗어나면 스왑 취소  
-        if ((uint)from >= items.Length) return;
-        // to 인덱스가 배열 범위를 벗어나면 스왑 취소
-        if ((uint)to >= items.Length) return;
-        // 튜플을 사용한 두 아이템의 위치 교환
-        (items[to], items[from]) = (items[from], items[to]);
     }
 }

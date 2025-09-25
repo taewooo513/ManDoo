@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    private List<BaseEntity> playableCharacter;
-    private List<BaseEntity> enemyCharacter;
+    private List<BaseEntity> _playableCharacter;
+    public List<BaseEntity> PlayableCharacter => _playableCharacter;
+    
+    private List<BaseEntity> _enemyCharacter;
 
     private void Awake()
     {
-        playableCharacter = new List<BaseEntity>();
-        enemyCharacter = new List<BaseEntity>();
+        _playableCharacter = new List<BaseEntity>();
+        _enemyCharacter = new List<BaseEntity>();
     }
 
     public void AddPlayer(BaseEntity baseEntity)
     {
-        playableCharacter.Add(baseEntity);
+        _playableCharacter.Add(baseEntity);
     }
 
     public void AddEnemy(BaseEntity baseEntity)
     {
-        enemyCharacter.Add(baseEntity);
+        _enemyCharacter.Add(baseEntity);
     }
     public bool HasPlayerById(int id)
     {
         // id 중복 체크용
-        return playableCharacter.Exists(pc => pc.id == id);
+        return _playableCharacter.Exists(pc => pc.id == id);
     }
     public void RemovePlayer(int id)
     {
-        playableCharacter.RemoveAll(pc => pc.id == id);
+        _playableCharacter.RemoveAll(pc => pc.id == id);
     }
 
     public void Update()
@@ -47,10 +49,15 @@ public class GameManager : Singleton<GameManager>
 
     public void StartBattle()
     {
-        BattleManager.Instance.BattleStartTrigger(playableCharacter, enemyCharacter);
+        BattleManager.Instance.BattleStartTrigger(_playableCharacter, _enemyCharacter);
     }
 
     public void EndGame()
     {
+    }
+    
+    public void PlayableCharacterPosition(List<BaseEntity> playerPositionList) //캐릭터 스폰(위치 지정)
+    {
+        _playableCharacter = playerPositionList;
     }
 }

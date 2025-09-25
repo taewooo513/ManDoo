@@ -14,10 +14,10 @@ public class BattleManager : Singleton<BattleManager>
     public List<BaseEntity> _playableCharacters;
     public List<BaseEntity> PlayableCharacters => _playableCharacters;
 
-
     public List<BaseEntity> _enemyCharacters;
-
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
+    
+    public Weapon weapon; //TODO : 이거 연결해야됨. 플레이어블 안에 equipWeapon... 등등
 
     private BaseEntity nowTurnEntity;
     public BaseEntity NowTurnEntity { get { return nowTurnEntity; } }
@@ -64,8 +64,7 @@ public class BattleManager : Singleton<BattleManager>
             _enemyCharacters.Add(item);
             item.BattleStarted();
         }
-        //전투 시작 UI 출력
-        //UIManager.Instance.OpenUI<InGameBattleStartUI>();
+        UIManager.Instance.OpenUI<InGameBattleStartUI>(); //전투 시작 UI 출력
         Turn();
     }
 
@@ -146,6 +145,11 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("승리! 버닝썬");
         //승리 UI 출력
+        foreach (var item in _playableCharacters) //todo : 숙련도 이렇게 하는거 맞나?
+        {
+            nowSeletePlayableCharacter.equipWeapon.AddWeaponExp(20); //nowSeletePlayableCharacter <<이거 일단 있길래 썼는데 연결 되어있는 건가? 
+        }
+
         UIManager.Instance.OpenUI<InGameVictoryUI>();
         EndBattle();
     }
@@ -154,6 +158,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("패배...");
         //패배 UI출력
+        weapon.AddWeaponExp(5); //todo : 숙련도 연결 수정 필요함
         UIManager.Instance.OpenUI<InGameLoseUI>();
         EndBattle();
     }
@@ -161,6 +166,7 @@ public class BattleManager : Singleton<BattleManager>
     private void EndBattle()
     {
         //TODO: 전투가 끝났을 때 공통적으로 해야하는 것...?
+        GameManager.Instance.PlayableCharacterPosition(_playableCharacters); //현재 플레이어 위치 넘기기
         foreach (var item in _playableCharacters)
         {
             item.Release();
@@ -575,6 +581,7 @@ public class BattleManager : Singleton<BattleManager>
                 SwitchPosition(entity, i + 1);
             }
             _playableCharacters.RemoveAt(_playableCharacters.Count - 1);
+            entity.Release();
             Destroy(entity.gameObject);
             return;
         }
