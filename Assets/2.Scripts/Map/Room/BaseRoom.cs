@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BaseRoom
 {
-    public Dictionary<RoomDirection, BaseRoom> connectedRooms;
-    public Dictionary<RoomDirection, Corridor> corridors;
+    public Dictionary<RoomDirection, BaseRoom> connectedRooms = new();
+    public Dictionary<RoomDirection, Corridor> corridors = new();
     public Dictionary<int, GameObject> playableCharacterDic; //int에 키값, 게임오브젝트에 대응하는 프리팹
     public string RoomLocation;//시작 지점으로부터의 방향을 뜻함
     public Spawn spawn;
@@ -16,7 +16,7 @@ public class BaseRoom
     protected float dropProb; //아이템 드랍 확률 (ex : 0.25)
     protected float goldRandomRatio; //0.9~1.1 사이 랜덤 난수 반환, 골드 떨어지는 랜덤 개수
     protected int randomGoldDropCount; //실제로 떨어지는 금화 개수
-    protected float percentage;
+    protected float randomPercentage; //0~100 사이 중 랜덤 퍼센트 (랜덤 숫자 뽑기)
     protected List<int> equipItemIds = new(); //플레이어 죽었을 때, 가지고 있던 장비 아이템 저장하는 리스트. 복사본을 가져야되니 new로 생성
     
     public virtual void EnterRoom(int id)
@@ -45,12 +45,12 @@ public class BaseRoom
         //전투 보상
         battleData = DataManager.Instance.Battle.GetBattleData(id); //배틀데이터 데이터테이블에 접근
         dropGoldCount = battleData.dropGold; //골드 드랍 개수
-        dropItem = battleData.rewardId; //드랍하는 아이템id (골드x)
+        //dropItem = battleData.dropId; //드랍하는 아이템id (골드x)
         dropProb = battleData.dropProb; //아이템 드랍 확률 (ex : 0.25)
         
         goldRandomRatio = Random.Range(0.9f, 1.1f); //0.9~1.1 사이 랜덤 난수 반환, 골드 떨어지는 랜덤 개수
         randomGoldDropCount = (int)(dropGoldCount * goldRandomRatio); //실제로 떨어지는 금화 개수
-        percentage = Random.Range(0f, 100f);
+        randomPercentage = Random.Range(0f, 100f);
     }
 
     public void PlayerDeadItem(List<int> id) //플레이어가 죽을 때 가지고 있던 아이템 리스트
@@ -72,5 +72,15 @@ public class BaseRoom
     {
         connectedRooms.Add(direction, room);
         corridors.Add(direction, corridor);
+    }
+
+    public bool IsConnected(BaseRoom room, RoomDirection direction)
+    {
+        if (connectedRooms.TryGetValue(direction, out BaseRoom connectedRoom))
+        {
+            return connectedRoom == room;
+        }
+
+        return false;
     }
 }
