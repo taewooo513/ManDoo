@@ -63,7 +63,8 @@ public enum DeBuffType
     EvasionDown,
     CriticalDown,
     AllStatDown,
-    Damaged
+    Damaged,
+    Stun
 }
 
 [UGS(typeof(ItemType))]
@@ -89,5 +90,8 @@ public enum RoomType
     Start,
     Empty,
     Battle,
-    Item
+    Item,
+    Shop,
+    PMC,
+    Village
 }

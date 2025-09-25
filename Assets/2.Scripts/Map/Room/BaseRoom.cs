@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class BaseRoom
 {
-    public Dictionary<RoomDirection, BaseRoom> connectedRooms;
-    public Dictionary<RoomDirection, Corridor> corridors;
+    public Dictionary<RoomDirection, BaseRoom> connectedRooms = new();
+    public Dictionary<RoomDirection, Corridor> corridors = new();
     public Dictionary<int, GameObject> playableCharacterDic; //int에 키값, 게임오브젝트에 대응하는 프리팹
     public string RoomLocation;//시작 지점으로부터의 방향을 뜻함
     public Spawn spawn;
@@ -72,5 +72,15 @@ public class BaseRoom
     {
         connectedRooms.Add(direction, room);
         corridors.Add(direction, corridor);
+    }
+
+    public bool IsConnected(BaseRoom room, RoomDirection direction)
+    {
+        if (connectedRooms.TryGetValue(direction, out BaseRoom connectedRoom))
+        {
+            return connectedRoom == room;
+        }
+
+        return false;
     }
 }
