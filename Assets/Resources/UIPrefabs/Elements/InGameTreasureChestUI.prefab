@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3013262282750300986}
+  - component: {fileID: 8922211685459004125}
+  - component: {fileID: 5763413592711949929}
   m_Layer: 0
   m_Name: InGameTreasureChestUI
   m_TagString: Untagged
@@ -32,6 +34,31 @@ Transform:
   - {fileID: 4256264841598631369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8922211685459004125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3978157354804238364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8317de357ceee36439657ff6086c3532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5763413592711949929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3978157354804238364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6224c5928949342bbbf49fa5ffe108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treasureChestButton: {fileID: 7965449028708978600}
 --- !u!1 &5419330418976781012
 GameObject:
   m_ObjectHideFlags: 0
