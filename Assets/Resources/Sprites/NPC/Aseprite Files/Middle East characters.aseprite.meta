@@ -1,0 +1,2439 @@
+fileFormatVersion: 2
+guid: 81bf1374317f51147b4dd4d11bd7f449
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 32
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638944250793239192
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Middle East characters_Frame_0
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 4
+      width: 49
+      height: 13
+    spriteID: d384cd6b2f95cd4469adf34e33a2c821
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 4}
+  - name: Middle East characters_Frame_1
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 25
+      width: 49
+      height: 13
+    spriteID: 8704de7435d10cb4bb1ec790e3459a12
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 25}
+  - name: Middle East characters_Frame_2
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 46
+      width: 49
+      height: 13
+    spriteID: 186d9b251dcd55f4eb885b99c080a6cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 46}
+  - name: Middle East characters_Frame_3
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 67
+      width: 49
+      height: 13
+    spriteID: f76b5468955dbe44eab31a92b082a8f1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 67}
+  - name: Middle East characters_Frame_4
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 88
+      width: 49
+      height: 13
+    spriteID: d2d74f8630b2b164e9c6a9b255e77636
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 88}
+  - name: Middle East characters_Frame_5
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 109
+      width: 49
+      height: 13
+    spriteID: 44faca4826d00e14fab70ef8d8b0b004
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 109}
+  - name: Middle East characters_Frame_6
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 130
+      width: 49
+      height: 13
+    spriteID: 559289a8715598346807d7de04854210
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 130}
+  - name: Middle East characters_Frame_7
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 151
+      width: 49
+      height: 13
+    spriteID: fe50d5c323e55464aa575e8ba2a54fbd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 151}
+  - name: Middle East characters_Frame_8
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 172
+      width: 49
+      height: 13
+    spriteID: c11b8f8fd22f57d45adaba9daf760aac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 172}
+  - name: Middle East characters_Frame_9
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 193
+      width: 49
+      height: 13
+    spriteID: 168ade714be555b4d8ed4bea5a15c73f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 193}
+  - name: Middle East characters_Frame_10
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 30
+      height: 47
+    spriteID: d8268aa107f55fe44a9c971c8a8f84d4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Middle East characters_Frame_11
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 59
+      width: 30
+      height: 47
+    spriteID: be35fa86b8778124695afad081e36bf6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 59}
+  - name: Middle East characters_Frame_12
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 59
+      width: 30
+      height: 46
+    spriteID: 16c04a6b63939fb45822e0afa55ea0f2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 59}
+  - name: Middle East characters_Frame_13
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 113
+      width: 30
+      height: 46
+    spriteID: f328bf5357c248643a432d3c9d7ea9b1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 113}
+  - name: Middle East characters_Frame_14
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 167
+      width: 30
+      height: 46
+    spriteID: 144e65d2fa2d4cc47b77db3fe730b9a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 167}
+  - name: Middle East characters_Frame_15
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 221
+      width: 30
+      height: 46
+    spriteID: 09444144407c584459de38c1c32a58c5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 221}
+  - name: Middle East characters_Frame_16
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 275
+      width: 30
+      height: 46
+    spriteID: 48fe9b015927b534e8754fbc73908ae1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 275}
+  - name: Middle East characters_Frame_17
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 114
+      width: 30
+      height: 47
+    spriteID: 487696f9de183b845961e84b4cb7956d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 114}
+  - name: Middle East characters_Frame_18
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 169
+      width: 30
+      height: 47
+    spriteID: d5ed795202eb5c849885bd438564ce43
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 169}
+  - name: Middle East characters_Frame_19
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 224
+      width: 30
+      height: 47
+    spriteID: 0dcee83dea5a95845a0c152c8eeb977b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 224}
+  - name: Middle East characters_Frame_20
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 346
+      width: 24
+      height: 29
+    spriteID: bc9872ffe1ebdc341b4f1b5ae6cca6c6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 346}
+  - name: Middle East characters_Frame_21
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 383
+      width: 24
+      height: 29
+    spriteID: a8f1baca1596b704498d766d6ef9eb08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 383}
+  - name: Middle East characters_Frame_22
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 420
+      width: 24
+      height: 29
+    spriteID: ed9833613fa60084f8650b4fcb92eb3a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 420}
+  - name: Middle East characters_Frame_23
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 457
+      width: 24
+      height: 29
+    spriteID: 933fc5ea93462614e9787eea003d882f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 457}
+  - name: Middle East characters_Frame_24
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 236
+      y: 4
+      width: 24
+      height: 29
+    spriteID: b41ae8634e12d2541bc19407150235e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 236, y: 4}
+  - name: Middle East characters_Frame_25
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 236
+      y: 41
+      width: 24
+      height: 29
+    spriteID: 2326beb205b00a34bb0abf8abc4b00fb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 236, y: 41}
+  - name: Middle East characters_Frame_26
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 236
+      y: 78
+      width: 24
+      height: 29
+    spriteID: 366c6b7fa1ab17945b1b6702176b24db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 236, y: 78}
+  - name: Middle East characters_Frame_27
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 236
+      y: 115
+      width: 24
+      height: 29
+    spriteID: 0163bf95ae01ea3489c13dbb27cff026
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 236, y: 115}
+  - name: Middle East characters_Frame_28
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 236
+      y: 152
+      width: 24
+      height: 29
+    spriteID: 0593dc1fc79e0984d9e0aa1edf10273a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 236, y: 152}
+  - name: Middle East characters_Frame_29
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 236
+      y: 189
+      width: 24
+      height: 29
+    spriteID: 02cc89b82fc015b428132af629072873
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 236, y: 189}
+  - name: Middle East characters_Frame_30
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 472
+      width: 31
+      height: 30
+    spriteID: 0737db4968ebd6e45956d674128310f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 472}
+  - name: Middle East characters_Frame_31
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 4
+      width: 31
+      height: 30
+    spriteID: c341134ab2cf72a4abb7a4f0e559b479
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 4}
+  - name: Middle East characters_Frame_32
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 42
+      width: 31
+      height: 30
+    spriteID: 5d3a3578cd3bade40b8c2f00e4004a07
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 42}
+  - name: Middle East characters_Frame_33
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 80
+      width: 31
+      height: 30
+    spriteID: 8c9cb25bf3570da4ca4941c9e4b76745
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 80}
+  - name: Middle East characters_Frame_34
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 118
+      width: 31
+      height: 30
+    spriteID: fc30702e9e9ec6345bdc2eae70778378
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 118}
+  - name: Middle East characters_Frame_35
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 156
+      width: 31
+      height: 30
+    spriteID: 9f93ecebc57f7cb4493eef0581bc18f2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 156}
+  - name: Middle East characters_Frame_36
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 194
+      width: 31
+      height: 30
+    spriteID: a77032553dcdc1c4eb30a75f43f2412d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 194}
+  - name: Middle East characters_Frame_37
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 232
+      width: 31
+      height: 30
+    spriteID: 81136b5b03ca1bd4fb4b33e6f607b145
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 232}
+  - name: Middle East characters_Frame_38
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 270
+      width: 31
+      height: 30
+    spriteID: f74039d01514f4547903cfe652ec7743
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 270}
+  - name: Middle East characters_Frame_39
+    originalName: 
+    pivot: {x: 0.4516129, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 197
+      y: 308
+      width: 31
+      height: 30
+    spriteID: 021f70b30d7881f4c811160a7b5ec965
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 197, y: 308}
+  - name: Middle East characters_Frame_40
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 166
+      width: 23
+      height: 47
+    spriteID: 567aefa74210bd740b50d224094fae88
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 166}
+  - name: Middle East characters_Frame_41
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 221
+      width: 23
+      height: 47
+    spriteID: a63768aa750724943a4e1db76c22c75f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 221}
+  - name: Middle East characters_Frame_42
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 364
+      width: 24
+      height: 46
+    spriteID: cf82c9bc979d2f14eb06054505ca238b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 364}
+  - name: Middle East characters_Frame_43
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 418
+      width: 24
+      height: 46
+    spriteID: 032b183961ce2744d8ba567d86de77de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 418}
+  - name: Middle East characters_Frame_44
+    originalName: 
+    pivot: {x: 0.45833334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 112
+      width: 24
+      height: 46
+    spriteID: 802be78244c8b6848b482a63be0df6ae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 112}
+  - name: Middle East characters_Frame_45
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 331
+      width: 23
+      height: 46
+    spriteID: 604103bde107eb548bb53856f3771d31
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 331}
+  - name: Middle East characters_Frame_46
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 385
+      width: 23
+      height: 46
+    spriteID: 7792357215016c14487b6f0077a099f5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 385}
+  - name: Middle East characters_Frame_47
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 439
+      width: 23
+      height: 46
+    spriteID: 56961dae0b5c06c4090ef2e6e81a6a5e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 439}
+  - name: Middle East characters_Frame_48
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 166
+      y: 4
+      width: 23
+      height: 46
+    spriteID: 2fcbac5fa7e2f774b9af110e7cb64b83
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 166, y: 4}
+  - name: Middle East characters_Frame_49
+    originalName: 
+    pivot: {x: 0.47826087, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 276
+      width: 23
+      height: 47
+    spriteID: 9ca8f6c022535464b8acfb2606a35a25
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 276}
+  - name: Middle East characters_Frame_50
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 4
+      width: 40
+      height: 28
+    spriteID: 5fc02a5a8e29732438adf798384e2cae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 4}
+  - name: Middle East characters_Frame_51
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 40
+      width: 40
+      height: 28
+    spriteID: c2819b85adaa6b54697ff1140645745d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 40}
+  - name: Middle East characters_Frame_52
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 76
+      width: 40
+      height: 28
+    spriteID: 6ef07e527e9b63d4184e8e9f0f67da4c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 76}
+  - name: Middle East characters_Frame_53
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 112
+      width: 40
+      height: 28
+    spriteID: c3b8eee31853db745bf62ffa4d21c66f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 112}
+  - name: Middle East characters_Frame_54
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 148
+      width: 40
+      height: 28
+    spriteID: d5fcb4952d7606147bf9b6bbc5c39365
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 148}
+  - name: Middle East characters_Frame_55
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 184
+      width: 40
+      height: 28
+    spriteID: 9afb68d41f7dd3b4289bc1b7ed4b9369
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 184}
+  - name: Middle East characters_Frame_56
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 220
+      width: 40
+      height: 28
+    spriteID: 60af2c77041934945aad7012e0c8d437
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 220}
+  - name: Middle East characters_Frame_57
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 256
+      width: 40
+      height: 28
+    spriteID: 092d1513c21e8924e8f2ccdad2499cc4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 256}
+  - name: Middle East characters_Frame_58
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 292
+      width: 40
+      height: 28
+    spriteID: 5af10e583acfc464990b0154c0040c7f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 292}
+  - name: Middle East characters_Frame_59
+    originalName: 
+    pivot: {x: 0.52500004, y: 0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 328
+      width: 40
+      height: 28
+    spriteID: 50a4a1313f86bce40b085292a74248d2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 328}
+  - name: Middle East characters_Frame_60
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 214
+      width: 49
+      height: 13
+    spriteID: 2705bf772bebca8429cdd32ba5a35ddc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 214}
+  - name: Middle East characters_Frame_61
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 235
+      width: 49
+      height: 13
+    spriteID: 4a1f36487ac7e294aab781c101e9d7a3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 235}
+  - name: Middle East characters_Frame_62
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 256
+      width: 49
+      height: 13
+    spriteID: 94c541b8fc419ea4cb980957d53e7b53
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 256}
+  - name: Middle East characters_Frame_63
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 277
+      width: 49
+      height: 13
+    spriteID: 3f887d3b711a06d48a1e461c3a1877a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 277}
+  - name: Middle East characters_Frame_64
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 298
+      width: 49
+      height: 13
+    spriteID: 42eb0cea3614def4fa74c087ca745986
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 298}
+  - name: Middle East characters_Frame_65
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 319
+      width: 49
+      height: 13
+    spriteID: e55086af882341a4fa120212fc3d0fce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 319}
+  - name: Middle East characters_Frame_66
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 340
+      width: 49
+      height: 13
+    spriteID: c5530594136448143b9f4dce5d7080fe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 340}
+  - name: Middle East characters_Frame_67
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 361
+      width: 49
+      height: 13
+    spriteID: c6e026db82c50a0468db27a8b602e7f1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 361}
+  - name: Middle East characters_Frame_68
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 382
+      width: 49
+      height: 13
+    spriteID: ab475e225228dc54683b7a0533f1c3ce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 382}
+  - name: Middle East characters_Frame_69
+    originalName: 
+    pivot: {x: 0.5102041, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 268
+      y: 403
+      width: 49
+      height: 13
+    spriteID: c500928ccdd72d44ea722840c7bf9a36
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 268, y: 403}
+  - name: Middle East characters_Frame_70
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 279
+      width: 30
+      height: 47
+    spriteID: 165b8fa932154144097dd4982d96b9e8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 279}
+  - name: Middle East characters_Frame_71
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 334
+      width: 30
+      height: 47
+    spriteID: 0c07448eb66a720489d03ca1447161e3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 334}
+  - name: Middle East characters_Frame_72
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 329
+      width: 30
+      height: 46
+    spriteID: 01bf911dee552de43bbc9704b659f76c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 329}
+  - name: Middle East characters_Frame_73
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 383
+      width: 30
+      height: 46
+    spriteID: 77fbaa026b341a4408b96445f6971d6d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 383}
+  - name: Middle East characters_Frame_74
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 437
+      width: 30
+      height: 46
+    spriteID: b57eea245653a1f4481e2133641b8329
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 437}
+  - name: Middle East characters_Frame_75
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 4
+      width: 30
+      height: 46
+    spriteID: 47f1bd9e0e50edc41ac122ab2d9a400e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 4}
+  - name: Middle East characters_Frame_76
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 58
+      width: 30
+      height: 46
+    spriteID: 472e1ce3ec2062d46af6b9f37b994460
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 58}
+  - name: Middle East characters_Frame_77
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 389
+      width: 30
+      height: 47
+    spriteID: 536e463340db0614c928287d2d7cacf5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 389}
+  - name: Middle East characters_Frame_78
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 444
+      width: 30
+      height: 47
+    spriteID: 1e0693f756f0992409f6f290e3703b6a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 444}
+  - name: Middle East characters_Frame_79
+    originalName: 
+    pivot: {x: 0.40000004, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 4
+      width: 30
+      height: 47
+    spriteID: a6e942243e8ad014f80bf31a2d9c4795
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 4}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -2097854460
+    name: Middle East characters
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Middle East characters_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: d384cd6b2f95cd4469adf34e33a2c821
+    - name: Middle East characters_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 8704de7435d10cb4bb1ec790e3459a12
+    - name: Middle East characters_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 186d9b251dcd55f4eb885b99c080a6cd
+    - name: Middle East characters_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: f76b5468955dbe44eab31a92b082a8f1
+    - name: Middle East characters_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: d2d74f8630b2b164e9c6a9b255e77636
+    - name: Middle East characters_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 44faca4826d00e14fab70ef8d8b0b004
+    - name: Middle East characters_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 559289a8715598346807d7de04854210
+    - name: Middle East characters_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: fe50d5c323e55464aa575e8ba2a54fbd
+    - name: Middle East characters_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: c11b8f8fd22f57d45adaba9daf760aac
+    - name: Middle East characters_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 168ade714be555b4d8ed4bea5a15c73f
+    - name: Middle East characters_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: d8268aa107f55fe44a9c971c8a8f84d4
+    - name: Middle East characters_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: be35fa86b8778124695afad081e36bf6
+    - name: Middle East characters_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: 16c04a6b63939fb45822e0afa55ea0f2
+    - name: Middle East characters_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: f328bf5357c248643a432d3c9d7ea9b1
+    - name: Middle East characters_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: 144e65d2fa2d4cc47b77db3fe730b9a8
+    - name: Middle East characters_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: 09444144407c584459de38c1c32a58c5
+    - name: Middle East characters_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: 48fe9b015927b534e8754fbc73908ae1
+    - name: Middle East characters_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: 487696f9de183b845961e84b4cb7956d
+    - name: Middle East characters_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: d5ed795202eb5c849885bd438564ce43
+    - name: Middle East characters_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: 0dcee83dea5a95845a0c152c8eeb977b
+    - name: Middle East characters_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: bc9872ffe1ebdc341b4f1b5ae6cca6c6
+    - name: Middle East characters_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: a8f1baca1596b704498d766d6ef9eb08
+    - name: Middle East characters_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: ed9833613fa60084f8650b4fcb92eb3a
+    - name: Middle East characters_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: 933fc5ea93462614e9787eea003d882f
+    - name: Middle East characters_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: b41ae8634e12d2541bc19407150235e0
+    - name: Middle East characters_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: 2326beb205b00a34bb0abf8abc4b00fb
+    - name: Middle East characters_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: 366c6b7fa1ab17945b1b6702176b24db
+    - name: Middle East characters_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: 0163bf95ae01ea3489c13dbb27cff026
+    - name: Middle East characters_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: 0593dc1fc79e0984d9e0aa1edf10273a
+    - name: Middle East characters_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 29
+      spriteId: 02cc89b82fc015b428132af629072873
+    - name: Middle East characters_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: 0737db4968ebd6e45956d674128310f0
+    - name: Middle East characters_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: c341134ab2cf72a4abb7a4f0e559b479
+    - name: Middle East characters_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: 5d3a3578cd3bade40b8c2f00e4004a07
+    - name: Middle East characters_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: 8c9cb25bf3570da4ca4941c9e4b76745
+    - name: Middle East characters_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: fc30702e9e9ec6345bdc2eae70778378
+    - name: Middle East characters_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: 9f93ecebc57f7cb4493eef0581bc18f2
+    - name: Middle East characters_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: a77032553dcdc1c4eb30a75f43f2412d
+    - name: Middle East characters_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: 81136b5b03ca1bd4fb4b33e6f607b145
+    - name: Middle East characters_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: f74039d01514f4547903cfe652ec7743
+    - name: Middle East characters_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 18
+        y: 0
+        width: 31
+        height: 30
+      spriteId: 021f70b30d7881f4c811160a7b5ec965
+    - name: Middle East characters_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 21
+        y: 0
+        width: 23
+        height: 47
+      spriteId: 567aefa74210bd740b50d224094fae88
+    - name: Middle East characters_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 21
+        y: 0
+        width: 23
+        height: 47
+      spriteId: a63768aa750724943a4e1db76c22c75f
+    - name: Middle East characters_Frame_42
+      frameIndex: 42
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 46
+      spriteId: cf82c9bc979d2f14eb06054505ca238b
+    - name: Middle East characters_Frame_43
+      frameIndex: 43
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 46
+      spriteId: 032b183961ce2744d8ba567d86de77de
+    - name: Middle East characters_Frame_44
+      frameIndex: 44
+      cellRect:
+        x: 21
+        y: 0
+        width: 24
+        height: 46
+      spriteId: 802be78244c8b6848b482a63be0df6ae
+    - name: Middle East characters_Frame_45
+      frameIndex: 45
+      cellRect:
+        x: 21
+        y: 0
+        width: 23
+        height: 46
+      spriteId: 604103bde107eb548bb53856f3771d31
+    - name: Middle East characters_Frame_46
+      frameIndex: 46
+      cellRect:
+        x: 21
+        y: 0
+        width: 23
+        height: 46
+      spriteId: 7792357215016c14487b6f0077a099f5
+    - name: Middle East characters_Frame_47
+      frameIndex: 47
+      cellRect:
+        x: 21
+        y: 0
+        width: 23
+        height: 46
+      spriteId: 56961dae0b5c06c4090ef2e6e81a6a5e
+    - name: Middle East characters_Frame_48
+      frameIndex: 48
+      cellRect:
+        x: 21
+        y: 0
+        width: 23
+        height: 46
+      spriteId: 2fcbac5fa7e2f774b9af110e7cb64b83
+    - name: Middle East characters_Frame_49
+      frameIndex: 49
+      cellRect:
+        x: 21
+        y: 0
+        width: 23
+        height: 47
+      spriteId: 9ca8f6c022535464b8acfb2606a35a25
+    - name: Middle East characters_Frame_50
+      frameIndex: 50
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: 5fc02a5a8e29732438adf798384e2cae
+    - name: Middle East characters_Frame_51
+      frameIndex: 51
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: c2819b85adaa6b54697ff1140645745d
+    - name: Middle East characters_Frame_52
+      frameIndex: 52
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: 6ef07e527e9b63d4184e8e9f0f67da4c
+    - name: Middle East characters_Frame_53
+      frameIndex: 53
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: c3b8eee31853db745bf62ffa4d21c66f
+    - name: Middle East characters_Frame_54
+      frameIndex: 54
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: d5fcb4952d7606147bf9b6bbc5c39365
+    - name: Middle East characters_Frame_55
+      frameIndex: 55
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: 9afb68d41f7dd3b4289bc1b7ed4b9369
+    - name: Middle East characters_Frame_56
+      frameIndex: 56
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: 60af2c77041934945aad7012e0c8d437
+    - name: Middle East characters_Frame_57
+      frameIndex: 57
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: 092d1513c21e8924e8f2ccdad2499cc4
+    - name: Middle East characters_Frame_58
+      frameIndex: 58
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: 5af10e583acfc464990b0154c0040c7f
+    - name: Middle East characters_Frame_59
+      frameIndex: 59
+      cellRect:
+        x: 11
+        y: -1
+        width: 40
+        height: 28
+      spriteId: 50a4a1313f86bce40b085292a74248d2
+    - name: Middle East characters_Frame_60
+      frameIndex: 60
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 2705bf772bebca8429cdd32ba5a35ddc
+    - name: Middle East characters_Frame_61
+      frameIndex: 61
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 4a1f36487ac7e294aab781c101e9d7a3
+    - name: Middle East characters_Frame_62
+      frameIndex: 62
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 94c541b8fc419ea4cb980957d53e7b53
+    - name: Middle East characters_Frame_63
+      frameIndex: 63
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 3f887d3b711a06d48a1e461c3a1877a8
+    - name: Middle East characters_Frame_64
+      frameIndex: 64
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: 42eb0cea3614def4fa74c087ca745986
+    - name: Middle East characters_Frame_65
+      frameIndex: 65
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: e55086af882341a4fa120212fc3d0fce
+    - name: Middle East characters_Frame_66
+      frameIndex: 66
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: c5530594136448143b9f4dce5d7080fe
+    - name: Middle East characters_Frame_67
+      frameIndex: 67
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: c6e026db82c50a0468db27a8b602e7f1
+    - name: Middle East characters_Frame_68
+      frameIndex: 68
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: ab475e225228dc54683b7a0533f1c3ce
+    - name: Middle East characters_Frame_69
+      frameIndex: 69
+      cellRect:
+        x: 7
+        y: 0
+        width: 49
+        height: 13
+      spriteId: c500928ccdd72d44ea722840c7bf9a36
+    - name: Middle East characters_Frame_70
+      frameIndex: 70
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: 165b8fa932154144097dd4982d96b9e8
+    - name: Middle East characters_Frame_71
+      frameIndex: 71
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: 0c07448eb66a720489d03ca1447161e3
+    - name: Middle East characters_Frame_72
+      frameIndex: 72
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: 01bf911dee552de43bbc9704b659f76c
+    - name: Middle East characters_Frame_73
+      frameIndex: 73
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: 77fbaa026b341a4408b96445f6971d6d
+    - name: Middle East characters_Frame_74
+      frameIndex: 74
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: b57eea245653a1f4481e2133641b8329
+    - name: Middle East characters_Frame_75
+      frameIndex: 75
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: 47f1bd9e0e50edc41ac122ab2d9a400e
+    - name: Middle East characters_Frame_76
+      frameIndex: 76
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 46
+      spriteId: 472e1ce3ec2062d46af6b9f37b994460
+    - name: Middle East characters_Frame_77
+      frameIndex: 77
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: 536e463340db0614c928287d2d7cacf5
+    - name: Middle East characters_Frame_78
+      frameIndex: 78
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: 1e0693f756f0992409f6f290e3703b6a
+    - name: Middle East characters_Frame_79
+      frameIndex: 79
+      cellRect:
+        x: 20
+        y: 0
+        width: 30
+        height: 47
+      spriteId: a6e942243e8ad014f80bf31a2d9c4795
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 64}

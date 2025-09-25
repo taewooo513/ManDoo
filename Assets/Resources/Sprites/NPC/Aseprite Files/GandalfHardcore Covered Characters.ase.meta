@@ -1,0 +1,3839 @@
+fileFormatVersion: 2
+guid: a9396d526177a614784c8350410cd10e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 32
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638944250793189052
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: GandalfHardcore Covered Characters_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 475
+      width: 22
+      height: 31
+    spriteID: bbd036400a24151498bcab41fb3b51e8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 475}
+  - name: GandalfHardcore Covered Characters_Frame_1
+    originalName: 
+    pivot: {x: 0.52380955, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 389
+      y: 43
+      width: 21
+      height: 32
+    spriteID: ae86dd7f5c29380459ef695425c40cef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 389, y: 43}
+  - name: GandalfHardcore Covered Characters_Frame_2
+    originalName: 
+    pivot: {x: 0.52380955, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 389
+      y: 83
+      width: 21
+      height: 32
+    spriteID: 32e1147d2a6fb1742a02270733e6e02a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 389, y: 83}
+  - name: GandalfHardcore Covered Characters_Frame_3
+    originalName: 
+    pivot: {x: 0.52380955, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 389
+      y: 123
+      width: 21
+      height: 32
+    spriteID: 7e2aced95ea2489429bfc6792a59c43c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 389, y: 123}
+  - name: GandalfHardcore Covered Characters_Frame_4
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 389
+      y: 4
+      width: 22
+      height: 31
+    spriteID: fd82b19f69aec564e8f49516454884d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 389, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_5
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 196
+      width: 23
+      height: 44
+    spriteID: 42c8d840c950d18458fbb6533d9c4db6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 196}
+  - name: GandalfHardcore Covered Characters_Frame_6
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 248
+      width: 23
+      height: 44
+    spriteID: 2a27ba865c555f74d92508b7d00030c4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 248}
+  - name: GandalfHardcore Covered Characters_Frame_7
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 166
+      width: 23
+      height: 45
+    spriteID: fc8d06c700c95cb40afb7b00331c073d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 166}
+  - name: GandalfHardcore Covered Characters_Frame_8
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 219
+      width: 23
+      height: 45
+    spriteID: 1dfb0c0474dc4234d913361fe2c7b5a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 219}
+  - name: GandalfHardcore Covered Characters_Frame_9
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 300
+      width: 23
+      height: 44
+    spriteID: 5211c899257884248b142b07bd3430c1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 300}
+  - name: GandalfHardcore Covered Characters_Frame_10
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 352
+      width: 23
+      height: 44
+    spriteID: ccc255344aefdca4182eec952ff28e9b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 352}
+  - name: GandalfHardcore Covered Characters_Frame_11
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 404
+      width: 23
+      height: 44
+    spriteID: db259a1682322434c8bb036734d17bf4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 404}
+  - name: GandalfHardcore Covered Characters_Frame_12
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 272
+      width: 23
+      height: 45
+    spriteID: 1212b5a66f873e94691728f909bd5830
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 272}
+  - name: GandalfHardcore Covered Characters_Frame_13
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 325
+      width: 23
+      height: 45
+    spriteID: 1f1e34e6ed0fc6947a52a9b4fafa8484
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 325}
+  - name: GandalfHardcore Covered Characters_Frame_14
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 456
+      width: 23
+      height: 44
+    spriteID: 5b6a1753ae591be439c2fa38a293366d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 456}
+  - name: GandalfHardcore Covered Characters_Frame_15
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 4
+      width: 23
+      height: 44
+    spriteID: 79166d62c42985a4b85f1b5e548bbdcb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_16
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 56
+      width: 23
+      height: 44
+    spriteID: 50bda11f6ffb9f946973c35d841f2458
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 56}
+  - name: GandalfHardcore Covered Characters_Frame_17
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 378
+      width: 23
+      height: 45
+    spriteID: 0477fd03ca13008418b43ccba9887e86
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 378}
+  - name: GandalfHardcore Covered Characters_Frame_18
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 431
+      width: 23
+      height: 45
+    spriteID: 4aeb5398ced63934ea0bc67b09fdaa91
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 431}
+  - name: GandalfHardcore Covered Characters_Frame_19
+    originalName: 
+    pivot: {x: 0.6086957, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 108
+      width: 23
+      height: 44
+    spriteID: c59e216568ccd7f4abe5e469024edb08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 108}
+  - name: GandalfHardcore Covered Characters_Frame_20
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 391
+      width: 25
+      height: 34
+    spriteID: c14cf40b1e65bad498d4c324030586b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 391}
+  - name: GandalfHardcore Covered Characters_Frame_21
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 4
+      width: 25
+      height: 35
+    spriteID: 7402235bc8faa5247a404ce0a0e1f636
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_22
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 47
+      width: 25
+      height: 35
+    spriteID: 458e2865a95c2324f8ee089cc18d4b58
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 47}
+  - name: GandalfHardcore Covered Characters_Frame_23
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 90
+      width: 25
+      height: 35
+    spriteID: 553c69d10caa1a84da3af32cefcd977e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 90}
+  - name: GandalfHardcore Covered Characters_Frame_24
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 433
+      width: 25
+      height: 34
+    spriteID: e375cdfcedadc2f488ec56f67b0f246e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 433}
+  - name: GandalfHardcore Covered Characters_Frame_25
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 4
+      width: 25
+      height: 34
+    spriteID: 548ceb69271c2bd4aa8064fa66363694
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_26
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 133
+      width: 25
+      height: 35
+    spriteID: 71010891e05435b46b77f4b795f1f67f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 133}
+  - name: GandalfHardcore Covered Characters_Frame_27
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 176
+      width: 25
+      height: 35
+    spriteID: 0a1e274e318c9a04dbf191c521966edb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 176}
+  - name: GandalfHardcore Covered Characters_Frame_28
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 219
+      width: 25
+      height: 35
+    spriteID: 2cacbca95fc214545850921cfbb3ac05
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 219}
+  - name: GandalfHardcore Covered Characters_Frame_29
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 46
+      width: 25
+      height: 34
+    spriteID: d04ca605caadacb44affb3d418495105
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 46}
+  - name: GandalfHardcore Covered Characters_Frame_30
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 88
+      width: 25
+      height: 34
+    spriteID: bd2181843ee4db24eae008bd4119fa79
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 88}
+  - name: GandalfHardcore Covered Characters_Frame_31
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 262
+      width: 25
+      height: 35
+    spriteID: 7df9e30b43e388a4dbfe130b3b7a656a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 262}
+  - name: GandalfHardcore Covered Characters_Frame_32
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 305
+      width: 25
+      height: 35
+    spriteID: 8ea14d541a4d72a4cb2973dce14a0e31
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 305}
+  - name: GandalfHardcore Covered Characters_Frame_33
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 250
+      y: 348
+      width: 25
+      height: 35
+    spriteID: f86f7ee84fd2d954a8c573ea88257d10
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 250, y: 348}
+  - name: GandalfHardcore Covered Characters_Frame_34
+    originalName: 
+    pivot: {x: 0.48, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 130
+      width: 25
+      height: 34
+    spriteID: b4b4e7fb51993334e976b8d2e3075264
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 130}
+  - name: GandalfHardcore Covered Characters_Frame_35
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 169
+      width: 25
+      height: 46
+    spriteID: c140a98e82ef688498bcebee971307e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 169}
+  - name: GandalfHardcore Covered Characters_Frame_36
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 223
+      width: 25
+      height: 46
+    spriteID: ccce8fd35b382064493aaf06966ca6e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 223}
+  - name: GandalfHardcore Covered Characters_Frame_37
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 334
+      width: 25
+      height: 47
+    spriteID: 8b42613b2173d934dadfe1c4dda5dc7e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 334}
+  - name: GandalfHardcore Covered Characters_Frame_38
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 389
+      width: 25
+      height: 47
+    spriteID: 2b1446a71c492b744afc9634c93d7ced
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 389}
+  - name: GandalfHardcore Covered Characters_Frame_39
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 277
+      width: 25
+      height: 46
+    spriteID: a2a3ad3409cebd8498d2d03b0206065c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 277}
+  - name: GandalfHardcore Covered Characters_Frame_40
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 331
+      width: 25
+      height: 46
+    spriteID: 206be29a6a6f69b4eae97661aa175bf9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 331}
+  - name: GandalfHardcore Covered Characters_Frame_41
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 385
+      width: 25
+      height: 46
+    spriteID: 58e6664b6635ab1488832d0e06f0294c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 385}
+  - name: GandalfHardcore Covered Characters_Frame_42
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 444
+      width: 25
+      height: 47
+    spriteID: 91a43d8416ae86d419747b802125219f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 444}
+  - name: GandalfHardcore Covered Characters_Frame_43
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 4
+      width: 25
+      height: 47
+    spriteID: 73e435aa3f0239e46930a7171d1309d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_44
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 439
+      width: 25
+      height: 46
+    spriteID: 44373bf4dd385b94f989bc9567c39a71
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 439}
+  - name: GandalfHardcore Covered Characters_Frame_45
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 4
+      width: 25
+      height: 46
+    spriteID: 2963a2a1987e88649ad552a953a9e2f1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_46
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 58
+      width: 25
+      height: 46
+    spriteID: 167e8a382a2320445a9dc310e7bacab8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 58}
+  - name: GandalfHardcore Covered Characters_Frame_47
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 59
+      width: 25
+      height: 47
+    spriteID: 1c658aca55f8e704d9d2679024e2ca12
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 59}
+  - name: GandalfHardcore Covered Characters_Frame_48
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 114
+      width: 25
+      height: 47
+    spriteID: 0551785246225844293832e266abdc9e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 114}
+  - name: GandalfHardcore Covered Characters_Frame_49
+    originalName: 
+    pivot: {x: 0.39999998, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 116
+      y: 112
+      width: 25
+      height: 46
+    spriteID: 7e66b67bc48f5f44d968c97610ac5edd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 116, y: 112}
+  - name: GandalfHardcore Covered Characters_Frame_50
+    originalName: 
+    pivot: {x: 0.58064514, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 340
+      width: 31
+      height: 47
+    spriteID: 4e0db59af41e0fc468ea2fba9191c24f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 340}
+  - name: GandalfHardcore Covered Characters_Frame_51
+    originalName: 
+    pivot: {x: 0.6, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 169
+      width: 30
+      height: 47
+    spriteID: 1c41a5e2777c1974a8d9a2b086d8de53
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 169}
+  - name: GandalfHardcore Covered Characters_Frame_52
+    originalName: 
+    pivot: {x: 0.61290324, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 172
+      width: 31
+      height: 48
+    spriteID: 01ed7c8a73010ea4e9d92fac8ccc5e8a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 172}
+  - name: GandalfHardcore Covered Characters_Frame_53
+    originalName: 
+    pivot: {x: 0.59375, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 32
+      height: 48
+    spriteID: b65cbbacbad4aba48a0fabb840fd8232
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_54
+    originalName: 
+    pivot: {x: 0.58064514, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 395
+      width: 31
+      height: 47
+    spriteID: f9c8f086b59e8f14d89622257b51b7b9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 395}
+  - name: GandalfHardcore Covered Characters_Frame_55
+    originalName: 
+    pivot: {x: 0.58064514, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 450
+      width: 31
+      height: 47
+    spriteID: 8870b5d1fe7958b4cb63d91b57d06ada
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 450}
+  - name: GandalfHardcore Covered Characters_Frame_56
+    originalName: 
+    pivot: {x: 0.6, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 224
+      width: 30
+      height: 47
+    spriteID: a1957c02185a8c34da2f03b060e0233e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 224}
+  - name: GandalfHardcore Covered Characters_Frame_57
+    originalName: 
+    pivot: {x: 0.61290324, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 228
+      width: 31
+      height: 48
+    spriteID: 379b3a754be214249b1ef4dbd12745d4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 228}
+  - name: GandalfHardcore Covered Characters_Frame_58
+    originalName: 
+    pivot: {x: 0.59375, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 60
+      width: 32
+      height: 48
+    spriteID: 74b679f7ebba8274e95125a7550d9264
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 60}
+  - name: GandalfHardcore Covered Characters_Frame_59
+    originalName: 
+    pivot: {x: 0.58064514, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 4
+      width: 31
+      height: 47
+    spriteID: 3943e4adcc386d9489de08d7e367ca8d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_60
+    originalName: 
+    pivot: {x: 0.58064514, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 59
+      width: 31
+      height: 47
+    spriteID: b5b94bdd968427748b7b2b0f93e0cb3b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 59}
+  - name: GandalfHardcore Covered Characters_Frame_61
+    originalName: 
+    pivot: {x: 0.6, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 279
+      width: 30
+      height: 47
+    spriteID: 5d8f3f0e5cd8ceb49b00ef1d3624a32a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 279}
+  - name: GandalfHardcore Covered Characters_Frame_62
+    originalName: 
+    pivot: {x: 0.61290324, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 284
+      width: 31
+      height: 48
+    spriteID: 552e4281f4717d649b4d5d955a76c017
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 284}
+  - name: GandalfHardcore Covered Characters_Frame_63
+    originalName: 
+    pivot: {x: 0.59375, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 116
+      width: 32
+      height: 48
+    spriteID: fc7b984fe8f0f23449809a70af0b89a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 116}
+  - name: GandalfHardcore Covered Characters_Frame_64
+    originalName: 
+    pivot: {x: 0.58064514, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 114
+      width: 31
+      height: 47
+    spriteID: 030cdf3d8e872184ca96e850c8657fd7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 114}
+  - name: GandalfHardcore Covered Characters_Frame_65
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 4
+      width: 33
+      height: 20
+    spriteID: f9a41305f9bae264dbb14d0ad9295dd7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_66
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 32
+      width: 33
+      height: 20
+    spriteID: 21dd40ef5c2c64a4d9024826ccec074b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 32}
+  - name: GandalfHardcore Covered Characters_Frame_67
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 60
+      width: 33
+      height: 20
+    spriteID: 46d21aea20dc5574abd30836f83f9e2a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 60}
+  - name: GandalfHardcore Covered Characters_Frame_68
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 88
+      width: 33
+      height: 20
+    spriteID: a2a77916500a13e4d98adb516ef5bcf5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 88}
+  - name: GandalfHardcore Covered Characters_Frame_69
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 116
+      width: 33
+      height: 20
+    spriteID: 890bc6e72c81bec43b83a49e231c3919
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 116}
+  - name: GandalfHardcore Covered Characters_Frame_70
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 144
+      width: 33
+      height: 20
+    spriteID: 8d81d2a9300004c429aa0aaedd81a2ab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 144}
+  - name: GandalfHardcore Covered Characters_Frame_71
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 172
+      width: 33
+      height: 20
+    spriteID: b58ad9f972e159946a9f6c3c6561c72a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 172}
+  - name: GandalfHardcore Covered Characters_Frame_72
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 200
+      width: 33
+      height: 20
+    spriteID: 41a04bdc0a533e345a42fd9ae37527ac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 200}
+  - name: GandalfHardcore Covered Characters_Frame_73
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 228
+      width: 33
+      height: 20
+    spriteID: 297ea1be492016a42869cab0ed99a120
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 228}
+  - name: GandalfHardcore Covered Characters_Frame_74
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 256
+      width: 33
+      height: 20
+    spriteID: 660571c8b5bf52f4c99723b5b8dbcf94
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 256}
+  - name: GandalfHardcore Covered Characters_Frame_75
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 284
+      width: 33
+      height: 20
+    spriteID: 230036a7b1624fc428237724faf14f20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 284}
+  - name: GandalfHardcore Covered Characters_Frame_76
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 312
+      width: 33
+      height: 20
+    spriteID: 3968bec0c86daa948ad76eaad573c383
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 312}
+  - name: GandalfHardcore Covered Characters_Frame_77
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 340
+      width: 33
+      height: 20
+    spriteID: de7ac8eb8dace13489df3427e34725a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 340}
+  - name: GandalfHardcore Covered Characters_Frame_78
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 368
+      width: 33
+      height: 20
+    spriteID: a63c6b1fd5261044cbc6ebaf01ee600d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 368}
+  - name: GandalfHardcore Covered Characters_Frame_79
+    originalName: 
+    pivot: {x: 0.5151515, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 419
+      y: 396
+      width: 33
+      height: 20
+    spriteID: da7a83ae069964c4ea4a1313970ef084
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 419, y: 396}
+  - name: GandalfHardcore Covered Characters_Frame_80
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 4
+      width: 20
+      height: 45
+    spriteID: 43d6300dcdd0db340bbf92115606a15a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_81
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 57
+      width: 20
+      height: 45
+    spriteID: 6e76f19bc09dc534fb51c6a85ed6d83e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 57}
+  - name: GandalfHardcore Covered Characters_Frame_82
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 160
+      width: 20
+      height: 46
+    spriteID: df1c84393e4f3214dba96d8cec8a9035
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 160}
+  - name: GandalfHardcore Covered Characters_Frame_83
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 214
+      width: 20
+      height: 46
+    spriteID: 4a500446254b5f540a535a7c34450598
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 214}
+  - name: GandalfHardcore Covered Characters_Frame_84
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 110
+      width: 20
+      height: 45
+    spriteID: 33380ccc3750cff46bfa89f91c4a1362
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 110}
+  - name: GandalfHardcore Covered Characters_Frame_85
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 163
+      width: 20
+      height: 45
+    spriteID: 9626fefe9ef1e12479ddefb15b43b0e4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 163}
+  - name: GandalfHardcore Covered Characters_Frame_86
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 216
+      width: 20
+      height: 45
+    spriteID: beb946d9b7cf4a14f9a1af1f03752a92
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 216}
+  - name: GandalfHardcore Covered Characters_Frame_87
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 268
+      width: 20
+      height: 46
+    spriteID: f2505127ceedf9946b6094473077b476
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 268}
+  - name: GandalfHardcore Covered Characters_Frame_88
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 322
+      width: 20
+      height: 46
+    spriteID: ecab7fee0f08ab74c9519b8c00a0bd38
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 322}
+  - name: GandalfHardcore Covered Characters_Frame_89
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 269
+      width: 20
+      height: 45
+    spriteID: 4da9769c0d648254b85f9b98c0d90df0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 269}
+  - name: GandalfHardcore Covered Characters_Frame_90
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 322
+      width: 20
+      height: 45
+    spriteID: 6eff0a78f5db19c419de3c7e76e199df
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 322}
+  - name: GandalfHardcore Covered Characters_Frame_91
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 375
+      width: 20
+      height: 45
+    spriteID: fbe559cb0ae8b6a4da9b1b11b413a191
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 375}
+  - name: GandalfHardcore Covered Characters_Frame_92
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 376
+      width: 20
+      height: 46
+    spriteID: 9c2dc90fdeeaa94459b0b5645c15f17d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 376}
+  - name: GandalfHardcore Covered Characters_Frame_93
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 191
+      y: 430
+      width: 20
+      height: 46
+    spriteID: f5bad31edbf55d646b3345d9489fe3de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 191, y: 430}
+  - name: GandalfHardcore Covered Characters_Frame_94
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 222
+      y: 428
+      width: 20
+      height: 45
+    spriteID: 45167a7d3bf04cd40b1713ebe00df663
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 222, y: 428}
+  - name: GandalfHardcore Covered Characters_Frame_95
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 163
+      width: 16
+      height: 44
+    spriteID: 6b7f32c24f139b946b5e1938dc08f9e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 163}
+  - name: GandalfHardcore Covered Characters_Frame_96
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 215
+      width: 16
+      height: 44
+    spriteID: b96667a67e973d348925a1fb9791ae22
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 215}
+  - name: GandalfHardcore Covered Characters_Frame_97
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 310
+      width: 16
+      height: 45
+    spriteID: ccb8c532cf2f6c844862bf715c43aa2d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 310}
+  - name: GandalfHardcore Covered Characters_Frame_98
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 363
+      width: 16
+      height: 45
+    spriteID: d4481b7343a8c5940803eb251982650a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 363}
+  - name: GandalfHardcore Covered Characters_Frame_99
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 267
+      width: 16
+      height: 44
+    spriteID: 33d8af2985cdaa34782d34052af490e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 267}
+  - name: GandalfHardcore Covered Characters_Frame_100
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 319
+      width: 16
+      height: 44
+    spriteID: 9dc44644c87920a429e49ff6c13238cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 319}
+  - name: GandalfHardcore Covered Characters_Frame_101
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 371
+      width: 16
+      height: 44
+    spriteID: 8b3de6f0df9ac484e88d227929a378ec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 371}
+  - name: GandalfHardcore Covered Characters_Frame_102
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 416
+      width: 16
+      height: 45
+    spriteID: 7bf0da99775a5284f81e206135eb0725
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 416}
+  - name: GandalfHardcore Covered Characters_Frame_103
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 4
+      width: 16
+      height: 45
+    spriteID: 87e3b9b3dc1959e4faf3e969736103c1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_104
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 423
+      width: 16
+      height: 44
+    spriteID: f68413a02d7441e4fa5b9c4b1b5b27cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 423}
+  - name: GandalfHardcore Covered Characters_Frame_105
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 365
+      y: 4
+      width: 16
+      height: 44
+    spriteID: b90a261850b4ef84b9c8952dfbd00c60
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 365, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_106
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 365
+      y: 56
+      width: 16
+      height: 44
+    spriteID: 4d9daa622dfb9a94899766a5d95f256f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 365, y: 56}
+  - name: GandalfHardcore Covered Characters_Frame_107
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 57
+      width: 16
+      height: 45
+    spriteID: 0db90a243834a444b91ddf67c16e3514
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 57}
+  - name: GandalfHardcore Covered Characters_Frame_108
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 341
+      y: 110
+      width: 16
+      height: 45
+    spriteID: b41dcddc078d14b459ab53ca186e3600
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 341, y: 110}
+  - name: GandalfHardcore Covered Characters_Frame_109
+    originalName: 
+    pivot: {x: 0.5625, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 365
+      y: 108
+      width: 16
+      height: 44
+    spriteID: 5aef28cec3aea6a41a7fa46d153250e8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 365, y: 108}
+  - name: GandalfHardcore Covered Characters_Frame_110
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 328
+      width: 17
+      height: 43
+    spriteID: 68e1232a66bed8644b05867ed09debd8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 328}
+  - name: GandalfHardcore Covered Characters_Frame_111
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 379
+      width: 17
+      height: 43
+    spriteID: 5a9f25f1a1b8c41429eeefea68ed7ab6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 379}
+  - name: GandalfHardcore Covered Characters_Frame_112
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 365
+      y: 160
+      width: 16
+      height: 44
+    spriteID: bbc8382b9f6ece84e9a24e8a1bc9e3c2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 365, y: 160}
+  - name: GandalfHardcore Covered Characters_Frame_113
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 172
+      width: 17
+      height: 44
+    spriteID: 640366e60e6a7394d8ecabd5484d0d7d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 172}
+  - name: GandalfHardcore Covered Characters_Frame_114
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 430
+      width: 17
+      height: 43
+    spriteID: 5341c5cc73cc8eb489e266d8b65f81e7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 430}
+  - name: GandalfHardcore Covered Characters_Frame_115
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 4
+      width: 17
+      height: 43
+    spriteID: da757f40be2b75f4b87cc2a44b991079
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_116
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 55
+      width: 17
+      height: 43
+    spriteID: 2b015d6d03dc523448236178abc7ccfd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 55}
+  - name: GandalfHardcore Covered Characters_Frame_117
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 365
+      y: 212
+      width: 16
+      height: 44
+    spriteID: 877731e0224565e4ab762e33e28c004e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 365, y: 212}
+  - name: GandalfHardcore Covered Characters_Frame_118
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 224
+      width: 17
+      height: 44
+    spriteID: 87d573385ab4b0440800b49641d0dff2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 224}
+  - name: GandalfHardcore Covered Characters_Frame_119
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 106
+      width: 17
+      height: 43
+    spriteID: 7b245732b285d1942b7b92454a41e862
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 106}
+  - name: GandalfHardcore Covered Characters_Frame_120
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 157
+      width: 17
+      height: 43
+    spriteID: 52d06e66778b98e4ba212cb4b494903f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 157}
+  - name: GandalfHardcore Covered Characters_Frame_121
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 208
+      width: 17
+      height: 43
+    spriteID: cdc0218a63b3c1b4b8d3903ab11a37de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 208}
+  - name: GandalfHardcore Covered Characters_Frame_122
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 365
+      y: 264
+      width: 16
+      height: 44
+    spriteID: 63682d1edc5e0e644b80cbeac72c82e5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 365, y: 264}
+  - name: GandalfHardcore Covered Characters_Frame_123
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 283
+      y: 276
+      width: 17
+      height: 44
+    spriteID: af86a15b76c8e3e4c80e96f613fdae6d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 283, y: 276}
+  - name: GandalfHardcore Covered Characters_Frame_124
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 316
+      y: 259
+      width: 17
+      height: 43
+    spriteID: d75b2665314c7c44ca568881a59e9677
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 316, y: 259}
+  - name: GandalfHardcore Covered Characters_Frame_125
+    originalName: 
+    pivot: {x: 0.47058824, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 82
+      width: 34
+      height: 30
+    spriteID: 8e746b44db7a68e419e4311836f045db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 82}
+  - name: GandalfHardcore Covered Characters_Frame_126
+    originalName: 
+    pivot: {x: 0.47058824, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 120
+      width: 34
+      height: 30
+    spriteID: 479bfee5ae6483447a6d180370b03e61
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 120}
+  - name: GandalfHardcore Covered Characters_Frame_127
+    originalName: 
+    pivot: {x: 0.47058824, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 4
+      width: 34
+      height: 31
+    spriteID: c44f3a895b1f0b84ab3f7c4377241856
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 4}
+  - name: GandalfHardcore Covered Characters_Frame_128
+    originalName: 
+    pivot: {x: 0.47058824, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 43
+      width: 34
+      height: 31
+    spriteID: 4cd141cd47c475946a59f2e2783af336
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 43}
+  - name: GandalfHardcore Covered Characters_Frame_129
+    originalName: 
+    pivot: {x: 0.47058824, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 158
+      width: 34
+      height: 30
+    spriteID: 72a5ed582db0aa340957086fac378362
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 149, y: 158}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 445705697
+    name: GandalfHardcore Covered Characters
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: GandalfHardcore Covered Characters_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 21
+        y: 0
+        width: 22
+        height: 31
+      spriteId: bbd036400a24151498bcab41fb3b51e8
+    - name: GandalfHardcore Covered Characters_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 21
+        y: 0
+        width: 21
+        height: 32
+      spriteId: ae86dd7f5c29380459ef695425c40cef
+    - name: GandalfHardcore Covered Characters_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 21
+        y: 0
+        width: 21
+        height: 32
+      spriteId: 32e1147d2a6fb1742a02270733e6e02a
+    - name: GandalfHardcore Covered Characters_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 21
+        y: 0
+        width: 21
+        height: 32
+      spriteId: 7e2aced95ea2489429bfc6792a59c43c
+    - name: GandalfHardcore Covered Characters_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 21
+        y: 0
+        width: 22
+        height: 31
+      spriteId: fd82b19f69aec564e8f49516454884d5
+    - name: GandalfHardcore Covered Characters_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: 42c8d840c950d18458fbb6533d9c4db6
+    - name: GandalfHardcore Covered Characters_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: 2a27ba865c555f74d92508b7d00030c4
+    - name: GandalfHardcore Covered Characters_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 45
+      spriteId: fc8d06c700c95cb40afb7b00331c073d
+    - name: GandalfHardcore Covered Characters_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 45
+      spriteId: 1dfb0c0474dc4234d913361fe2c7b5a4
+    - name: GandalfHardcore Covered Characters_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: 5211c899257884248b142b07bd3430c1
+    - name: GandalfHardcore Covered Characters_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: ccc255344aefdca4182eec952ff28e9b
+    - name: GandalfHardcore Covered Characters_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: db259a1682322434c8bb036734d17bf4
+    - name: GandalfHardcore Covered Characters_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 45
+      spriteId: 1212b5a66f873e94691728f909bd5830
+    - name: GandalfHardcore Covered Characters_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 45
+      spriteId: 1f1e34e6ed0fc6947a52a9b4fafa8484
+    - name: GandalfHardcore Covered Characters_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: 5b6a1753ae591be439c2fa38a293366d
+    - name: GandalfHardcore Covered Characters_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: 79166d62c42985a4b85f1b5e548bbdcb
+    - name: GandalfHardcore Covered Characters_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: 50bda11f6ffb9f946973c35d841f2458
+    - name: GandalfHardcore Covered Characters_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 45
+      spriteId: 0477fd03ca13008418b43ccba9887e86
+    - name: GandalfHardcore Covered Characters_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 45
+      spriteId: 4aeb5398ced63934ea0bc67b09fdaa91
+    - name: GandalfHardcore Covered Characters_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 18
+        y: 0
+        width: 23
+        height: 44
+      spriteId: c59e216568ccd7f4abe5e469024edb08
+    - name: GandalfHardcore Covered Characters_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 34
+      spriteId: c14cf40b1e65bad498d4c324030586b4
+    - name: GandalfHardcore Covered Characters_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: 7402235bc8faa5247a404ce0a0e1f636
+    - name: GandalfHardcore Covered Characters_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: 458e2865a95c2324f8ee089cc18d4b58
+    - name: GandalfHardcore Covered Characters_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: 553c69d10caa1a84da3af32cefcd977e
+    - name: GandalfHardcore Covered Characters_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 34
+      spriteId: e375cdfcedadc2f488ec56f67b0f246e
+    - name: GandalfHardcore Covered Characters_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 34
+      spriteId: 548ceb69271c2bd4aa8064fa66363694
+    - name: GandalfHardcore Covered Characters_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: 71010891e05435b46b77f4b795f1f67f
+    - name: GandalfHardcore Covered Characters_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: 0a1e274e318c9a04dbf191c521966edb
+    - name: GandalfHardcore Covered Characters_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: 2cacbca95fc214545850921cfbb3ac05
+    - name: GandalfHardcore Covered Characters_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 34
+      spriteId: d04ca605caadacb44affb3d418495105
+    - name: GandalfHardcore Covered Characters_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 34
+      spriteId: bd2181843ee4db24eae008bd4119fa79
+    - name: GandalfHardcore Covered Characters_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: 7df9e30b43e388a4dbfe130b3b7a656a
+    - name: GandalfHardcore Covered Characters_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: 8ea14d541a4d72a4cb2973dce14a0e31
+    - name: GandalfHardcore Covered Characters_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 35
+      spriteId: f86f7ee84fd2d954a8c573ea88257d10
+    - name: GandalfHardcore Covered Characters_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 20
+        y: 0
+        width: 25
+        height: 34
+      spriteId: b4b4e7fb51993334e976b8d2e3075264
+    - name: GandalfHardcore Covered Characters_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: c140a98e82ef688498bcebee971307e6
+    - name: GandalfHardcore Covered Characters_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: ccce8fd35b382064493aaf06966ca6e1
+    - name: GandalfHardcore Covered Characters_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 47
+      spriteId: 8b42613b2173d934dadfe1c4dda5dc7e
+    - name: GandalfHardcore Covered Characters_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 47
+      spriteId: 2b1446a71c492b744afc9634c93d7ced
+    - name: GandalfHardcore Covered Characters_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: a2a3ad3409cebd8498d2d03b0206065c
+    - name: GandalfHardcore Covered Characters_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: 206be29a6a6f69b4eae97661aa175bf9
+    - name: GandalfHardcore Covered Characters_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: 58e6664b6635ab1488832d0e06f0294c
+    - name: GandalfHardcore Covered Characters_Frame_42
+      frameIndex: 42
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 47
+      spriteId: 91a43d8416ae86d419747b802125219f
+    - name: GandalfHardcore Covered Characters_Frame_43
+      frameIndex: 43
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 47
+      spriteId: 73e435aa3f0239e46930a7171d1309d5
+    - name: GandalfHardcore Covered Characters_Frame_44
+      frameIndex: 44
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: 44373bf4dd385b94f989bc9567c39a71
+    - name: GandalfHardcore Covered Characters_Frame_45
+      frameIndex: 45
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: 2963a2a1987e88649ad552a953a9e2f1
+    - name: GandalfHardcore Covered Characters_Frame_46
+      frameIndex: 46
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: 167e8a382a2320445a9dc310e7bacab8
+    - name: GandalfHardcore Covered Characters_Frame_47
+      frameIndex: 47
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 47
+      spriteId: 1c658aca55f8e704d9d2679024e2ca12
+    - name: GandalfHardcore Covered Characters_Frame_48
+      frameIndex: 48
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 47
+      spriteId: 0551785246225844293832e266abdc9e
+    - name: GandalfHardcore Covered Characters_Frame_49
+      frameIndex: 49
+      cellRect:
+        x: 22
+        y: 0
+        width: 25
+        height: 46
+      spriteId: 7e66b67bc48f5f44d968c97610ac5edd
+    - name: GandalfHardcore Covered Characters_Frame_50
+      frameIndex: 50
+      cellRect:
+        x: 14
+        y: 0
+        width: 31
+        height: 47
+      spriteId: 4e0db59af41e0fc468ea2fba9191c24f
+    - name: GandalfHardcore Covered Characters_Frame_51
+      frameIndex: 51
+      cellRect:
+        x: 14
+        y: 0
+        width: 30
+        height: 47
+      spriteId: 1c41a5e2777c1974a8d9a2b086d8de53
+    - name: GandalfHardcore Covered Characters_Frame_52
+      frameIndex: 52
+      cellRect:
+        x: 13
+        y: 0
+        width: 31
+        height: 48
+      spriteId: 01ed7c8a73010ea4e9d92fac8ccc5e8a
+    - name: GandalfHardcore Covered Characters_Frame_53
+      frameIndex: 53
+      cellRect:
+        x: 13
+        y: 0
+        width: 32
+        height: 48
+      spriteId: b65cbbacbad4aba48a0fabb840fd8232
+    - name: GandalfHardcore Covered Characters_Frame_54
+      frameIndex: 54
+      cellRect:
+        x: 14
+        y: 0
+        width: 31
+        height: 47
+      spriteId: f9c8f086b59e8f14d89622257b51b7b9
+    - name: GandalfHardcore Covered Characters_Frame_55
+      frameIndex: 55
+      cellRect:
+        x: 14
+        y: 0
+        width: 31
+        height: 47
+      spriteId: 8870b5d1fe7958b4cb63d91b57d06ada
+    - name: GandalfHardcore Covered Characters_Frame_56
+      frameIndex: 56
+      cellRect:
+        x: 14
+        y: 0
+        width: 30
+        height: 47
+      spriteId: a1957c02185a8c34da2f03b060e0233e
+    - name: GandalfHardcore Covered Characters_Frame_57
+      frameIndex: 57
+      cellRect:
+        x: 13
+        y: 0
+        width: 31
+        height: 48
+      spriteId: 379b3a754be214249b1ef4dbd12745d4
+    - name: GandalfHardcore Covered Characters_Frame_58
+      frameIndex: 58
+      cellRect:
+        x: 13
+        y: 0
+        width: 32
+        height: 48
+      spriteId: 74b679f7ebba8274e95125a7550d9264
+    - name: GandalfHardcore Covered Characters_Frame_59
+      frameIndex: 59
+      cellRect:
+        x: 14
+        y: 0
+        width: 31
+        height: 47
+      spriteId: 3943e4adcc386d9489de08d7e367ca8d
+    - name: GandalfHardcore Covered Characters_Frame_60
+      frameIndex: 60
+      cellRect:
+        x: 14
+        y: 0
+        width: 31
+        height: 47
+      spriteId: b5b94bdd968427748b7b2b0f93e0cb3b
+    - name: GandalfHardcore Covered Characters_Frame_61
+      frameIndex: 61
+      cellRect:
+        x: 14
+        y: 0
+        width: 30
+        height: 47
+      spriteId: 5d8f3f0e5cd8ceb49b00ef1d3624a32a
+    - name: GandalfHardcore Covered Characters_Frame_62
+      frameIndex: 62
+      cellRect:
+        x: 13
+        y: 0
+        width: 31
+        height: 48
+      spriteId: 552e4281f4717d649b4d5d955a76c017
+    - name: GandalfHardcore Covered Characters_Frame_63
+      frameIndex: 63
+      cellRect:
+        x: 13
+        y: 0
+        width: 32
+        height: 48
+      spriteId: fc7b984fe8f0f23449809a70af0b89a8
+    - name: GandalfHardcore Covered Characters_Frame_64
+      frameIndex: 64
+      cellRect:
+        x: 14
+        y: 0
+        width: 31
+        height: 47
+      spriteId: 030cdf3d8e872184ca96e850c8657fd7
+    - name: GandalfHardcore Covered Characters_Frame_65
+      frameIndex: 65
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: f9a41305f9bae264dbb14d0ad9295dd7
+    - name: GandalfHardcore Covered Characters_Frame_66
+      frameIndex: 66
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 21dd40ef5c2c64a4d9024826ccec074b
+    - name: GandalfHardcore Covered Characters_Frame_67
+      frameIndex: 67
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 46d21aea20dc5574abd30836f83f9e2a
+    - name: GandalfHardcore Covered Characters_Frame_68
+      frameIndex: 68
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: a2a77916500a13e4d98adb516ef5bcf5
+    - name: GandalfHardcore Covered Characters_Frame_69
+      frameIndex: 69
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 890bc6e72c81bec43b83a49e231c3919
+    - name: GandalfHardcore Covered Characters_Frame_70
+      frameIndex: 70
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 8d81d2a9300004c429aa0aaedd81a2ab
+    - name: GandalfHardcore Covered Characters_Frame_71
+      frameIndex: 71
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: b58ad9f972e159946a9f6c3c6561c72a
+    - name: GandalfHardcore Covered Characters_Frame_72
+      frameIndex: 72
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 41a04bdc0a533e345a42fd9ae37527ac
+    - name: GandalfHardcore Covered Characters_Frame_73
+      frameIndex: 73
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 297ea1be492016a42869cab0ed99a120
+    - name: GandalfHardcore Covered Characters_Frame_74
+      frameIndex: 74
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 660571c8b5bf52f4c99723b5b8dbcf94
+    - name: GandalfHardcore Covered Characters_Frame_75
+      frameIndex: 75
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 230036a7b1624fc428237724faf14f20
+    - name: GandalfHardcore Covered Characters_Frame_76
+      frameIndex: 76
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: 3968bec0c86daa948ad76eaad573c383
+    - name: GandalfHardcore Covered Characters_Frame_77
+      frameIndex: 77
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: de7ac8eb8dace13489df3427e34725a4
+    - name: GandalfHardcore Covered Characters_Frame_78
+      frameIndex: 78
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: a63c6b1fd5261044cbc6ebaf01ee600d
+    - name: GandalfHardcore Covered Characters_Frame_79
+      frameIndex: 79
+      cellRect:
+        x: 15
+        y: 0
+        width: 33
+        height: 20
+      spriteId: da7a83ae069964c4ea4a1313970ef084
+    - name: GandalfHardcore Covered Characters_Frame_80
+      frameIndex: 80
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: 43d6300dcdd0db340bbf92115606a15a
+    - name: GandalfHardcore Covered Characters_Frame_81
+      frameIndex: 81
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: 6e76f19bc09dc534fb51c6a85ed6d83e
+    - name: GandalfHardcore Covered Characters_Frame_82
+      frameIndex: 82
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 46
+      spriteId: df1c84393e4f3214dba96d8cec8a9035
+    - name: GandalfHardcore Covered Characters_Frame_83
+      frameIndex: 83
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 46
+      spriteId: 4a500446254b5f540a535a7c34450598
+    - name: GandalfHardcore Covered Characters_Frame_84
+      frameIndex: 84
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: 33380ccc3750cff46bfa89f91c4a1362
+    - name: GandalfHardcore Covered Characters_Frame_85
+      frameIndex: 85
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: 9626fefe9ef1e12479ddefb15b43b0e4
+    - name: GandalfHardcore Covered Characters_Frame_86
+      frameIndex: 86
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: beb946d9b7cf4a14f9a1af1f03752a92
+    - name: GandalfHardcore Covered Characters_Frame_87
+      frameIndex: 87
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 46
+      spriteId: f2505127ceedf9946b6094473077b476
+    - name: GandalfHardcore Covered Characters_Frame_88
+      frameIndex: 88
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 46
+      spriteId: ecab7fee0f08ab74c9519b8c00a0bd38
+    - name: GandalfHardcore Covered Characters_Frame_89
+      frameIndex: 89
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: 4da9769c0d648254b85f9b98c0d90df0
+    - name: GandalfHardcore Covered Characters_Frame_90
+      frameIndex: 90
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: 6eff0a78f5db19c419de3c7e76e199df
+    - name: GandalfHardcore Covered Characters_Frame_91
+      frameIndex: 91
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: fbe559cb0ae8b6a4da9b1b11b413a191
+    - name: GandalfHardcore Covered Characters_Frame_92
+      frameIndex: 92
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 46
+      spriteId: 9c2dc90fdeeaa94459b0b5645c15f17d
+    - name: GandalfHardcore Covered Characters_Frame_93
+      frameIndex: 93
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 46
+      spriteId: f5bad31edbf55d646b3345d9489fe3de
+    - name: GandalfHardcore Covered Characters_Frame_94
+      frameIndex: 94
+      cellRect:
+        x: 22
+        y: 0
+        width: 20
+        height: 45
+      spriteId: 45167a7d3bf04cd40b1713ebe00df663
+    - name: GandalfHardcore Covered Characters_Frame_95
+      frameIndex: 95
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: 6b7f32c24f139b946b5e1938dc08f9e0
+    - name: GandalfHardcore Covered Characters_Frame_96
+      frameIndex: 96
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: b96667a67e973d348925a1fb9791ae22
+    - name: GandalfHardcore Covered Characters_Frame_97
+      frameIndex: 97
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 45
+      spriteId: ccb8c532cf2f6c844862bf715c43aa2d
+    - name: GandalfHardcore Covered Characters_Frame_98
+      frameIndex: 98
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 45
+      spriteId: d4481b7343a8c5940803eb251982650a
+    - name: GandalfHardcore Covered Characters_Frame_99
+      frameIndex: 99
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: 33d8af2985cdaa34782d34052af490e1
+    - name: GandalfHardcore Covered Characters_Frame_100
+      frameIndex: 100
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: 9dc44644c87920a429e49ff6c13238cd
+    - name: GandalfHardcore Covered Characters_Frame_101
+      frameIndex: 101
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: 8b3de6f0df9ac484e88d227929a378ec
+    - name: GandalfHardcore Covered Characters_Frame_102
+      frameIndex: 102
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 45
+      spriteId: 7bf0da99775a5284f81e206135eb0725
+    - name: GandalfHardcore Covered Characters_Frame_103
+      frameIndex: 103
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 45
+      spriteId: 87e3b9b3dc1959e4faf3e969736103c1
+    - name: GandalfHardcore Covered Characters_Frame_104
+      frameIndex: 104
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: f68413a02d7441e4fa5b9c4b1b5b27cf
+    - name: GandalfHardcore Covered Characters_Frame_105
+      frameIndex: 105
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: b90a261850b4ef84b9c8952dfbd00c60
+    - name: GandalfHardcore Covered Characters_Frame_106
+      frameIndex: 106
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: 4d9daa622dfb9a94899766a5d95f256f
+    - name: GandalfHardcore Covered Characters_Frame_107
+      frameIndex: 107
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 45
+      spriteId: 0db90a243834a444b91ddf67c16e3514
+    - name: GandalfHardcore Covered Characters_Frame_108
+      frameIndex: 108
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 45
+      spriteId: b41dcddc078d14b459ab53ca186e3600
+    - name: GandalfHardcore Covered Characters_Frame_109
+      frameIndex: 109
+      cellRect:
+        x: 23
+        y: 0
+        width: 16
+        height: 44
+      spriteId: 5aef28cec3aea6a41a7fa46d153250e8
+    - name: GandalfHardcore Covered Characters_Frame_110
+      frameIndex: 110
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: 68e1232a66bed8644b05867ed09debd8
+    - name: GandalfHardcore Covered Characters_Frame_111
+      frameIndex: 111
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: 5a9f25f1a1b8c41429eeefea68ed7ab6
+    - name: GandalfHardcore Covered Characters_Frame_112
+      frameIndex: 112
+      cellRect:
+        x: 24
+        y: 0
+        width: 16
+        height: 44
+      spriteId: bbc8382b9f6ece84e9a24e8a1bc9e3c2
+    - name: GandalfHardcore Covered Characters_Frame_113
+      frameIndex: 113
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 44
+      spriteId: 640366e60e6a7394d8ecabd5484d0d7d
+    - name: GandalfHardcore Covered Characters_Frame_114
+      frameIndex: 114
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: 5341c5cc73cc8eb489e266d8b65f81e7
+    - name: GandalfHardcore Covered Characters_Frame_115
+      frameIndex: 115
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: da757f40be2b75f4b87cc2a44b991079
+    - name: GandalfHardcore Covered Characters_Frame_116
+      frameIndex: 116
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: 2b015d6d03dc523448236178abc7ccfd
+    - name: GandalfHardcore Covered Characters_Frame_117
+      frameIndex: 117
+      cellRect:
+        x: 24
+        y: 0
+        width: 16
+        height: 44
+      spriteId: 877731e0224565e4ab762e33e28c004e
+    - name: GandalfHardcore Covered Characters_Frame_118
+      frameIndex: 118
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 44
+      spriteId: 87d573385ab4b0440800b49641d0dff2
+    - name: GandalfHardcore Covered Characters_Frame_119
+      frameIndex: 119
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: 7b245732b285d1942b7b92454a41e862
+    - name: GandalfHardcore Covered Characters_Frame_120
+      frameIndex: 120
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: 52d06e66778b98e4ba212cb4b494903f
+    - name: GandalfHardcore Covered Characters_Frame_121
+      frameIndex: 121
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: cdc0218a63b3c1b4b8d3903ab11a37de
+    - name: GandalfHardcore Covered Characters_Frame_122
+      frameIndex: 122
+      cellRect:
+        x: 24
+        y: 0
+        width: 16
+        height: 44
+      spriteId: 63682d1edc5e0e644b80cbeac72c82e5
+    - name: GandalfHardcore Covered Characters_Frame_123
+      frameIndex: 123
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 44
+      spriteId: af86a15b76c8e3e4c80e96f613fdae6d
+    - name: GandalfHardcore Covered Characters_Frame_124
+      frameIndex: 124
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 43
+      spriteId: d75b2665314c7c44ca568881a59e9677
+    - name: GandalfHardcore Covered Characters_Frame_125
+      frameIndex: 125
+      cellRect:
+        x: 16
+        y: 0
+        width: 34
+        height: 30
+      spriteId: 8e746b44db7a68e419e4311836f045db
+    - name: GandalfHardcore Covered Characters_Frame_126
+      frameIndex: 126
+      cellRect:
+        x: 16
+        y: 0
+        width: 34
+        height: 30
+      spriteId: 479bfee5ae6483447a6d180370b03e61
+    - name: GandalfHardcore Covered Characters_Frame_127
+      frameIndex: 127
+      cellRect:
+        x: 16
+        y: 0
+        width: 34
+        height: 31
+      spriteId: c44f3a895b1f0b84ab3f7c4377241856
+    - name: GandalfHardcore Covered Characters_Frame_128
+      frameIndex: 128
+      cellRect:
+        x: 16
+        y: 0
+        width: 34
+        height: 31
+      spriteId: 4cd141cd47c475946a59f2e2783af336
+    - name: GandalfHardcore Covered Characters_Frame_129
+      frameIndex: 129
+      cellRect:
+        x: 16
+        y: 0
+        width: 34
+        height: 30
+      spriteId: 72a5ed582db0aa340957086fac378362
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 64}
