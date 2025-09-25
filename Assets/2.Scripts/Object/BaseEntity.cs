@@ -24,6 +24,11 @@ public class EntityInfo
     public int contractGold;
     public Weapon equipWeapon;
 
+    public TotalBuffStat GetTotalBuffStat()
+    {
+        return statEffect.totalStat;
+    }
+
     public EntityInfo(string name, int maxHp, int attackDamage, int defense, int speed, float evasion, float critical)
     {
         this.name = name;
