@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System.Linq;
 
 /// <summary>
 /// 게임 내 인벤토리 UI를 관리하는 클래스
 /// </summary>
-public class InGameInventoryUI : UIBase //inventorymanager 추가.
+public class InGameInventoryUI : UIBase
 {
     // 테스트 모드 활성화 여부를 설정하는 플래그
     public bool isTestMode = false;
+    // 테스트용 아이템 아이콘
     [SerializeField] private Sprite testIcon;
+    // 테스트용 아이콘 개수
     [SerializeField] private int testIconCount = 5;
+    // 기본 캔버스 참조
     public Canvas baseCanvas { get; private set; }
+    // 인벤토리 슬롯 UI 배열
     [SerializeField] private InventorySlotUI[] inventorySlots;
+    
     private void Awake()
     {
         // 부모 객체로부터 Canvas 컴포넌트 가져오기
@@ -25,11 +28,13 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
 
     private void OnEnable()
     {
+        // 인벤토리 매니저의 슬롯 변경 이벤트에 핸들러 등록
         InventoryManager.Instance.OnSlotChanged += HandleSlotChanged;
     }
 
     private void OnDisable()
     {
+        // 인벤토리 매니저의 슬롯 변경 이벤트에서 핸들러 제거
         InventoryManager.Instance.OnSlotChanged -= HandleSlotChanged;
     }
     
@@ -45,11 +50,20 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
             slot.Init(i, this);
             if (slot.Icon != null)
                 slot.Icon.Setup(i, this, baseCanvas);
+
+            if (!isTestMode)
+            {
+                slot.SetIcon(null);
+                slot.SetInteractableIcon(false);
+            }
         }
         // 슬롯 UI 새로고침
         RefreshSlots();
     }
     
+    /// <summary>
+    /// 모든 인벤토리 슬롯의 UI를 새로고침하는 메서드
+    /// </summary>
     public void RefreshSlots()
     {
         // 테스트 모드
@@ -76,6 +90,11 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
         }
     }
 
+    /// <summary>
+    /// 슬롯 변경 이벤트 처리 메서드
+    /// </summary>
+    /// <param name="slotIndex">변경된 슬롯의 인덱스</param>
+    /// <param name="item">변경된 아이템</param>
     private void HandleSlotChanged(int slotIndex, Item item)
     {
         if (isTestMode) return;
@@ -86,6 +105,11 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
         slot.SetInteractableIcon(icon != null);
     }
 
+    /// <summary>
+    /// 아이템을 다른 슬롯으로 이동하는 메서드
+    /// </summary>
+    /// <param name="from">시작 슬롯 인덱스</param>
+    /// <param name="to">목표 슬롯 인덱스</param>
     public void MoveItem(int from, int to)
     {
         if (from == to) return;
@@ -98,7 +122,7 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
     }
     
     /// <summary>
-    /// 슬롯이 클릭되었을 때 호출되는 메서드
+    /// 슬롯 클릭 이벤트 처리 메서드
     /// </summary>
     /// <param name="slotIndex">클릭된 슬롯의 인덱스</param>
     public void OnSlotClicked(int slotIndex)
@@ -107,7 +131,6 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
         if (item == null) return;
         
         // TODO: 해제/사용 구현
-        
         RefreshSlots();
     }
 }

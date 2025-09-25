@@ -21,6 +21,7 @@ public class Weapon : MonoBehaviour
 
     public Skill skill { get; private set; }
     WeaponData weaponData;
+    public Sprite icon; // 아이템 아이콘 -> 인벤토리나 장착 슬롯 등에 표시하기 위해 설정
     public Weapon(int id)
     {
         Setting(id);
@@ -69,4 +70,5 @@ public class Weapon : MonoBehaviour
     public WeaponType GetWeaponType() => weaponType;
     public int GetId => id;
     public string GetIconPath() => iconPath;
+    public string GetGameObjectPath() => gameObjectPath;
 }

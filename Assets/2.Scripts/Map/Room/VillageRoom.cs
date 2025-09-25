@@ -10,8 +10,9 @@ public class VillageRoom : BaseRoom //마을, 보스방
         //보스 생성
     }
 
-    public override void ExitRoom()
+    public override void ExitRoom(int id)
     {
+        base.ExitRoom(id);
         //탐색한 방의 수
         //파티 초상화
         //플레이 보상
