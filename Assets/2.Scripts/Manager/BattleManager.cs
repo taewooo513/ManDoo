@@ -144,7 +144,11 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("승리!");
         //승리 UI 출력
-        weapon.AddWeaponExp(20); //숙련도 지급
+        foreach (var item in _playableCharacters) //todo : 숙련도 이렇게 하는거 맞나?
+        {
+            nowSeletePlayableCharacter.equipWeapon.AddWeaponExp(20); //nowSeletePlayableCharacter <<이거 일단 있길래 썼는데 연결 되어있는 건가? 
+        }
+
         UIManager.Instance.OpenUI<InGameVictoryUI>();
         EndBattle();
     }
@@ -153,7 +157,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("패배...");
         //패배 UI출력
-        weapon.AddWeaponExp(5);
+        weapon.AddWeaponExp(5); //todo : 숙련도 연결 수정 필요함
         UIManager.Instance.OpenUI<InGameLoseUI>();
         EndBattle();
     }
