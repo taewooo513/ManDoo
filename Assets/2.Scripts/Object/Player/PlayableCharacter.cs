@@ -10,7 +10,6 @@ public class PlayableCharacter : BaseEntity
     private MercenaryData data;
     public Weapon equipWeapon;
 
-
     private void Start()
     {
     }
@@ -66,11 +65,14 @@ public class PlayableCharacter : BaseEntity
         deBuffTypes.Add(DeBuffType.CriticalDown);
         deBuffTypes.Add(DeBuffType.AllStatDown);
         deBuffTypes.Add(DeBuffType.Damaged);
-        buffIcons.UpdateIcon(entityInfo.statEffect);
+        entityInfo.statEffect.AttackWeight(entityInfo);
         if (hasExtraTurn)
         {
+            buffIcons.UpdateIcon(entityInfo.statEffect);
+            Damaged(entityInfo.statEffect.totalStat.damagedValue);
             entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
         }
+        BattleManager.Instance.EndTurn(hasExtraTurn);
     }
 
     public void EquipWeapon(Weapon weapon)

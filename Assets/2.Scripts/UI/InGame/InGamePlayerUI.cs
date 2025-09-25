@@ -27,6 +27,7 @@ public class InGamePlayerUI : UIBase
 
         for(int i = 0; i < skills.Length; i++)
         {
+            Debug.Log("fds");
             skillUIObjects[i].GetComponent<SelectSkillButton>().SetButton(skills[i]);
         }
     }

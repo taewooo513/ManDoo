@@ -18,10 +18,19 @@ public class SelectEnemyButton : SelectEntityButton
         UIManager.Instance.CloseUI<InGameInventoryUI>();
         UIManager.Instance.OpenUI<InGameEnemyUI>().UpdateUI(enemy.entityInfo);
     }
+    public override void ActiveSkillButtonAction(Skill skill)
+    {
+        if (skill.GetSkillType() == EffectType.Mark || skill.GetSkillType() == EffectType.Buff || skill.GetSkillType() == EffectType.Heal || skill.GetSkillType() == EffectType.Protect)
+        {
+            return;
+        }
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => OnClickActionButton(skill));
+    }
 
     protected override void OnClickActionButton(Skill skill)
     {
         skill.UseSkill(enemy);
-        BattleManager.Instance.EndTurn();
+        BattleManager.Instance.NowTurnEntity.EndTurn(true);
     }
 }
