@@ -21,7 +21,6 @@ public class BattleManager : Singleton<BattleManager>
 
     private BaseEntity nowTurnEntity;
     public BaseEntity NowTurnEntity { get { return nowTurnEntity; } }
-    private PlayableCharacter nowSeletePlayableCharacter;
 
     private Skill nowSkill;
     private System.Random _random = new System.Random();
@@ -143,9 +142,9 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("승리! 버닝썬");
         //승리 UI 출력
-        foreach (var item in _playableCharacters) //todo : 숙련도 이렇게 하는거 맞나?
+        foreach (var item in _playableCharacters) //전투 승리 시 아군 전체에게 숙련도 20 지금
         {
-            nowSeletePlayableCharacter.entityInfo.equipWeapon.AddWeaponExp(20); //nowSeletePlayableCharacter <<이거 일단 있길래 썼는데 연결 되어있는 건가? 
+            ((PlayableCharacter) item).equipWeapon.AddWeaponExp(20); 
         }
 
         UIManager.Instance.OpenUI<InGameVictoryUI>();
@@ -156,7 +155,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Log("패배...");
         //패배 UI출력
-        weapon.AddWeaponExp(5); //todo : 숙련도 연결 수정 필요함
+        //todo : 적 처리한 캐릭터한테만 숙련도 줘야됨. How? //연출 이후 고민해보기
         UIManager.Instance.OpenUI<InGameLoseUI>();
         EndBattle();
     }

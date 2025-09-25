@@ -6,14 +6,12 @@ public class DamageSkill : SkillEffect
 {
     public void DeBuffDamageSkill(int duration, BaseEntity targetEntity)
     {
-
     }
     public void HitDamageSkill(BaseEntity attackEntity, BaseEntity damagedEntity)
     {
         float dmg = ((float)attackEntity.entityInfo.GetTotalBuffStat().attackDmg) * adRatio;
         attackEntity.Attack(dmg, damagedEntity);
     }
-
     public void UseBuffSkill(BaseEntity attackEntity, BaseEntity damagedEntity)
     {
         if (duration != 0)

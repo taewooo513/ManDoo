@@ -8,6 +8,8 @@ public class PlayableCharacter : BaseEntity
 {
     [SerializeField] private int initID;
     private MercenaryData data;
+    private List<int> _deadEquipItemIds = new();
+    //todo : 무기 초기화하기 전에, 장비 등등 _deadEquipItemIds 리스트에 넣어서 BaseRoom.PlayerDeadItem() 로 리스트 넘겨주세요
 
     private void Start()
     {
