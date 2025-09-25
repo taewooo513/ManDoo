@@ -20,6 +20,7 @@ public class BattleManager : Singleton<BattleManager>
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
 
     private BaseEntity nowTurnEntity;
+    public BaseEntity NowTurnEntity { get { return nowTurnEntity; } }
     private PlayableCharacter nowSeletePlayableCharacter;
 
     private Skill nowSkill;
@@ -143,7 +144,7 @@ public class BattleManager : Singleton<BattleManager>
 
     private void Win()
     {
-        Debug.Log("승리!");
+        Debug.Log("승리! 버닝썬");
         //승리 UI 출력
         UIManager.Instance.OpenUI<InGameVictoryUI>();
         EndBattle();

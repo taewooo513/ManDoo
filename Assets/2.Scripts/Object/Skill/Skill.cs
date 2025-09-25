@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DataTable;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class SkillInfo
 {
@@ -67,6 +68,34 @@ public class Skill
     private void Setting()
     {
 
+    }
+
+    public bool IsAbleUseSkill(BaseEntity target)
+    {
+        bool isEnablePos = false;
+        foreach (var item in skillInfo.enablePos)
+        {
+            if (item == BattleManager.Instance.PlayableCharacters.IndexOf(baseEntity))
+            {
+                isEnablePos = true;
+                break;
+            }
+        }
+
+        if (isEnablePos == false)
+        {
+            return false;
+        }
+        // 여기서 내가 사용가능한 위치에 있는지 확인
+        foreach (var item in skillInfo.targetPos)
+        {
+            if (BattleManager.Instance.EnemyCharacters.IndexOf(baseEntity) == item)
+            {
+                return true;
+            }
+        }// 여기서 적이 사용가능한 위치에있는지확인
+
+        return false;
     }
 
     public void UseSkill(BaseEntity targetEntity)
