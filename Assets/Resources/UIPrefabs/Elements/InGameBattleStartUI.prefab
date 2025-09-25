@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4204747360674102609}
   - component: {fileID: 5752993521893249558}
   - component: {fileID: 8022935589518442350}
+  - component: {fileID: 8073383252825879560}
+  - component: {fileID: 8846318323444028417}
   m_Layer: 5
   m_Name: InGameBattleStartUI
   m_TagString: Untagged
@@ -90,6 +92,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeTimer: 2
+--- !u!225 &8073383252825879560
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594148458252451759}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &8846318323444028417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594148458252451759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c8d3bfc05c32446a4da3e242ed48a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
 --- !u!1 &5421090153611558854
 GameObject:
   m_ObjectHideFlags: 0

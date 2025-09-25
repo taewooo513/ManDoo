@@ -14,8 +14,7 @@ public class SelectEntityButton : MonoBehaviour
         button = GetComponent<Button>();
         button.onClick.AddListener(OnClickButton);
         inGameUIManager = UIManager.Instance.OpenUI<InGameUIManager>();
-        inGameUIManager.AddSkillButtonAction(SwapButtonAction);
-        
+        inGameUIManager.AddSkillButtonAction(ActiveSkillButtonAction);
     }
 
     public virtual void OnClickButton()
@@ -24,9 +23,17 @@ public class SelectEntityButton : MonoBehaviour
 
     protected virtual void OnClickActionButton(Skill skill)
     {
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(OnClickButton);
     }
 
-    public virtual void SwapButtonAction(Skill skill)
+    public virtual void ActiveSkillButtonAction(Skill skill)
+    {
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() => OnClickActionButton(skill));
+    }
+    
+    public virtual void DeActiveSkillButtonAction(Skill skill)
     {
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => OnClickActionButton(skill));

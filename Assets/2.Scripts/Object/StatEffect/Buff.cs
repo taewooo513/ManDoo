@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 public class TotalBuffStat
 {
@@ -23,7 +26,7 @@ public class TotalBuffStat
 public class Buff
 {
     public List<BuffInfo> _entityCurrentStatus = new();
-    private SetTotalBuffStat _setTotalEffectStat;
+    public SetTotalBuffStat _setTotalEffectStat;
     private float _totalWeight = 0f;
     public TotalBuffStat totalStat;
 
@@ -110,7 +113,6 @@ public class Buff
     {
         foreach (var item in buffTypes)
         {
-            Debug.Log("vsdnk");
             for (int i = 0; i < _entityCurrentStatus.Count; i++)
             {
                 if (_entityCurrentStatus[i].buffType == item)
@@ -118,7 +120,6 @@ public class Buff
                     _entityCurrentStatus[i].duration--;
                     if (_entityCurrentStatus[i].duration <= 0)
                     {
-                        Debug.Log(_entityCurrentStatus[i].duration);
                         _entityCurrentStatus.Remove(_entityCurrentStatus[i]);
                         break;
                     }
@@ -149,6 +150,23 @@ public class Buff
     public void AddStatus(BuffInfo status) //상태이상 추가
     {
         _entityCurrentStatus.Add(status); //상태 추가
+        _entityCurrentStatus.Sort((e, e1) =>
+        {
+            if (e1 == null)
+            {
+                return 0;
+            }
+            if (e.buffType == null)
+            {
+                return 1;
+            }
+            if (e.deBuffType == null)
+            {
+                return -1;
+            }
+            return 0;
+        });
+
     }
 
     public void RemoveStatus(BuffInfo status) //상태이상 제거

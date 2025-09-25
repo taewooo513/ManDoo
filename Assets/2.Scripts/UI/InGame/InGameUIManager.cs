@@ -33,6 +33,12 @@ public class InGameUIManager : UIBase
         UIManager.Instance.OpenUI<InGameInventoryUI>();
     }
 
+    public void CloseInventoryUI()
+    {
+        UIManager.Instance.OpenUI<InGameEnemyUI>();
+        UIManager.Instance.CloseUI<InGameInventoryUI>();
+    }
+
     public void DeselectSkill()
     {
         isSkillSelected = false;
