@@ -8,7 +8,7 @@ using System.Linq;
 public class InGameInventoryUI : UIBase //inventorymanager 추가.
 {
     // 테스트 모드 활성화 여부를 설정하는 플래그
-    public bool isTestMode = true;
+    public bool isTestMode = false;
     [SerializeField] private Sprite testIcon;
     [SerializeField] private int testIconCount = 5;
     public Canvas baseCanvas { get; private set; }
@@ -45,6 +45,12 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
             slot.Init(i, this);
             if (slot.Icon != null)
                 slot.Icon.Setup(i, this, baseCanvas);
+
+            if (!isTestMode)
+            {
+                slot.SetIcon(null);
+                slot.SetInteractableIcon(false);
+            }
         }
         // 슬롯 UI 새로고침
         RefreshSlots();

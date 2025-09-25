@@ -46,6 +46,12 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
     {
         SlotIndex = slotIndex;
         owner = inGameInventoryUI;
+
+        if (!owner.isTestMode)
+        {
+            SetIcon(null);
+            SetInteractableIcon(false);
+        }
     }
     
     /// <summary>
