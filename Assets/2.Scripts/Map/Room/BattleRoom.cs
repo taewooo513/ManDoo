@@ -14,12 +14,17 @@ public class BattleRoom : BaseRoom
     public override void EnterRoom(int id) //방 입장 시 todo : 방 호출하는 부분에서 id 랜덤돌려서 넣어줘야 됨
     {
         base.EnterRoom(id); //플레이어 소환(위치 선정)
-        var battleData = DataManager.Instance.Battle.GetBattleData(id); //배틀데이터 dt에서 배틀룸 id 받아오기
+        var battleData = DataManager.Instance.Battle.GetBattleData(id); //배틀데이터 데이터테이블에 접근
         spawn.EnemySpawn(battleData.battleEnemies); //적 소환
     }
 
-    public override void ExitRoom()
+    public override void ExitRoom(int id)
     {
-        //전투 보상
+        base.ExitRoom(id);
+        InventoryManager.Instance.AddItem(1001, randomGoldDropCount); //랜덤 개수대로 골드 아이템 추가
+        if (percentage < dropProb) //드랍 확률대로 아이템 떨어짐 (ex : 0.25% 확률로 아이템 떨어짐)
+        {
+             //InventoryManager.Instance.AddItem(dropItem, 1); //원하는 곳에다가 아이템 추가 todo : 예시 코드라서 다른곳의 add함수 필요함
+        }
     }
 }
