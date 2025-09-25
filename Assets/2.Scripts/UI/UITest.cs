@@ -16,8 +16,8 @@ public class UITest : MonoBehaviour
     public void Update()
     {
         if(Input.GetKeyDown(KeyCode.G))
-            UIManager.Instance.OpenUI<InGamePMCUI>();
+            UIManager.Instance.OpenUI<InGameVictoryUI>();
         if(Input.GetKeyDown(KeyCode.H))
-            UIManager.Instance.CloseUI<InGamePMCUI>();
+            UIManager.Instance.CloseUI<InGameVictoryUI>();
     }
 }
