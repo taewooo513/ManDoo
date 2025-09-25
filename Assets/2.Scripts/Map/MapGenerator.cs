@@ -77,7 +77,7 @@ public class MapGenerator : MonoBehaviour
                     ConnectRoom(parentRoom, BattleRoom, direction);
                     break;
                 case RoomType.Item:
-                    var itemRoom = new ItemRoom();
+                    var itemRoom = new TreasureRoom();
                     //_itemRoomCount--;
                     recentlyListedRooms.Add(itemRoom);
                     rooms.Add(itemRoom);
@@ -119,7 +119,7 @@ public class MapGenerator : MonoBehaviour
                         ConnectRoom(parentRoom, BattleRoom, direction);
                         break;
                     case RoomType.Item:
-                        var itemRoom = new ItemRoom();
+                        var itemRoom = new TreasureRoom();
                         //_itemRoomCount--;
                         recentlyListedRooms.Add(itemRoom);
                         rooms.Add(itemRoom);
