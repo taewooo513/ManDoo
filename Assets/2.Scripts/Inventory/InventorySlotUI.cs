@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 /// <summary>
@@ -9,10 +8,29 @@ using UnityEngine.UI;
 public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler, IDropHandler
 {
 
+    /// <summary>
+    /// 현재 슬롯의 인덱스 번호
+    /// </summary>
     public int SlotIndex { get; private set; }
+
+    /// <summary>
+    /// 슬롯에 표시되는 아이템 아이콘 UI
+    /// </summary>
     public InventoryItemUI Icon { get; private set; }
+
+    /// <summary>
+    /// 이 슬롯이 속한 인벤토리 UI 인스턴스
+    /// </summary>
     private InGameInventoryUI owner;
+    
+    /// <summary>
+    /// 슬롯의 배경 이미지 컴포넌트
+    /// </summary>
     [SerializeField] private Image slotBackground;
+
+    /// <summary>
+    /// 슬롯에 표시되는 아이콘 이미지 컴포넌트
+    /// </summary>
     [SerializeField] private Image slotIcon;
     
     private void Awake()
@@ -41,8 +59,6 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
     /// <summary>
     /// 슬롯 초기화
     /// </summary>
-    /// <param name="slotIndex">슬롯 인덱스</param>
-    /// <param name="inGameInventoryUI">소유 인벤토리 UI</param>
     public void Init(int slotIndex, InGameInventoryUI inGameInventoryUI)
     {
         SlotIndex = slotIndex;
@@ -55,33 +71,26 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         }
     }
     
-
     /// <summary>
-    /// 슬롯 클릭 시 호출
+    /// 슬롯 클릭 이벤트 처리
     /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {
         owner?.OnSlotClicked(SlotIndex);
     }
-
-    /// <summary>
-    /// 마우스가 슬롯에 들어올 때 호출 
-    /// </summary>
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         // TODO: 슬롯에 하이라이트 켜기 (Optional)
     }
     
-    /// <summary>
-    /// 마우스가 슬롯에서 나갈 때 호출
-    /// </summary>
     public void OnPointerExit(PointerEventData eventData)
     {
         // TODO: 슬롯에 하이라이트 끄기 (Optional)
     }
-
+    
     /// <summary>
-    /// 아이템 드롭 시 호출되어 아이템 이동을 처리
+    /// 아이템 드롭 이벤트 처리
     /// </summary>
     public void OnDrop(PointerEventData eventData)
     {
@@ -116,14 +125,15 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         // 인벤토리에서 아이템 이동 처리
         owner.MoveItem(from, to);
     }
-
+    
+    /// <summary>
+    /// 현재 슬롯의 아이콘 스프라이트 반환
+    /// </summary>
+    public Sprite GetIconSprite() => slotIcon ? slotIcon.sprite : null;
+    
     /// <summary>
     /// 슬롯의 아이콘 이미지 설정
     /// </summary>
-    /// <param name="icon">표시할 아이콘 스프라이트</param>
-    
-    public Sprite GetIconSprite() => slotIcon ? slotIcon.sprite : null;
-    
     public void SetIcon(Sprite icon)
     {
         if (slotIcon == null) return;
@@ -132,6 +142,9 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         slotIcon.enabled = hasIcon;
     }
 
+    /// <summary>
+    /// 슬롯 아이콘의 상호작용 가능 여부 설정
+    /// </summary>
     public void SetInteractableIcon(bool interactable)
     {
         if (slotIcon == null) return;
@@ -175,11 +188,10 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
             cg.alpha = 1f;
         }
     }
-
+    
     /// <summary>
-    /// RectTransform 컴포넌트 초기화
+    /// RectTransform 컴포넌트를 기본값으로 초기화
     /// </summary>
-    /// <param name="rt">초기화할 RectTransform</param>
     public void ResetRectTransform(RectTransform rt)
     {
         if (!rt) return;

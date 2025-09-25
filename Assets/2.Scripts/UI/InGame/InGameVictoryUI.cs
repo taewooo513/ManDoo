@@ -8,20 +8,16 @@ public class InGameVictoryUI : UIBase
 {
     public Button yesButton;
     public Button noButton;
+    
     private Dictionary<int, int> rewardItems = new (); // key: id, value: count
     private List<RectTransform> contents = new();
     private ScrollRect sr;
+    private RectTransform contentRt;
 
     private void Awake()
     {
         if (sr == null)
             sr = GetComponent<ScrollRect>();
-        var rewards = sr.GetComponentsInChildren<RectTransform>(true);
-
-        foreach (var reward in rewards)
-        {
-            //if (reward)
-        }
     }
     public void Start()
     {
@@ -55,11 +51,8 @@ public class InGameVictoryUI : UIBase
     
     public void NoButtonOnClick() => UIManager.Instance.CloseUI<InGameVictoryUI>();
 
-    private void UpdateContents()
+    private void UpdateContents() 
     {
-        // foreach (var item in rewardItemObjects)
-        // {
-        //     if ()
-        // }
+        
     }
 }
