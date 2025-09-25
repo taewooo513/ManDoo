@@ -63,7 +63,8 @@ public enum DeBuffType
     EvasionDown,
     CriticalDown,
     AllStatDown,
-    Damaged
+    Damaged,
+    Stun
 }
 
 [UGS(typeof(ItemType))]

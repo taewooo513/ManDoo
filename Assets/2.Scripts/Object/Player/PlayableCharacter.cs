@@ -8,10 +8,10 @@ public class PlayableCharacter : BaseEntity
 {
     [SerializeField] private int initID;
     private MercenaryData data;
-    public Weapon equipWeapon;
 
     private void Start()
     {
+        Init(initID);
     }
 
     public override void Init(int id)
@@ -42,9 +42,14 @@ public class PlayableCharacter : BaseEntity
     {
         base.UseSkill(baseEntity);
     }
-    public override void StartTurn()
+    public override void StartTurn(bool hasExtraTrun)
     {
-        base.StartTurn();
+        base.StartTurn(hasExtraTurn);
+        if (entityInfo.IsStun())
+        {
+            EndTurn();
+            return;
+        }
         UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo, entityInfo.skills);
     }
     public override void EndTurn(bool hasExtraTurn = true)
@@ -82,22 +87,22 @@ public class PlayableCharacter : BaseEntity
             UnEquipWeapon();
             return;
         }
-        equipWeapon = weapon;
+        entityInfo.equipWeapon = weapon;
         entityInfo.skills[3] = weapon.skill;
     }
     private void UnEquipWeapon()
     {
-        equipWeapon = null;
+        entityInfo.equipWeapon = null;
         entityInfo.skills[3] = null;
     }
     private bool IsEquipWeapon(Weapon weapon)
     {
-        if (equipWeapon == weapon)
+        if (entityInfo.equipWeapon == weapon)
         {
             return true;
         }
         return false;
     }
-    
+
     // TODO: 장착/획득 아이템 전분 인벤토리매니저에 넘겨주기.
 }

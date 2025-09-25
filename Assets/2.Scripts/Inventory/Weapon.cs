@@ -7,11 +7,11 @@ public class Weapon : MonoBehaviour
 {
     private int proficiencyLevel;
     private WeaponType weaponType;
-    private int attackDmg;
-    private int defense;
-    private int speed;
-    private float evasion;
-    private float critical;
+    public int attackDmg;
+    public int defense;
+    public int speed;
+    public float evasion;
+    public float critical;
     private string gameObjectPath;
     private string iconPath;
     private float _weaponExp;

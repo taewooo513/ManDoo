@@ -16,7 +16,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public List<BaseEntity> _enemyCharacters;
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
-    
+
     public Weapon weapon; //TODO : 이거 연결해야됨. 플레이어블 안에 equipWeapon... 등등
 
     private BaseEntity nowTurnEntity;
@@ -65,7 +65,7 @@ public class BattleManager : Singleton<BattleManager>
             item.BattleStarted();
         }
         UIManager.Instance.OpenUI<InGameBattleStartUI>(); //전투 시작 UI 출력
-        Turn();
+        Turn(true);
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -88,7 +88,7 @@ public class BattleManager : Singleton<BattleManager>
             }
         }
     }
-    private void Turn() //한 턴
+    private void Turn(bool hasExtraTurn) //한 턴
     {
         if (_turnQueue.Count == 0)
         {
@@ -96,7 +96,7 @@ public class BattleManager : Singleton<BattleManager>
         }
 
         nowTurnEntity = _turnQueue.Peek();
-        nowTurnEntity.StartTurn();
+        nowTurnEntity.StartTurn(hasExtraTurn);
     }
 
     public void EndTurn(bool hasExtraTurn = true)
@@ -105,7 +105,6 @@ public class BattleManager : Singleton<BattleManager>
         {
             Lose();
         }
-
         else if (_enemyCharacters.Count == 0)
         {
             Win();
@@ -121,7 +120,6 @@ public class BattleManager : Singleton<BattleManager>
                     {
                         Lose();
                     }
-
                     else if (_enemyCharacters.Count == 0)
                     {
                         Win();
@@ -130,7 +128,7 @@ public class BattleManager : Singleton<BattleManager>
             }
 
             _turnQueue.Dequeue();
-            Turn();
+            Turn(hasExtraTurn);
         }
     }
     //private void BattleRun()
@@ -147,7 +145,7 @@ public class BattleManager : Singleton<BattleManager>
         //승리 UI 출력
         foreach (var item in _playableCharacters) //todo : 숙련도 이렇게 하는거 맞나?
         {
-            nowSeletePlayableCharacter.equipWeapon.AddWeaponExp(20); //nowSeletePlayableCharacter <<이거 일단 있길래 썼는데 연결 되어있는 건가? 
+            nowSeletePlayableCharacter.entityInfo.equipWeapon.AddWeaponExp(20); //nowSeletePlayableCharacter <<이거 일단 있길래 썼는데 연결 되어있는 건가? 
         }
 
         UIManager.Instance.OpenUI<InGameVictoryUI>();
@@ -468,7 +466,7 @@ public class BattleManager : Singleton<BattleManager>
                 indexB = i;
             }
         }
-        
+
         if (indexA == -1 || indexB == -1) return;
         _playableCharacters[indexA] = playableCharacterB;
         _playableCharacters[indexB] = playableCharacterA;
@@ -520,12 +518,12 @@ public class BattleManager : Singleton<BattleManager>
                     break;
                 }
             }
-            
+
             if (index == -1 || index == desiredPosition || desiredPosition >= _enemyCharacters.Count)
             {
                 return;
             }
-            
+
             if (index + 1 == desiredPosition || index - 1 == desiredPosition)
             {
                 (_enemyCharacters[index], _enemyCharacters[desiredPosition]) =
@@ -610,5 +608,5 @@ public class BattleManager : Singleton<BattleManager>
             _turnQueue.Enqueue(item);
         }
     }
-    
+
 }

@@ -22,6 +22,7 @@ public class EntityInfo
     private readonly float _standardWeight = 0.25f;
     public bool canMove = true;
     public int contractGold;
+    public Weapon equipWeapon;
 
     public EntityInfo(string name, int maxHp, int attackDamage, int defense, int speed, float evasion, float critical)
     {
@@ -103,12 +104,17 @@ public class EntityInfo
     {
         statEffect.AddStatus(statEffectInfo);
     }
+
+    public bool IsStun()
+    {
+        return statEffect.IsStun();
+    }
 }
 
 public class BaseEntity : MonoBehaviour
 {
     [SerializeField] public EntityInfo entityInfo;
-
+    protected bool isNowExtraTurn = false;
     public EntityInfo GetEntityInfo
     {
         get { return entityInfo; }
@@ -178,9 +184,9 @@ public class BaseEntity : MonoBehaviour
         entityInfo.Heal(value);
         hpbarUI.UpdateUI();
     }
-    public virtual void StartTurn()
+    public virtual void StartTurn(bool hasExtraTrun)
     {
-
+        isNowExtraTurn = hasExtraTrun;
     }
     public virtual void EndTurn(bool hasExtraTurn = true)
     {
