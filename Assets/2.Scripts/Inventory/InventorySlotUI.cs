@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 /// <summary>
@@ -54,10 +55,14 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         }
     }
     
+
     /// <summary>
     /// 슬롯 클릭 시 호출
     /// </summary>
-    public void OnPointerClick(PointerEventData eventData) => owner?.OnSlotClicked(SlotIndex);
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        owner?.OnSlotClicked(SlotIndex);
+    }
 
     /// <summary>
     /// 마우스가 슬롯에 들어올 때 호출 

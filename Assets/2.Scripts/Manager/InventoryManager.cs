@@ -25,9 +25,9 @@ public class InventoryManager : Singleton<InventoryManager>
         for (int i = 0; i < slotItemIds.Length; i++)
             slotItemIds[i] = -1;
     }
-    public void AddItem(int id, int amount) // 아이템 저장
+    public bool TryAddItem(int id, int amount) // 아이템 저장
     {
-        if (amount <= 0) return; // 예외처리
+        if (amount <= 0) return false; // 예외처리
         
         var tempItem = ItemManager.Instance.CreateItem(id); // 새 아이템 임시로 생성
         int maxStack = Mathf.Max(1, tempItem.ItemInfo.maxCount); // id 로 조회한 아이템의 최대 한도수를 저장
@@ -56,7 +56,11 @@ public class InventoryManager : Singleton<InventoryManager>
         }
 
         if (amount > 0)
+        {
             Debug.Log($"저장 한도 초과! 아이템 id: {id}. 부족한 수량: {amount}.");
+            return false;
+        }
+            
         
         // itemCounts.TryGetValue(id, out int currentCount); // 현재 저장되어있는 id 를 가진 아이템의 개수를 반환
         // int updatedCount = Mathf.Min(currentCount + amount, maxStack); // 현재 아이템 개수랑 최대한도를 비교해서 업데이트
@@ -69,6 +73,7 @@ public class InventoryManager : Singleton<InventoryManager>
         //
         // if (!IsShownInSlots(id))
         //     AssignToEmptySlot(id);
+        return true;
     }
 
     public bool RemoveItem(int id, int amount = 1)
@@ -166,33 +171,62 @@ public class InventoryManager : Singleton<InventoryManager>
 
         var prevSlot = equippedItems[(int)to];
         if (prevSlot != null)
-            AddItem(prevSlot.ItemId, 1);
+            TryAddItem(prevSlot.ItemId, 1);
 
         equippedItems[(int)to] = item;
         OnEquipChanged?.Invoke(to, item);
         return true;
     }
 
-    private bool UseItemFromSlot(int slotIndex, int amount)
+    public bool UseItemFromSlot(int slotIndex, int amount)
     {
         if (!IsValidSlot(slotIndex) || amount <= 0) return false;
         if (slotItemIds[slotIndex] == -1 || slotStackCounts[slotIndex] < amount) return false;
 
-        slotStackCounts[slotIndex] -= amount;
-        if (slotStackCounts[slotIndex] <= 0)
+        var tempItem = GetItemInSlot(slotIndex);
+        var type = tempItem.ItemInfo.itemType;
+
+        switch (type)
         {
-            slotItemIds[slotIndex] = -1;
-            slotStackCounts[slotIndex] = 0;
+            case ItemType.Gold: // && StoreManager.Instance.IsInStore();
+                slotStackCounts[slotIndex] -= amount;
+                if (slotStackCounts[slotIndex] <= 0)
+                {
+                    slotItemIds[slotIndex] = -1;
+                    slotStackCounts[slotIndex] = 0;
+                }
+                UpdateSlot(slotIndex);
+                break;
+            
+            case ItemType.BattleSupport: // && BattleManager.Instance.IsBattleInProgress()
+                slotStackCounts[slotIndex] -= amount;
+                if (slotStackCounts[slotIndex] <= 0)
+                {
+                    slotItemIds[slotIndex] = -1;
+                    slotStackCounts[slotIndex] = 0;
+                }
+                UpdateSlot(slotIndex);
+                break;
+
+            case ItemType.ExplorerSupport: // && !BattleManager.Instance.IsBattleInProgress()
+                slotStackCounts[slotIndex] -= amount;
+                if (slotStackCounts[slotIndex] <= 0)
+                {
+                    slotItemIds[slotIndex] = -1;
+                    slotStackCounts[slotIndex] = 0;
+                }
+                UpdateSlot(slotIndex);
+                break;
         }
-        UpdateSlot(slotIndex);
         return true;
     }
+    
     public bool TryUnequipToInventory(EquipmentSlotType from) // 장비창에서 인벤창으로 옮기면서 장착해제
     {
         var equip = equippedItems[(int)from];
         if (equip == null) return false;
         
-        AddItem(equip.ItemId, 1);
+        TryAddItem(equip.ItemId, 1);
         equippedItems[(int)from] = null;
         OnEquipChanged?.Invoke(from, null);
         return true;

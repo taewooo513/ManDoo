@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// 게임 내 인벤토리 UI를 관리하는 클래스
@@ -13,6 +14,7 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
     [SerializeField] private int testIconCount = 5;
     public Canvas baseCanvas { get; private set; }
     [SerializeField] private InventorySlotUI[] inventorySlots;
+    
     private void Awake()
     {
         // 부모 객체로부터 Canvas 컴포넌트 가져오기
@@ -113,7 +115,6 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
         if (item == null) return;
         
         // TODO: 해제/사용 구현
-        
         RefreshSlots();
     }
 }
