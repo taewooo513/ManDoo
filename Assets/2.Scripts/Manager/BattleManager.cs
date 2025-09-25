@@ -20,6 +20,7 @@ public class BattleManager : Singleton<BattleManager>
     public Weapon weapon; //TODO : 이거 연결해야됨. 플레이어블 안에 equipWeapon... 등등
 
     private BaseEntity nowTurnEntity;
+    public BaseEntity NowTurnEntity { get { return nowTurnEntity; } }
     private PlayableCharacter nowSeletePlayableCharacter;
 
     private Skill nowSkill;
@@ -142,7 +143,7 @@ public class BattleManager : Singleton<BattleManager>
 
     private void Win()
     {
-        Debug.Log("승리!");
+        Debug.Log("승리! 버닝썬");
         //승리 UI 출력
         foreach (var item in _playableCharacters) //todo : 숙련도 이렇게 하는거 맞나?
         {
