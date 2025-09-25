@@ -25,7 +25,7 @@ public class ItemInfo
     }
 }
 //[System.Serializable]
-public class Item
+public class Item // Consumable Items
 {
     public ItemInfo ItemInfo { get; private set; }
     public int ItemId { get; private set; }
