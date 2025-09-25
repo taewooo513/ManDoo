@@ -1,0 +1,1143 @@
+fileFormatVersion: 2
+guid: f7302fb9d191d5c4a90f64997df8882e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cat_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc94be1c853b98c4fb863f8bfb14b609
+      internalID: 343893919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cat_02
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc42697efedee746983da49efa274ea
+      internalID: 333983042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cat_03
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f27235615350d4cbec89a5a9db18ed
+      internalID: 232934464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cat_04
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b540190b2b18e6d47b5d386c0988fa2d
+      internalID: -1786034570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cat_05
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d013cf5bf2115048af0e5d49e2f2a3c
+      internalID: -883352213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hat_cat_01
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99ce8fa15d6f52b46b4ace780edf555f
+      internalID: 330317646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hat_cat_02
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d7e5816479ca64b8101381dcfd1e99
+      internalID: 711945659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hat_cat_03
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67582d10182a84c408e207559b5ffccc
+      internalID: 2031699182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hat_cat_04
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77df340b0bfa074ea126ac9d5194390
+      internalID: -1153735197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hat_cat_05
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 512
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b72b66839917a499f38af827804ec6
+      internalID: -377310259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e2c719b3ca40f64c89aa8da37246fe1
+      internalID: -659620083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_02
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1094112ef01e8c347b9dc36f833a8011
+      internalID: 830959089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_03
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f45071e13aab2644a84eb94f1bcd77d7
+      internalID: 1422888851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_04
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b6f7b5ae429bf643a4c211ab9fea784
+      internalID: 2134079367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dog_05
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06cbc87a960696c448c7f2dd0c67ece4
+      internalID: 525257597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helmet_dog_01
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaedf0d0dad406242a8850b4764ceab5
+      internalID: -494121826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helmet_dog_02
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecaeadd652b23df499b2ab2a06f83ece
+      internalID: 1638224694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helmet_dog_03
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04398f0224c28704183c2463102e9e30
+      internalID: 195766366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helmet_dog_04
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7533836b49ff356448986a8eb0b80a3c
+      internalID: 986220672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: helmet_dog_05
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68532aaf5616b9e409cc348f0a325dd4
+      internalID: -699745901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc01_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3399a3b0cca8b4b43a7e66df835453eb
+      internalID: -91961804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc01_02
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 756c9cd1f77deb74b8bbeb3b979283d9
+      internalID: -1209496774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc01_03
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d103a77082fbae3438721543340c10fd
+      internalID: -1145147067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc01_04
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f92ca24083699b641ad2084257396c34
+      internalID: 534175043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc01_05
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 671a58b928b913043afd797308e98121
+      internalID: 609112867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc02_01
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1012689a7b4ef3d469e7861144768092
+      internalID: -945366192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc02_02
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a7a2f03f70d09249982f11288c44409
+      internalID: 1687224479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc02_03
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c2a0b1bc4b8be47986bcf689864dd5
+      internalID: 1810145450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc02_04
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0594054fc308f0740806e4bb1e81dde4
+      internalID: -162707347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc02_05
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdd3c10d16e6cc840b68e09edc7176f9
+      internalID: -1947242093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc03_01
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90bb30eebddddfc4e97471337d5518fe
+      internalID: 556476671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc03_02
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 837b3a402498e8e408b7460bc1187ba3
+      internalID: 1472276790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc03_03
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bbe41cccab55384fb08fd2d8a0c1393
+      internalID: 2119843688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc03_04
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b94cd4776749ab0449cf71b0a0ec9147
+      internalID: 171816583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc03_05
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3346888a6225340b2ae1487c798d68
+      internalID: 509383156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc04_01
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b145cb7e8960dd46ba14d103bc85a29
+      internalID: 2058048937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc04_02
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c9edd2e6fc1fb24996be9f46bd0102a
+      internalID: 912206428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc04_03
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 237d0b345c3df94419e51a79032e5074
+      internalID: -886602534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc04_04
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57dcf7db63132714f931cc6b56652eae
+      internalID: -1174540079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pmc04_05
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d367d456d3c63c34fb21629e436f241b
+      internalID: 585584219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GandalfHardcore characters sheet1_0: 1256310592
+      GandalfHardcore characters sheet1_1: 1454375541
+      GandalfHardcore characters sheet1_10: -1528530311
+      GandalfHardcore characters sheet1_100: -1360967348
+      GandalfHardcore characters sheet1_101: -1977867088
+      GandalfHardcore characters sheet1_102: -274450085
+      GandalfHardcore characters sheet1_103: -1724072421
+      GandalfHardcore characters sheet1_104: -1466219306
+      GandalfHardcore characters sheet1_105: 350368228
+      GandalfHardcore characters sheet1_106: -1160057685
+      GandalfHardcore characters sheet1_107: -869173512
+      GandalfHardcore characters sheet1_108: -1405162897
+      GandalfHardcore characters sheet1_109: -1400386325
+      GandalfHardcore characters sheet1_11: -1659690778
+      GandalfHardcore characters sheet1_110: 1282008469
+      GandalfHardcore characters sheet1_111: 2092995370
+      GandalfHardcore characters sheet1_112: 2014618287
+      GandalfHardcore characters sheet1_113: -155771925
+      GandalfHardcore characters sheet1_114: 1980575356
+      GandalfHardcore characters sheet1_115: 982168419
+      GandalfHardcore characters sheet1_116: -758834019
+      GandalfHardcore characters sheet1_117: 2119443130
+      GandalfHardcore characters sheet1_118: 1810548516
+      GandalfHardcore characters sheet1_119: 1793415538
+      GandalfHardcore characters sheet1_12: -926951061
+      GandalfHardcore characters sheet1_120: -1150169253
+      GandalfHardcore characters sheet1_121: 41036962
+      GandalfHardcore characters sheet1_122: -1049174085
+      GandalfHardcore characters sheet1_123: 1204246478
+      GandalfHardcore characters sheet1_124: 674123512
+      GandalfHardcore characters sheet1_125: -1363402003
+      GandalfHardcore characters sheet1_126: 139375049
+      GandalfHardcore characters sheet1_127: 666913612
+      GandalfHardcore characters sheet1_128: -1503114240
+      GandalfHardcore characters sheet1_129: 1410701804
+      GandalfHardcore characters sheet1_13: 671881231
+      GandalfHardcore characters sheet1_130: 1881832556
+      GandalfHardcore characters sheet1_131: 1871796432
+      GandalfHardcore characters sheet1_132: -1302389790
+      GandalfHardcore characters sheet1_133: 993396717
+      GandalfHardcore characters sheet1_134: -980867224
+      GandalfHardcore characters sheet1_135: -1209121181
+      GandalfHardcore characters sheet1_136: -1666591724
+      GandalfHardcore characters sheet1_137: -906842176
+      GandalfHardcore characters sheet1_138: 969706157
+      GandalfHardcore characters sheet1_139: -126925804
+      GandalfHardcore characters sheet1_14: -123149074
+      GandalfHardcore characters sheet1_140: -2099370084
+      GandalfHardcore characters sheet1_141: 1681757400
+      GandalfHardcore characters sheet1_142: -1783183056
+      GandalfHardcore characters sheet1_143: -1894235506
+      GandalfHardcore characters sheet1_144: -254396644
+      GandalfHardcore characters sheet1_145: -1751064579
+      GandalfHardcore characters sheet1_146: 945795624
+      GandalfHardcore characters sheet1_147: -1516316729
+      GandalfHardcore characters sheet1_148: 1264888000
+      GandalfHardcore characters sheet1_149: -217111028
+      GandalfHardcore characters sheet1_15: 446003749
+      GandalfHardcore characters sheet1_16: -1031652306
+      GandalfHardcore characters sheet1_17: -1416140654
+      GandalfHardcore characters sheet1_18: 1112400412
+      GandalfHardcore characters sheet1_19: 248847431
+      GandalfHardcore characters sheet1_2: -128554450
+      GandalfHardcore characters sheet1_20: -291587897
+      GandalfHardcore characters sheet1_21: -1664642
+      GandalfHardcore characters sheet1_22: -1973478086
+      GandalfHardcore characters sheet1_23: 292352147
+      GandalfHardcore characters sheet1_24: -1033208382
+      GandalfHardcore characters sheet1_25: 1621228186
+      GandalfHardcore characters sheet1_26: -941731862
+      GandalfHardcore characters sheet1_27: 1035651279
+      GandalfHardcore characters sheet1_28: 2058624636
+      GandalfHardcore characters sheet1_29: -28286973
+      GandalfHardcore characters sheet1_3: -1901883161
+      GandalfHardcore characters sheet1_30: -1023899404
+      GandalfHardcore characters sheet1_31: 1117563442
+      GandalfHardcore characters sheet1_32: -2020747603
+      GandalfHardcore characters sheet1_33: 830227641
+      GandalfHardcore characters sheet1_34: 772926692
+      GandalfHardcore characters sheet1_35: 921172241
+      GandalfHardcore characters sheet1_36: 790304009
+      GandalfHardcore characters sheet1_37: -1544055060
+      GandalfHardcore characters sheet1_38: 2009435398
+      GandalfHardcore characters sheet1_39: -1387044486
+      GandalfHardcore characters sheet1_4: 687989699
+      GandalfHardcore characters sheet1_40: -1507130366
+      GandalfHardcore characters sheet1_41: 475397873
+      GandalfHardcore characters sheet1_42: -285945149
+      GandalfHardcore characters sheet1_43: -212251019
+      GandalfHardcore characters sheet1_44: -42798181
+      GandalfHardcore characters sheet1_45: -1500102426
+      GandalfHardcore characters sheet1_46: 1067585225
+      GandalfHardcore characters sheet1_47: 607903332
+      GandalfHardcore characters sheet1_48: 1191078160
+      GandalfHardcore characters sheet1_49: -298474216
+      GandalfHardcore characters sheet1_5: -763180992
+      GandalfHardcore characters sheet1_50: 469168209
+      GandalfHardcore characters sheet1_51: 655803392
+      GandalfHardcore characters sheet1_52: -1368071872
+      GandalfHardcore characters sheet1_53: -39211339
+      GandalfHardcore characters sheet1_54: 1052758819
+      GandalfHardcore characters sheet1_55: 1630160636
+      GandalfHardcore characters sheet1_56: -1214203862
+      GandalfHardcore characters sheet1_57: -246034947
+      GandalfHardcore characters sheet1_58: -1132319562
+      GandalfHardcore characters sheet1_59: -741280122
+      GandalfHardcore characters sheet1_6: -1099640557
+      GandalfHardcore characters sheet1_7: -1928122497
+      GandalfHardcore characters sheet1_8: -960807527
+      GandalfHardcore characters sheet1_9: -1638128911
+      cat_01: 343893919
+      cat_02: 333983042
+      cat_03: 232934464
+      cat_04: -1786034570
+      cat_05: -883352213
+      dog_01: -659620083
+      dog_02: 830959089
+      dog_03: 1422888851
+      dog_04: 2134079367
+      dog_05: 525257597
+      hat_cat_01: 330317646
+      hat_cat_02: 711945659
+      hat_cat_03: 2031699182
+      hat_cat_04: -1153735197
+      hat_cat_05: -377310259
+      helmet_dog_01: -494121826
+      helmet_dog_02: 1638224694
+      helmet_dog_03: 195766366
+      helmet_dog_04: 986220672
+      helmet_dog_05: -699745901
+      pmc01_01: -91961804
+      pmc01_02: -1209496774
+      pmc01_03: -1145147067
+      pmc01_04: 534175043
+      pmc01_05: 609112867
+      pmc02_01: -945366192
+      pmc02_02: 1687224479
+      pmc02_03: 1810145450
+      pmc02_04: -162707347
+      pmc02_05: -1947242093
+      pmc03_01: 556476671
+      pmc03_02: 1472276790
+      pmc03_03: 2119843688
+      pmc03_04: 171816583
+      pmc03_05: 509383156
+      pmc04_01: 2058048937
+      pmc04_02: 912206428
+      pmc04_03: -886602534
+      pmc04_04: -1174540079
+      pmc04_05: 585584219
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

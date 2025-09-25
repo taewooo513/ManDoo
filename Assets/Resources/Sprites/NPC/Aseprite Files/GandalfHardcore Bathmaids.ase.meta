@@ -1,0 +1,759 @@
+fileFormatVersion: 2
+guid: 50683dae9eb2b254db8c36b97219eecc
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 32
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 638944250793179005
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: GandalfHardcore Bathmaids_Frame_0
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 101
+      y: 181
+      width: 17
+      height: 42
+    spriteID: c850576930223f149adc6f751d01eae6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 101, y: 181}
+  - name: GandalfHardcore Bathmaids_Frame_1
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 54
+      width: 17
+      height: 42
+    spriteID: 7c3cb4ee02ee1f7409091e4d54e97b73
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 54}
+  - name: GandalfHardcore Bathmaids_Frame_2
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 211
+      width: 17
+      height: 41
+    spriteID: bef40a1948908db42ad1be4b70e10b7f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 211}
+  - name: GandalfHardcore Bathmaids_Frame_3
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 154
+      width: 17
+      height: 41
+    spriteID: 7b7c55ac8e43caf4899c426b8602309a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 154}
+  - name: GandalfHardcore Bathmaids_Frame_4
+    originalName: 
+    pivot: {x: 0.5294118, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 104
+      width: 17
+      height: 42
+    spriteID: 47109f5961c1e3f4b90822b75c0447ab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 104}
+  - name: GandalfHardcore Bathmaids_Frame_5
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 101
+      y: 76
+      width: 30
+      height: 27
+    spriteID: 7700b3a1b1f2da64aa7780fcf6ed71ce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 101, y: 76}
+  - name: GandalfHardcore Bathmaids_Frame_6
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 101
+      y: 111
+      width: 30
+      height: 27
+    spriteID: 70c14801fda71d144b488011f26f7f96
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 101, y: 111}
+  - name: GandalfHardcore Bathmaids_Frame_7
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 101
+      y: 4
+      width: 30
+      height: 28
+    spriteID: 33e6f5be9fbb8b5429cfe3f6d07dd079
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 101, y: 4}
+  - name: GandalfHardcore Bathmaids_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 101
+      y: 40
+      width: 30
+      height: 28
+    spriteID: 904f8f38aec456a4a8c19d2a550556d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 101, y: 40}
+  - name: GandalfHardcore Bathmaids_Frame_9
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 101
+      y: 146
+      width: 30
+      height: 27
+    spriteID: edce726fc2f91064aa2b9dbb92a137b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 101, y: 146}
+  - name: GandalfHardcore Bathmaids_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 26
+      height: 44
+    spriteID: c81940557dd385e429327edcae6284cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: GandalfHardcore Bathmaids_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 56
+      width: 26
+      height: 44
+    spriteID: 1b0b400655d74ae4dbc2a087ae0e3e3b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 56}
+  - name: GandalfHardcore Bathmaids_Frame_12
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 160
+      width: 26
+      height: 43
+    spriteID: 375ccec1adaef9b45b43b604d1e2f9f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 160}
+  - name: GandalfHardcore Bathmaids_Frame_13
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 4
+      width: 26
+      height: 43
+    spriteID: 152b099dd9b0b5b489ad004421530d60
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 4}
+  - name: GandalfHardcore Bathmaids_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 108
+      width: 26
+      height: 44
+    spriteID: 57bd3f384a9070c43adeae826e925bae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 108}
+  - name: GandalfHardcore Bathmaids_Frame_15
+    originalName: 
+    pivot: {x: 0.45454547, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 55
+      width: 22
+      height: 43
+    spriteID: dd81149d3cf12ec42a91f1acc1892b77
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 55}
+  - name: GandalfHardcore Bathmaids_Frame_16
+    originalName: 
+    pivot: {x: 0.45454547, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 106
+      width: 22
+      height: 43
+    spriteID: 0cff47e1a10c1ea44a17041afe1fb153
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 106}
+  - name: GandalfHardcore Bathmaids_Frame_17
+    originalName: 
+    pivot: {x: 0.45454547, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 157
+      width: 22
+      height: 42
+    spriteID: e4145dee5e2da614990028fba5c95c5b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 157}
+  - name: GandalfHardcore Bathmaids_Frame_18
+    originalName: 
+    pivot: {x: 0.47619048, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 72
+      y: 4
+      width: 21
+      height: 42
+    spriteID: 7ca433574846829468deac4fccd246b8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 72, y: 4}
+  - name: GandalfHardcore Bathmaids_Frame_19
+    originalName: 
+    pivot: {x: 0.47619048, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 38
+      y: 207
+      width: 21
+      height: 43
+    spriteID: 738fbd88ad3b1274cae360e909cb7c65
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 38, y: 207}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -309445204
+    name: GandalfHardcore Bathmaids
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: GandalfHardcore Bathmaids_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 42
+      spriteId: c850576930223f149adc6f751d01eae6
+    - name: GandalfHardcore Bathmaids_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 42
+      spriteId: 7c3cb4ee02ee1f7409091e4d54e97b73
+    - name: GandalfHardcore Bathmaids_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 41
+      spriteId: bef40a1948908db42ad1be4b70e10b7f
+    - name: GandalfHardcore Bathmaids_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 41
+      spriteId: 7b7c55ac8e43caf4899c426b8602309a
+    - name: GandalfHardcore Bathmaids_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 23
+        y: 0
+        width: 17
+        height: 42
+      spriteId: 47109f5961c1e3f4b90822b75c0447ab
+    - name: GandalfHardcore Bathmaids_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 17
+        y: 0
+        width: 30
+        height: 27
+      spriteId: 7700b3a1b1f2da64aa7780fcf6ed71ce
+    - name: GandalfHardcore Bathmaids_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 17
+        y: 0
+        width: 30
+        height: 27
+      spriteId: 70c14801fda71d144b488011f26f7f96
+    - name: GandalfHardcore Bathmaids_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 17
+        y: 0
+        width: 30
+        height: 28
+      spriteId: 33e6f5be9fbb8b5429cfe3f6d07dd079
+    - name: GandalfHardcore Bathmaids_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 17
+        y: 0
+        width: 30
+        height: 28
+      spriteId: 904f8f38aec456a4a8c19d2a550556d9
+    - name: GandalfHardcore Bathmaids_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 17
+        y: 0
+        width: 30
+        height: 27
+      spriteId: edce726fc2f91064aa2b9dbb92a137b4
+    - name: GandalfHardcore Bathmaids_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 19
+        y: 0
+        width: 26
+        height: 44
+      spriteId: c81940557dd385e429327edcae6284cd
+    - name: GandalfHardcore Bathmaids_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 19
+        y: 0
+        width: 26
+        height: 44
+      spriteId: 1b0b400655d74ae4dbc2a087ae0e3e3b
+    - name: GandalfHardcore Bathmaids_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 19
+        y: 0
+        width: 26
+        height: 43
+      spriteId: 375ccec1adaef9b45b43b604d1e2f9f4
+    - name: GandalfHardcore Bathmaids_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 19
+        y: 0
+        width: 26
+        height: 43
+      spriteId: 152b099dd9b0b5b489ad004421530d60
+    - name: GandalfHardcore Bathmaids_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 19
+        y: 0
+        width: 26
+        height: 44
+      spriteId: 57bd3f384a9070c43adeae826e925bae
+    - name: GandalfHardcore Bathmaids_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 22
+        y: 0
+        width: 22
+        height: 43
+      spriteId: dd81149d3cf12ec42a91f1acc1892b77
+    - name: GandalfHardcore Bathmaids_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 22
+        y: 0
+        width: 22
+        height: 43
+      spriteId: 0cff47e1a10c1ea44a17041afe1fb153
+    - name: GandalfHardcore Bathmaids_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 22
+        y: 0
+        width: 22
+        height: 42
+      spriteId: e4145dee5e2da614990028fba5c95c5b
+    - name: GandalfHardcore Bathmaids_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 22
+        y: 0
+        width: 21
+        height: 42
+      spriteId: 7ca433574846829468deac4fccd246b8
+    - name: GandalfHardcore Bathmaids_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 22
+        y: 0
+        width: 21
+        height: 43
+      spriteId: 738fbd88ad3b1274cae360e909cb7c65
+    linkedCells: []
+    parentIndex: -1
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 64}
