@@ -14,6 +14,8 @@ public class DataManager : Singleton<DataManager>
     public WeaponDatas Weapon;
     public BattleDatas Battle;
     public ConsumableDatas Consumable;
+    //public ItemDatas Item;
+    public MapDatas Map;
     public void Initialize()
     {
         UnityGoogleSheet.LoadAllData();
@@ -24,5 +26,7 @@ public class DataManager : Singleton<DataManager>
         Weapon = new WeaponDatas();
         Battle = new BattleDatas();
         Consumable = new ConsumableDatas();
+        //Item = new ItemDatas();
+        Map = new MapDatas();
     }
 }
