@@ -17,5 +17,6 @@ public class Test : MonoBehaviour
         startRoom.EnterRoom(1001);
         
         //UIManager.Instance.OpenUI<InGameBattleStartUI>(); //ui 테스트
+        GameManager.Instance.StartBattle();
     }
 }
