@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DataTable;
 using UnityEngine;
 
 public class BaseRoom
@@ -9,6 +10,13 @@ public class BaseRoom
     public Dictionary<int, GameObject> playableCharacterDic; //int에 키값, 게임오브젝트에 대응하는 프리팹
     public string RoomLocation;//시작 지점으로부터의 방향을 뜻함
     public Spawn spawn;
+    public BattleData battleData; //배틀데이터 데이터테이블
+    protected int dropGoldCount;
+    protected int dropItem; //드랍하는 아이템id (골드x)
+    protected float dropProb; //아이템 드랍 확률 (ex : 0.25)
+    protected float goldRandomRatio; //0.9~1.1 사이 랜덤 난수 반환, 골드 떨어지는 랜덤 개수
+    protected int randomGoldDropCount; //실제로 떨어지는 금화 개수
+    protected float percentage;
     
     public virtual void EnterRoom(int id)
     {
@@ -31,8 +39,17 @@ public class BaseRoom
             RoomDirection.Right => "R"
         };
     }
-    public virtual void ExitRoom()
+    public virtual void ExitRoom(int id)
     {
+        //전투 보상
+        battleData = DataManager.Instance.Battle.GetBattleData(id); //배틀데이터 데이터테이블에 접근
+        dropGoldCount = battleData.dropGold; //골드 드랍 개수
+        dropItem = battleData.rewardId; //드랍하는 아이템id (골드x)
+        dropProb = battleData.dropProb; //아이템 드랍 확률 (ex : 0.25)
+        
+        goldRandomRatio = Random.Range(0.9f, 1.1f); //0.9~1.1 사이 랜덤 난수 반환, 골드 떨어지는 랜덤 개수
+        randomGoldDropCount = (int)(dropGoldCount * goldRandomRatio); //실제로 떨어지는 금화 개수
+        percentage = Random.Range(0f, 100f);
     }
     public Corridor MakeConnection(BaseRoom room, RoomDirection direction)
     {
