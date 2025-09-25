@@ -144,7 +144,7 @@ public class BattleManager : Singleton<BattleManager>
         //승리 UI 출력
         foreach (var item in _playableCharacters) //전투 승리 시 아군 전체에게 숙련도 20 지금
         {
-            ((PlayableCharacter) item).equipWeapon.AddWeaponExp(20); 
+            item.entityInfo.equipWeapon.AddWeaponExp(20);
         }
 
         UIManager.Instance.OpenUI<InGameVictoryUI>();
