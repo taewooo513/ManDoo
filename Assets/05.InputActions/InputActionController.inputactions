@@ -1,0 +1,104 @@
+{
+    "name": "InputActionController",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "0d81c2c4-6b44-44ea-914b-f84d9275bb0e",
+            "actions": [
+                {
+                    "name": "UseItem",
+                    "type": "Button",
+                    "id": "0564f731-fef7-4f76-96ef-d60b2e4c0777",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DropItem",
+                    "type": "Button",
+                    "id": "1fe9df36-bb9d-4114-bc5b-8fee525124cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d4d00db8-6900-47da-bd25-0415d0524799",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "e09f8c6c-7c6d-4e3f-9926-92c9e50735cd",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DropItem",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "62663b8b-14b2-4353-bf8e-1598f08b6bd0",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DropItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "2ef0c723-2347-418e-9e6b-8e78fed35a12",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DropItem",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Player",
+            "id": "0999624b-1114-4f4c-8306-58d7a12c593e",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "1a0d6787-654b-45cb-9b50-009e35bba2c4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "65c238de-ac11-4e70-ab1d-e85fdb452f5a",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

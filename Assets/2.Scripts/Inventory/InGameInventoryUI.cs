@@ -45,6 +45,12 @@ public class InGameInventoryUI : UIBase //inventorymanager 추가.
             slot.Init(i, this);
             if (slot.Icon != null)
                 slot.Icon.Setup(i, this, baseCanvas);
+
+            if (!isTestMode)
+            {
+                slot.SetIcon(null);
+                slot.SetInteractableIcon(false);
+            }
         }
         // 슬롯 UI 새로고침
         RefreshSlots();
