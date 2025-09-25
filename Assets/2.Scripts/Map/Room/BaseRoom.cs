@@ -17,6 +17,7 @@ public class BaseRoom
     protected float goldRandomRatio; //0.9~1.1 사이 랜덤 난수 반환, 골드 떨어지는 랜덤 개수
     protected int randomGoldDropCount; //실제로 떨어지는 금화 개수
     protected float percentage;
+    protected List<int> equipItemIds = new(); //플레이어 죽었을 때, 가지고 있던 장비 아이템 저장하는 리스트. 복사본을 가져야되니 new로 생성
     
     public virtual void EnterRoom(int id)
     {
@@ -51,6 +52,12 @@ public class BaseRoom
         randomGoldDropCount = (int)(dropGoldCount * goldRandomRatio); //실제로 떨어지는 금화 개수
         percentage = Random.Range(0f, 100f);
     }
+
+    public void PlayerDeadItem(List<int> id) //플레이어가 죽을 때 가지고 있던 아이템 리스트
+    {
+        equipItemIds = id;
+    }
+
     public Corridor MakeConnection(BaseRoom room, RoomDirection direction)
     {
         connectedRooms.Add(direction, room);
