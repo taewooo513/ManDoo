@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -47,6 +48,9 @@ public class BuffIconFactory
             case DeBuffType.Damaged:
                 path = "BurnIcon";
                 break;
+            case DeBuffType.Stun:
+                path = "Stun";
+                break;
         }
         return path;
     }
@@ -63,6 +67,15 @@ public class BuffIcon : MonoBehaviour
     }
     public void UpdateUI(BuffInfo buff)
     {
+        UnityEngine.Color color = image.color;
+        color.a = 1;
+        image.color = color;
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
+        }
+
         this.buff = buff;
         image.sprite = SpriteManager.Instance.FindSprite(Constants.BuffSpriteIcon + BuffIconFactory.GetBuffIconPath(buff));
 
@@ -70,7 +83,6 @@ public class BuffIcon : MonoBehaviour
         {
             if (coroutine == null)
             {
-                Debug.Log("start");
                 coroutine = StartCoroutine("BeforeEraseBuff");
             }
         }
@@ -78,17 +90,18 @@ public class BuffIcon : MonoBehaviour
     private void OnDisable()
     {
         if (coroutine != null)
+        {
             StopCoroutine(coroutine);
-        coroutine = null;
+            coroutine = null;
+        }
     }
 
     IEnumerator BeforeEraseBuff()
     {
         bool isFade = false;
-        Color color = image.color;
+        UnityEngine.Color color = image.color;
         while (true)
         {
-            Debug.Log("start");
             if (isFade)
             {
                 if (color.a <= 0.3f)
@@ -109,6 +122,5 @@ public class BuffIcon : MonoBehaviour
             image.color = color;
             yield return null;
         }
-
     }
 }

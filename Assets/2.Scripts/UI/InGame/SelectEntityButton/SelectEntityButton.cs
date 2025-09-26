@@ -8,7 +8,7 @@ public class SelectEntityButton : MonoBehaviour
 {
     protected Button button;
     protected InGamePlayerUI inGamePlayerUI;
-    private InGameUIManager inGameUIManager;
+    protected InGameUIManager inGameUIManager;
     protected virtual void Awake()
     {
         button = GetComponent<Button>();
@@ -32,7 +32,7 @@ public class SelectEntityButton : MonoBehaviour
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => OnClickActionButton(skill));
     }
-    
+
     public virtual void DeActiveSkillButtonAction(Skill skill)
     {
         button.onClick.RemoveAllListeners();
