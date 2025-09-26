@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TreasureRoom : BaseRoom
+public class TreasureRoom : BattleTreasureEvent
 {
     private int _rewardId; //실제로 보상 주는 방 id
     public bool isOpen = false;
     //이거 이렇게하면 보상 상자가 있는 룸이 여러개일 때, A룸에서 상자 열고 템먹고, B룸에서 상자 안 열고 지나갔는데, A룸에서 상자 아이템 남아있는 경우가 될 수도 있나?
     //TODO : => 각자 별개의 인스턴스로 생성하면 해결됨. (ex : TreasureRoom roomA = new TreasureRoom();) 주의하기.
-    
-    public override void EnterRoom(int id) //todo : 통로/룸 관리하는 쪽에서 2001로 넣어줘야 됨
+
+    public override void EnterRoom() //todo : 통로/룸 관리하는 쪽에서 2001로 넣어줘야 됨
     { //방 호출할 때마다(다시 찾아올때도) enterRoom 부르는건지, 아니면 한 번만 부르고 이후는 계속 다른곳에 저장해놓고 있는건지 물어보기 
-        base.EnterRoom(id); //플레이어 소환(위치 선정)
-        Init(id);
+        base.EnterRoom(); //플레이어 소환(위치 선정)
         Rewarded(); //방에 들어왔을 때 보상 리스트 1개로 결정됨
     }
 
@@ -45,7 +44,7 @@ public class TreasureRoom : BaseRoom
         return isOpen;
     }
 
-    public override void ExitRoom(int id)
+    public override void ExitRoom()
     {
         if (isOpen) //열었던 상자라면
         {
