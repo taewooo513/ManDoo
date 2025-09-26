@@ -7,6 +7,7 @@ public class BuffSkill : SkillEffect
     public override void ActiveEffect(BaseEntity actionEntity, BaseEntity targetEntity)
     {
         BuffInfo statEffectInfo = new BuffInfo();
+        Debug.Log(debuffType);
         statEffectInfo.Init(adRatio, duration, constantValue, actionEntity, buffType, debuffType);
         targetEntity.AddEffect(statEffectInfo);
     }
