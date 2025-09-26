@@ -17,8 +17,8 @@ public class InGameEnemyUI : UIBase
         nameText.text = entityInfo.name;
         hpText.text = entityInfo.currentHp.ToString();
         maxHpText.text = entityInfo.maxHp.ToString();
-        attackText.text = entityInfo.attackDamage.ToString();
-        defenseText.text = entityInfo.defense.ToString();
-        speedText.text = entityInfo.speed.ToString();
+        attackText.text = entityInfo.GetTotalBuffStat().attackDmg.ToString();
+        defenseText.text = entityInfo.GetTotalBuffStat().defense.ToString();
+        speedText.text = entityInfo.GetTotalBuffStat().speed.ToString();
     }
 }

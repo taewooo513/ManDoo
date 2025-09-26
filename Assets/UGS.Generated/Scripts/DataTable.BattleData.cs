@@ -24,7 +24,7 @@ namespace DataTable
 
         static bool isLoaded = false;
         static string spreadSheetID = "1iwjiLK5PVjfgPniQ51iY7rrnAmWC4gSnHuZH9kyLkOo"; // it is file id
-        static string sheetID = "1819034437"; // it is sheet id
+        static string sheetID = "354145137"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
@@ -59,8 +59,9 @@ namespace DataTable
 		public System.Int32 id;
 		public System.Collections.Generic.List<Int32> battleEnemies;
 		public System.Int32 dropGold;
-		public System.Int32 rewardId;
+		public System.Int32 dropId;
 		public System.Single dropProb;
+		public System.Int32 rewardId;
   
 
 #region fuctions
