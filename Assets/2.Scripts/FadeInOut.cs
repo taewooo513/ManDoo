@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -14,6 +14,7 @@ public class FadeInOut : MonoBehaviour
  
     public void FadeIn() //페이드 인 사용
     {
+        
         StartCoroutine(Fade(true));
     }
  

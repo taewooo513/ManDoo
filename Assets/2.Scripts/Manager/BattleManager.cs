@@ -16,7 +16,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public List<BaseEntity> _enemyCharacters;
     public List<BaseEntity> EnemyCharacters => _enemyCharacters;
-    
+
     public Weapon weapon; //TODO : 이거 연결해야됨. 플레이어블 안에 equipWeapon... 등등
 
     private BaseEntity nowTurnEntity;
@@ -39,12 +39,12 @@ public class BattleManager : Singleton<BattleManager>
         float sum = 0;
         foreach (var item in _playableCharacters)
         {
-            sum += item.entityInfo.speed;
+            sum += item.entityInfo.GetTotalBuffStat().speed;
         }
 
         foreach (var item in _enemyCharacters)
         {
-            sum += item.entityInfo.speed;
+            sum += item.entityInfo.GetTotalBuffStat().speed;
         }
 
         return sum / (_playableCharacters.Count + _enemyCharacters.Count);
@@ -64,7 +64,7 @@ public class BattleManager : Singleton<BattleManager>
             item.BattleStarted();
         }
         UIManager.Instance.OpenUI<InGameBattleStartUI>(); //전투 시작 UI 출력
-        Turn();
+        Turn(true);
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -87,7 +87,7 @@ public class BattleManager : Singleton<BattleManager>
             }
         }
     }
-    private void Turn() //한 턴
+    private void Turn(bool hasExtraTurn) //한 턴
     {
         if (_turnQueue.Count == 0)
         {
@@ -95,7 +95,7 @@ public class BattleManager : Singleton<BattleManager>
         }
 
         nowTurnEntity = _turnQueue.Peek();
-        nowTurnEntity.StartTurn();
+        nowTurnEntity.StartTurn(hasExtraTurn);
     }
 
     public void EndTurn(bool hasExtraTurn = true)
@@ -104,7 +104,6 @@ public class BattleManager : Singleton<BattleManager>
         {
             Lose();
         }
-
         else if (_enemyCharacters.Count == 0)
         {
             Win();
@@ -113,14 +112,13 @@ public class BattleManager : Singleton<BattleManager>
         {
             if (hasExtraTurn)
             {
-                if ((nowTurnEntity.entityInfo.speed - GetAverageSpeed()) / 10 >= UnityEngine.Random.value)
+                if ((nowTurnEntity.entityInfo.GetTotalBuffStat().speed - GetAverageSpeed()) / 10 >= UnityEngine.Random.value)
                 {
                     nowTurnEntity.StartExtraTurn();
                     if (_playableCharacters.Count == 0)
                     {
                         Lose();
                     }
-
                     else if (_enemyCharacters.Count == 0)
                     {
                         Win();
@@ -129,7 +127,7 @@ public class BattleManager : Singleton<BattleManager>
             }
 
             _turnQueue.Dequeue();
-            Turn();
+            Turn(hasExtraTurn);
         }
     }
     //private void BattleRun()
@@ -146,7 +144,7 @@ public class BattleManager : Singleton<BattleManager>
         //승리 UI 출력
         foreach (var item in _playableCharacters) //전투 승리 시 아군 전체에게 숙련도 20 지금
         {
-            ((PlayableCharacter) item).equipWeapon.AddWeaponExp(20); 
+            item.entityInfo.equipWeapon.AddWeaponExp(20);
         }
 
         UIManager.Instance.OpenUI<InGameVictoryUI>();
@@ -212,8 +210,8 @@ public class BattleManager : Singleton<BattleManager>
             (tempEnemyList[k], tempEnemyList[m]) = (tempEnemyList[m], tempEnemyList[k]);
         }
 
-        tempPlayerList.Sort((a, b) => b.entityInfo.speed.CompareTo(a.entityInfo.speed));
-        tempEnemyList.Sort((a, b) => b.entityInfo.speed.CompareTo(a.entityInfo.speed));
+        tempPlayerList.Sort((a, b) => b.entityInfo.GetTotalBuffStat().speed.CompareTo(a.entityInfo.GetTotalBuffStat().speed));
+        tempEnemyList.Sort((a, b) => b.entityInfo.GetTotalBuffStat().speed.CompareTo(a.entityInfo.GetTotalBuffStat().speed));
         while (tempPlayerList.Count != 0 || tempEnemyList.Count != 0)
         {
             if (tempPlayerList.Count == 0)
@@ -238,7 +236,7 @@ public class BattleManager : Singleton<BattleManager>
                 break;
             }
 
-            if (tempPlayerList[0].entityInfo.speed >= tempEnemyList[0].entityInfo.speed)
+            if (tempPlayerList[0].entityInfo.GetTotalBuffStat().speed >= tempEnemyList[0].entityInfo.GetTotalBuffStat().speed)
             {
                 _turnQueue.Enqueue(tempPlayerList[0]);
                 tempPlayerList.RemoveAt(0);
@@ -264,7 +262,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public void AttackEntity(BaseEntity baseEntity)
     {
-        baseEntity.Damaged(nowTurnEntity.entityInfo.attackDamage);
+        baseEntity.Damaged(nowTurnEntity.entityInfo.GetTotalBuffStat().attackDmg);
     }
 
     private void OnDestroy()
@@ -278,7 +276,6 @@ public class BattleManager : Singleton<BattleManager>
             _playableCharacters[i].Release();
         }
     }
-
 
     //public List<BaseEntity> SelectEntityRange(List<int> targetPos, BaseEntity tagetEntity, List<BaseEntity> tagetList)
     //{
@@ -299,6 +296,7 @@ public class BattleManager : Singleton<BattleManager>
     //}
 
     //index와 대미지를 넣으면 공격합니다.
+
     public void AttackEntity(int index, float attackDamage)
     {
         if (nowTurnEntity is PlayableCharacter)
@@ -467,7 +465,7 @@ public class BattleManager : Singleton<BattleManager>
                 indexB = i;
             }
         }
-        
+
         if (indexA == -1 || indexB == -1) return;
         _playableCharacters[indexA] = playableCharacterB;
         _playableCharacters[indexB] = playableCharacterA;
@@ -519,12 +517,12 @@ public class BattleManager : Singleton<BattleManager>
                     break;
                 }
             }
-            
+
             if (index == -1 || index == desiredPosition || desiredPosition >= _enemyCharacters.Count)
             {
                 return;
             }
-            
+
             if (index + 1 == desiredPosition || index - 1 == desiredPosition)
             {
                 (_enemyCharacters[index], _enemyCharacters[desiredPosition]) =
@@ -609,5 +607,5 @@ public class BattleManager : Singleton<BattleManager>
             _turnQueue.Enqueue(item);
         }
     }
-    
+
 }

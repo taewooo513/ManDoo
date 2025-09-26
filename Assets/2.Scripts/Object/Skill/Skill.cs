@@ -4,6 +4,7 @@ using UnityEngine;
 using DataTable;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System;
 
 public class SkillInfo
 {
@@ -109,6 +110,10 @@ public class Skill
                 {
                     if (targetEntity is PlayableCharacter)
                     {
+                        if (i < BattleManager.Instance._playableCharacters.Count)
+                        {
+                            return;
+                        }
                         skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._playableCharacters[val[j]]);
                     }
                     else

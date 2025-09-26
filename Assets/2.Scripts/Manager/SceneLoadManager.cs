@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -70,7 +70,7 @@ public class SceneLoadManager : Singleton<SceneLoadManager>
         {
             yield return null;
         }
-
+        
         nowScene.LoadResources();
         nowScene.Init();
     }
