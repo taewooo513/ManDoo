@@ -10,9 +10,13 @@ public class PlayableCharacterAnimationController : EntityCharacterAnimationCont
     int[] layers;
     BaseEntity targetEntity;
     List<BaseEntity> baseEntitys;
-    public void Awake()
+    SpriteRenderer[] sprites;
+    BaseEntity nowEntity;
+    protected override void Awake()
     {
         animator = GetComponent<Animator>();
+        sprites = GetComponentsInChildren<SpriteRenderer>();
+        nowEntity = GetComponentInParent<PlayableCharacter>();
     }
 
     public override void Attack(Action action, BaseEntity targetEntity)
@@ -34,7 +38,6 @@ public class PlayableCharacterAnimationController : EntityCharacterAnimationCont
 
     public override void LayerUp()
     {
-        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
         layers = new int[sprites.Length];
         for (int i = 0; i < sprites.Length; i++)
         {
@@ -57,8 +60,11 @@ public class PlayableCharacterAnimationController : EntityCharacterAnimationCont
         action.Invoke();
         LayerDown();
         if (targetEntity != null)
+        {
             targetEntity.characterAnimationController.LayerDown();
+        }
         else
             baseEntitys.ForEach(baseEntity => { baseEntity.characterAnimationController.LayerDown(); });
+        nowEntity.EndTurn();
     }
 }

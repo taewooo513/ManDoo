@@ -102,7 +102,21 @@ public class Skill
     {
         if (skillInfo.targetType == TargetType.Range)
         {
-
+            List<BaseEntity> list = new List<BaseEntity>();
+            var val = BattleManager.Instance.GetPossibleSkillRange(skillInfo.targetPos);
+            for (int i = 0; i < val.Count; i++)
+            {
+                if (targetEntity is PlayableCharacter)
+                {
+                    list.Add(BattleManager.Instance._playableCharacters[val[i]]);
+                }
+                else
+                {
+                    list.Add(BattleManager.Instance._enemyCharacters[val[i]]);
+                }
+            }
+            baseEntity.UseSkill(() => UseActiveSkill(targetEntity), list);
+            return;
         }
         baseEntity.UseSkill(() => UseActiveSkill(targetEntity), targetEntity);
     }

@@ -709,7 +709,8 @@ MonoBehaviour:
     canMove: 0
     contractGold: 0
     equipWeapon: {fileID: 0}
-  initID: 0
+  characterAnimationController: {fileID: 0}
+  initID: 9999
 --- !u!1 &3423748015150739260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,7 +1505,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 59
+  m_SortingOrder: 46
   m_TargetDisplay: 0
 --- !u!114 &5974620439190984991
 MonoBehaviour:

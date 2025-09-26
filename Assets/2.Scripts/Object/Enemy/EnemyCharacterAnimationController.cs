@@ -8,9 +8,13 @@ public class EnemyCharacterAnimationController : EntityCharacterAnimationControl
     int layers;
     BaseEntity targetEntity;
     List<BaseEntity> baseEntitys;
+    SpriteRenderer sprites;
+    BaseEntity nowEntity;
     public void Awake()
     {
+        sprites = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        nowEntity = GetComponentInParent<Enemy>();
     }
 
     public override void Attack(Action action, BaseEntity targetEntity)
@@ -31,17 +35,13 @@ public class EnemyCharacterAnimationController : EntityCharacterAnimationControl
     }
     public override void LayerUp()
     {
-        SpriteRenderer sprites = GetComponent<SpriteRenderer>();
-        sprites.sortingOrder += 50;
-
         layers = sprites.sortingOrder;
+        sprites.sortingOrder += 50;
         BattleManager.Instance.blackOutImage.SetActive(true);
     }
 
     public override void LayerDown()
     {
-        SpriteRenderer sprites = GetComponent<SpriteRenderer>();
-
         sprites.sortingOrder = layers;
         BattleManager.Instance.blackOutImage.SetActive(false);
     }
@@ -50,9 +50,17 @@ public class EnemyCharacterAnimationController : EntityCharacterAnimationControl
     {
         action.Invoke();
         LayerDown();
+
         if (targetEntity != null)
+        {
             targetEntity.characterAnimationController.LayerDown();
+            targetEntity = null;
+        }
         else
+        {
             baseEntitys.ForEach(baseEntity => { baseEntity.characterAnimationController.LayerDown(); });
+            baseEntitys = null;
+        }
+        nowEntity.EndTurn();
     }
 }

@@ -91,7 +91,6 @@ public class Enemy : BaseEntity
                 }
             }
         }
-        EndTurn(_hasExtraTurn);
     }
 
     public override void EndTurn(bool hasExtraTurn = true)
@@ -120,7 +119,6 @@ public class Enemy : BaseEntity
         {
             entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
         }
-        BattleManager.Instance.EndTurn(hasExtraTurn);
     }
 
     public override void StartExtraTurn() //추가 공격 턴

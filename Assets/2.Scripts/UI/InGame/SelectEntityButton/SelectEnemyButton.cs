@@ -31,6 +31,5 @@ public class SelectEnemyButton : SelectEntityButton
     protected override void OnClickActionButton(Skill skill)
     {
         skill.UseSkill(enemy);
-        BattleManager.Instance.NowTurnEntity.EndTurn(true);
     }
 }

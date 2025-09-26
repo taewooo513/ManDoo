@@ -17,7 +17,6 @@ public class SelectCharacterButton : SelectEntityButton
     protected override void OnClickActionButton(Skill skill)
     {
         skill.UseSkill(player);
-        BattleManager.Instance.NowTurnEntity.EndTurn();
     }
 
     public override void ActiveSkillButtonAction(Skill skill)

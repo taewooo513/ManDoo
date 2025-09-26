@@ -48,6 +48,9 @@ public class BuffIconFactory
             case DeBuffType.Damaged:
                 path = "BurnIcon";
                 break;
+            case DeBuffType.Stun:
+                path = "Stun";
+                break;
         }
         return path;
     }

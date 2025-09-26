@@ -9,7 +9,7 @@ public class EntityCharacterAnimationController : MonoBehaviour
     protected Animator animator;
     protected Action action;
 
-    public void Awake()
+    protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
     }
