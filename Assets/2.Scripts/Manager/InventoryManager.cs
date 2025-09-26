@@ -264,9 +264,11 @@ public class InventoryManager : Singleton<InventoryManager>
             }
         }
     }
-    
+
     /// <summary>
     /// 슬롯 변경 이벤트를 발생시키는 메서드
     /// </summary>
     private void UpdateSlot(int slotIndex) => OnSlotChanged?.Invoke(slotIndex, GetItemInSlot(slotIndex));
+
+    public int GetSlotCount(int slotIndex) => slotStackCounts[slotIndex];
 }

@@ -100,11 +100,11 @@ public class ItemManager : Singleton<ItemManager>
             rewards[key] = amount;
     }
 
-    public void AddReward(eItemType type, int[] ids, int[] amounts)
+    public void AddReward(eItemType type, List<int> ids, List<int> amounts)
     {
-        if (ids.Length != amounts.Length) return;
+        if (ids.Count != amounts.Count) return;
         
-        for (int i = 0; i < ids.Length; i++)
+        for (int i = 0; i < ids.Count; i++)
         {
             var key = (type, ids[i]);
             int amount = amounts[i];
