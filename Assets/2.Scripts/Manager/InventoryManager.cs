@@ -29,12 +29,12 @@ public class InventoryManager : Singleton<InventoryManager>
     /// <summary>
     /// 인벤토리에 아이템을 추가하는 메서드
     /// </summary>
-    public bool TryAddItem(int id, int amount)
+    public bool TryAddItem(eItemType type, int id, int amount)
     {
         if (amount <= 0) return false; // 예외처리
         int maxStack = 0;
         
-        var tempItem = (Item)ItemManager.Instance.CreateItem(id); // 새 아이템 임시로 생성
+        var tempItem = ItemManager.Instance.CreateItem(id); // 새 아이템 임시로 생성
         maxStack = Mathf.Max(1, tempItem.ItemInfo.maxCount); // id 로 조회한 아이템의 최대 한도수를 저장
         
         for (int i = 0; i < slotItemIds.Length; i++) // 기존에 있던 슬롯에 저장 시도
@@ -175,7 +175,7 @@ public class InventoryManager : Singleton<InventoryManager>
 
         var prevSlot = equippedItems[(int)to];
         if (prevSlot != null)
-            TryAddItem(prevSlot.ItemId, 1);
+            TryAddItem(eItemType.Weapon, prevSlot.ItemId, 1);
 
         equippedItems[(int)to] = item;
         OnEquipChanged?.Invoke(to, item);
@@ -236,7 +236,7 @@ public class InventoryManager : Singleton<InventoryManager>
         var equip = equippedItems[(int)from];
         if (equip == null) return false;
         
-        TryAddItem(equip.ItemId, 1);
+        TryAddItem(eItemType.Weapon, equip.ItemId, 1);
         equippedItems[(int)from] = null;
         OnEquipChanged?.Invoke(from, null);
         return true;
