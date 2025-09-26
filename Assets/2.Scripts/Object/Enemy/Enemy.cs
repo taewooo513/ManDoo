@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DataTable;
 using System.Linq;
 using UnityEditorInternal;
+using System;
 
 public class Enemy : BaseEntity
 {
@@ -11,9 +12,9 @@ public class Enemy : BaseEntity
     private bool _hasExtraTurn = true;
     private Skill _attackSkill;
     [SerializeField] private int initID;
-
     private void Start()
     {
+        characterAnimationController = GetComponentInChildren<EnemyCharacterAnimationController>();
         Init(initID);
     }
     public override void Init(int idx)
@@ -35,6 +36,7 @@ public class Enemy : BaseEntity
     public override void StartTurn(bool hasExtraTrun)
     {
         base.StartTurn(hasExtraTrun);
+        entityInfo.statEffect.AttackWeight(entityInfo);
         if (entityInfo.IsStun())
         {
             EndTurn();
@@ -89,7 +91,6 @@ public class Enemy : BaseEntity
                 }
             }
         }
-        EndTurn(_hasExtraTurn);
     }
 
     public override void EndTurn(bool hasExtraTurn = true)
@@ -118,7 +119,6 @@ public class Enemy : BaseEntity
         {
             entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
         }
-        BattleManager.Instance.EndTurn(hasExtraTurn);
     }
 
     public override void StartExtraTurn() //추가 공격 턴
@@ -134,7 +134,6 @@ public class Enemy : BaseEntity
                 BattleManager.Instance.SwitchPosition(this, position); //이동
             }
         }
-
         EndTurn(false);
     }
 
@@ -198,6 +197,17 @@ public class Enemy : BaseEntity
         return false;
     }
 
+    public override void UseSkill(Action action, BaseEntity baseEntity)
+    {
+        base.UseSkill(action, baseEntity);
+        characterAnimationController.Attack(action,baseEntity);
+    }
+    public override void UseSkill(Action action, List<BaseEntity> baseEntitys)
+    {
+        base.UseSkill(action, baseEntitys);
+        characterAnimationController.Attack(action,baseEntitys);
+    }
+
     private bool TryAttack(out int position) //스킬 선택, 타겟 선택
     {
         var info = _attackSkill.skillInfo; //사용할 스킬 정보
@@ -210,6 +220,7 @@ public class Enemy : BaseEntity
         //TargetCheckUI(targetEntity);
         if (CanUseSkill(_attackSkill))
         {
+
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
                 _attackSkill

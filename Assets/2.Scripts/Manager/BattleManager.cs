@@ -25,13 +25,15 @@ public class BattleManager : Singleton<BattleManager>
     private Skill nowSkill;
     private System.Random _random = new System.Random();
     private Queue<BaseEntity> _turnQueue;
-
+    public GameObject blackOutImage;
     protected override void Awake()
     {
         base.Awake();
         _playableCharacters = new List<BaseEntity>();
         _enemyCharacters = new List<BaseEntity>();
         _turnQueue = new Queue<BaseEntity>();
+        blackOutImage = Instantiate(Resources.Load<GameObject>("UIPrefabs/BlackOutImage"));
+        blackOutImage.SetActive(false);
     }
 
     private float GetAverageSpeed()
