@@ -362,7 +362,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2320555427260998565}
   m_HandleRect: {fileID: 6179761614296015797}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1052,6 +1052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yesButton: {fileID: 6884391535448269338}
   noButton: {fileID: 1537605441608095105}
+  rewardSlot: {fileID: 2945859632838645733, guid: 83e9f1a17ea834094902fb07b7c06f90, type: 3}
+  content: {fileID: 5735222605201629448}
 --- !u!1 &5735222605201629448
 GameObject:
   m_ObjectHideFlags: 0

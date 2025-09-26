@@ -14,6 +14,8 @@ public enum eItemType
 public class ItemManager : Singleton<ItemManager>
 {
     private Dictionary<(eItemType, int id), int> rewards = new(); // key: type & id, value: count
+
+    public Dictionary<(eItemType, int id), int> GetRewards() => new(rewards);
     //private Dictionary<(eItemType, int[] id), int[]> rewardArr = new(); // key: type & id, value: count
     
     /// <summary>
@@ -117,8 +119,6 @@ public class ItemManager : Singleton<ItemManager>
         }
     }
 
-    public Dictionary<(eItemType, int id), int> GetRewards() => rewards;
-    
     /// <summary>
     /// 보상 목록을 초기화하는 메서드
     /// </summary>
