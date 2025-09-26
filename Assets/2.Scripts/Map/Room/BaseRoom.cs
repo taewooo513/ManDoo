@@ -11,6 +11,7 @@ public class BaseRoom : INavigatable
     public string RoomLocation;//시작 지점으로부터의 방향을 뜻함
     public Spawn spawn;
     private RoomUI _roomUI;
+    public bool isInteract = false; //이거 베이스룸한테 주면 접근 어떻게하지..?
     
     public virtual void EnterRoom()
     {
