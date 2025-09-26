@@ -22,6 +22,8 @@ public class ItemInfo
     public ItemInfo(int id)
     {
         this.itemData = DataManager.Instance.Consumable.GetConsumableData(id);
+        this.itemType = itemData.itemType;
+        this.consumableSkillId = itemData.consumableSkillId;
         this.itemName = itemData.itemName;
         this.itemDescription = itemData.itemDescription;
         this.maxCount = itemData.maxCount;

@@ -61,11 +61,9 @@ public class InGameVictoryUI : UIBase
         // TODO: 보상 슬롯 초기화
         if (rewards == null) return;
         if (content == null || rewardSlot == null) return;
-        if (content.childCount > 0)
-        {
-            foreach (Transform item in content)
-                Destroy(item.gameObject);
-        }
+
+        for (int i = 0; i < content.childCount; i++)
+            Destroy(content.GetChild(i).gameObject);
 
         foreach (var reward in rewards)
         {

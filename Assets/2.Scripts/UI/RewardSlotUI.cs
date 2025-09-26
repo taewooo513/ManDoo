@@ -26,7 +26,7 @@ public class RewardSlotUI : MonoBehaviour
             icon.sprite = itemIcon;
             icon.enabled = (itemIcon != null);
         }
-            
-        countText.text = count.ToString();
+        if (countText != null)
+            countText.text = count.ToString();
     }
 }

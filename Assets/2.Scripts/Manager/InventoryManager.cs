@@ -38,10 +38,10 @@ public class InventoryManager : Singleton<InventoryManager>
         var tempItem = ItemManager.Instance.CreateItem(id); // 새 아이템 임시로 생성
         maxStack = Mathf.Max(1, tempItem.ItemInfo.maxCount); // id 로 조회한 아이템의 최대 한도수를 저장
         
-        for (int i = 0; i < slotItemIds.Length; i++) // 기존에 있던 슬롯에 저장 시도
+        for (int i = 0; i < slotItemIds.Length && amount > 0; i++) // 기존에 있던 슬롯에 저장 시도
         {
             if (slotItemIds[i] != id) continue; // 다른 id 의 슬롯은 스킵
-            var current = slotStackCounts[i]; // 현재 슬롯에 저장되어있는 아이템 개수 
+            var current = slotStackCounts[i]; // 현재 슬롯에 저장되어있는 아이템 개수
             if (current == maxStack) continue; // 현재 슬롯이 꽉 차있으면 스킵
 
             var canAdd = Mathf.Min(maxStack - current, amount); // 최대한도와 현재 슬롯에 저장되어 있는 개수 비교
@@ -50,7 +50,7 @@ public class InventoryManager : Singleton<InventoryManager>
             UpdateSlot(i); // 슬롯 업데이트
         }
 
-        for (int i = 0; i < slotItemIds.Length; i++) // 빈 슬롯에 저장
+        for (int i = 0; i < slotItemIds.Length && amount > 0; i++) // 빈 슬롯에 저장
         {
             if (slotItemIds[i] != -1) continue; // 빈 슬롯이 아니면 스킵
 
