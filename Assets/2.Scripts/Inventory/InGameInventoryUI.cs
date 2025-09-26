@@ -13,7 +13,7 @@ public class InGameInventoryUI : UIBase
     [SerializeField] private int testIconCount = 5;
     // 기본 캔버스 참조
     public Canvas baseCanvas { get; private set; }
-    // 인벤토리 슬롯 UI 배열
+    // 인벤토리 슬롯 UI 배열    
     [SerializeField] private InventorySlotUI[] inventorySlots;
     
     private void Awake()
