@@ -61,6 +61,6 @@ public class EnemyCharacterAnimationController : EntityCharacterAnimationControl
             baseEntitys.ForEach(baseEntity => { baseEntity.characterAnimationController.LayerDown(); });
             baseEntitys = null;
         }
-        nowEntity.EndTurn();
+        BattleManager.Instance.EndTurn();
     }
 }

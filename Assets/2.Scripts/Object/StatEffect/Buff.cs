@@ -42,11 +42,12 @@ public class Buff
 
     public bool IsStun()
     {
+
+        Debug.Log(_entityCurrentStatus.Count);
         foreach (var item in _entityCurrentStatus)
         {
             if (item.deBuffType == DeBuffType.Stun)
             {
-                Debug.Log("1");
                 return true;
             }
         }

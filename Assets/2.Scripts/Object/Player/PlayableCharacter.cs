@@ -40,7 +40,7 @@ public class PlayableCharacter : BaseEntity
             Utillity.GetIndexInListToObject(BattleManager.Instance._enemyCharacters, baseEntity), dmg);
     }
 
-    public override void UseSkill(Action action,BaseEntity baseEntity)
+    public override void UseSkill(Action action, BaseEntity baseEntity)
     {
         characterAnimationController.Attack(action, baseEntity);
     }
@@ -49,18 +49,28 @@ public class PlayableCharacter : BaseEntity
     {
         characterAnimationController.Attack(action, baseEntitys);
     }
-    public override void StartTurn(bool hasExtraTrun)
+    public override void StartExtraTurn()
     {
-        base.StartTurn(hasExtraTurn);
+        entityInfo.statEffect.AttackWeight(entityInfo);
+        Debug.Log("응가");
+        if (entityInfo.IsStun())
+        {
+            BattleManager.Instance.EndTurn(false);
+            return;
+        }
+    }
+    public override void StartTurn( )
+    {
+        base.StartTurn();
         entityInfo.statEffect.AttackWeight(entityInfo);
         if (entityInfo.IsStun())
         {
-            EndTurn();
+            BattleManager.Instance.EndTurn(false);
             return;
         }
         UIManager.Instance.OpenUI<InGamePlayerUI>().UpdateUI(entityInfo, entityInfo.skills);
     }
-    public override void EndTurn(bool hasExtraTurn = true)
+    public override void EndTurn()
     {
         List<BuffType> buffTypes = new List<BuffType>();
         List<DeBuffType> deBuffTypes = new List<DeBuffType>();
@@ -78,13 +88,12 @@ public class PlayableCharacter : BaseEntity
         deBuffTypes.Add(DeBuffType.CriticalDown);
         deBuffTypes.Add(DeBuffType.AllStatDown);
         deBuffTypes.Add(DeBuffType.Damaged);
-        if (hasExtraTurn)
-        {
-            buffIcons.UpdateIcon(entityInfo.statEffect);
-            Damaged(entityInfo.statEffect.totalStat.damagedValue);
-            entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
-        }
-        BattleManager.Instance.EndTurn(hasExtraTurn);
+        deBuffTypes.Add(DeBuffType.Stun);
+
+        entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
+        Damaged(entityInfo.statEffect.totalStat.damagedValue);
+        buffIcons.UpdateIcon(entityInfo.statEffect);
+    
     }
 
     public void EquipWeapon(Weapon weapon)

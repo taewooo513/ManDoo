@@ -65,6 +65,6 @@ public class PlayableCharacterAnimationController : EntityCharacterAnimationCont
         }
         else
             baseEntitys.ForEach(baseEntity => { baseEntity.characterAnimationController.LayerDown(); });
-        nowEntity.EndTurn();
+        BattleManager.Instance.EndTurn(false);
     }
 }

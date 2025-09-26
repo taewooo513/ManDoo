@@ -66,7 +66,7 @@ public class BattleManager : Singleton<BattleManager>
             item.BattleStarted();
         }
         UIManager.Instance.OpenUI<InGameBattleStartUI>(); //전투 시작 UI 출력
-        Turn(true);
+        Turn();
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -89,18 +89,17 @@ public class BattleManager : Singleton<BattleManager>
             }
         }
     }
-    private void Turn(bool hasExtraTurn) //한 턴
+    private void Turn() //한 턴
     {
         if (_turnQueue.Count == 0)
         {
             SetTurnQueue();
         }
-
         nowTurnEntity = _turnQueue.Peek();
-        nowTurnEntity.StartTurn(hasExtraTurn);
+        nowTurnEntity.StartTurn();
     }
 
-    public void EndTurn(bool hasExtraTurn = true)
+    public void EndTurn(bool hasExtraTurn = false)
     {
         if (_playableCharacters.Count == 0)
         {
@@ -126,10 +125,14 @@ public class BattleManager : Singleton<BattleManager>
                         Win();
                     }
                 }
+                nowTurnEntity.EndExtraTurn();
             }
-
-            _turnQueue.Dequeue();
-            Turn(hasExtraTurn);
+            else
+            {
+                nowTurnEntity.EndTurn();
+                _turnQueue.Dequeue();
+                Turn();
+            }
         }
     }
     //private void BattleRun()

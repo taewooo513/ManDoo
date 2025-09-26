@@ -33,22 +33,21 @@ public class Enemy : BaseEntity
         entityInfo.SetUpSkill(_data.skillId, this);
     }
 
-    public override void StartTurn(bool hasExtraTrun)
+    public override void StartTurn()
     {
-        base.StartTurn(hasExtraTrun);
+        base.StartTurn();
         entityInfo.statEffect.AttackWeight(entityInfo);
         if (entityInfo.IsStun())
         {
-            EndTurn();
+            BattleManager.Instance.EndTurn(false);
             return;
         }
 
-        isNowExtraTurn = hasExtraTrun;
         bool isAttack = false; //공격 타입의 스킬공격인지
         _attackSkill = GetRandomSkill();
         if (_attackSkill == null) //선택한 스킬이 null이면
         {
-            EndTurn(false);
+            BattleManager.Instance.EndTurn(false);
             return;
         }
 
@@ -93,7 +92,7 @@ public class Enemy : BaseEntity
         }
     }
 
-    public override void EndTurn(bool hasExtraTurn = true)
+    public override void EndTurn()
     {
         //TODO : 지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다?
         _attackSkill = null; //선택한 스킬 비워주기
@@ -114,11 +113,12 @@ public class Enemy : BaseEntity
         deBuffTypes.Add(DeBuffType.CriticalDown);
         deBuffTypes.Add(DeBuffType.AllStatDown);
         deBuffTypes.Add(DeBuffType.Damaged);
+        deBuffTypes.Add(DeBuffType.Stun);
+        entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
+        Damaged(entityInfo.statEffect.totalStat.damagedValue);
         buffIcons.UpdateIcon(entityInfo.statEffect);
-        if (isNowExtraTurn)
-        {
-            entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
-        }
+
+        BattleManager.Instance.EndTurn(hasExtraTurn);
     }
 
     public override void StartExtraTurn() //추가 공격 턴
@@ -132,9 +132,9 @@ public class Enemy : BaseEntity
             if (position != -1)
             {
                 BattleManager.Instance.SwitchPosition(this, position); //이동
+                BattleManager.Instance.EndTurn();
             }
         }
-        EndTurn(false);
     }
 
     private Skill GetRandomSkill()
@@ -200,12 +200,12 @@ public class Enemy : BaseEntity
     public override void UseSkill(Action action, BaseEntity baseEntity)
     {
         base.UseSkill(action, baseEntity);
-        characterAnimationController.Attack(action,baseEntity);
+        characterAnimationController.Attack(action, baseEntity);
     }
     public override void UseSkill(Action action, List<BaseEntity> baseEntitys)
     {
         base.UseSkill(action, baseEntitys);
-        characterAnimationController.Attack(action,baseEntitys);
+        characterAnimationController.Attack(action, baseEntitys);
     }
 
     private bool TryAttack(out int position) //스킬 선택, 타겟 선택

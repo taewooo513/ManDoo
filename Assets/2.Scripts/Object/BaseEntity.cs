@@ -195,11 +195,14 @@ public class BaseEntity : MonoBehaviour
         entityInfo.Heal(value);
         hpbarUI.UpdateUI();
     }
-    public virtual void StartTurn(bool hasExtraTrun)
+    public virtual void StartTurn()
     {
-        isNowExtraTurn = hasExtraTrun;
     }
-    public virtual void EndTurn(bool hasExtraTurn = true)
+    public virtual void EndTurn()
+    {
+
+    }
+    public virtual void EndExtraTurn()
     {
 
     }
