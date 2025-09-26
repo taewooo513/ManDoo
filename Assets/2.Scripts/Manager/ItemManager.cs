@@ -14,6 +14,7 @@ public enum eItemType
 public class ItemManager : Singleton<ItemManager>
 {
     private Dictionary<(eItemType, int id), int> rewards = new(); // key: type & id, value: count
+    //private Dictionary<(eItemType, int[] id), int[]> rewardArr = new(); // key: type & id, value: count
     
     /// <summary>
     /// ID에 해당하는 아이템을 생성하는 메서드
@@ -25,38 +26,7 @@ public class ItemManager : Singleton<ItemManager>
         var item = new Item(id);
         item.icon = GetItemIcon(item);
         return item;
-        // if (type == eItemType.Consumable)
-        // {
-        //     var item = new Item(id);
-        //     item.icon = GetItemIcon(item);
-        //     return item;
-        // }
-        // if (type == eItemType.Weapon)
-        // {
-        //     var weapon = new Weapon(id);
-        //     weapon.icon = GetWeaponIcon(weapon);
-        //     return weapon;
-        // }
-        // if (type == eItemType.Accessory)
-        // {
-        //     var accessory = new Weapon(id);
-        //     accessory.icon = GetAccessoryIcon(accessory);
-        //     return accessory;
-        // }
-        // return null;
     }
-    
-    // public Weapon CreateWeapon(int id)
-    // {
-    //
-    // }
-
-    // public Accessory CreateAccessory(int id)
-    // {
-    //     var accessory = new Weapon(id);
-    //     accessory.icon = GetAccessoryIcon(accessory);
-    //     return accessory;
-    // }
 
     /// <summary>
     /// 아이템의 아이콘 스프라이트를 가져오는 메서드
@@ -95,7 +65,18 @@ public class ItemManager : Singleton<ItemManager>
             Debug.LogError($"Item icon is not found at path: {path}.");
         return sprite;
     }
+    
+    public void UseItem(int id)
+    {   
+        // TODO: 아이템 사용 로직
+    }
 
+    public Item GetItemInUse(int id)
+    {
+        // TODO: 사용중인 아이템 리턴
+        return null;
+    }
+    
     /// <summary>
     /// 아이템을 해당 슬롯에 장착할 수 있는지 확인하는 메서드
     /// </summary>
@@ -109,20 +90,37 @@ public class ItemManager : Singleton<ItemManager>
     /// <summary>
     /// 보상 아이템을 추가하는 메서드
     /// </summary>
-    public void AddReward(eItemType type, int id, int amount)
+    public void AddReward(eItemType type, int id, int amount) // 보상 -> 승리 UI
     {
+        if (amount == 0) return;
         var key = (type, id);
         if (rewards.ContainsKey(key))
             rewards[key] += amount;
         else
-            rewards[(type, id)] = 1;
+            rewards[key] = amount;
     }
 
+    public void AddReward(eItemType type, List<int> ids, List<int> amounts)
+    {
+        if (ids.Count != amounts.Count) return;
+        
+        for (int i = 0; i < ids.Count; i++)
+        {
+            var key = (type, ids[i]);
+            int amount = amounts[i];
+            if (amount <= 0) continue;
+
+            if (rewards.ContainsKey(key))
+                rewards[key] += amount;
+            else
+                rewards[key] = amount;
+        }
+    }
+
+    public Dictionary<(eItemType, int id), int> GetRewards() => rewards;
+    
     /// <summary>
     /// 보상 목록을 초기화하는 메서드
     /// </summary>
-    public void ClearRewards()
-    {
-        rewards.Clear();
-    }
+    public void ClearRewards() => rewards.Clear();
 }

@@ -20,6 +20,11 @@ public class GameManager : Singleton<GameManager>
         _playableCharacter.Add(baseEntity);
     }
 
+    public void DeletePlayableCharacter(BaseEntity baseEntity)
+    {
+        Destroy(baseEntity);
+        _playableCharacter.Remove(baseEntity);
+    }
     public void AddEnemy(BaseEntity baseEntity)
     {
         _enemyCharacter.Add(baseEntity);

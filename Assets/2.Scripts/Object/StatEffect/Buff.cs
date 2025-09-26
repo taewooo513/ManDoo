@@ -16,10 +16,20 @@ public class TotalBuffStat
     public void Reset(EntityInfo entityInfo)
     {
         damagedValue = 0;
-        speed = entityInfo.speed;
-        defense = entityInfo.defense;
-        attackDmg = entityInfo.attackDamage;
-        evasionUp = entityInfo.evasion;
+        if (entityInfo.equipWeapon != null)
+        {
+            speed = entityInfo.speed + entityInfo.equipWeapon.speed;
+            defense = entityInfo.defense + entityInfo.equipWeapon.defense;
+            attackDmg = entityInfo.attackDamage + entityInfo.equipWeapon.attackDmg;
+            evasionUp = entityInfo.evasion + entityInfo.equipWeapon.evasion;
+        }
+        else
+        {
+            speed = entityInfo.speed;
+            defense = entityInfo.defense;
+            attackDmg = entityInfo.attackDamage;
+            evasionUp = entityInfo.evasion;
+        }
         totalWeight = 0;
     }
 }
@@ -30,6 +40,17 @@ public class Buff
     private float _totalWeight = 0f;
     public TotalBuffStat totalStat;
 
+    public bool IsStun()
+    {
+        foreach (var item in _entityCurrentStatus)
+        {
+            if (item.deBuffType == DeBuffType.Stun)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public Buff()
     {
         totalStat = new TotalBuffStat();
@@ -44,7 +65,7 @@ public class Buff
             var buff = _entityCurrentStatus[i].buffType;
             switch (buff)
             {
-                //공격력 × (1 - 감소비율)
+                //공격력 × (1 - 감소비율) hp -= (((dmg + a )- (def + a)) * 계수 +  고정) * 2
                 case BuffType.AttackUp:
                     totalStat.attackDmg = (int)((totalStat.attackDmg * _entityCurrentStatus[i].adRatio + _entityCurrentStatus[i].constantValue));
                     break;
@@ -152,17 +173,21 @@ public class Buff
         _entityCurrentStatus.Add(status); //상태 추가
         _entityCurrentStatus.Sort((e, e1) =>
         {
-            if (e1 == null)
-            {
-                return 0;
-            }
-            if (e.buffType == null)
+            if (e.buffType == BuffType.None && e1.buffType != BuffType.None)
             {
                 return 1;
             }
-            if (e.deBuffType == null)
+            if (e.buffType != BuffType.None && e1.buffType == BuffType.None)
             {
                 return -1;
+            }
+            if (e.buffType == BuffType.None && e1.buffType == BuffType.None)
+            {
+                return e.duration.CompareTo(e1.duration);
+            }
+            if (e.deBuffType == DeBuffType.None && e1.deBuffType == DeBuffType.None)
+            {
+                return e.duration.CompareTo(e1.duration);
             }
             return 0;
         });

@@ -10,7 +10,7 @@ public class InGameInventoryUI : UIBase
     // 테스트용 아이템 아이콘
     [SerializeField] private Sprite testIcon;
     // 테스트용 아이콘 개수
-    [SerializeField] private int testIconCount = 5;
+    [SerializeField] private int iconCount = 0;
     // 기본 캔버스 참조
     public Canvas baseCanvas { get; private set; }
     // 인벤토리 슬롯 UI 배열    
@@ -71,9 +71,11 @@ public class InGameInventoryUI : UIBase
         {
             for (int i = 0; i < inventorySlots.Length; i++)
             {
-                var hasIcon = (testIcon != null) && (i < testIconCount);
+                var itemCount = InventoryManager.Instance.GetItemCount(i);
+                var hasIcon = (testIcon != null) && (i < iconCount);
                 inventorySlots[i].SetIcon(hasIcon ? testIcon : null);
                 inventorySlots[i].SetInteractableIcon(hasIcon);
+                inventorySlots[i].UpdateSlotCountText(itemCount);
             }
             return;
         }
@@ -97,12 +99,14 @@ public class InGameInventoryUI : UIBase
     /// <param name="item">변경된 아이템</param>
     private void HandleSlotChanged(int slotIndex, Item item)
     {
+        var slotCount = InventoryManager.Instance.GetSlotCount(slotIndex);
         if (isTestMode) return;
         if (inventorySlots == null || slotIndex < 0 || slotIndex >= inventorySlots.Length) return;
         var icon = (item != null) ? item.icon : null;
         var slot = inventorySlots[slotIndex];
         slot.SetIcon(icon);
         slot.SetInteractableIcon(icon != null);
+        slot.UpdateSlotCountText(slotCount);
     }
 
     /// <summary>
