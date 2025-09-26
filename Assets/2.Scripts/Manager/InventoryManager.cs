@@ -280,6 +280,7 @@ public class InventoryManager : Singleton<InventoryManager>
 
     public bool TryBuyItemFromStore(eItemType type, int id, int goldAmount, int amount)
     {
+        // TODO: 상정구매 구현
         return true;
     }
     
