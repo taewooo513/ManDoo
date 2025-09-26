@@ -81,13 +81,14 @@ public class ShopItem : MonoBehaviour
 
     private void BuyConsumable()
     {
+        UIManager.Instance.OpenUI<InGamePMCUI>();
         if (consumableData != null)
         {
             Debug.Log($"{consumableData.itemName} 구매!");
             // 골드 차감 등 추가 필요
 
             // eItemType과 ItemType이 enum 이름이 같으면 캐스팅 가능
-            bool success = InventoryManager.Instance.TryAddItem((eItemType)consumableData.itemType, consumableData.id, 1); // 1개 구매
+            bool success = InventoryManager.Instance.TryAddItem(eItemType.Consumable, consumableData.id, 1); // 1개 구매
             if (success)
                 Debug.Log("소비 아이템 인벤토리에 추가됨!");
             else
