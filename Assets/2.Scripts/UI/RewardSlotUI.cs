@@ -17,16 +17,30 @@ public class RewardSlotUI : MonoBehaviour
             countText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
-    public void SetSlot(int id, int count)
+    public void SetSlot(eItemType type, int id, int count)
     {
-        var item = ItemManager.Instance.CreateItem(id);
-        var itemIcon = ItemManager.Instance.GetItemIcon(item);
-        if (icon != null)
+        if (type == eItemType.Consumable)
         {
-            icon.sprite = itemIcon;
-            icon.enabled = (itemIcon != null);
+            var item = ItemManager.Instance.CreateItem(id);
+            var itemIcon = ItemManager.Instance.GetItemIcon(item);
+            if (icon != null)
+            {
+                icon.sprite = itemIcon;
+                icon.enabled = (itemIcon != null);
+            }
+            if (countText != null)
+                countText.text = count.ToString();
         }
-        if (countText != null)
-            countText.text = count.ToString();
+        else if (type == eItemType.Weapon)
+        {
+            var weapon = ItemManager.Instance.CreateWeapon(id);
+            var weaponIcon = ItemManager.Instance.GetWeaponIcon(weapon);
+            if (icon != null)
+            {
+                icon.sprite = weaponIcon;
+                icon.enabled = (weaponIcon != null);
+            }
+        }
+        
     }
 }

@@ -72,7 +72,7 @@ public class InGameVictoryUI : UIBase
             
             var newSlot = Instantiate(rewardSlot, content);
             newSlot.gameObject.SetActive(true);
-            newSlot.SetSlot(key.Item2, value);
+            newSlot.SetSlot(key.Item1, key.Item2, value);
         }
     }
 }

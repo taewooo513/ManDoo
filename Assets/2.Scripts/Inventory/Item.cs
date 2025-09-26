@@ -39,6 +39,7 @@ public class ItemInfo
 public class Item
 {
     public ItemInfo ItemInfo { get; private set; }  // 아이템 기본 정보
+    // public eItemType ItemKind { get; private set; } // 아이템의 종류 (무기인지, 소비아이템인지 등등)
     public int ItemId { get; private set; }         // 아이템 고유 ID
     public Sprite icon;                             // 아이템 아이콘 스프라이트
     private EnemyData _data;                        // TODO: EnemyData 사용 여부 확인 필요
