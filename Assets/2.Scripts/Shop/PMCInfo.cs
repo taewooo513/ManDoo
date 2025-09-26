@@ -45,13 +45,7 @@ public class PMCInfo : BaseEntity
 
     public void OnClickHire()// 고용 버튼 클릭
     {
-        int emptyIndex = PMCHire.Instance.FindEmptySpawnIndex();
-        if (emptyIndex == -1)
-        {
-            return;
-        }
         PMCHire.Instance.SpawnPMC(initID);
-
     }
 }
 

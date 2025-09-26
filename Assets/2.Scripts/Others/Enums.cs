@@ -90,5 +90,8 @@ public enum RoomType
     Start,
     Empty,
     Battle,
-    Item
+    Item,
+    Shop,
+    PMC,
+    Village
 }

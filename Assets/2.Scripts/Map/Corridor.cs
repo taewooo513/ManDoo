@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Corridor
 {
-    public List<Cell> CorridorCells;
+    public List<Cell> CorridorCells = new();
 
     public void MakeCells()
     {

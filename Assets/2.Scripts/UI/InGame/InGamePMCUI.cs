@@ -3,6 +3,9 @@ using UnityEngine;
 using System;
 
 public class InGamePMCUI : UIBase
-{  
-
+{
+    void Start()
+    {
+        PMCCardManager.Instance.RefreshCardsOnPanel();
+    }
 }
