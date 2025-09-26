@@ -14,7 +14,6 @@ public class BattleRoom : BattleTreasureEvent
     public override void EnterRoom() //방 입장 시
     {
         base.EnterRoom(); //플레이어 소환(위치 선정)
-        
     }
 
     public override void Init(int id)

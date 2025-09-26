@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class Trap : MonoBehaviour
+public class Trap : MonoBehaviour //얘 ui랑 분리해서 리팩토링해야되는데, 함정 자체가 ui로 제작되어서 애매함...
 {
     [SerializeField] private GameObject activeTrapUI;
     [SerializeField] private GameObject notActiveTrapUI; //발동x 함정 오브젝트 버튼

@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 7338936500347608770}
   - component: {fileID: 4204747360674102609}
   - component: {fileID: 5752993521893249558}
+  - component: {fileID: 5301799687211763179}
   m_Layer: 5
   m_Name: InGameRunResultUI
   m_TagString: Untagged
@@ -598,6 +599,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5301799687211763179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2594148458252451759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eaa236cb739e4f429f4911ee80b48b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIconSlot: {fileID: 613373712600150245}
+  content: {fileID: 721643345094319682}
+  returnBtn: {fileID: 7530408483387154296}
 --- !u!1 &2660817247521309705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,7 +1266,7 @@ GameObject:
   - component: {fileID: 1460049280405332269}
   - component: {fileID: 3491344699753224841}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: PlayableScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1544,8 +1560,9 @@ GameObject:
   - component: {fileID: 3625822337343930692}
   - component: {fileID: 3388431732762549749}
   - component: {fileID: 7928435394283605145}
+  - component: {fileID: 7530408483387154296}
   m_Layer: 5
-  m_Name: Return
+  m_Name: ReturnBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1609,6 +1626,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7530408483387154296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7348688431360276504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7928435394283605145}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7741717142240195814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,6 +2051,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 833806ed435843d4c96359866fbf9982, type: 3}
+--- !u!1 &613373712600150245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7094588850744011019, guid: 833806ed435843d4c96359866fbf9982, type: 3}
+  m_PrefabInstance: {fileID: 7707399338377550318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6124927994703301062 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4608927702604435496, guid: 833806ed435843d4c96359866fbf9982, type: 3}
