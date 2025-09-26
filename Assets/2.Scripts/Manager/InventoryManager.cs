@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -264,7 +265,7 @@ public class InventoryManager : Singleton<InventoryManager>
             }
         }
     }
-
+    
     /// <summary>
     /// 슬롯 변경 이벤트를 발생시키는 메서드
     /// </summary>
