@@ -1053,7 +1053,7 @@ MonoBehaviour:
   yesButton: {fileID: 6884391535448269338}
   noButton: {fileID: 1537605441608095105}
   rewardSlot: {fileID: 2945859632838645733, guid: 83e9f1a17ea834094902fb07b7c06f90, type: 3}
-  content: {fileID: 5735222605201629448}
+  content: {fileID: 1419491266533589160}
 --- !u!1 &5735222605201629448
 GameObject:
   m_ObjectHideFlags: 0

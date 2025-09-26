@@ -37,7 +37,7 @@ public class Trap : MonoBehaviour
         trapUI.SetActive(false);
         //moveAction.action.Enable(); //캐릭터 움직임 활성화
     }
-
+    
     public void OnTrapRelease() //클릭해서 함정 해제하기
     {
         int randomNum = Random.Range(0, 2); //0, 1중 랜덤 숫자

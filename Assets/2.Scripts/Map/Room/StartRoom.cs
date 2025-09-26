@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class StartRoom : BaseRoom
 {
+    public override void Init(int id)
+    {
+        base.Init(id);
+    }
+
     public override void EnterRoom()
     {
         base.EnterRoom(); //스폰 챙겨오기
@@ -11,6 +16,6 @@ public class StartRoom : BaseRoom
         spawn.PlayableCharacterSpawn(); //플레이어 소환(위치 선정)
 
         InventoryManager.Instance.TryAddItem(eItemType.Consumable,1001, 1500); //1500 골드 지급
-        InventoryManager.Instance.TryAddItem(eItemType.Consumable, 2100, 3); //회복약 지급
+        InventoryManager.Instance.TryAddItem(eItemType.Consumable, 2001, 3); //회복약 지급
     }
 }
