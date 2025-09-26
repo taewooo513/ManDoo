@@ -54,7 +54,7 @@ public class EntityInfo
 
     public float GetPlayableTargetWeight() //플레이어블 캐릭터의 타깃 가중치 합
     {
-        float result = _standardWeight + statEffect.AttackWeight(this); //가중치 합
+        float result = _standardWeight + statEffect.totalStat.totalWeight; //가중치 합
         GenerateWeightListUtility.CombineWeights(result); //가중치를 리스트에 추가 //TODO : 턴 끝날 때 GenerateWeightListUtility.Clear(); 호출해줘야 됨
         return result;
     }
@@ -174,7 +174,7 @@ public class BaseEntity : MonoBehaviour
     {
 
     }
-    public virtual void UseSkill(BaseEntity baseEntity)
+    public virtual void UseSkill(Action action)
     {
 
     }

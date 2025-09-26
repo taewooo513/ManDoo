@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using DataTable;
+﻿using DataTable;
 using DefaultTable;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayableCharacter : BaseEntity
@@ -9,11 +10,11 @@ public class PlayableCharacter : BaseEntity
     [SerializeField] private int initID;
     private MercenaryData data;
     private List<int> _deadEquipItemIds = new();
-    //todo : 무기 초기화하기 전에, 장비 등등 _deadEquipItemIds 리스트에 넣어서 BaseRoom.PlayerDeadItem() 로 리스트 넘겨주세요
-
+    private PlayableCharacterAnimationController animatorController;
     private void Start()
     {
         Init(initID);
+        animatorController = GetComponentInChildren<PlayableCharacterAnimationController>();
     }
 
     public override void Init(int id)
@@ -40,13 +41,14 @@ public class PlayableCharacter : BaseEntity
             Utillity.GetIndexInListToObject(BattleManager.Instance._enemyCharacters, baseEntity), dmg);
     }
 
-    public override void UseSkill(BaseEntity baseEntity)
+    public override void UseSkill(Action action)
     {
-        base.UseSkill(baseEntity);
+        animatorController.Attack(action);
     }
     public override void StartTurn(bool hasExtraTrun)
     {
         base.StartTurn(hasExtraTurn);
+        entityInfo.statEffect.AttackWeight(entityInfo);
         if (entityInfo.IsStun())
         {
             EndTurn();
@@ -72,7 +74,6 @@ public class PlayableCharacter : BaseEntity
         deBuffTypes.Add(DeBuffType.CriticalDown);
         deBuffTypes.Add(DeBuffType.AllStatDown);
         deBuffTypes.Add(DeBuffType.Damaged);
-        entityInfo.statEffect.AttackWeight(entityInfo);
         if (hasExtraTurn)
         {
             buffIcons.UpdateIcon(entityInfo.statEffect);

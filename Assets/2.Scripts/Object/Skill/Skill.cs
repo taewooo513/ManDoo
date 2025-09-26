@@ -101,6 +101,12 @@ public class Skill
 
     public void UseSkill(BaseEntity targetEntity)
     {
+
+        baseEntity.UseSkill(() => UseActiveSkill(targetEntity));
+    }
+
+    private void UseActiveSkill(BaseEntity targetEntity)
+    {
         var val = BattleManager.Instance.GetPossibleSkillRange(skillInfo.targetPos);
         if (skillInfo.targetType == TargetType.Range)
         {
@@ -110,10 +116,6 @@ public class Skill
                 {
                     if (targetEntity is PlayableCharacter)
                     {
-                        if (i < BattleManager.Instance._playableCharacters.Count)
-                        {
-                            return;
-                        }
                         skillInfo.skillEffects[i].ActiveEffect(baseEntity, BattleManager.Instance._playableCharacters[val[j]]);
                     }
                     else

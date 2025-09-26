@@ -35,6 +35,7 @@ public class Enemy : BaseEntity
     public override void StartTurn(bool hasExtraTrun)
     {
         base.StartTurn(hasExtraTrun);
+        entityInfo.statEffect.AttackWeight(entityInfo);
         if (entityInfo.IsStun())
         {
             EndTurn();
@@ -210,6 +211,7 @@ public class Enemy : BaseEntity
         //TargetCheckUI(targetEntity);
         if (CanUseSkill(_attackSkill))
         {
+
             if (targetRange.Contains(pickedIndex)) //선택한 인덱스(때리려는 적)가 타겟 가능한 위치에 있는지 체크
             {
                 _attackSkill
