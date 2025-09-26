@@ -11,6 +11,7 @@ public class BaseRoom : INavigatable
     public string RoomLocation;//시작 지점으로부터의 방향을 뜻함
     public Spawn spawn;
     private RoomUI _roomUI;
+    protected int roomId;
     public bool isInteract = false; //이거 베이스룸한테 주면 접근 어떻게하지..?
     
     public virtual void EnterRoom()
@@ -41,6 +42,7 @@ public class BaseRoom : INavigatable
 
     public virtual void Init(int id) //전투 보상 등등 기본값 세팅 todo : 통로/방쪽에서 호출해줘야 됨
     {
+        roomId = id;
     }
 
     public Corridor MakeConnection(BaseRoom room, RoomDirection direction)

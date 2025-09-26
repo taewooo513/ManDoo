@@ -11,14 +11,20 @@ public class BattleRoom : BattleTreasureEvent
     private int _randomGoldDropCount; //실제로 떨어지는 금화 개수
     private float _randomPercentage; //0~100 사이 중 랜덤 퍼센트 (랜덤 숫자 뽑기)
     
-    public override void EnterRoom() //방 입장 시 todo : 방 호출하는 부분에서 id 랜덤돌려서 넣어줘야 됨
+    public override void EnterRoom() //방 입장 시
     {
         base.EnterRoom(); //플레이어 소환(위치 선정)
-        spawn.EnemySpawn(battleData.battleEnemies); //적 소환
+        
     }
 
     public override void Init(int id)
     {
+        if (!isInteract) //처음 입장시에만
+        {
+            spawn.EnemySpawn(battleData.battleEnemies); //적 소환
+            isInteract = true;
+        }
+
         base.Init(id);
         _dropGoldCount = battleData.dropGold; //골드 드랍 개수
         _dropItem = battleData.dropId; //드랍하는 아이템id (골드x)
