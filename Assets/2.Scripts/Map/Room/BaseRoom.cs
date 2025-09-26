@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DataTable;
 using UnityEngine;
 
-public class BaseRoom
+public class BaseRoom : INavigatable
 {
     public Dictionary<RoomDirection, BaseRoom> connectedRooms = new();
     public Dictionary<RoomDirection, Corridor> corridors = new();
@@ -19,6 +19,7 @@ public class BaseRoom
     protected int randomGoldDropCount; //실제로 떨어지는 금화 개수
     protected float randomPercentage; //0~100 사이 중 랜덤 퍼센트 (랜덤 숫자 뽑기)
     protected List<int> equipItemIds = new(); //플레이어 죽었을 때, 가지고 있던 장비 아이템 저장하는 리스트. 복사본을 가져야되니 new로 생성
+    private RoomUI _roomUI;
     protected int battleRewardGroupId; //배틀데이터에 있는 그룹 아이디
     protected int rewardGroupId; //보상 테이블 연결해주는 id
     protected List<RewardData> rewardIdList; //그룹에 속한 id 리스트
@@ -31,6 +32,7 @@ public class BaseRoom
             spawn = spawnObject.AddComponent<Spawn>(); //스폰 컴포넌트 챙겨오기
         }
         spawn.PlayableCharacterSpawn(); //플레이어 소환(위치 선정)
+        _roomUI.ActivateIcon();
     }
 
     public void SetRoomLocation(BaseRoom parentRoom, RoomDirection direction)
@@ -70,7 +72,7 @@ public class BaseRoom
     {
         rewardIdList.Clear();
     }
-
+    
     public void PlayerDeadItem(List<int> id) //플레이어가 죽을 때 가지고 있던 아이템 리스트
     {
         equipItemIds = id;
@@ -80,6 +82,7 @@ public class BaseRoom
     {
         connectedRooms.Add(direction, room);
         var corridor = new Corridor();
+        corridor.Init(this, room, direction);
         corridors.Add(direction, corridor);
         corridor.MakeCells();
 
@@ -100,5 +103,22 @@ public class BaseRoom
         }
 
         return false;
+    }
+    
+    public void SetRoomUI(RoomUI roomUI)
+    {
+        _roomUI = roomUI;
+    }
+
+    public void Travel(INavigatable room)
+    {
+        foreach (var item in connectedRooms.Keys)
+        {
+            if (connectedRooms[item] == room)
+            {
+                MapManager.Instance.ChangeCurrentLocation(corridors[item]);
+                break;
+            }
+        }
     }
 }
