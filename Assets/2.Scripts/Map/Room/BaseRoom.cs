@@ -11,6 +11,7 @@ public class BaseRoom
     public string RoomLocation;//시작 지점으로부터의 방향을 뜻함
     public Spawn spawn;
     public BattleData battleData; //배틀데이터 데이터테이블
+    public RewardData rewardData;
     protected int dropGoldCount;
     protected int dropItem; //드랍하는 아이템id (골드x)
     protected float dropProb; //아이템 드랍 확률 (ex : 0.25)
@@ -18,6 +19,9 @@ public class BaseRoom
     protected int randomGoldDropCount; //실제로 떨어지는 금화 개수
     protected float randomPercentage; //0~100 사이 중 랜덤 퍼센트 (랜덤 숫자 뽑기)
     protected List<int> equipItemIds = new(); //플레이어 죽었을 때, 가지고 있던 장비 아이템 저장하는 리스트. 복사본을 가져야되니 new로 생성
+    protected int battleRewardGroupId; //배틀데이터에 있는 그룹 아이디
+    protected int rewardGroupId; //보상 테이블 연결해주는 id
+    protected int rewardId;
     
     public virtual void EnterRoom(int id)
     {
@@ -44,9 +48,14 @@ public class BaseRoom
     {
         //전투 보상
         battleData = DataManager.Instance.Battle.GetBattleData(id); //배틀데이터 데이터테이블에 접근
+        rewardData = DataManager.Instance.Reward.GetRewardData(id); //보상 테이블 연결
+        
         dropGoldCount = battleData.dropGold; //골드 드랍 개수
-        //dropItem = battleData.dropId; //드랍하는 아이템id (골드x)
+        dropItem = battleData.dropId; //드랍하는 아이템id (골드x)
         dropProb = battleData.dropProb; //아이템 드랍 확률 (ex : 0.25)
+        battleRewardGroupId = battleData.rewardId;
+        rewardGroupId = rewardData.groupId; //랜덤가챠 돌릴 범위
+        rewardId = rewardData.id; //개수 카운트 + 선택 용도의 id
         
         goldRandomRatio = Random.Range(0.9f, 1.1f); //0.9~1.1 사이 랜덤 난수 반환, 골드 떨어지는 랜덤 개수
         randomGoldDropCount = (int)(dropGoldCount * goldRandomRatio); //실제로 떨어지는 금화 개수

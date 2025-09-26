@@ -17,39 +17,39 @@ using UnityEngine;
 namespace DataTable
 {
     [GoogleSheet.Attribute.TableStruct]
-    public partial class BattleData : ITable
+    public partial class RewardData : ITable
     { 
 
-        public delegate void OnLoadedFromGoogleSheets(List<BattleData> loadedList, Dictionary<int, BattleData> loadedDictionary);
+        public delegate void OnLoadedFromGoogleSheets(List<RewardData> loadedList, Dictionary<int, RewardData> loadedDictionary);
 
         static bool isLoaded = false;
         static string spreadSheetID = "1iwjiLK5PVjfgPniQ51iY7rrnAmWC4gSnHuZH9kyLkOo"; // it is file id
-        static string sheetID = "354145137"; // it is sheet id
+        static string sheetID = "614799129"; // it is sheet id
         static UnityFileReader reader = new UnityFileReader();
 
 /* Your Loaded Data Storage. */
     
-        public static Dictionary<int, BattleData> BattleDataMap = new Dictionary<int, BattleData>();  
-        public static List<BattleData> BattleDataList = new List<BattleData>();   
+        public static Dictionary<int, RewardData> RewardDataMap = new Dictionary<int, RewardData>();  
+        public static List<RewardData> RewardDataList = new List<RewardData>();   
 
         /// <summary>
-        /// Get BattleData List 
+        /// Get RewardData List 
         /// Auto Load
         /// </summary>
-        public static List<BattleData> GetList()
+        public static List<RewardData> GetList()
         {{
            if (isLoaded == false) Load();
-           return BattleDataList;
+           return RewardDataList;
         }}
 
         /// <summary>
-        /// Get BattleData Dictionary, keyType is your sheet A1 field type.
+        /// Get RewardData Dictionary, keyType is your sheet A1 field type.
         /// - Auto Load
         /// </summary>
-        public static Dictionary<int, BattleData>  GetDictionary()
+        public static Dictionary<int, RewardData>  GetDictionary()
         {{
            if (isLoaded == false) Load();
-           return BattleDataMap;
+           return RewardDataMap;
         }}
 
     
@@ -57,11 +57,10 @@ namespace DataTable
 /* Fields. */
 
 		public System.Int32 id;
-		public System.Collections.Generic.List<Int32> battleEnemies;
-		public System.Int32 dropGold;
-		public System.Int32 dropId;
+		public System.Int32 groupId;
+		public System.Collections.Generic.List<Int32> itemIdList;
+		public System.Collections.Generic.List<Int32> itemCount;
 		public System.Single dropProb;
-		public System.Int32 rewardId;
   
 
 #region fuctions
@@ -72,7 +71,7 @@ namespace DataTable
             if(isLoaded && forceReload == false)
             {
 #if UGS_DEBUG
-                 Debug.Log("BattleData is already loaded! if you want reload then, forceReload parameter set true");
+                 Debug.Log("RewardData is already loaded! if you want reload then, forceReload parameter set true");
 #endif
                  return;
             }
@@ -88,7 +87,7 @@ namespace DataTable
         }
  
 
-        public static void LoadFromGoogle(System.Action<List<BattleData>, Dictionary<int, BattleData>> onLoaded, bool updateCurrentData = false)
+        public static void LoadFromGoogle(System.Action<List<RewardData>, Dictionary<int, RewardData>> onLoaded, bool updateCurrentData = false)
         {      
                 IHttpProtcol webInstance = null;
     #if UNITY_EDITOR
@@ -116,14 +115,14 @@ namespace DataTable
                
 
 
-    public static (List<BattleData> list, Dictionary<int, BattleData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
-            Dictionary<int, BattleData> Map = new Dictionary<int, BattleData>();
-            List<BattleData> List = new List<BattleData>();     
+    public static (List<RewardData> list, Dictionary<int, RewardData> map) CommonLoad(Dictionary<string, Dictionary<string, List<string>>> jsonObject, bool forceReload){
+            Dictionary<int, RewardData> Map = new Dictionary<int, RewardData>();
+            List<RewardData> List = new List<RewardData>();     
             TypeMap.Init();
-            FieldInfo[] fields = typeof(BattleData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(RewardData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             List<(string original, string propertyName, string type)> typeInfos = new List<(string, string, string)>(); 
             List<List<string>> rows = new List<List<string>>();
-            var sheet = jsonObject["BattleData"];
+            var sheet = jsonObject["RewardData"];
 
             foreach (var column in sheet.Keys)
             {
@@ -142,7 +141,7 @@ namespace DataTable
                         int rowCount = rows[0].Count;
                         for (int i = 0; i < rowCount; i++)
                         {
-                            BattleData instance = new BattleData();
+                            RewardData instance = new RewardData();
                             for (int j = 0; j < typeInfos.Count; j++)
                             {
                                 try
@@ -183,8 +182,8 @@ namespace DataTable
                         }
                         if(isLoaded == false || forceReload)
                         { 
-                            BattleDataList = List;
-                            BattleDataMap = Map;
+                            RewardDataList = List;
+                            RewardDataMap = Map;
                             isLoaded = true;
                         }
                     } 
@@ -194,10 +193,10 @@ namespace DataTable
 
  
 
-        public static void Write(BattleData data, System.Action<WriteObjectResult> onWriteCallback = null)
+        public static void Write(RewardData data, System.Action<WriteObjectResult> onWriteCallback = null)
         { 
             TypeMap.Init();
-            FieldInfo[] fields = typeof(BattleData).GetFields(BindingFlags.Public | BindingFlags.Instance);
+            FieldInfo[] fields = typeof(RewardData).GetFields(BindingFlags.Public | BindingFlags.Instance);
             var datas = new string[fields.Length];
             for (int i = 0; i < fields.Length; i++)
             {
