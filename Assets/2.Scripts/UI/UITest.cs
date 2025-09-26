@@ -12,6 +12,7 @@ public class UITest : MonoBehaviour
         UIManager.Instance.OpenUI<InGamePlayerUI>();
         UIManager.Instance.OpenUI<InGameInventoryUI>();
         UIManager.Instance.OpenUI<UIInputHandler>();
+        UIManager.Instance.OpenUI<InGameVictoryUI>();
     }
 
     public void Update()

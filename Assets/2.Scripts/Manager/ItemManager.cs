@@ -17,17 +17,30 @@ public class ItemManager : Singleton<ItemManager>
 
     public Dictionary<(eItemType, int id), int> GetRewards() => new(rewards);
     //private Dictionary<(eItemType, int[] id), int[]> rewardArr = new(); // key: type & id, value: count
-    
+
     /// <summary>
     /// ID에 해당하는 아이템을 생성하는 메서드
     /// </summary>
     /// <param name="id">생성할 아이템의 ID</param>
     /// <returns>생성된 아이템 객체</returns>
+
+    // public eItemType GetItemKind(int id)
+    // {
+    //
+    // }
+
     public Item CreateItem(int id) 
     {
         var item = new Item(id);
         item.icon = GetItemIcon(item);
         return item;
+    }
+
+    public Weapon CreateWeapon(int id)
+    {
+        var weapon = new Weapon(id);
+        weapon.icon = GetWeaponIcon(weapon);
+        return weapon;
     }
 
     /// <summary>
@@ -68,12 +81,13 @@ public class ItemManager : Singleton<ItemManager>
         return sprite;
     }
     
-    public void UseItem(int id)
+    public void UseItem(eItemType type, int id)
     {   
         // TODO: 아이템 사용 로직
+        
     }
 
-    public Item GetItemInUse(int id)
+    public Item GetItemInUse(eItemType type, int id)
     {
         // TODO: 사용중인 아이템 리턴
         return null;

@@ -8,11 +8,7 @@ public class MapTest : MonoBehaviour
     private MapGenerator _mapGenerator;
     private MapUI _mapUI;
     [SerializeField] private int index;
-
-    private void Awake()
-    {
-        _mapUI = gameObject.AddComponent<MapUI>();
-    }
+    
 
     void Start()
     {
@@ -25,7 +21,7 @@ public class MapTest : MonoBehaviour
         // {
         //     Debug.Log(item+" "+ item.RoomLocation);
         // }
-        UIManager.Instance.OpenUI<MapUI>();
+        _mapUI = UIManager.Instance.OpenUI<MapUI>();
         _mapUI.Init(rooms);
         _mapUI.GenerateMapUI();
     }
