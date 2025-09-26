@@ -14,6 +14,7 @@ public class Enemy : BaseEntity
 
     private void Start()
     {
+        Init(initID);
     }
     public override void Init(int idx)
     {
@@ -31,8 +32,16 @@ public class Enemy : BaseEntity
         entityInfo.SetUpSkill(_data.skillId, this);
     }
 
-    public override void StartTurn()
+    public override void StartTurn(bool hasExtraTrun)
     {
+        base.StartTurn(hasExtraTrun);
+        if (entityInfo.IsStun())
+        {
+            EndTurn();
+            return;
+        }
+
+        isNowExtraTurn = hasExtraTrun;
         bool isAttack = false; //공격 타입의 스킬공격인지
         _attackSkill = GetRandomSkill();
         if (_attackSkill == null) //선택한 스킬이 null이면
@@ -80,7 +89,6 @@ public class Enemy : BaseEntity
                 }
             }
         }
-
         EndTurn(_hasExtraTurn);
     }
 
@@ -88,7 +96,6 @@ public class Enemy : BaseEntity
     {
         //TODO : 지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다?
         _attackSkill = null; //선택한 스킬 비워주기
-        BattleManager.Instance.EndTurn(hasExtraTurn);
 
         List<BuffType> buffTypes = new List<BuffType>();
         List<DeBuffType> deBuffTypes = new List<DeBuffType>();
@@ -107,14 +114,16 @@ public class Enemy : BaseEntity
         deBuffTypes.Add(DeBuffType.AllStatDown);
         deBuffTypes.Add(DeBuffType.Damaged);
         buffIcons.UpdateIcon(entityInfo.statEffect);
-        if (hasExtraTurn)
+        if (isNowExtraTurn)
         {
             entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
         }
+        BattleManager.Instance.EndTurn(hasExtraTurn);
     }
 
     public override void StartExtraTurn() //추가 공격 턴
     {
+        isNowExtraTurn = true;
         if (TryAttack(out int position)) //공격 시도 성공시
         {
         }
