@@ -46,6 +46,7 @@ public class Buff
         {
             if (item.deBuffType == DeBuffType.Stun)
             {
+                Debug.Log("1");
                 return true;
             }
         }
@@ -59,9 +60,9 @@ public class Buff
     { //스킬 쓸 때마다 호출
         _totalWeight = 0;
         totalStat.Reset(entityInfo);
-
         for (int i = 0; i < _entityCurrentStatus.Count; i++)
         {
+            Debug.Log(totalStat.attackDmg.ToString() + " : " + _entityCurrentStatus[i].adRatio.ToString());
             var buff = _entityCurrentStatus[i].buffType;
             switch (buff)
             {
@@ -153,7 +154,6 @@ public class Buff
             {
                 if (_entityCurrentStatus[i].deBuffType == item)
                 {
-                    Debug.Log(_entityCurrentStatus[i].duration);
                     _entityCurrentStatus[i].duration--;
                     if (_entityCurrentStatus[i].duration <= 0)
                     {

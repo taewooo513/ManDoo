@@ -44,21 +44,21 @@ public class InGameInventoryUI : UIBase
     void Start()
     {
         // 각 인벤토리 슬롯 초기화
-        for (int i = 0; i < inventorySlots.Length; i++)
-        {
-            var slot = inventorySlots[i];
-            slot.Init(i, this);
-            if (slot.Icon != null)
-                slot.Icon.Setup(i, this, baseCanvas);
+        //for (int i = 0; i < inventorySlots.Length; i++)
+        //{
+        //    var slot = inventorySlots[i];
+        //    slot.Init(i, this);
+        //    if (slot.Icon != null)
+        //        slot.Icon.Setup(i, this, baseCanvas);
 
-            if (!isTestMode)
-            {
-                slot.SetIcon(null);
-                slot.SetInteractableIcon(false);
-            }
-        }
-        // 슬롯 UI 새로고침
-        RefreshSlots();
+        //    if (!isTestMode)
+        //    {
+        //        slot.SetIcon(null);
+        //        slot.SetInteractableIcon(false);
+        //    }
+        //}
+        //// 슬롯 UI 새로고침
+        //RefreshSlots();
     }
     
     /// <summary>
