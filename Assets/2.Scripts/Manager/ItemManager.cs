@@ -96,7 +96,12 @@ public class ItemManager : Singleton<ItemManager>
             Debug.LogError($"Item icon is not found at path: {path}.");
         return sprite;
     }
-
+    
+    public void UseItem(int id)
+    {
+        
+    }
+    
     /// <summary>
     /// 아이템을 해당 슬롯에 장착할 수 있는지 확인하는 메서드
     /// </summary>
@@ -136,10 +141,9 @@ public class ItemManager : Singleton<ItemManager>
                 rewards[key] = amount;
         }
     }
-    public void UseItem(int id)
-    {
-        
-    }
+
+    public Dictionary<(eItemType, int id), int> GetRewards() => rewards;
+    
     /// <summary>
     /// 보상 목록을 초기화하는 메서드
     /// </summary>
