@@ -14,6 +14,7 @@ public enum eItemType
 public class ItemManager : Singleton<ItemManager>
 {
     private Dictionary<(eItemType, int id), int> rewards = new(); // key: type & id, value: count
+    //private Dictionary<(eItemType, int[] id), int[]> rewardArr = new(); // key: type & id, value: count
     
     /// <summary>
     /// ID에 해당하는 아이템을 생성하는 메서드
@@ -109,15 +110,36 @@ public class ItemManager : Singleton<ItemManager>
     /// <summary>
     /// 보상 아이템을 추가하는 메서드
     /// </summary>
-    public void AddReward(eItemType type, int id, int amount)
+    public void AddReward(eItemType type, int id, int amount) // 보상 -> 승리 UI
     {
+        if (amount == 0) return;
         var key = (type, id);
         if (rewards.ContainsKey(key))
             rewards[key] += amount;
         else
-            rewards[(type, id)] = 1;
+            rewards[key] = amount;
     }
 
+    public void AddReward(eItemType type, int[] ids, int[] amounts)
+    {
+        if (ids.Length != amounts.Length) return;
+        
+        for (int i = 0; i < ids.Length; i++)
+        {
+            var key = (type, ids[i]);
+            int amount = amounts[i];
+            if (amount <= 0) continue;
+
+            if (rewards.ContainsKey(key))
+                rewards[key] += amount;
+            else
+                rewards[key] = amount;
+        }
+    }
+    public void UseItem(int id)
+    {
+        
+    }
     /// <summary>
     /// 보상 목록을 초기화하는 메서드
     /// </summary>
