@@ -9,7 +9,7 @@ public class ShopItem : MonoBehaviour
     //public string iconPathString; // 아이템 아이콘 경로
 
     [Header("consumable Data")]
-    [SerializeField]
+
     public ItemType itemType; // 아이템 타입 (소비 아이템/무기 아이템)
     public int consumableSkillId; // 소비 아이템 사용 시 발동되는 스킬 ID
     public string itemName; // 아이템 이름
@@ -39,9 +39,7 @@ public class ShopItem : MonoBehaviour
 
     public void SetConsumableData(ConsumableData data)
     {
-        consumableData = data;
-
-        // Inspector에 값 보이게 필드 세팅
+        //consumableData = data;
         id = data.id;
         itemType = data.itemType;
         consumableSkillId = data.consumableSkillId;
@@ -61,7 +59,6 @@ public class ShopItem : MonoBehaviour
     public void SetWeaponData(WeaponData data)
     {
         weaponData = data;
-        // Inspector에 값 보이게 필드 세팅
         id = data.id;
         proficiencyLevel = data.proficiencyLevel;
         weaponType = data.weaponType;
