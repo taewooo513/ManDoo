@@ -101,7 +101,7 @@ public class UIInputHandler : UIBase
         var item = InventoryManager.Instance.GetItemInSlot(slot.SlotIndex);
         if (item == null) return;
         
-        if (InventoryManager.Instance.UseItemFromSlot(item.ItemId, 1))
+        if (InventoryManager.Instance.UseItemFromSlot(slot.SlotIndex, 1))
             inventoryUI.RefreshSlots();
     }
     

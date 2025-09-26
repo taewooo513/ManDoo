@@ -89,6 +89,7 @@ public class InGameInventoryUI : UIBase
             var icon = (item != null) ? item.icon : null;
             inventorySlots[i].SetIcon(icon);
             inventorySlots[i].SetInteractableIcon(icon != null);
+            inventorySlots[i].UpdateSlotCountText(im.GetSlotCount(i));
         }
     }
 

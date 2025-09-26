@@ -15,6 +15,19 @@ public class EquipmentSlotUI : MonoBehaviour//, IDroppingTarget
             icon = GetComponentInChildren<Image>(true);
     }
 
+    private void OnEnable() => InventoryManager.Instance.OnWeaponEquipChanged += HandleWeaponChanged;
+
+    private void OnDisable()
+    {
+        if (InventoryManager.Instance != null)
+            InventoryManager.Instance.OnWeaponEquipChanged -= HandleWeaponChanged;
+    }
+
+    private void HandleWeaponChanged(Weapon weapon)
+    {
+        if (slotType == EquipmentSlotType.Weapon)
+            RefreshIcon();
+    }
     public bool CanDrop(IDraggingObject obj)
     {
         if (obj == null) return false;
