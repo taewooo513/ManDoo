@@ -26,38 +26,7 @@ public class ItemManager : Singleton<ItemManager>
         var item = new Item(id);
         item.icon = GetItemIcon(item);
         return item;
-        // if (type == eItemType.Consumable)
-        // {
-        //     var item = new Item(id);
-        //     item.icon = GetItemIcon(item);
-        //     return item;
-        // }
-        // if (type == eItemType.Weapon)
-        // {
-        //     var weapon = new Weapon(id);
-        //     weapon.icon = GetWeaponIcon(weapon);
-        //     return weapon;
-        // }
-        // if (type == eItemType.Accessory)
-        // {
-        //     var accessory = new Weapon(id);
-        //     accessory.icon = GetAccessoryIcon(accessory);
-        //     return accessory;
-        // }
-        // return null;
     }
-    
-    // public Weapon CreateWeapon(int id)
-    // {
-    //
-    // }
-
-    // public Accessory CreateAccessory(int id)
-    // {
-    //     var accessory = new Weapon(id);
-    //     accessory.icon = GetAccessoryIcon(accessory);
-    //     return accessory;
-    // }
 
     /// <summary>
     /// 아이템의 아이콘 스프라이트를 가져오는 메서드
@@ -98,8 +67,14 @@ public class ItemManager : Singleton<ItemManager>
     }
     
     public void UseItem(int id)
+    {   
+        // TODO: 아이템 사용 로직
+    }
+
+    public Item GetItemInUse(int id)
     {
-        
+        // TODO: 사용중인 아이템 리턴
+        return null;
     }
     
     /// <summary>
@@ -125,11 +100,11 @@ public class ItemManager : Singleton<ItemManager>
             rewards[key] = amount;
     }
 
-    public void AddReward(eItemType type, int[] ids, int[] amounts)
+    public void AddReward(eItemType type, List<int> ids, List<int> amounts)
     {
-        if (ids.Length != amounts.Length) return;
+        if (ids.Count != amounts.Count) return;
         
-        for (int i = 0; i < ids.Length; i++)
+        for (int i = 0; i < ids.Count; i++)
         {
             var key = (type, ids[i]);
             int amount = amounts[i];
@@ -147,8 +122,5 @@ public class ItemManager : Singleton<ItemManager>
     /// <summary>
     /// 보상 목록을 초기화하는 메서드
     /// </summary>
-    public void ClearRewards()
-    {
-        rewards.Clear();
-    }
+    public void ClearRewards() => rewards.Clear();
 }

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -32,6 +33,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
     /// 슬롯에 표시되는 아이콘 이미지 컴포넌트
     /// </summary>
     [SerializeField] private Image slotIcon;
+    [SerializeField] private TextMeshProUGUI countText;
     
     private void Awake()
     {
@@ -54,6 +56,8 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         // 아이콘 UI 컴포넌트 가져오기
         if (slotIcon != null)
             Icon = slotIcon.GetComponent<InventoryItemUI>();
+        if (countText == null)
+            countText = GetComponentInChildren<TextMeshProUGUI>();
     }
     
     /// <summary>
@@ -142,6 +146,8 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
         slotIcon.enabled = hasIcon;
     }
 
+    public void UpdateSlotCountText(int count) => countText.text = count.ToString();
+    
     /// <summary>
     /// 슬롯 아이콘의 상호작용 가능 여부 설정
     /// </summary>
