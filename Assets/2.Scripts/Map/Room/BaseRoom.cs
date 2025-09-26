@@ -22,7 +22,6 @@ public class BaseRoom
     protected int battleRewardGroupId; //배틀데이터에 있는 그룹 아이디
     protected int rewardGroupId; //보상 테이블 연결해주는 id
     protected List<RewardData> rewardIdList; //그룹에 속한 id 리스트
-    protected int rewardId; //실제로 보상 주는 방 id
     
     public virtual void EnterRoom(int id)
     {
