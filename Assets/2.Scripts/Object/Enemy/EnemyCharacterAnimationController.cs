@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class PlayableCharacterAnimationController : EntityCharacterAnimationController
+public class EnemyCharacterAnimationController : EntityCharacterAnimationController
 {
-    int[] layers;
+    int layers;
     BaseEntity targetEntity;
     List<BaseEntity> baseEntitys;
     public void Awake()
@@ -31,25 +29,21 @@ public class PlayableCharacterAnimationController : EntityCharacterAnimationCont
         baseEntitys.ForEach(baseEntity => { baseEntity.characterAnimationController.LayerUp(); });
         this.action = action;
     }
-
     public override void LayerUp()
     {
-        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
-        layers = new int[sprites.Length];
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            layers[i] = sprites[i].sortingOrder;
-            sprites[i].sortingOrder += 50;
-        }
+        SpriteRenderer sprites = GetComponent<SpriteRenderer>();
+        sprites.sortingOrder += 50;
+
+        layers = sprites.sortingOrder;
+        BattleManager.Instance.blackOutImage.SetActive(true);
     }
 
     public override void LayerDown()
     {
-        SpriteRenderer[] sprites = GetComponentsInChildren<SpriteRenderer>();
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            sprites[i].sortingOrder = layers[i];
-        }
+        SpriteRenderer sprites = GetComponent<SpriteRenderer>();
+
+        sprites.sortingOrder = layers;
+        BattleManager.Instance.blackOutImage.SetActive(false);
     }
 
     public override void ActionEvent()

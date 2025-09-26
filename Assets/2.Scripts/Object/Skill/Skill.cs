@@ -14,7 +14,6 @@ public class SkillInfo
     public List<int> targetPos;
     public string iconPathString;
     public SkillEffect[] skillEffects;
-
     private SkillData sd;
 
     public SkillInfo(int id)
@@ -101,13 +100,17 @@ public class Skill
 
     public void UseSkill(BaseEntity targetEntity)
     {
+        if (skillInfo.targetType == TargetType.Range)
+        {
 
-        baseEntity.UseSkill(() => UseActiveSkill(targetEntity));
+        }
+        baseEntity.UseSkill(() => UseActiveSkill(targetEntity), targetEntity);
     }
 
     private void UseActiveSkill(BaseEntity targetEntity)
     {
         var val = BattleManager.Instance.GetPossibleSkillRange(skillInfo.targetPos);
+        List<BaseEntity> baseEntities = new List<BaseEntity>();
         if (skillInfo.targetType == TargetType.Range)
         {
             for (int j = 0; j < val.Count; j++)

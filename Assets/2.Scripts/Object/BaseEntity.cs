@@ -129,6 +129,7 @@ public class BaseEntity : MonoBehaviour
     protected bool hasExtraTurn = true;
     public Action<BaseEntity> OnDied;
     protected BuffIcons buffIcons;
+    public EntityCharacterAnimationController characterAnimationController;
     protected virtual void Awake()
     {
         SetData();
@@ -174,7 +175,12 @@ public class BaseEntity : MonoBehaviour
     {
 
     }
-    public virtual void UseSkill(Action action)
+    public virtual void UseSkill(Action action, BaseEntity baseEntity)
+    {
+
+    }
+
+    public virtual void UseSkill(Action action, List<BaseEntity> baseEntitys)
     {
 
     }

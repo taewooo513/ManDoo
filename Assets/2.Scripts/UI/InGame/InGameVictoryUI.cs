@@ -8,16 +8,23 @@ public class InGameVictoryUI : UIBase
 {
     public Button yesButton;
     public Button noButton;
+
+    // [SerializeField] private RewardSlotUI slot;
+    // private List<RewardSlotUI> activeSlots;
+    // private Queue<RewardSlotUI> pool = new();
     
-    private Dictionary<int, int> rewardItems = new (); // key: id, value: count
-    private List<RectTransform> contents = new();
+    private Dictionary<(eItemType, int id), int> rewards = new(); // key: type & id, value: count
+
     private ScrollRect sr;
     private RectTransform contentRt;
+
 
     private void Awake()
     {
         if (sr == null)
             sr = GetComponent<ScrollRect>();
+        if (sr != null)
+            contentRt = sr.content;
     }
     public void Start()
     {
@@ -25,27 +32,17 @@ public class InGameVictoryUI : UIBase
         Button noBtn = noButton.GetComponent<Button>();
         yesBtn.onClick.AddListener(YesButtonOnClick);
         noBtn.onClick.AddListener(NoButtonOnClick);
-
-        // if (rewardItemObjects == null)
-        // {
-        //     
-        // }
     }
 
     public void YesButtonOnClick()
     {
-        foreach (var item in rewardItems)
+        foreach (var reward in rewards)
         {
-            var id = item.Key;
-            var remaining = item.Value;
-
-            while (remaining > 0)
-            {
-                if (!InventoryManager.Instance.TryAddItem(id, remaining))
-                    break;
-                remaining--;
-            }
+            var key = reward.Key;
+            var value = reward.Value;
+            InventoryManager.Instance.TryAddItem(key.Item1, key.Item2, value);
         }
+        
         UpdateContents();
     }
     
@@ -53,6 +50,6 @@ public class InGameVictoryUI : UIBase
 
     private void UpdateContents() 
     {
-        
+        // TODO: 보상 슬롯 초기화
     }
 }

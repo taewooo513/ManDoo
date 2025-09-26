@@ -10,11 +10,10 @@ public class PlayableCharacter : BaseEntity
     [SerializeField] private int initID;
     private MercenaryData data;
     private List<int> _deadEquipItemIds = new();
-    private PlayableCharacterAnimationController animatorController;
     private void Start()
     {
         Init(initID);
-        animatorController = GetComponentInChildren<PlayableCharacterAnimationController>();
+        characterAnimationController = GetComponentInChildren<PlayableCharacterAnimationController>();
     }
 
     public override void Init(int id)
@@ -41,9 +40,14 @@ public class PlayableCharacter : BaseEntity
             Utillity.GetIndexInListToObject(BattleManager.Instance._enemyCharacters, baseEntity), dmg);
     }
 
-    public override void UseSkill(Action action)
+    public override void UseSkill(Action action,BaseEntity baseEntity)
     {
-        animatorController.Attack(action);
+        characterAnimationController.Attack(action, baseEntity);
+    }
+
+    public override void UseSkill(Action action, List<BaseEntity> baseEntitys)
+    {
+        characterAnimationController.Attack(action, baseEntitys);
     }
     public override void StartTurn(bool hasExtraTrun)
     {

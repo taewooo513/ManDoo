@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DataTable;
 using System.Linq;
 using UnityEditorInternal;
+using System;
 
 public class Enemy : BaseEntity
 {
@@ -11,9 +12,9 @@ public class Enemy : BaseEntity
     private bool _hasExtraTurn = true;
     private Skill _attackSkill;
     [SerializeField] private int initID;
-
     private void Start()
     {
+        characterAnimationController = GetComponentInChildren<EnemyCharacterAnimationController>();
         Init(initID);
     }
     public override void Init(int idx)
@@ -135,7 +136,6 @@ public class Enemy : BaseEntity
                 BattleManager.Instance.SwitchPosition(this, position); //이동
             }
         }
-
         EndTurn(false);
     }
 
@@ -197,6 +197,17 @@ public class Enemy : BaseEntity
         if (atEnablePosition && atTargetPosition)
             return true;
         return false;
+    }
+
+    public override void UseSkill(Action action, BaseEntity baseEntity)
+    {
+        base.UseSkill(action, baseEntity);
+        characterAnimationController.Attack(action,baseEntity);
+    }
+    public override void UseSkill(Action action, List<BaseEntity> baseEntitys)
+    {
+        base.UseSkill(action, baseEntitys);
+        characterAnimationController.Attack(action,baseEntitys);
     }
 
     private bool TryAttack(out int position) //스킬 선택, 타겟 선택
