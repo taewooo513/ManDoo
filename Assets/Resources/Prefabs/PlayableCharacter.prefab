@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5939862589847810199}
   - component: {fileID: 2863219222470369227}
   - component: {fileID: 6498451516334941923}
-  - component: {fileID: 69834486029824011}
   m_Layer: 5
   m_Name: BackImg
   m_TagString: Untagged
@@ -78,18 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &69834486029824011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276085068980641199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08aaba4a32db1fe4ab692a75ae04b200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &658357808857334447
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +163,7 @@ GameObject:
   - component: {fileID: 106133217061120107}
   - component: {fileID: 4195623839132120081}
   - component: {fileID: 4030063728698212477}
+  - component: {fileID: 1700114330252842948}
   m_Layer: 5
   m_Name: hp
   m_TagString: Untagged
@@ -240,6 +228,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1700114330252842948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851607423845975558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08aaba4a32db1fe4ab692a75ae04b200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &881756837314635473
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,6 +1833,7 @@ MonoBehaviour:
     canMove: 0
     contractGold: 0
     equipWeapon: {fileID: 0}
+  characterAnimationController: {fileID: 0}
   initID: 9999
 --- !u!1 &8916843029870579945
 GameObject:

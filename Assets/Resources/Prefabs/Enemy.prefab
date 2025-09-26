@@ -916,6 +916,7 @@ GameObject:
   - component: {fileID: 3808255356530592746}
   - component: {fileID: 4154961244452664928}
   - component: {fileID: 2170031050112468172}
+  - component: {fileID: 9023478920735213575}
   m_Layer: 5
   m_Name: hp
   m_TagString: Untagged
@@ -980,6 +981,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9023478920735213575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5175951459126882513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08aaba4a32db1fe4ab692a75ae04b200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5197516582549756746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1375,6 @@ GameObject:
   - component: {fileID: 2046124357464315993}
   - component: {fileID: 5066624736656233226}
   - component: {fileID: 2347340545122157586}
-  - component: {fileID: 4203614374487816963}
   m_Layer: 5
   m_Name: BackImg
   m_TagString: Untagged
@@ -1429,18 +1441,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4203614374487816963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6500696865790803423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08aaba4a32db1fe4ab692a75ae04b200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8338819544573763876
 GameObject:
   m_ObjectHideFlags: 0

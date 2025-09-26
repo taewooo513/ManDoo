@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEditor.Experimental;
 using UnityEngine;
@@ -66,7 +67,7 @@ public class BattleManager : Singleton<BattleManager>
             item.BattleStarted();
         }
         UIManager.Instance.OpenUI<InGameBattleStartUI>(); //전투 시작 UI 출력
-        Turn();
+        Turn(false);
     }
 
     public void GetLowHpSkillWeight(out float playerSkillWeight, out float enemySkillWeight) //스킬 가중치
@@ -89,14 +90,21 @@ public class BattleManager : Singleton<BattleManager>
             }
         }
     }
-    private void Turn() //한 턴
+    private void Turn(bool isExtra) //한 턴
     {
         if (_turnQueue.Count == 0)
         {
             SetTurnQueue();
         }
         nowTurnEntity = _turnQueue.Peek();
-        nowTurnEntity.StartTurn();
+        if (isExtra)
+        {
+            nowTurnEntity.StartExtraTurn();
+        }
+        else
+        {
+            nowTurnEntity.StartTurn();
+        }
     }
 
     public void EndTurn(bool hasExtraTurn = false)
@@ -115,7 +123,6 @@ public class BattleManager : Singleton<BattleManager>
             {
                 if ((nowTurnEntity.entityInfo.GetTotalBuffStat().speed - GetAverageSpeed()) / 10 >= UnityEngine.Random.value)
                 {
-                    nowTurnEntity.StartExtraTurn();
                     if (_playableCharacters.Count == 0)
                     {
                         Lose();
@@ -125,15 +132,22 @@ public class BattleManager : Singleton<BattleManager>
                         Win();
                     }
                 }
-                nowTurnEntity.EndExtraTurn();
+                nowTurnEntity.EndTurn();
             }
             else
             {
                 nowTurnEntity.EndTurn();
                 _turnQueue.Dequeue();
-                Turn();
             }
+
+            StartCoroutine(NextTurn(hasExtraTurn));
         }
+    }
+
+    IEnumerator NextTurn(bool extraTurn)
+    {
+        yield return new WaitForSeconds(1f);
+        Turn(extraTurn);
     }
     //private void BattleRun()
     //{

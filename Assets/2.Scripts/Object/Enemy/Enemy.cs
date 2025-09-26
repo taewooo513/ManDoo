@@ -92,6 +92,7 @@ public class Enemy : BaseEntity
         }
     }
 
+
     public override void EndTurn()
     {
         //TODO : 지금 엔티티에 걸린 상태이상을 적용하고, 턴 수를 감소시킨다?
@@ -117,8 +118,6 @@ public class Enemy : BaseEntity
         entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
         Damaged(entityInfo.statEffect.totalStat.damagedValue);
         buffIcons.UpdateIcon(entityInfo.statEffect);
-
-        BattleManager.Instance.EndTurn(hasExtraTurn);
     }
 
     public override void StartExtraTurn() //추가 공격 턴

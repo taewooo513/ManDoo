@@ -15,6 +15,7 @@ public class HpbarUI : MonoBehaviour
     }
     public void UpdateUI()
     {
+        Debug.Log("vasdml;");
         if (hpBar != null || entity != null)
         {
             float val = 1f / entity.entityInfo.maxHp * entity.entityInfo.currentHp;
