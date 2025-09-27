@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EquipmentSlotUI : MonoBehaviour//, IDroppingTarget
+public class EquipmentSlotUI : MonoBehaviour, IDroppingTarget
 {
     [SerializeField] private EquipmentSlotType slotType = 0;
     public EquipmentSlotType GetSlotType() => slotType;
@@ -31,24 +31,25 @@ public class EquipmentSlotUI : MonoBehaviour//, IDroppingTarget
     public bool CanDrop(IDraggingObject obj)
     {
         if (obj == null) return false;
+        
         if (obj.Origin != DragOrigin.Inventory) return false;
-        // TODO: ItemID < 0 이면 false 반환 하는식으로 구현
+        if (slotType != EquipmentSlotType.Weapon) return false;
+        if (obj.ItemType != eItemType.Weapon) return false;
+        if (obj.SlotIndex < 0) return false;
         return true;
     }
 
     public bool Drop(IDraggingObject obj)
     {
         if (!CanDrop(obj)) return false;
-        bool canEquip = InventoryManager.Instance.TryEquipFromInventory(obj.SlotIndex, slotType);
-        if (canEquip)
+        
+        bool can = InventoryManager.Instance.TryEquipFromInventory(obj.SlotIndex, slotType);
+        if (can)
             RefreshIcon();
-        return true;
+        return can;
     }
 
-    // public Transform RootObject
-    // {
-    //     
-    // }
+    public Transform RootObject => this.transform;
 
     public void RefreshIcon()
     {
@@ -58,7 +59,7 @@ public class EquipmentSlotUI : MonoBehaviour//, IDroppingTarget
         if (icon != null)
         {
             icon.sprite = equipmentIcon;
-            icon.enabled = true;
+            icon.enabled = (equipmentIcon != null);
         }
     }
 }

@@ -95,28 +95,44 @@ public class InventoryManager : Singleton<InventoryManager>
     /// <summary>
     /// 인벤토리에서 아이템을 제거하는 메서드
     /// </summary>
-    public bool RemoveItem(int id, int amount = 1)
+    // public bool RemoveItem(int id, int amount = 1)
+    // {
+    //     if (amount <= 0) return true;
+    //     int remaining = amount;
+    //
+    //     for (int i = 0; i < slotItemIds.Length && remaining > 0; i++)
+    //     {
+    //         if (slotItemIds[i] != id) continue;
+    //         var current = slotStackCounts[i];
+    //         if (current <= 0) continue;
+    //         
+    //         var canRemove = Mathf.Min(current, remaining);
+    //         slotStackCounts[i] -= canRemove;
+    //         remaining -= canRemove;
+    //         if (slotStackCounts[i] <= 0)
+    //             slotItemIds[i] = -1;
+    //         
+    //         UpdateSlot(i);
+    //     }
+    //     return remaining <= 0;
+    // }
+
+    public bool RemoveItemFromSlot(int slotIndex, int amount)
     {
-        if (amount <= 0) return true;
-        int remaining = amount;
+        if (!IsValidSlot(slotIndex) || amount <= 0) return false;
+        if (slotItemIds[slotIndex] == -1 || slotStackCounts[slotIndex] < amount) return false;
 
-        for (int i = 0; i < slotItemIds.Length && remaining > 0; i++)
+        slotStackCounts[slotIndex] -= amount;
+        if (slotStackCounts[slotIndex] <= 0)
         {
-            if (slotItemIds[i] != id) continue;
-            var current = slotStackCounts[i];
-            if (current <= 0) continue;
-            
-            var canRemove = Mathf.Min(current, remaining);
-            slotStackCounts[i] -= canRemove;
-            remaining -= canRemove;
-            if (slotStackCounts[i] <= 0)
-                slotItemIds[i] = -1;
-            
-            UpdateSlot(i);
+            slotItemIds[slotIndex] = -1;
+            slotStackCounts[slotIndex] = 0;
+            slotItemTypes[slotIndex] = default;
         }
-        return remaining <= 0;
+        UpdateSlot(slotIndex);
+        return true;
     }
-
+    
     /// <summary>
     /// 특정 아이템의 전체 개수를 반환하는 메서드
     /// </summary>
@@ -283,33 +299,56 @@ public class InventoryManager : Singleton<InventoryManager>
         // TODO: 상정구매 구현
         return true;
     }
-    
+
     /// <summary>
     /// 장비를 해제하고 인벤토리로 이동시키는 메서드
     /// </summary>
-    public bool TryUnequipToInventory(EquipmentSlotType from, int to) // TODO: EquippedWeapon 을 이용해서 변경
+    // public bool TryUnequipToInventory(EquipmentSlotType from, int to) // TODO: EquippedWeapon 을 이용해서 변경
+    // {
+    //     if (from == EquipmentSlotType.Weapon)
+    //     {
+    //         if (equippedWeapon == null) return false;
+    //
+    //         if (!TryAddItem(eItemType.Weapon, equippedWeapon.GetId, 1)) return false;
+    //
+    //         equippedWeapon = null;
+    //         OnEquipChanged?.Invoke(EquipmentSlotType.Weapon, null);
+    //         OnWeaponEquipChanged?.Invoke(null);
+    //         return true;
+    //     }
+    //     
+    //     var equip = equippedItems[(int)from];
+    //     if (equip == null) return false;
+    //     
+    //     TryAddItem(eItemType.Weapon, equip.ItemId, 1);
+    //     equippedItems[(int)from] = null;
+    //     OnEquipChanged?.Invoke(from, null);
+    //     return true;
+    // }
+
+    public bool TryUnEquipToInventory(EquipmentSlotType from, int to)
     {
+        if (!IsValidSlot(to)) return false;
+
         if (from == EquipmentSlotType.Weapon)
         {
-            if (equippedWeapon == null) return false;
+            if ((equippedWeapon == null)) return false;
 
-            if (!TryAddItem(eItemType.Weapon, equippedWeapon.GetId, 1)) return false;
-    
+            if (slotItemIds[to] != -1) return false;
+
+            slotItemIds[to] = equippedWeapon.GetId;
+            slotItemTypes[to] = eItemType.Weapon;
+            slotStackCounts[to] = 1;
+
+            UpdateSlot(to);
+
             equippedWeapon = null;
             OnEquipChanged?.Invoke(EquipmentSlotType.Weapon, null);
             OnWeaponEquipChanged?.Invoke(null);
             return true;
         }
-        
-        var equip = equippedItems[(int)from];
-        if (equip == null) return false;
-        
-        TryAddItem(eItemType.Weapon, equip.ItemId, 1);
-        equippedItems[(int)from] = null;
-        OnEquipChanged?.Invoke(from, null);
-        return true;
+        return false;
     }
-    
     /// <summary>
     /// 슬롯 인덱스가 유효한지 검사하는 메서드
     /// </summary>

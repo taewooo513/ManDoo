@@ -41,6 +41,16 @@ public class RewardSlotUI : MonoBehaviour
                 icon.enabled = (weaponIcon != null);
             }
         }
-        
+
+        var reward = icon ? icon.GetComponent<RewardItemUI>() : null;
+        if (icon && reward == null)
+            reward = icon.gameObject.AddComponent<RewardItemUI>();
+        if (reward != null)
+        {
+            reward.itemType = type;
+            reward.itemId = id;
+            reward.amount = 1;
+            reward.owner = FindObjectOfType<InGameVictoryUI>(true); // TODO: FindObjectOfType 안쓰고 가능하도록 생각해보기
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 인벤토리의 각 슬롯 UI를 관리하는 클래스
 /// </summary>
-public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler, IDropHandler
+public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExitHandler, IDropHandler, IDroppingTarget
 {
 
     /// <summary>
@@ -92,44 +92,103 @@ public class InventorySlotUI : MonoBehaviour, IPointerClickHandler, IPointerExit
     {
         // TODO: 슬롯에 하이라이트 끄기 (Optional)
     }
-    
+
     /// <summary>
     /// 아이템 드롭 이벤트 처리
     /// </summary>
+    // public void OnDrop(PointerEventData eventData)
+    // {
+    //     // 드래그된 아이템 UI 컴포넌트 가져오기
+    //     var draggedItem = eventData.pointerDrag ? eventData.pointerDrag.GetComponent<InventoryItemUI>() : null;
+    //     if (draggedItem == null) return;
+    //     
+    //     // 이동할 출발지와 목적지 슬롯 인덱스 설정
+    //     int from = draggedItem.SlotIndex;
+    //     int to = SlotIndex;
+    //
+    //     if (owner != null && owner.isTestMode)
+    //     {
+    //         var targetContainer = this.transform;
+    //         var sourceContainer = draggedItem.original;
+    //         
+    //         var existingIcon = targetContainer.GetComponentInChildren<InventoryItemUI>(true);
+    //         if (existingIcon != null && existingIcon != draggedItem && sourceContainer != null)
+    //         {
+    //             existingIcon.transform.SetParent(sourceContainer, false);
+    //             ResetRectTransform(existingIcon.GetComponent<RectTransform>());
+    //             existingIcon.Setup(from, owner, owner.baseCanvas);
+    //         }
+    //         
+    //         draggedItem.transform.SetParent(targetContainer, false);
+    //         ResetRectTransform(draggedItem.GetComponent<RectTransform>());
+    //         draggedItem.Setup(to, owner, owner.baseCanvas);
+    //         
+    //         return;
+    //     }
+    //     
+    //     // 인벤토리에서 아이템 이동 처리
+    //     owner.MoveItem(from, to);
+    // }
+
     public void OnDrop(PointerEventData eventData)
     {
-        // 드래그된 아이템 UI 컴포넌트 가져오기
-        var draggedItem = eventData.pointerDrag ? eventData.pointerDrag.GetComponent<InventoryItemUI>() : null;
-        if (draggedItem == null) return;
-        
-        // 이동할 출발지와 목적지 슬롯 인덱스 설정
-        int from = draggedItem.SlotIndex;
-        int to = SlotIndex;
-
-        if (owner != null && owner.isTestMode)
-        {
-            var targetContainer = this.transform;
-            var sourceContainer = draggedItem.original;
-            
-            var existingIcon = targetContainer.GetComponentInChildren<InventoryItemUI>(true);
-            if (existingIcon != null && existingIcon != draggedItem && sourceContainer != null)
-            {
-                existingIcon.transform.SetParent(sourceContainer, false);
-                ResetRectTransform(existingIcon.GetComponent<RectTransform>());
-                existingIcon.Setup(from, owner, owner.baseCanvas);
-            }
-            
-            draggedItem.transform.SetParent(targetContainer, false);
-            ResetRectTransform(draggedItem.GetComponent<RectTransform>());
-            draggedItem.Setup(to, owner, owner.baseCanvas);
-            
-            return;
-        }
-        
-        // 인벤토리에서 아이템 이동 처리
-        owner.MoveItem(from, to);
+        var draggingObject = eventData.pointerDrag ? eventData.pointerDrag.GetComponent<IDraggingObject>() : null;
+        if (draggingObject == null) return;
+        Drop(draggingObject);
     }
-    
+    public bool CanDrop(IDraggingObject draggingObject)
+    {
+        if (draggingObject == null) return false;
+
+        if (draggingObject.Origin == DragOrigin.Inventory)
+        {
+            if (draggingObject.SlotIndex == SlotIndex) return false;
+            return true;
+        }
+
+        if (draggingObject.Origin == DragOrigin.Reward) return true;
+
+        if (draggingObject.Origin == DragOrigin.Equipment)
+            return InventoryManager.Instance.GetItemInSlot(SlotIndex) == null;
+        
+        return false;
+    }
+
+    public bool Drop(IDraggingObject draggingObject)
+    {
+        if (!CanDrop(draggingObject)) return false;
+
+        var im = InventoryManager.Instance;
+
+        if (draggingObject.Origin == DragOrigin.Inventory)
+        {
+            owner.MoveItem(draggingObject.SlotIndex, SlotIndex);
+            return true;
+        }
+
+        if (draggingObject.Origin == DragOrigin.Reward)
+        {
+            if (im.TryAddItem(draggingObject.ItemType, draggingObject.ItemId, 1))
+            {
+                if (draggingObject is IRewardItem ri)
+                    ri.Obtain(1);
+                owner.RefreshSlots();
+                return true;
+            }
+            return false;
+        }
+
+        if (draggingObject.Origin == DragOrigin.Equipment)
+        {
+            bool can = im.TryUnEquipToInventory(EquipmentSlotType.Weapon, SlotIndex);
+            owner.RefreshSlots();
+            return can;
+        }
+        return false;
+    }
+
+    public Transform RootObject => this.transform;
+
     /// <summary>
     /// 현재 슬롯의 아이콘 스프라이트 반환
     /// </summary>

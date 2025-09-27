@@ -116,7 +116,7 @@ public class UIInputHandler : UIBase
         var item = InventoryManager.Instance.GetItemInSlot((slot.SlotIndex));
         if (item == null) return;
         
-        if (InventoryManager.Instance.RemoveItem(item.ItemId, 1))
+        if (InventoryManager.Instance.RemoveItemFromSlot(slot.SlotIndex , 1)) // TODO: 인자값 맞는지 확인 필요
             inventoryUI.RefreshSlots();
     }
 }

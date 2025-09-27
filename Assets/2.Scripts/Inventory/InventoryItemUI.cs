@@ -1,10 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// UI 인벤토리 아이템의 드래그 앤 드롭 동작을 처리하는 클래스
 /// </summary>
-public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler 
+public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDraggingObject
 {
     /// <summary>
     /// 인벤토리 슬롯의 인덱스
@@ -17,6 +19,18 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private RectTransform canvasRect;       // 캔버스의 RectTransform  
     //private Vector2 dragOffset;             // 드래그시 마우스와 아이템간의 오프셋
     private CanvasGroup cg;        // UI 투명도와 레이캐스트 제어용
+    
+    // IDraggingObject
+    private eItemType itemType;
+    private int itemId;
+    private int amount;
+    private DragOrigin origin = DragOrigin.Inventory;
+    public  eItemType ItemType => itemType;
+    public int ItemId => itemId;
+    public int Amount => amount;
+    public DragOrigin Origin => origin;
+
+    private List<RaycastResult> hits = new();
     
     /// <summary>
     /// 컴포넌트 초기화 시 필요한 참조들을 가져옴
@@ -55,6 +69,11 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         var image = GetComponent<UnityEngine.UI.Image>();
         if (image == null || image.sprite == null) return;
+
+        var im = InventoryManager.Instance;
+        var item = im.GetItemInSlot(SlotIndex);
+        amount = im.GetSlotCount(SlotIndex);
+        origin = DragOrigin.Inventory;
         
         // 드래그 시작 시 현재 부모 Transform 저장
         original = transform.parent;
@@ -79,19 +98,43 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     /// </summary>
     public void OnEndDrag(PointerEventData eventData)
     {
-        // 아이템이 캔버스에 직접 속해있고 원래 부모가 있다면 원래 위치로 되돌림
-        if (transform.parent == baseCanvas.transform && original != null)
+        IDroppingTarget dropTarget = FindDroppingTarget(eventData);
+        
+        if (dropTarget != null && dropTarget.Drop(this)) Debug.Log("드랍 완료");
+        else
         {
-            transform.SetParent(original, false);
-            var rt = GetComponent<RectTransform>();
-            if (rt)
+            if (Origin == DragOrigin.Inventory)
             {
-                rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
-                rt.anchoredPosition = Vector2.zero;
-                rt.sizeDelta = new Vector2(100, 100);
-                rt.localScale = Vector3.one;
+                InventoryManager.Instance.RemoveItemFromSlot(SlotIndex, 1);
+                owner?.RefreshSlots();
+            }
+
+            if (transform.parent == baseCanvas.transform && original != null)
+            {
+                transform.SetParent(original, false);
+                var rt = GetComponent<RectTransform>();
+                if (rt)
+                {
+                    rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+                    rt.anchoredPosition = Vector2.zero;
+                    rt.sizeDelta = new Vector2(100, 100);
+                    rt.localScale = Vector3.one;
+                }
             }
         }
+        // 아이템이 캔버스에 직접 속해있고 원래 부모가 있다면 원래 위치로 되돌림
+        // if (transform.parent == baseCanvas.transform && original != null)
+        // {
+        //     transform.SetParent(original, false);
+        //     var rt = GetComponent<RectTransform>();
+        //     if (rt)
+        //     {
+        //         rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+        //         rt.anchoredPosition = Vector2.zero;
+        //         rt.sizeDelta = new Vector2(100, 100);
+        //         rt.localScale = Vector3.one;
+        //     }
+        // }
 
         if (cg)
         {
@@ -111,5 +154,22 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, camera,
                 out var local))
             rect.anchoredPosition = local; // + dragOffset;
+    }
+
+    private IDroppingTarget FindDroppingTarget(PointerEventData eventData)
+    {
+        hits.Clear();
+        var gr = baseCanvas
+            ? baseCanvas.GetComponentInParent<GraphicRaycaster>()
+            : GetComponentInParent<GraphicRaycaster>();
+        if (gr == null || EventSystem.current == null) return null;
+        
+        EventSystem.current.RaycastAll(eventData, hits);
+        foreach (var hit in hits)
+        {
+            var target = hit.gameObject.GetComponentInParent<IDroppingTarget>();
+            if (target != null) return target;
+        }
+        return null;
     }
 }

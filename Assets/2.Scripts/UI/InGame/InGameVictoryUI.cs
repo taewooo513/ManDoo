@@ -56,6 +56,17 @@ public class InGameVictoryUI : UIBase
     
     public void NoButtonOnClick() => UIManager.Instance.CloseUI<InGameVictoryUI>();
 
+    public void ObtainRewardItem(eItemType type, int id, int amount)
+    {
+        var key = (type, id);
+        if (!rewards.ContainsKey(key)) return;
+        rewards[key] += amount;
+        if (rewards[key] <= 0)
+            rewards.Remove(key);
+        
+        UpdateContents();
+    }
+
     private void UpdateContents() 
     {
         // TODO: 보상 슬롯 초기화

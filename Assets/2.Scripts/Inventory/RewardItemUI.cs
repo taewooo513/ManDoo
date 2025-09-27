@@ -2,19 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 
-public class EquipmentItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDraggingObject
+public interface IRewardItem
 {
-    [SerializeField] private EquipmentSlotType slotType = EquipmentSlotType.Weapon;
+    public void Obtain(int amount);
+}
+public class RewardItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDraggingObject, IRewardItem
+{
+    // IDraggingObject
+    public eItemType itemType;
+    public int itemId;
+    public int amount;
+    public InGameVictoryUI owner;
     [SerializeField] private Canvas canvas;
     private RectTransform rect;
     private Transform original;
     private CanvasGroup cg;
 
-    public eItemType ItemType => eItemType.Weapon;
-    public int ItemId => InventoryManager.Instance.GetEquippedWeapon()?.GetId ?? -1;
-    public int Amount => 1;
-    public DragOrigin Origin => DragOrigin.Equipment;
+    public  eItemType ItemType => itemType;
+    public int ItemId => itemId;
+    public int Amount => amount;
+    public DragOrigin Origin => DragOrigin.Reward;
     public int SlotIndex => -1;
 
     private void Awake()
@@ -27,7 +36,6 @@ public class EquipmentItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (InventoryManager.Instance.GetEquippedWeapon() == null) return;
         original = transform.parent;
         transform.SetParent(canvas.transform, true);
         transform.SetAsLastSibling();
@@ -40,7 +48,7 @@ public class EquipmentItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!rect || canvas == null) return;
+        if (rect == null || canvas == null) return;
         var rt = canvas.transform as RectTransform;
         var camera = eventData.pressEventCamera != null ? eventData.pressEventCamera : canvas.worldCamera;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, eventData.position, camera, out var local))
@@ -49,9 +57,9 @@ public class EquipmentItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        IDroppingTarget target = FindDroppingTarget(eventData);
+        var target = FindDroppingTarget(eventData);
         if (target != null && target.Drop(this))
-            Debug.Log("드롭 완료");
+            Debug.Log("드롭 성공");
         else
         {
             if (original != null)
@@ -73,7 +81,7 @@ public class EquipmentItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     private IDroppingTarget FindDroppingTarget(PointerEventData eventData)
     {
-        var gr = canvas != null
+        var gr = canvas
             ? canvas.GetComponentInParent<UnityEngine.UI.GraphicRaycaster>()
             : GetComponentInParent<UnityEngine.UI.GraphicRaycaster>();
         if (gr == null || EventSystem.current == null) return null;
@@ -85,6 +93,13 @@ public class EquipmentItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             if (target != null) 
                 return target;
         }
+
         return null;
+    }
+
+    public void Obtain(int amount)
+    {
+        if (owner == null) return;
+        owner.ObtainRewardItem(itemType, itemId, amount);
     }
 }
