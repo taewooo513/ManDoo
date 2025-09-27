@@ -33,6 +33,7 @@ public class TotalBuffStat
             defense = entityInfo.defense;
             attackDmg = entityInfo.attackDamage;
             evasionUp = entityInfo.evasion;
+            critical = entityInfo.critical;
         }
         
         // 고치기 전 코드 일단 남겨 놨습니다, 혹시 모르니깐.
