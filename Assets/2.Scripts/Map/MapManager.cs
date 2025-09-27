@@ -12,6 +12,7 @@ public class MapManager :Singleton<MapManager>
     public INavigatable CurrentLocation;
 
     public Corridor CurrentCorridor;
+    public int CorridorVisitedCount;
     protected override void Awake()
     {
         base.Awake();

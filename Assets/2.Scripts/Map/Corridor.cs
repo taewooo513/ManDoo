@@ -10,7 +10,7 @@ public class Corridor : INavigatable
     public bool IsAlreadyMade;
     public RoomDirection Direction;
     public BaseRoom DestinationRoom;
-
+    public bool IsAlreadyVisited;
     public void Enter(BaseRoom room = null)
     {
         BackgroundManager.Instance.ChangeBackground(this);
@@ -18,6 +18,11 @@ public class Corridor : INavigatable
     }
     public void EnterCorridor(BaseRoom room)
     {
+        if (!IsAlreadyVisited)
+        {
+            MapManager.Instance.CorridorVisitedCount++;
+            IsAlreadyVisited = true;
+        }
         if (room == RoomA)
         {
             DestinationRoom = RoomA;
