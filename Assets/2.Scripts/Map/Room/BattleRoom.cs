@@ -10,7 +10,6 @@ public class BattleRoom : BattleTreasureEvent
     private float _goldRandomRatio; //0.9~1.1 사이 랜덤 난수 반환, 골드 떨어지는 랜덤 개수
     private int _randomGoldDropCount; //실제로 떨어지는 금화 개수
     private float _randomPercentage; //0~100 사이 중 랜덤 퍼센트 (랜덤 숫자 뽑기)
-    
     public override void EnterRoom() //방 입장 시
     {
         base.EnterRoom(); //플레이어 소환(위치 선정)
@@ -31,6 +30,7 @@ public class BattleRoom : BattleTreasureEvent
         _goldRandomRatio = Random.Range(0.9f, 1.1f); //0.9~1.1 사이 랜덤 난수 반환, 골드 떨어지는 랜덤 개수
         _randomGoldDropCount = (int)(_dropGoldCount * _goldRandomRatio); //실제로 떨어지는 금화 개수
         _randomPercentage = Random.Range(0f, 100f);
+        
     }
 
     public override void ExitRoom()
@@ -50,5 +50,10 @@ public class BattleRoom : BattleTreasureEvent
             ItemManager.Instance.AddReward(eItemType.Weapon, equipItemId, 1); //보상 ui에 장비 추가하기
         }
         equipItemIds.Clear(); //장비 리스트 초기화
+    }
+
+    public override string GetBackgroundPath()
+    {
+        return "Sprites/Background/RoomBackground";
     }
 }

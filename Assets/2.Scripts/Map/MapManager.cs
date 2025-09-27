@@ -11,6 +11,7 @@ public class MapManager :Singleton<MapManager>
     public List<BaseRoom> rooms = new();
     public INavigatable CurrentLocation;
 
+    public Corridor CurrentCorridor;
     protected override void Awake()
     {
         base.Awake();
@@ -46,6 +47,7 @@ public class MapManager :Singleton<MapManager>
                 if (corridor == room.corridors[item])
                 {
                     Debug.Log("Find " + room.connectedRooms[item]);
+                    CurrentCorridor = corridor;
                     return room.connectedRooms[item];
                 }
             }

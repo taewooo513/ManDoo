@@ -71,4 +71,8 @@ public class TreasureRoom : BattleTreasureEvent
         itemIdList.Clear();
         itemCountList.Clear();
     }
+    public override string GetBackgroundPath()
+    {
+        return "Sprites/Background/RoomBackground";
+    }
 }

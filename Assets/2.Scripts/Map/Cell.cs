@@ -15,19 +15,8 @@ public class Cell
         //if(hasEvent) cellEvent = GetRandomCellEvent();
     }
 
-    public void EnterCell()
+    public void StartEvent()
     {
-        //if(cellEvent == null && Random.value > 0.5f){
-        //    cellEvent = GetRandomCellEvent();
-        //    Battle;
-        //}
-    }
-    
-    //private CellEvent GetRandomCellEvent(){
-    //}
-
-    public void EnterRoom()
-    {
-        //Room.EnterRoom();
+        Debug.Log("Event");
     }
 }

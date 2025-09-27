@@ -13,4 +13,8 @@ public class PmcRoom : BaseRoom
     {
         base.OnEventEnded();
     }
+    public override string GetBackgroundPath()
+    {
+        return "Sprites/Background/RoomBackground";
+    }
 }

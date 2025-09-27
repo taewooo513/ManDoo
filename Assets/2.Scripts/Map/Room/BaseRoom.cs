@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DataTable;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BaseRoom : INavigatable
 {
@@ -16,6 +17,7 @@ public class BaseRoom : INavigatable
     
     public virtual void EnterRoom()
     {
+        BackgroundManager.Instance.ChangeBackground(this);
         if (spawn == null) //스폰이 null이면
         {
             GameObject spawnObject = new GameObject("Spawn"); //스폰 생성
@@ -100,5 +102,9 @@ public class BaseRoom : INavigatable
                 break;
             }
         }
+    }
+    public virtual string GetBackgroundPath()
+    {
+        return "";
     }
 }

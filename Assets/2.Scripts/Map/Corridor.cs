@@ -13,7 +13,7 @@ public class Corridor : INavigatable
 
     public void Enter(BaseRoom room = null)
     {
-        Debug.Log("Enter Corridor");
+        BackgroundManager.Instance.ChangeBackground(this);
         EnterCorridor(room);
     }
     public void EnterCorridor(BaseRoom room)
@@ -26,8 +26,7 @@ public class Corridor : INavigatable
         {
             DestinationRoom = RoomB;
         }
-        Debug.Log("You are in Corridor, Destination is " + DestinationRoom);
-        Test();
+        //Test();
     }
 
     private void Test()

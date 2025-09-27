@@ -26,4 +26,8 @@ public class VillageRoom : BaseRoom //마을, 보스방. 인데 사실상 battle
         //탐색한 방의 수. 방 관리하는 쪽에서 count로 +1씩 해줘야 됨.
         //파티 초상화.
     }
+    public override string GetBackgroundPath()
+    {
+        return "Sprites/Background/RoomBackground";
+    }
 }

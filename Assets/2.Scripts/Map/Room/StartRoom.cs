@@ -28,4 +28,8 @@ public class StartRoom : BaseRoom
         base.OnEventEnded();
         InventoryManager.Instance.TryAddItem(eItemType.Consumable, 2001, 3); //회복약 지급
     }
+    public override string GetBackgroundPath()
+    {
+        return "Sprites/Background/RoomBackground";
+    }
 }
