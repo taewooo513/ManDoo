@@ -156,7 +156,6 @@ public class BaseEntity : MonoBehaviour
     {
         entityInfo.Damaged(value);
         hpbarUI.UpdateUI();
-        
     }
 
     public void BattleStarted()

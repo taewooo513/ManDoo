@@ -119,6 +119,11 @@ public class Enemy : BaseEntity
         Damaged(entityInfo.statEffect.totalStat.damagedValue);
         buffIcons.UpdateIcon(entityInfo.statEffect);
     }
+    public override void Damaged(float value)
+    {
+        base.Damaged(value);
+        characterAnimationController.Damaged();
+    }
 
     public override void StartExtraTurn() //추가 공격 턴
     {

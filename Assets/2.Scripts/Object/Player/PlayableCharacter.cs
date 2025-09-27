@@ -95,7 +95,13 @@ public class PlayableCharacter : BaseEntity
         Damaged(entityInfo.statEffect.totalStat.damagedValue);
         buffIcons.UpdateIcon(entityInfo.statEffect);
 
-       
+
+    }
+
+    public override void Damaged(float value)
+    {
+        base.Damaged(value);
+        characterAnimationController.Damaged();
     }
 
     public void EquipWeapon(Weapon weapon)

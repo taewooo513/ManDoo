@@ -36,6 +36,21 @@ public class PlayableCharacterAnimationController : EntityCharacterAnimationCont
         this.action = action;
     }
 
+    public override void Damaged()
+    {
+        animator.SetTrigger("Damaged");
+    }
+
+    public override void Die()
+    {
+        animator.SetTrigger("Die");
+    }
+
+    public override void DieEvent()
+    {
+        nowEntity?.OnDied?.Invoke(nowEntity);
+    }
+
     public override void LayerUp()
     {
         layers = new int[sprites.Length];
@@ -58,6 +73,11 @@ public class PlayableCharacterAnimationController : EntityCharacterAnimationCont
     public override void ActionEvent()
     {
         action.Invoke();
+    }
+
+    public override void ActionEndEvent()
+    {
+        base.ActionEndEvent();
         LayerDown();
         if (targetEntity != null)
         {

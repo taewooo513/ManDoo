@@ -22,15 +22,29 @@ public class EntityCharacterAnimationController : MonoBehaviour
     {
 
     }
+    public virtual void Damaged()
+    {
+
+    }
+    public virtual void Die()
+    {
+
+    }
+    public virtual void DieEvent()
+    {
+
+    }
     public virtual void LayerUp( )
     {
     }
     public virtual void LayerDown( )
     {
     }
-
     public virtual void ActionEvent()
     {
 
+    }
+    public virtual void ActionEndEvent()
+    {
     }
 }
