@@ -11,7 +11,6 @@ public class InGameRunResultUI : UIBase
 
     public void Start()
     {
-        returnBtn = GetComponent<Button>();
         returnBtn.onClick.AddListener(OnClickBtn);
     }
 
