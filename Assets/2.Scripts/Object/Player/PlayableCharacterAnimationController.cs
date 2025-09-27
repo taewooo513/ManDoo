@@ -38,7 +38,7 @@ public class PlayableCharacterAnimationController : EntityCharacterAnimationCont
 
     public override void Damaged()
     {
-        animator.SetTrigger("Damaged");
+        animator.SetTrigger("Hit");
     }
 
     public override void Die()

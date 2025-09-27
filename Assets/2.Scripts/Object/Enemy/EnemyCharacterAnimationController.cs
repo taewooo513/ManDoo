@@ -16,7 +16,20 @@ public class EnemyCharacterAnimationController : EntityCharacterAnimationControl
         animator = GetComponent<Animator>();
         nowEntity = GetComponentInParent<Enemy>();
     }
+    public override void Damaged()
+    {
+        animator.SetTrigger("Hit");
+    }
 
+    public override void Die()
+    {
+        animator.SetTrigger("Die");
+    }
+
+    public override void DieEvent()
+    {
+        nowEntity?.OnDied?.Invoke(nowEntity);
+    }
     public override void Attack(Action action, BaseEntity targetEntity)
     {
         animator.SetTrigger("Attack");
@@ -49,6 +62,11 @@ public class EnemyCharacterAnimationController : EntityCharacterAnimationControl
     public override void ActionEvent()
     {
         action.Invoke();
+        
+    }
+    public override void ActionEndEvent()
+    {
+        base.ActionEndEvent();
         LayerDown();
 
         if (targetEntity != null)

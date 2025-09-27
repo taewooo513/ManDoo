@@ -100,8 +100,16 @@ public class PlayableCharacter : BaseEntity
 
     public override void Damaged(float value)
     {
+        int lastHp = entityInfo.currentHp;
         base.Damaged(value);
-        characterAnimationController.Damaged();
+        if (entityInfo.currentHp != lastHp && !entityInfo.isDie)
+        {
+            characterAnimationController.Damaged();
+        }
+        else if (entityInfo.isDie)
+        {
+            characterAnimationController.Die();
+        }
     }
 
     public void EquipWeapon(Weapon weapon)
