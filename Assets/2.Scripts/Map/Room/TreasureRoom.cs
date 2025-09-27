@@ -1,26 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using DataTable;
 using UnityEngine;
 
-public class TreasureRoom : BaseRoom
+public class TreasureRoom : BattleTreasureEvent
 {
-    private int _rewardId; //실제로 보상 주는 방 id
-    public bool isOpen = false;
-    //이거 이렇게하면 보상 상자가 있는 룸이 여러개일 때, A룸에서 상자 열고 템먹고, B룸에서 상자 안 열고 지나갔는데, A룸에서 상자 아이템 남아있는 경우가 될 수도 있나?
-    //TODO : => 각자 별개의 인스턴스로 생성하면 해결됨. (ex : TreasureRoom roomA = new TreasureRoom();) 주의하기.
-    
-    public override void EnterRoom(int id) //todo : 통로/룸 관리하는 쪽에서 2001로 넣어줘야 됨
-    { //방 호출할 때마다(다시 찾아올때도) enterRoom 부르는건지, 아니면 한 번만 부르고 이후는 계속 다른곳에 저장해놓고 있는건지 물어보기 
-        base.EnterRoom(id); //플레이어 소환(위치 선정)
-        Init(id);
+    private int _rewardId; //실제로 주는 보상id
+    protected int battleRewardGroupId; //배틀데이터에 있는 그룹 아이디
+    protected int rewardGroupId; //보상 테이블 연결해주는 id
+    protected List<RewardData> rewardIdList; //그룹에 속한 id 리스트
+    List<int> itemIdList = new(); //보상id 리스트
+    List<int> itemCountList = new(); //보상 개수 리스트
+
+    public override void Init(int id)
+    {
+        base.Init(id);
+        battleRewardGroupId = battleData.rewardId;
+        rewardGroupId = rewardData.groupId; //랜덤가챠 돌릴 범위
+        rewardIdList = DataManager.Instance.Reward.GetRewardGroupList(rewardGroupId); //보상 그룹 가져오기
         Rewarded(); //방에 들어왔을 때 보상 리스트 1개로 결정됨
+    }
+
+    public override void EnterRoom()
+    {
+        base.EnterRoom(); //플레이어 소환(위치 선정)
     }
 
     public void Rewarded() //보상id 랜덤으로 뽑고, 보상 ui에 넣어주는 함수.
     {
-        List<float> dropProbWeightList = new();
-        List<int> itemIdList = new();
-        List<int> itemCountList = new();
+        List<float> dropProbWeightList = new(); //가중치 리스트
         
         if (battleRewardGroupId == rewardGroupId) //그룹 아이디가 같을 때
         {
@@ -40,17 +48,27 @@ public class TreasureRoom : BaseRoom
         ItemManager.Instance.AddReward(eItemType.Consumable, itemIdList, itemCountList); //보상 UI에 추가해주기
     }
 
-    public bool IsOpen(bool isOpen)
+    public void IsOpen(int id, bool isOpen)
     {
-        return isOpen;
+        if (roomId == id)
+        {
+            isInteract = isOpen; //상자랑 상호작용 시, 상자open 상태 = true
+        }
     }
 
-    public override void ExitRoom(int id)
+    public override void ExitRoom()
     {
-        if (isOpen) //열었던 상자라면
+        if (isInteract) //열었던 상자라면
         {
             Clear(); //보상 id값들 넣어뒀던 리스트 비우기 (그룹id 안에 속한 id들 리스트)
         }
         //보물상자 안 열었던 경우에는 그대로 남아있음. (x를 누르면 아예 사라짐)
+    }
+    
+    public void Clear() //리스트 내용 비워주기
+    {
+        rewardIdList.Clear();
+        itemIdList.Clear();
+        itemCountList.Clear();
     }
 }

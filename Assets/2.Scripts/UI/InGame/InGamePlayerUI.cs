@@ -37,7 +37,8 @@ public class InGamePlayerUI : UIBase
 
         for (int i = 0; i < equipmentSlots.Length; i++)
         {
-            // TODO: Icon refresh 로직 추가.
+            if (equipmentSlots[i] != null)
+                equipmentSlots[i].RefreshIcon();
         }
     }
 }

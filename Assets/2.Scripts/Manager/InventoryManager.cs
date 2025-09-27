@@ -14,11 +14,14 @@ public enum EquipmentSlotType
 
 public class InventoryManager : Singleton<InventoryManager>
 {
-    private readonly int[] slotItemIds = new int[10];      // 슬롯에 들어있는 아이템 id
-    private readonly int[] slotStackCounts = new int[10];  // 각 슬롯의 아이템 개수
-    private readonly Item[] equippedItems = new Item[3];   // 장착된 아이템 배열
+    private int[] slotItemIds = new int[10];      // 슬롯에 들어있는 아이템 id
+    private eItemType[] slotItemTypes = new eItemType[10];
+    private int[] slotStackCounts = new int[10];  // 각 슬롯의 아이템 개수
+    private Item[] equippedItems = new Item[3];   // 장착된 아이템 배열
+    private Weapon equippedWeapon;
     public event Action<int, Item> OnSlotChanged;          // 슬롯 변경 시 호출되는 이벤트 (slot index, item)
     public event Action<EquipmentSlotType, Item> OnEquipChanged; // 장비 변경 시 호출되는 이벤트 (slot type, item)
+    public event Action<Weapon> OnWeaponEquipChanged;
 
     protected override void Awake()
     {
@@ -35,32 +38,52 @@ public class InventoryManager : Singleton<InventoryManager>
         if (amount <= 0) return false; // 예외처리
         int maxStack = 0;
         
-        var tempItem = ItemManager.Instance.CreateItem(id); // 새 아이템 임시로 생성
-        maxStack = Mathf.Max(1, tempItem.ItemInfo.maxCount); // id 로 조회한 아이템의 최대 한도수를 저장
+        if (type == eItemType.Consumable)
+        {
+            var tempItem = ItemManager.Instance.CreateItem(id); // 새 아이템 임시로 생성
+            maxStack = Mathf.Max(1, tempItem.ItemInfo.maxCount); // id 로 조회한 아이템의 최대 한도수를 저장
+            
+            for (int i = 0; i < slotItemIds.Length && amount > 0; i++) // 기존에 있던 슬롯에 저장 시도
+            {
+                if (slotItemIds[i] != id) continue; // 다른 id 의 슬롯은 스킵
+                var current = slotStackCounts[i]; // 현재 슬롯에 저장되어있는 아이템 개수
+                slotItemTypes[i] = type;
+                if (current == maxStack) continue; // 현재 슬롯이 꽉 차있으면 스킵
+
+                var canAdd = Mathf.Min(maxStack - current, amount); // 최대한도와 현재 슬롯에 저장되어 있는 개수 비교
+                slotStackCounts[i] += canAdd; // 현재 슬롯에 저장되어 있는 개수 업데이트
+                amount -= canAdd; // 저장하고자 하는 개수를 저장한 만큼 차감
+                UpdateSlot(i); // 슬롯 업데이트
+            }
+
+            for (int i = 0; i < slotItemIds.Length && amount > 0; i++) // 빈 슬롯에 저장
+            {
+                if (slotItemIds[i] != -1) continue; // 빈 슬롯이 아니면 스킵
+
+                var targetSlot = Mathf.Min(maxStack, amount); // 슬롯에 저장할 수 있는 최대 개수와 현재 개수 중 작은 값 선택
+                slotItemIds[i] = id; // 슬롯에 아이템 id 저장
+                slotItemTypes[i] = type;
+                slotStackCounts[i] = targetSlot; // 슬롯에 아이템 개수 저장
+                amount -= targetSlot; // 저장한 만큼 amount 에서 차감
+                UpdateSlot(i); // 슬롯 업데이트
+            }
+        }
+
+        if (type == eItemType.Weapon)
+        {
+            maxStack = 1;
+            for (int i = 0; i < slotItemIds.Length; i++)
+            {
+                if (slotStackCounts[i] != -1) continue;
+
+                slotItemIds[i] = id;
+                slotItemTypes[i] = type;
+                slotStackCounts[i] = maxStack;
+                amount -= maxStack;
+                UpdateSlot(i);
+            }
+        }
         
-        for (int i = 0; i < slotItemIds.Length; i++) // 기존에 있던 슬롯에 저장 시도
-        {
-            if (slotItemIds[i] != id) continue; // 다른 id 의 슬롯은 스킵
-            var current = slotStackCounts[i]; // 현재 슬롯에 저장되어있는 아이템 개수 
-            if (current == maxStack) continue; // 현재 슬롯이 꽉 차있으면 스킵
-
-            var canAdd = Mathf.Min(maxStack - current, amount); // 최대한도와 현재 슬롯에 저장되어 있는 개수 비교
-            slotStackCounts[i] += canAdd; // 현재 슬롯에 저장되어 있는 개수 업데이트
-            amount -= canAdd; // 저장하고자 하는 개수를 저장한 만큼 차감
-            UpdateSlot(i); // 슬롯 업데이트
-        }
-
-        for (int i = 0; i < slotItemIds.Length; i++) // 빈 슬롯에 저장
-        {
-            if (slotItemIds[i] != -1) continue; // 빈 슬롯이 아니면 스킵
-
-            var targetSlot = Mathf.Min(maxStack, amount); // 슬롯에 저장할 수 있는 최대 개수와 현재 개수 중 작은 값 선택
-            slotItemIds[i] = id; // 슬롯에 아이템 id 저장
-            slotStackCounts[i] = targetSlot; // 슬롯에 아이템 개수 저장
-            amount -= targetSlot; // 저장한 만큼 amount 에서 차감
-            UpdateSlot(i); // 슬롯 업데이트
-        }
-
         if (amount > 0)
         {
             Debug.Log($"저장 한도 초과! 아이템 id: {id}. 부족한 수량: {amount}.");
@@ -88,6 +111,7 @@ public class InventoryManager : Singleton<InventoryManager>
             remaining -= canRemove;
             if (slotStackCounts[i] <= 0)
                 slotItemIds[i] = -1;
+            
             UpdateSlot(i);
         }
         return remaining <= 0;
@@ -111,6 +135,8 @@ public class InventoryManager : Singleton<InventoryManager>
     /// 인벤토리 슬롯의 총 개수를 반환하는 메서드
     /// </summary>
     public int GetSlotCount() => slotItemIds.Length;
+    
+    public eItemType GetItemType(int slotIndex) => slotItemTypes[slotIndex];
 
     /// <summary>
     /// 특정 슬롯의 아이템을 반환하는 메서드
@@ -133,6 +159,7 @@ public class InventoryManager : Singleton<InventoryManager>
         
         (slotItemIds[to], slotItemIds[from]) = (slotItemIds[from], slotItemIds[to]);
         (slotStackCounts[to], slotStackCounts[from]) = (slotStackCounts[from], slotStackCounts[to]);
+        (slotItemTypes[to], slotItemTypes[from]) = (slotItemTypes[from], slotItemTypes[to]);
         
         UpdateSlot(from);
         UpdateSlot(to);
@@ -161,23 +188,45 @@ public class InventoryManager : Singleton<InventoryManager>
     /// <summary>
     /// 장착된 아이템을 반환하는 메서드
     /// </summary>
-    public Item GetEquipped(EquipmentSlotType slotType) => equippedItems[(int)slotType];
+    public Item GetEquippedItem(EquipmentSlotType slotType) => equippedItems[(int)slotType];
+
+    public Weapon GetEquippedWeapon() => equippedWeapon;
 
     /// <summary>
     /// 인벤토리에서 장비 슬롯으로 아이템을 장착하는 메서드
     /// </summary>
-    public bool TryEquipFromInventory(int from, EquipmentSlotType to)
+    public bool TryEquipFromInventory(int from, EquipmentSlotType to) // TODO: equippedWeapon 으로 변경
     {
+        if (to == EquipmentSlotType.Weapon && slotItemTypes[from] == eItemType.Weapon)
+        {
+            var weaponId = slotItemIds[from];
+            if (weaponId < 0) return false;
+
+            var newWeapon = ItemManager.Instance.CreateWeapon(weaponId);
+            if (newWeapon == null) return false;
+
+            if (!UseItemFromSlot(from, 1)) return false;
+
+            if (equippedWeapon != null)
+                TryAddItem(eItemType.Weapon, equippedWeapon.GetId, 1);
+
+            equippedWeapon = newWeapon;
+            
+            OnEquipChanged?.Invoke(EquipmentSlotType.Weapon, null);
+            OnWeaponEquipChanged?.Invoke(equippedWeapon);
+            return true;
+        }
+        
         var item = GetItemInSlot(from);
         if (item == null) return false;
         if (!ItemManager.Instance.CanEquipItem(item, to)) return false;
 
         if (!UseItemFromSlot(from, 1)) return false;
-
+        
         var prevSlot = equippedItems[(int)to];
         if (prevSlot != null)
             TryAddItem(eItemType.Weapon, prevSlot.ItemId, 1);
-
+        
         equippedItems[(int)to] = item;
         OnEquipChanged?.Invoke(to, item);
         return true;
@@ -228,12 +277,29 @@ public class InventoryManager : Singleton<InventoryManager>
         }
         return true;
     }
+
+    public bool TryBuyItemFromStore(eItemType type, int id, int goldAmount, int amount)
+    {
+        return true;
+    }
     
     /// <summary>
     /// 장비를 해제하고 인벤토리로 이동시키는 메서드
     /// </summary>
-    public bool TryUnequipToInventory(EquipmentSlotType from)
+    public bool TryUnequipToInventory(EquipmentSlotType from, int to) // TODO: EquippedWeapon 을 이용해서 변경
     {
+        if (from == EquipmentSlotType.Weapon)
+        {
+            if (equippedWeapon == null) return false;
+
+            if (!TryAddItem(eItemType.Weapon, equippedWeapon.GetId, 1)) return false;
+    
+            equippedWeapon = null;
+            OnEquipChanged?.Invoke(EquipmentSlotType.Weapon, null);
+            OnWeaponEquipChanged?.Invoke(null);
+            return true;
+        }
+        
         var equip = equippedItems[(int)from];
         if (equip == null) return false;
         
@@ -251,7 +317,7 @@ public class InventoryManager : Singleton<InventoryManager>
     /// <summary>
     /// 빈 슬롯에 아이템을 할당하는 메서드
     /// </summary>
-    private void AssignToEmptySlot(int id)
+    private void AssignToEmptySlot(eItemType type, int id)
     {
         for (int i = 0; i < slotItemIds.Length; i++)
         {
@@ -260,11 +326,13 @@ public class InventoryManager : Singleton<InventoryManager>
             {
                 slotItemIds[i] = id;
                 slotStackCounts[i] = 1;
+                slotItemTypes[i]  = type;
                 UpdateSlot(i);
                 return;
             }
         }
     }
+    
     
     /// <summary>
     /// 슬롯 변경 이벤트를 발생시키는 메서드

@@ -14,9 +14,10 @@ public class SelectCharacterButton : SelectEntityButton
         player = GetComponentInParent<PlayableCharacter>();
     }
 
-    protected override void OnClickActionButton(Skill skill)
+    protected override void OnClickActionButton(Skill skill) // 스킬사용
     {
         skill.UseSkill(player);
+        inGameUIManager.buttonSkillDeActiveAction?.Invoke();
     }
 
     public override void ActiveSkillButtonAction(Skill skill)
@@ -25,7 +26,6 @@ public class SelectCharacterButton : SelectEntityButton
         {
             return;
         }
-
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => OnClickActionButton(skill));
     }

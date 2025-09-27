@@ -49,6 +49,7 @@ public class EntityInfo
         if (currentHp <= 0)
         {
             currentHp = 0;
+            isDie = true;
         }
     }
 
@@ -155,10 +156,7 @@ public class BaseEntity : MonoBehaviour
     {
         entityInfo.Damaged(value);
         hpbarUI.UpdateUI();
-        if (entityInfo.currentHp <= 0)
-        {
-            OnDied?.Invoke(this);
-        }
+        
     }
 
     public void BattleStarted()

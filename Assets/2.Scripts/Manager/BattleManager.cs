@@ -139,7 +139,7 @@ public class BattleManager : Singleton<BattleManager>
                 nowTurnEntity.EndTurn();
                 _turnQueue.Dequeue();
             }
-
+            DieEntity();
             StartCoroutine(NextTurn(hasExtraTurn));
         }
     }
@@ -325,6 +325,32 @@ public class BattleManager : Singleton<BattleManager>
         else
         {
             _playableCharacters[index].Damaged(attackDamage);
+        }
+    }
+
+    public void DieEntity()
+    {
+        for (int i = 0; i < PlayableCharacters.Count;)
+        {
+            if (PlayableCharacters[i].entityInfo.isDie)
+            {
+                PlayableCharacters[i].OnDied?.Invoke(PlayableCharacters[i]);
+            }
+            else
+            {
+                i++;
+            }
+        }
+        for (int i = 0; i < EnemyCharacters.Count;)
+        {
+            if (EnemyCharacters[i].entityInfo.isDie)
+            {
+                EnemyCharacters[i].OnDied?.Invoke(EnemyCharacters[i]);
+            }
+            else
+            {
+                i++;
+            }
         }
     }
 

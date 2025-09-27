@@ -61,11 +61,9 @@ public class InGameVictoryUI : UIBase
         // TODO: 보상 슬롯 초기화
         if (rewards == null) return;
         if (content == null || rewardSlot == null) return;
-        if (content.childCount > 0)
-        {
-            foreach (Transform item in content)
-                Destroy(item.gameObject);
-        }
+
+        for (int i = 0; i < content.childCount; i++)
+            Destroy(content.GetChild(i).gameObject);
 
         foreach (var reward in rewards)
         {
@@ -74,7 +72,7 @@ public class InGameVictoryUI : UIBase
             
             var newSlot = Instantiate(rewardSlot, content);
             newSlot.gameObject.SetActive(true);
-            newSlot.SetSlot(key.Item2, value);
+            newSlot.SetSlot(key.Item1, key.Item2, value);
         }
     }
 }

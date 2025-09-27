@@ -1,30 +1,30 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InGameUIManager : UIBase
 {
     private Action<Skill> buttonSkillActiveAction;
+    public Action buttonSkillDeActiveAction;
 
-    public bool isSkillSelected = false;
-    public Skill selectedSkill = null;
 
     public void OnClickSkillButton(Skill skill)
     {
         buttonSkillActiveAction?.Invoke(skill); // null 체크
-        isSkillSelected = true;
-        selectedSkill = skill;
     }
 
-    public void AddSkillButtonAction(Action<Skill> action)
+    public void AddSkillButtonAction(Action<Skill> action, Action action1)
     {
         buttonSkillActiveAction += action;
+        buttonSkillDeActiveAction += action1;
     }
 
-    public void RemoveSkillButtonAction(Action<Skill> action)
+    public void RemoveSkillButtonAction(Action<Skill> action, Action action1)
     {
         buttonSkillActiveAction -= action;
+        buttonSkillDeActiveAction -= action1;
     }
 
     public void OpenInventoryUI()
@@ -41,8 +41,6 @@ public class InGameUIManager : UIBase
 
     public void DeselectSkill()
     {
-        isSkillSelected = false;
-        selectedSkill = null;
     }
 }
-        
+

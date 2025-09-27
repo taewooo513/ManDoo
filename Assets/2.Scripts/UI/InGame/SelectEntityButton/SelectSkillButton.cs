@@ -14,17 +14,17 @@ public class SelectSkillButton : MonoBehaviour
     {
         skillButton = GetComponent<Button>();
         inGameUIManager = UIManager.Instance.OpenUI<InGameUIManager>();
-        
+
     }
     public void SetButton(Skill skill)
     {
+        skillButton.onClick.RemoveAllListeners();
         skillButton.onClick.AddListener(() => OnClickSkillButton(skill));
-        //skillButton.OnDeselect
     }
 
     private void OnClickSkillButton(Skill skill)
     {
         inGameUIManager.OnClickSkillButton(skill);
     }
-    
+
 }

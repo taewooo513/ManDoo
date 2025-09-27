@@ -13,9 +13,9 @@ public class EnemyButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (inGameUIManager.isSkillSelected && targetImage != null)
+        //if (inGameUIManager.isSkillSelected && targetImage != null)
 
-            targetImage.SetActive(true);
+        targetImage.SetActive(true);
     }
 
     public void OnPointerExit(PointerEventData eventData)

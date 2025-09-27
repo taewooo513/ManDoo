@@ -3,6 +3,7 @@ using DefaultTable;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayableCharacter : BaseEntity
@@ -59,7 +60,7 @@ public class PlayableCharacter : BaseEntity
             return;
         }
     }
-    public override void StartTurn( )
+    public override void StartTurn()
     {
         base.StartTurn();
         entityInfo.statEffect.AttackWeight(entityInfo);
@@ -93,7 +94,8 @@ public class PlayableCharacter : BaseEntity
         entityInfo.statEffect.ReduceTurn(buffTypes, deBuffTypes);
         Damaged(entityInfo.statEffect.totalStat.damagedValue);
         buffIcons.UpdateIcon(entityInfo.statEffect);
-    
+
+       
     }
 
     public void EquipWeapon(Weapon weapon)
