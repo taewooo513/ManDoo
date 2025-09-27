@@ -50,6 +50,7 @@ public class BattleRoom : BattleTreasureEvent
             ItemManager.Instance.AddReward(eItemType.Weapon, equipItemId, 1); //보상 ui에 장비 추가하기
         }
         equipItemIds.Clear(); //장비 리스트 초기화
+        OnEventEnded();
     }
 
     public override string GetBackgroundPath()

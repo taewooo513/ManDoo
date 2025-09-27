@@ -19,6 +19,7 @@ public class TreasureRoom : BattleTreasureEvent
         rewardGroupId = rewardData.groupId; //랜덤가챠 돌릴 범위
         rewardIdList = DataManager.Instance.Reward.GetRewardGroupList(rewardGroupId); //보상 그룹 가져오기
         Rewarded(); //방에 들어왔을 때 보상 리스트 1개로 결정됨
+        OnEventEnded(); //상자를 열어도 되고, 안 열어도 되니 바로 버튼 활성화되도록 함
     }
 
     public override void EnterRoom()
