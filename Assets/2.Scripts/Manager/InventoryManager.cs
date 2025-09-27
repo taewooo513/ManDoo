@@ -72,9 +72,9 @@ public class InventoryManager : Singleton<InventoryManager>
         if (type == eItemType.Weapon)
         {
             maxStack = 1;
-            for (int i = 0; i < slotItemIds.Length; i++)
+            for (int i = 0; i < slotItemIds.Length && amount > 0; i++)
             {
-                if (slotStackCounts[i] != -1) continue;
+                if (slotItemIds[i] != -1) continue;
 
                 slotItemIds[i] = id;
                 slotItemTypes[i] = type;
@@ -267,6 +267,7 @@ public class InventoryManager : Singleton<InventoryManager>
                 {
                     slotItemIds[slotIndex] = -1;
                     slotStackCounts[slotIndex] = 0;
+                    slotItemTypes[slotIndex] = default;
                 }
                 UpdateSlot(slotIndex);
                 break;
@@ -277,6 +278,7 @@ public class InventoryManager : Singleton<InventoryManager>
                 {
                     slotItemIds[slotIndex] = -1;
                     slotStackCounts[slotIndex] = 0;
+                    slotItemTypes[slotIndex] = default;
                 }
                 UpdateSlot(slotIndex);
                 break;
@@ -287,6 +289,7 @@ public class InventoryManager : Singleton<InventoryManager>
                 {
                     slotItemIds[slotIndex] = -1;
                     slotStackCounts[slotIndex] = 0;
+                    slotItemTypes[slotIndex] = default;
                 }
                 UpdateSlot(slotIndex);
                 break;

@@ -58,7 +58,7 @@ public class ItemManager : Singleton<ItemManager>
     public Sprite GetWeaponIcon(Weapon weapon)
     {
         if (weapon == null) return null;
-        return GetIconByPath(weapon.GetGameObjectPath());
+        return GetIconByPath(weapon.GetIconPath());
     }
 
     // public Sprite GetAccessoryIcon(Accessory accessory)

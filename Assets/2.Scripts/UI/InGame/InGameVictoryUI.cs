@@ -60,7 +60,7 @@ public class InGameVictoryUI : UIBase
     {
         var key = (type, id);
         if (!rewards.ContainsKey(key)) return;
-        rewards[key] += amount;
+        rewards[key] -= amount;
         if (rewards[key] <= 0)
             rewards.Remove(key);
         
@@ -85,5 +85,10 @@ public class InGameVictoryUI : UIBase
             newSlot.gameObject.SetActive(true);
             newSlot.SetSlot(key.Item1, key.Item2, value);
         }
+    }
+
+    public void RefreshRewards()
+    {
+        
     }
 }

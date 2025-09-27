@@ -59,6 +59,21 @@ public class InGameInventoryUI : UIBase
         //}
         //// 슬롯 UI 새로고침
         //RefreshSlots();
+
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            var slot = inventorySlots[i];
+            slot.Init(i,this);
+            if (slot.Icon != null)
+                slot.Icon.Setup(i, this, baseCanvas);
+
+            if (!isTestMode)
+            {
+                slot.SetIcon(null);
+                slot.SetInteractableIcon(false);
+            }
+        }
+        RefreshSlots();
     }
     
     /// <summary>

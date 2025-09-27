@@ -72,6 +72,9 @@ public class InventoryItemUI : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         var im = InventoryManager.Instance;
         var item = im.GetItemInSlot(SlotIndex);
+        if (item == null) return;
+        itemId = item.ItemId;
+        itemType = im.GetItemType(SlotIndex);
         amount = im.GetSlotCount(SlotIndex);
         origin = DragOrigin.Inventory;
         
