@@ -12,17 +12,21 @@ public class TotalBuffStat
     public float attackDmg = 0; //공격데미지
     public float evasionUp = 0;
     public float totalWeight = 0;
-    public float crtitical = 0;
+    public float critical = 0;
     public void Reset(EntityInfo entityInfo)
     {
         damagedValue = 0;
-        if (entityInfo.equipWeapon != null)
+        var equipment = InventoryManager.Instance.GetEquippedWeapon();
+
+        if (equipment != null && entityInfo != null)
         {
-            speed = entityInfo.speed + entityInfo.equipWeapon.speed;
-            defense = entityInfo.defense + entityInfo.equipWeapon.defense;
-            attackDmg = entityInfo.attackDamage + entityInfo.equipWeapon.attackDmg;
-            evasionUp = entityInfo.evasion + entityInfo.equipWeapon.evasion;
+            speed = entityInfo.speed + equipment.speed;
+            defense = entityInfo.defense + equipment.defense;
+            attackDmg = entityInfo.attackDamage + equipment.attackDmg;
+            evasionUp = entityInfo.evasion + equipment.evasion;
+            critical = entityInfo.critical + equipment.critical;
         }
+
         else
         {
             speed = entityInfo.speed;
@@ -30,6 +34,22 @@ public class TotalBuffStat
             attackDmg = entityInfo.attackDamage;
             evasionUp = entityInfo.evasion;
         }
+        
+        // 고치기 전 코드 일단 남겨 놨습니다, 혹시 모르니깐.
+        // if (entityInfo.equipWeapon != null)
+        // {
+        //     speed = entityInfo.speed + entityInfo.equipWeapon.speed;
+        //     defense = entityInfo.defense + entityInfo.equipWeapon.defense;
+        //     attackDmg = entityInfo.attackDamage + entityInfo.equipWeapon.attackDmg;
+        //     evasionUp = entityInfo.evasion + entityInfo.equipWeapon.evasion;
+        // }
+        // else
+        // {
+        //     speed = entityInfo.speed;
+        //     defense = entityInfo.defense;
+        //     attackDmg = entityInfo.attackDamage;
+        //     evasionUp = entityInfo.evasion;
+        // }
         totalWeight = 0;
     }
 }
@@ -78,7 +98,7 @@ public class Buff
                     break;
                 //(치명타율% × 계수) + 고정수치 (소수점은 버림)
                 case BuffType.CriticalUp:
-                    totalStat.crtitical = (int)((totalStat.crtitical * _entityCurrentStatus[i].adRatio + _entityCurrentStatus[i].constantValue));
+                    totalStat.critical = (int)((totalStat.critical * _entityCurrentStatus[i].adRatio + _entityCurrentStatus[i].constantValue));
                     break;
                 //(회피율 % × 계수) +고정수치(소수점은 버림)
                 case BuffType.EvasionUp:
@@ -104,12 +124,12 @@ public class Buff
                 case DeBuffType.AllStatDown:
                     totalStat.defense = (int)(totalStat.defense * (1f - _entityCurrentStatus[i].adRatio));
                     totalStat.evasionUp = (int)(totalStat.evasionUp * (1f - _entityCurrentStatus[i].adRatio));
-                    totalStat.crtitical = (int)(totalStat.crtitical * (1f - _entityCurrentStatus[i].adRatio));
+                    totalStat.critical = (int)(totalStat.critical * (1f - _entityCurrentStatus[i].adRatio));
                     totalStat.attackDmg = (int)(totalStat.attackDmg * (1f - _entityCurrentStatus[i].adRatio));
                     break;
                 //치명타율 × (1 - 감소비율)→ 소수점 이하 버림
                 case DeBuffType.CriticalDown:
-                    totalStat.crtitical = (int)(totalStat.crtitical * (1f - _entityCurrentStatus[i].adRatio));
+                    totalStat.critical = (int)(totalStat.critical * (1f - _entityCurrentStatus[i].adRatio));
                     break;
                 //회피율 × (1 - 감소비율)→ 소수점 이하 버림
                 case DeBuffType.EvasionDown:

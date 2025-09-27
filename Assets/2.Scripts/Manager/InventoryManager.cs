@@ -29,6 +29,7 @@ public class InventoryManager : Singleton<InventoryManager>
         for (int i = 0; i < slotItemIds.Length; i++) // 슬롯 초기화
             slotItemIds[i] = -1;
     }
+    
 
     /// <summary>
     /// 인벤토리에 아이템을 추가하는 메서드
