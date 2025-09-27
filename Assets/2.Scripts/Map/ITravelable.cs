@@ -5,4 +5,5 @@ using UnityEngine;
 public interface INavigatable
 {
     public void Travel(INavigatable location);
+    public void Enter(BaseRoom room = null);
 }

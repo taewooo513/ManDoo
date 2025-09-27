@@ -21,5 +21,11 @@ public class StartRoom : BaseRoom
 
         InventoryManager.Instance.TryAddItem(eItemType.Consumable,1001, 1500); //1500 골드 지급
         InventoryManager.Instance.TryAddItem(eItemType.Consumable, 2001, 3); //회복약 지급
+        OnEventEnded();
+    }
+    public override void OnEventEnded()
+    {
+        base.OnEventEnded();
+        InventoryManager.Instance.TryAddItem(eItemType.Consumable, 2001, 3); //회복약 지급
     }
 }

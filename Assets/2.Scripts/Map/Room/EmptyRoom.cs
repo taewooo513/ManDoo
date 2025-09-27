@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EmptyRoom : BaseRoom
 {
-    void Start()
+    public override void EnterRoom()
     {
-        
+        base.EnterRoom();
+        OnEventEnded();
     }
-
-    void Update()
+    public override void OnEventEnded()
     {
-        
+        base.OnEventEnded();
     }
 }

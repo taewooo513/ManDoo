@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ShopRoom : BaseRoom
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterRoom()
     {
-        
+        base.EnterRoom();
+        OnEventEnded();
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void OnEventEnded()
     {
-        
+        base.OnEventEnded();
     }
 }

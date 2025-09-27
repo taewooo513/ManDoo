@@ -7,30 +7,75 @@ public class MapManager :Singleton<MapManager>
     private MapGenerator _mapGenerator;
     private MapUI _mapUI;
     [SerializeField] private int index;
-    
-    public List<BaseRoom> rooms;
+
+    public List<BaseRoom> rooms = new();
     public INavigatable CurrentLocation;
 
     protected override void Awake()
     {
         base.Awake();
+        _mapGenerator = GetComponent<MapGenerator>();
+        if(_mapGenerator == null) _mapGenerator = gameObject.AddComponent<MapGenerator>();
+            
     }
 
     private void Start()
     {
-        _mapGenerator = GetComponent<MapGenerator>();
+        
+        
+    }
+
+    public void Test()
+    {
         DataManager.Instance.Initialize();
-        DataTable.MapData mapData = DataManager.Instance.Map.GetMapData(index);
-        List<BaseRoom> rooms = _mapGenerator.GenerateMap(mapData);
+        DataTable.MapData mapData = DataManager.Instance.Map.GetMapData(3);
+        rooms = _mapGenerator.GenerateMap(mapData);
         _mapUI = UIManager.Instance.OpenUI<MapUI>();
         _mapUI.Init(rooms);
         _mapUI.GenerateMapUI();
         CurrentLocation = rooms[0];
+        rooms[0].EnterRoom();
     }
-    
-    public void ChangeCurrentLocation(INavigatable currentLocation)
+
+    private BaseRoom FindDestinationRoom(INavigatable destinationRoom)
     {
-        CurrentLocation = currentLocation;
+        if (CurrentLocation is BaseRoom room && destinationRoom is Corridor corridor)
+        {
+            foreach (var item in room.corridors.Keys)
+            {
+                if (corridor == room.corridors[item])
+                {
+                    Debug.Log("Find " + room.connectedRooms[item]);
+                    return room.connectedRooms[item];
+                }
+            }
+        }
+        return null;
+    }
+    public void ChangeCurrentLocation(INavigatable destination)
+    {
+        if (CurrentLocation is BaseRoom)
+        {
+            BaseRoom destinationRoom = FindDestinationRoom(destination);
+            CurrentLocation = destination;
+            Debug.Log(destination);
+            DeActivateButtonUI();
+            CurrentLocation.Enter(destinationRoom);
+        }
+        else if(CurrentLocation is Corridor)
+        {
+            CurrentLocation = destination;
+            DeActivateButtonUI();
+            CurrentLocation.Enter();
+        }
+    }
+
+    public void DeActivateButtonUI()
+    {
+        foreach (var item in rooms)
+        {
+            item.RoomUI.DeactivateButton();
+        }
     }
 }
  

@@ -9,6 +9,36 @@ public class Corridor : INavigatable
     public BaseRoom RoomB;
     public bool IsAlreadyMade;
     public RoomDirection Direction;
+    public BaseRoom DestinationRoom;
+
+    public void Enter(BaseRoom room = null)
+    {
+        Debug.Log("Enter Corridor");
+        EnterCorridor(room);
+    }
+    public void EnterCorridor(BaseRoom room)
+    {
+        if (room == RoomA)
+        {
+            DestinationRoom = RoomA;
+        }
+        else
+        {
+            DestinationRoom = RoomB;
+        }
+        Debug.Log("You are in Corridor, Destination is " + DestinationRoom);
+        Test();
+    }
+
+    private void Test()
+    {
+        ExitCorridor();
+    }
+    public void ExitCorridor()
+    {
+        Debug.Log("Exit Corridor");
+        Travel(DestinationRoom);
+    }
     public void MakeCells()
     {
         for (int i = 0; i < 4; i++)

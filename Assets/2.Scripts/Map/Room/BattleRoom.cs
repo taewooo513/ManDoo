@@ -15,7 +15,7 @@ public class BattleRoom : BattleTreasureEvent
     {
         base.EnterRoom(); //플레이어 소환(위치 선정)
     }
-
+    
     public override void Init(int id)
     {
         if (!isInteract) //처음 입장시에만
